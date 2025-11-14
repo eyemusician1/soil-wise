@@ -1,0 +1,75 @@
+2025-11-14 16:28:50 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 16:31:03 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 16:33:42 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 16:36:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 16:46:49 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 16:46:50 - __main__ - CRITICAL - run.py:27 - Error: 'HomePage' object has no attribute 'refresh'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 35, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 142, in init_ui
+    self.change_page(0)
+    ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 277, in change_page
+    self.pages['home'].refresh()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HomePage' object has no attribute 'refresh'
+2025-11-14 18:38:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 18:38:50 - __main__ - CRITICAL - run.py:27 - Error: 'HomePage' object has no attribute 'refresh'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 35, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 142, in init_ui
+    self.change_page(0)
+    ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 277, in change_page
+    self.pages['home'].refresh()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HomePage' object has no attribute 'refresh'
+2025-11-14 18:55:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 18:55:37 - __main__ - CRITICAL - run.py:27 - Error: 'HomePage' object has no attribute 'refresh'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 35, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 142, in init_ui
+    self.change_page(0)
+    ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 277, in change_page
+    self.pages['home'].refresh()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HomePage' object has no attribute 'refresh'
+2025-11-14 19:03:36 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:05:36 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:06:17 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:06:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:10:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:14:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:20:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:30:56 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:32:34 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:35:07 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:36:57 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:38:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:41:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:41:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:44:32 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 19:59:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:02:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:05:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:09:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:13:31 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:17:07 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:19:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:20:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:23:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:24:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-11-14 20:27:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
