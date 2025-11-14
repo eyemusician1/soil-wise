@@ -125,7 +125,7 @@ class EnhancedActionButton(QPushButton):
         super().__init__(parent)
         self.setText(f"{icon}  {text}")
         self.setCursor(Qt.PointingHandCursor)
-        self.setMinimumHeight(70)
+        self.setMinimumHeight(80)
         self._is_primary = primary
         
         if primary:
@@ -135,11 +135,12 @@ class EnhancedActionButton(QPushButton):
                         stop:0 #5a9d5e, stop:1 #6eb172);
                     color: white;
                     border: none;
-                    border-radius: 12px;
-                    font-size: 16px;
+                    border-radius: 14px;
+                    font-size: 17px;
                     font-weight: 700;
-                    padding: 20px 28px;
+                    padding: 24px 32px;
                     text-align: left;
+                    letter-spacing: 0.3px;
                 }
                 QPushButton:hover {
                     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
@@ -155,12 +156,13 @@ class EnhancedActionButton(QPushButton):
                 QPushButton {
                     background: white;
                     color: #475569;
-                    border: 2px solid #e8ede8;
-                    border-radius: 12px;
-                    font-size: 16px;
+                    border: 2.5px solid #e2e8e2;
+                    border-radius: 14px;
+                    font-size: 17px;
                     font-weight: 700;
-                    padding: 20px 28px;
+                    padding: 24px 32px;
                     text-align: left;
+                    letter-spacing: 0.3px;
                 }
                 QPushButton:hover {
                     background: #f8fdf9;
@@ -173,32 +175,31 @@ class EnhancedActionButton(QPushButton):
                 }
             """)
         
-        # Add enhanced shadow
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(20)
+        shadow.setBlurRadius(25)
         shadow.setXOffset(0)
-        shadow.setYOffset(4)
-        shadow.setColor(QColor(0, 0, 0, 15))
+        shadow.setYOffset(6)
+        shadow.setColor(QColor(0, 0, 0, 18))
         self.setGraphicsEffect(shadow)
     
     def enterEvent(self, event):
         """Enhanced hover effect with shadow animation"""
         super().enterEvent(event)
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(30)
+        shadow.setBlurRadius(35)
         shadow.setXOffset(0)
-        shadow.setYOffset(8)
-        shadow.setColor(QColor(0, 0, 0, 25))
+        shadow.setYOffset(12)
+        shadow.setColor(QColor(0, 0, 0, 30))
         self.setGraphicsEffect(shadow)
     
     def leaveEvent(self, event):
         """Reset shadow on mouse leave"""
         super().leaveEvent(event)
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(20)
+        shadow.setBlurRadius(25)
         shadow.setXOffset(0)
-        shadow.setYOffset(4)
-        shadow.setColor(QColor(0, 0, 0, 15))
+        shadow.setYOffset(6)
+        shadow.setColor(QColor(0, 0, 0, 18))
         self.setGraphicsEffect(shadow)
 
 
@@ -261,6 +262,7 @@ class HomePage(QWidget):
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
                     stop:0 #d4e7d5, stop:1 #c8dfc9);
                 border-radius: 20px;
+                border: none;
             }
         """)
         
@@ -281,17 +283,6 @@ class HomePage(QWidget):
         title_row.setSpacing(16)
         title_row.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         
-        sprout_icon = QLabel("🌿")
-        sprout_icon.setStyleSheet("""
-            font-size: 48px;
-            color: #2d5a2e;
-            background: transparent;
-            padding: 0px;
-            font-weight: 600;
-        """)
-        sprout_icon.setFixedSize(56, 56)
-        sprout_icon.setAlignment(Qt.AlignCenter)
-        
         title = QLabel("Welcome to SoilWise!")
         title.setStyleSheet("""
             color: #2d5a2e;
@@ -304,7 +295,6 @@ class HomePage(QWidget):
         """)
         title.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         
-        title_row.addWidget(sprout_icon)
         title_row.addWidget(title, 0, Qt.AlignLeft | Qt.AlignVCenter)
         title_row.addStretch()
         
@@ -341,21 +331,47 @@ class HomePage(QWidget):
         features.setAlignment(Qt.AlignLeft)
         
         for icon, text in [("●", "AI-Powered Analysis"), ("▣", "Data-Driven Insights"), ("◉", "Precise Results")]:
-            feature = QLabel(f"{icon}  {text}")
-            feature.setStyleSheet("""
+            feature_card = QFrame()
+            feature_card.setStyleSheet("""
+                QFrame {
+                    background: rgba(255, 255, 255, 0.6);
+                    border: none;
+                    border-radius: 10px;
+                    padding: 0px;
+                }
+                QFrame:hover {
+                    background: rgba(255, 255, 255, 0.85);
+                }
+            """)
+            
+            feature_layout = QHBoxLayout(feature_card)
+            feature_layout.setContentsMargins(16, 12, 16, 12)
+            feature_layout.setSpacing(10)
+            
+            icon_label = QLabel(icon)
+            icon_label.setStyleSheet("""
+                color: #5a9d5e;
+                font-size: 16px;
+                font-weight: 700;
+                background: transparent;
+            """)
+            
+            text_label = QLabel(text)
+            text_label.setStyleSheet("""
                 color: #2d5a2e;
                 font-size: 14px;
                 font-weight: 600;
-                background: rgba(107, 157, 110, 0.2);
-                padding: 12px 20px;
-                border-radius: 8px;
+                background: transparent;
             """)
-            feature.setAlignment(Qt.AlignCenter)
-            features.addWidget(feature)
+            
+            feature_layout.addWidget(icon_label)
+            feature_layout.addWidget(text_label)
+            
+            features.addWidget(feature_card)
         
         features.addStretch()
         
-        layout.addLayout(title_row)
+        layout.addWidget(title)
         layout.addSpacing(8)
         layout.addWidget(tagline)
         layout.addSpacing(16)
@@ -399,9 +415,9 @@ class HomePage(QWidget):
         grid.setSpacing(24)
         
         stats = [
-            ("▥", "SOIL SAMPLES", "0", "#7c9885"),
+            ("▥", "SOIL SAMPLES", "0", "#6b9d6e"),
             ("⚘", "CROPS EVALUATED", "0", "#5a9d5e"),
-            ("◱", "REPORTS GENERATED", "0", "#8b9d75"),
+            ("◱", "REPORTS GENERATED", "0", "#7c9885"),
             ("✓", "SUCCESS RATE", "0%", "#4a8c4d")
         ]
         
@@ -416,7 +432,9 @@ class HomePage(QWidget):
     def create_quick_actions(self):
         """Create enhanced action buttons with modern effects"""
         grid = QGridLayout()
-        grid.setSpacing(20)
+        grid.setSpacing(24)
+        grid.setHorizontalSpacing(24)
+        grid.setVerticalSpacing(20)
         
         btn_input = EnhancedActionButton("Enter Soil Data", "▥", primary=True)
         btn_input.clicked.connect(self.navigate_to_input.emit)

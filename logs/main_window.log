@@ -280,3 +280,151 @@
 2025-11-14 20:28:52 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
 2025-11-14 20:28:53 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
 2025-11-14 20:28:55 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:32:28 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 20:32:28 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:32:28 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 20:32:29 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:32:30 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:32:30 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:32:31 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:32:32 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:32:40 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:32:43 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:32:43 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:32:45 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:32:57 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:32:58 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:32:58 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:32:58 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:32:59 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:32:59 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:35:09 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 20:35:09 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:35:09 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 20:38:14 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 20:38:14 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:38:14 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 20:38:16 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:39:17 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 20:39:17 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:39:17 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 20:39:24 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:39:25 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:39:26 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:39:26 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:39:27 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:39:31 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:39:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:39:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:39:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:39:36 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:40:18 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:40:18 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:40:18 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:40:19 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:40:19 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:40:22 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:40:22 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:40:23 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:26 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 20:42:26 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:26 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 20:42:27 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:28 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:31 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:32 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:42:32 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:42:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:42:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:42:34 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:49 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:50 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:42:50 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:51 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:52 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:42:53 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:54 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:42:55 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:42:56 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:43:03 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:43:04 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:43:05 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:43:07 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:43:12 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:43:14 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:44:32 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:44:34 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:44:34 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:44:35 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 20:44:35 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:44:35 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:45:01 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:45:02 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:45:06 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 20:45:07 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 20:45:08 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:45:20 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:45:21 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 20:45:22 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 20:48:14 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:01:44 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:01:44 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:01:44 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:01:46 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:02:31 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:02:31 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:02:31 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:02:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:04:51 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:04:52 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:04:52 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:04:53 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:05:09 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 21:05:10 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:05:11 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:05:12 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:05:14 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 21:05:15 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:05:33 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:05:34 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:05:34 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:05:35 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:08:37 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:08:38 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:08:38 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:09:56 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:09:56 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:09:56 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:10:46 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:10:56 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:11:22 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:11:22 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:11:22 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:11:40 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:11:41 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:11:42 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 21:11:42 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 21:11:43 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:11:46 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:12:09 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:12:10 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 21:12:11 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 21:12:11 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 21:12:11 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:12:12 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:13:43 - SoilWise.ui.main_window - INFO - main_window.py:235 - All pages created
+2025-11-14 21:13:43 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:13:43 - SoilWise.ui.main_window - INFO - main_window.py:36 - MainWindow initialized
+2025-11-14 21:14:14 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:14:27 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:14:27 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:14:28 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:14:55 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:14:56 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:14:56 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:15:05 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0
+2025-11-14 21:15:05 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 1
+2025-11-14 21:15:06 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 2
+2025-11-14 21:15:07 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 3
+2025-11-14 21:15:07 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 4
+2025-11-14 21:15:08 - SoilWise.ui.main_window - INFO - main_window.py:266 - Changing to page index: 0

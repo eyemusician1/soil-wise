@@ -17,7 +17,7 @@ class NavButton(QPushButton):
         self.is_collapsed = False
         self.is_active = False
         
-        self.setMinimumHeight(44)
+        self.setMinimumHeight(50)
         self.setCursor(QCursor(Qt.PointingHandCursor))
         self.update_appearance()
         
@@ -37,7 +37,7 @@ class NavButton(QPushButton):
             self.setText(self.icon_text)
             self.setToolTip(self.full_text)  # Show tooltip when collapsed
         else:
-            self.setText(f"{self.icon_text}  {self.full_text}")
+            self.setText(f"{self.icon_text}   {self.full_text}")
             self.setToolTip("")  # Remove tooltip when expanded
             
         if self.is_active:
@@ -47,9 +47,9 @@ class NavButton(QPushButton):
                     color: #2d4a2d;
                     border: none;
                     border-radius: 8px;
-                    padding: 10px;
+                    padding: 12px 14px;
                     text-align: left;
-                    font-size: 14px;
+                    font-size: 20px;
                     font-weight: 500;
                 }
                 QPushButton:hover {
@@ -63,9 +63,9 @@ class NavButton(QPushButton):
                     color: #5a7a5a;
                     border: none;
                     border-radius: 8px;
-                    padding: 10px;
+                    padding: 12px 14px;
                     text-align: left;
-                    font-size: 14px;
+                    font-size: 20px;
                     font-weight: 400;
                 }
                 QPushButton:hover {
@@ -103,7 +103,7 @@ class CollapsibleSidebar(QFrame):
         self.nav_widget = QWidget()
         self.nav_layout = QVBoxLayout(self.nav_widget)
         self.nav_layout.setContentsMargins(16, 24, 16, 0)
-        self.nav_layout.setSpacing(6)
+        self.nav_layout.setSpacing(8)
         
         self.main_layout.addWidget(self.nav_widget)
         

@@ -139,3 +139,39 @@
 2025-11-14 20:27:33 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
 2025-11-14 20:27:33 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
 2025-11-14 20:27:33 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 20:32:28 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 20:32:28 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 20:32:28 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 20:35:09 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 20:35:09 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 20:35:09 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 20:38:14 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 20:38:14 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 20:38:14 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 20:39:17 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 20:39:17 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 20:39:17 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 20:42:25 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 20:42:25 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 20:42:25 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:01:44 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:01:44 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:01:44 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:02:31 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:02:31 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:02:31 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:04:51 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:04:51 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:04:51 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:08:37 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:08:37 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:08:37 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:09:56 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:09:56 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:09:56 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:11:22 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:11:22 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:11:22 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
+2025-11-14 21:13:42 - SoilWise.services.data_service - INFO - data_service.py:27 - Initializing database tables
+2025-11-14 21:13:42 - SoilWise.services.data_service - INFO - data_service.py:69 - Database tables initialized successfully
+2025-11-14 21:13:42 - SoilWise.services.data_service - INFO - data_service.py:23 - DataService initialized with database: C:\Users\ACER LAPTOP\OneDrive\Desktop\capstone-pyside\data\soil_samples.db
