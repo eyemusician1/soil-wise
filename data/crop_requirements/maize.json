@@ -1,0 +1,174 @@
+{
+  "crop_name": "Maize",
+  "scientific_name": "Zea mays L.",
+  "seasonal": true,
+  "seasons": ["january_april", "may_august", "september_december"],
+  "climate_requirements": {
+    "precipitation_growing_cycle_mm": {
+      "S1": [750, 900],
+      "S2": [600, 1200],
+      "S3": [400, 1600],
+      "N": [null, 300]
+    },
+    "precipitation_1st_month_mm": {
+      "S1": [175, 220],
+      "S2": [125, 295],
+      "S3": [75, 400],
+      "N": [null, 70]
+    },
+    "precipitation_2nd_month_mm": {
+      "S1": [200, 235],
+      "S2": [175, 310],
+      "S3": [120, 400],
+      "N": [null, 70]
+    },
+    "precipitation_3rd_month_mm": {
+      "S1": [200, 235],
+      "S2": [175, 310],
+      "S3": [120, 400],
+      "N": [null, 70]
+    },
+    "precipitation_4th_month_mm": {
+      "S1": [165, 210],
+      "S2": [125, 285],
+      "S3": [80, 400],
+      "N": [null, 60]
+    },
+    "mean_temp_growing_cycle_c": {
+      "S1": [22, 24],
+      "S2": [18, 26],
+      "S3": [16, 32],
+      "N": [null, 14]
+    },
+    "mean_min_temp_growing_cycle_c": {
+      "S1": [16, 17],
+      "S2": [12, 18],
+      "S3": [9, 24],
+      "N": [null, 7]
+    },
+    "relative_humidity_dev_stage_pct": {
+      "S1": [60, 65],
+      "S2": [42, 80],
+      "S3": [30, null],
+      "N": [null, 20]
+    },
+    "relative_humidity_maturation_pct": {
+      "S1": [30, 40],
+      "S2": [24, 50],
+      "S3": [20, 75],
+      "N": [null, 20]
+    }
+  },
+  "topography_requirements": {
+    "slope_pct_level1": {
+      "S1": [0, 1],
+      "S2": [1, 2],
+      "S3": [2, 4],
+      "N": [6, null]
+    },
+    "slope_pct_level2": {
+      "S1": [0, 2],
+      "S2": [2, 4],
+      "S3": [4, 8],
+      "N": [16, null]
+    },
+    "slope_pct_level3": {
+      "S1": [0, 4],
+      "S2": [4, 8],
+      "S3": [8, 16],
+      "N": [50, null]
+    }
+  },
+  "wetness_requirements": {
+    "flooding": {
+      "S1": ["Fo"],
+      "S2": ["Fo"],
+      "S3": ["Fo"],
+      "N": ["F1", "F2"]
+    },
+    "drainage": {
+      "S1": ["good", "imperfect"],
+      "S2": ["moderate"],
+      "S3": ["imperfect", "good"],
+      "N": ["poor_aeric", "poor_drainable", "poor_not_drainable"]
+    }
+  },
+  "physical_soil_requirements": {
+    "texture": {
+      "S1": ["C<60s", "Co", "SiC", "SiCL", "Si", "SiL", "CL"],
+      "S2": ["C<60v", "SC", "C>60s", "L", "SCL"],
+      "S3": ["C>60v", "SL", "Lfs", "LS"],
+      "N": ["Cm", "SiCm", "fS", "S", "LcS", "cS"]
+    },
+    "coarse_fragments_pct": {
+      "S1": [0, 3],
+      "S2": [3, 15],
+      "S3": [15, 35],
+      "N": [55, null]
+    },
+    "soil_depth_cm": {
+      "S1": [100, null],
+      "S2": [75, 100],
+      "S3": [50, 75],
+      "N": [null, 20]
+    },
+    "caco3_pct": {
+      "S1": [0, 6],
+      "S2": [6, 15],
+      "S3": [15, 25],
+      "N": [35, null]
+    },
+    "gypsum_pct": {
+      "S1": [0, 2],
+      "S2": [2, 4],
+      "S3": [4, 10],
+      "N": [20, null]
+    }
+  },
+  "soil_fertility_requirements": {
+    "apparent_cec_cmol_kg_clay": {
+      "S1": [24, null],
+      "S2": [16, 24],
+      "S3": [null, 16]
+    },
+    "base_saturation_pct": {
+      "S1": [80, null],
+      "S2": [50, 80],
+      "S3": [35, 50],
+      "N": [null, 35]
+    },
+    "sum_basic_cations_cmol_kg": {
+      "S1": [8, null],
+      "S2": [5, 8],
+      "S3": [3.5, 5],
+      "N": [null, 2]
+    },
+    "ph_h2o": {
+      "S1": [6.2, 6.6],
+      "S2": [5.8, 7.0],
+      "S3": [5.5, 7.8],
+      "N": [null, 5.2]
+    },
+    "organic_carbon_pct": {
+      "S1": [2.0, null],
+      "S2": [1.2, 2.0],
+      "S3": [0.8, 1.2],
+      "N": [null, 0.8]
+    }
+  },
+  "salinity_alkalinity_requirements": {
+    "ece_ds_m": {
+      "S1": [0, 2],
+      "S2": [2, 4],
+      "S3": [4, 6],
+      "N": [12, null]
+    },
+    "esp_pct": {
+      "S1": [0, 8],
+      "S2": [8, 15],
+      "S3": [15, 20],
+      "N": [25, null]
+    }
+  },
+  "notes": "Maize requires adequate moisture during germination and tasseling stages. Sensitive to waterlogging."
+}

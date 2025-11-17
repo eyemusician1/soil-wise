@@ -1,0 +1,150 @@
+{
+  "crop_name": "Banana",
+  "scientific_name": "Musa sp. L.",
+  "seasonal": false,
+  "seasons": null,
+  "climate_requirements": {
+    "annual_precipitation_mm": {
+      "S1": [1800, null],
+      "S2": [1500, 1800],
+      "S3": [1250, 1500],
+      "N": [null, 1250]
+    },
+    "dry_season_months": {
+      "S1": [0, 1],
+      "S2": [1, 3],
+      "S3": [3, 4],
+      "N": [4, 6]
+    },
+    "mean_annual_temp_c": {
+      "S1": [22, null],
+      "S2": [18, 22],
+      "S3": [16, 18],
+      "N": [null, 16]
+    },
+    "avg_min_temp_coldest_month_c": {
+      "S1": [20, null],
+      "S2": [15, 20],
+      "S3": [8, 15],
+      "N": [null, 8]
+    },
+    "absolute_min_temp_coldest_month_c": {
+      "S1": [12, null],
+      "S2": [8, 12],
+      "S3": [0, 8],
+      "N": [null, 0]
+    }
+  },
+  "topography_requirements": {
+    "slope_pct_level1": {
+      "S1": [0, 1],
+      "S2": [1, 2],
+      "S3": [2, 4],
+      "N": [6, null]
+    },
+    "slope_pct_level2": {
+      "S1": [0, 2],
+      "S2": [2, 4],
+      "S3": [4, 8],
+      "N": [16, null]
+    },
+    "slope_pct_level3": {
+      "S1": [0, 4],
+      "S2": [4, 8],
+      "S3": [8, 16],
+      "N": [50, null]
+    }
+  },
+  "wetness_requirements": {
+    "flooding": {
+      "S1": ["Fo"],
+      "S2": ["Fo"],
+      "S3": ["F1"],
+      "N": ["F2", "F3"]
+    },
+    "drainage": {
+      "S1": ["good"],
+      "S2": ["moderate"],
+      "S3": ["imperfect"],
+      "N": ["poor_aeric", "poor_drainable", "poor_not_drainable"]
+    }
+  },
+  "physical_soil_requirements": {
+    "texture": {
+      "S1": ["C<60s", "Co", "SiCs", "SiCL", "CL", "SiL"],
+      "S2": ["C>60s", "C<60v", "SC", "L"],
+      "S3": ["C>60v", "SCL"],
+      "N": ["Cm", "SiCs", "fS", "S", "cS"]
+    },
+    "coarse_fragments_pct": {
+      "S1": [0, 3],
+      "S2": [3, 15],
+      "S3": [15, 35],
+      "N": [55, null]
+    },
+    "soil_depth_cm": {
+      "S1": [100, null],
+      "S2": [75, 100],
+      "S3": [50, 75],
+      "N": [null, 25]
+    },
+    "caco3_pct": {
+      "S1": [0, 0],
+      "S2": [0, 1],
+      "S3": [1, 4],
+      "N": [10, null]
+    },
+    "gypsum_pct": {
+      "S1": [0, 0],
+      "S2": [0, 1],
+      "S3": [1, 4],
+      "N": [10, null]
+    }
+  },
+  "soil_fertility_requirements": {
+    "apparent_cec_cmol_kg_clay": {
+      "S1": [24, null],
+      "S2": [16, 24],
+      "S3": [null, 16]
+    },
+    "base_saturation_pct": {
+      "S1": [50, null],
+      "S2": [35, 50],
+      "S3": [20, 35],
+      "N": [null, 20]
+    },
+    "sum_basic_cations_cmol_kg": {
+      "S1": [6.5, null],
+      "S2": [4, 6.5],
+      "S3": [2.8, 4],
+      "N": [null, 2.8]
+    },
+    "ph_h2o": {
+      "S1": [5.8, 6.4],
+      "S2": [5.6, 7.0],
+      "S3": [5.2, 7.5],
+      "N": [null, 8.2]
+    },
+    "organic_carbon_pct": {
+      "S1": [2.4, null],
+      "S2": [1.5, 2.4],
+      "S3": [0.8, 1.5],
+      "N": [null, 0.8]
+    }
+  },
+  "salinity_alkalinity_requirements": {
+    "ece_ds_m": {
+      "S1": [0, 0.1],
+      "S2": [0.1, 2],
+      "S3": [2, 4],
+      "N": [8, null]
+    },
+    "esp_pct": {
+      "S1": [0, 0.2],
+      "S2": [0.2, 4],
+      "S3": [4, 8],
+      "N": [16, null]
+    }
+  },
+  "notes": "Banana is sensitive to waterlogging and frost. Requires consistent moisture and good drainage."
+}
