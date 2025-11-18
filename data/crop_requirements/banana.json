@@ -5,146 +5,161 @@
   "seasons": null,
   "climate_requirements": {
     "annual_precipitation_mm": {
-      "S1": [1800, null],
-      "S2": [1500, 1800],
-      "S3": [1250, 1500],
-      "N": [null, 1250]
+      "S1": {"range": [1800, null], "rating": 1.0},
+      "S2": {"range": [1500, 1800], "rating": 0.85},
+      "S3": {"range": [1250, 1500], "rating": 0.60},
+      "N": {"range": [null, 1250], "rating": 0.25}
     },
     "dry_season_months": {
-      "S1": [0, 1],
-      "S2": [1, 3],
-      "S3": [3, 4],
-      "N": [4, 6]
+      "S1": {"range": [0, 1], "rating": 1.0},
+      "S2": {"range": [1, 3], "rating": 0.85},
+      "S3": {"range": [3, 4], "rating": 0.60},
+      "N": {"range": [4, 6], "rating": 0.25}
     },
     "mean_annual_temp_c": {
-      "S1": [22, null],
-      "S2": [18, 22],
-      "S3": [16, 18],
-      "N": [null, 16]
+      "S1": {"range": [22, null], "rating": 1.0},
+      "S2": {"range": [18, 22], "rating": 0.85},
+      "S3": {"range": [16, 18], "rating": 0.60},
+      "N": {"range": [null, 16], "rating": 0.25}
     },
     "avg_min_temp_coldest_month_c": {
-      "S1": [20, null],
-      "S2": [15, 20],
-      "S3": [8, 15],
-      "N": [null, 8]
+      "S1": {"range": [20, null], "rating": 1.0},
+      "S2": {"range": [15, 20], "rating": 0.85},
+      "S3": {"range": [8, 15], "rating": 0.60},
+      "N": {"range": [null, 8], "rating": 0.25}
     },
     "absolute_min_temp_coldest_month_c": {
-      "S1": [12, null],
-      "S2": [8, 12],
-      "S3": [0, 8],
-      "N": [null, 0]
+      "S1": {"range": [12, null], "rating": 1.0},
+      "S2": {"range": [8, 12], "rating": 0.85},
+      "S3": {"range": [0, 8], "rating": 0.60},
+      "N": {"range": [null, 0], "rating": 0.25}
     }
   },
   "topography_requirements": {
-    "slope_pct_level1": {
-      "S1": [0, 1],
-      "S2": [1, 2],
-      "S3": [2, 4],
-      "N": [6, null]
-    },
-    "slope_pct_level2": {
-      "S1": [0, 2],
-      "S2": [2, 4],
-      "S3": [4, 8],
-      "N": [16, null]
-    },
-    "slope_pct_level3": {
-      "S1": [0, 4],
-      "S2": [4, 8],
-      "S3": [8, 16],
-      "N": [50, null]
+    "slope_pct": {
+      "level1": {
+        "S1": {"range": [0, 1], "rating": 1.0},
+        "S2": {"range": [1, 2], "rating": 0.95},
+        "S3": {"range": [2, 4], "rating": 0.85},
+        "N": {"range": [6, null], "rating": 0}
+      },
+      "level2": {
+        "S1": {"range": [0, 2], "rating": 1.0},
+        "S2": {"range": [2, 4], "rating": 0.95},
+        "S3": {"range": [4, 8], "rating": 0.85},
+        "N": {"range": [16, null], "rating": 0}
+      },
+      "level3": {
+        "S1": {"range": [0, 4], "rating": 1.0},
+        "S2": {"range": [4, 8], "rating": 0.95},
+        "S3": {"range": [8, 16], "rating": 0.85},
+        "N": {"range": [50, null], "rating": 0}
+      }
     }
   },
   "wetness_requirements": {
     "flooding": {
-      "S1": ["Fo"],
-      "S2": ["Fo"],
-      "S3": ["F1"],
-      "N": ["F2", "F3"]
+      "S1": {"values": ["Fo"], "rating": 1.0},
+      "S2": {"values": ["Fo"], "rating": 0.95},
+      "S3": {"values": ["F1"], "rating": 0.85},
+      "N": {"values": ["F2", "F3"], "rating": 0.25}
     },
     "drainage": {
-      "S1": ["good"],
-      "S2": ["moderate"],
-      "S3": ["imperfect"],
-      "N": ["poor_aeric", "poor_drainable", "poor_not_drainable"]
+      "S1": {"values": ["good"], "rating": 1.0},
+      "S2": {"values": ["moderate"], "rating": 0.95},
+      "S3": {"values": ["imperfect"], "rating": 0.85},
+      "N": {"values": ["poor_aeric", "poor_drainable", "poor_not_drainable"], "rating": 0.25}
     }
   },
   "physical_soil_requirements": {
     "texture": {
-      "S1": ["C<60s", "Co", "SiCs", "SiCL", "CL", "SiL"],
-      "S2": ["C>60s", "C<60v", "SC", "L"],
-      "S3": ["C>60v", "SCL"],
-      "N": ["Cm", "SiCs", "fS", "S", "cS"]
+      "S1": {"values": ["C<60s", "Co", "SiCs", "SiCL", "CL", "SiL"], "rating": 1.0},
+      "S2": {"values": ["C>60s", "C<60v", "SC", "L"], "rating": 0.95},
+      "S3": {"values": ["C>60v", "SCL"], "rating": 0.85},
+      "N": {"values": ["Cm", "SiCm", "fS", "S", "cS"], "rating": 0.25}
     },
     "coarse_fragments_pct": {
-      "S1": [0, 3],
-      "S2": [3, 15],
-      "S3": [15, 35],
-      "N": [55, null]
+      "S1": {"range": [0, 3], "rating": 1.0},
+      "S2": {"range": [3, 15], "rating": 0.95},
+      "S3": {"range": [15, 35], "rating": 0.85},
+      "N": {"range": [55, null], "rating": 0.25}
     },
     "soil_depth_cm": {
-      "S1": [100, null],
-      "S2": [75, 100],
-      "S3": [50, 75],
-      "N": [null, 25]
+      "S1": {"range": [100, null], "rating": 1.0},
+      "S2": {"range": [75, 100], "rating": 0.95},
+      "S3": {"range": [50, 75], "rating": 0.85},
+      "N": {"range": [null, 25], "rating": 0.25}
     },
     "caco3_pct": {
-      "S1": [0, 0],
-      "S2": [0, 1],
-      "S3": [1, 4],
-      "N": [10, null]
+      "S1": {"range": [0, 0], "rating": 1.0},
+      "S2": {"range": [0, 1], "rating": 0.95},
+      "S3": {"range": [1, 4], "rating": 0.85},
+      "N": {"range": [10, null], "rating": 0.25}
     },
     "gypsum_pct": {
-      "S1": [0, 0],
-      "S2": [0, 1],
-      "S3": [1, 4],
-      "N": [10, null]
+      "S1": {"range": [0, 0], "rating": 1.0},
+      "S2": {"range": [0, 1], "rating": 0.95},
+      "S3": {"range": [1, 4], "rating": 0.85},
+      "N": {"range": [10, null], "rating": 0.25}
     }
   },
   "soil_fertility_requirements": {
     "apparent_cec_cmol_kg_clay": {
-      "S1": [24, null],
-      "S2": [16, 24],
-      "S3": [null, 16]
+      "S1": {"range": [24, null], "rating": 1.0},
+      "S2": {"range": [16, 24], "rating": 0.95},
+      "S3_minus": {"range": [null, 16], "rating": 0.85},
+      "S3_plus": {"range": [null, 16], "rating": 0.60}
     },
     "base_saturation_pct": {
-      "S1": [50, null],
-      "S2": [35, 50],
-      "S3": [20, 35],
-      "N": [null, 20]
+      "S1": {"range": [50, null], "rating": 1.0},
+      "S2": {"range": [35, 50], "rating": 0.85},
+      "S3": {"range": [20, 35], "rating": 0.60},
+      "N": {"range": [null, 20], "rating": 0.25}
     },
     "sum_basic_cations_cmol_kg": {
-      "S1": [6.5, null],
-      "S2": [4, 6.5],
-      "S3": [2.8, 4],
-      "N": [null, 2.8]
+      "S1": {"range": [6.5, null], "rating": 1.0},
+      "S2": {"range": [4, 6.5], "rating": 0.95},
+      "S3": {"range": [2.8, 4], "rating": 0.85},
+      "N": {"range": [null, 2.8], "rating": 0.25}
     },
     "ph_h2o": {
-      "S1": [5.8, 6.4],
-      "S2": [5.6, 7.0],
-      "S3": [5.2, 7.5],
-      "N": [null, 8.2]
+      "S1": {"range": [5.8, 6.4], "rating": 1.0},
+      "S2_low": {"range": [5.6, 5.8], "rating": 0.95},
+      "S2_high": {"range": [6.4, 7.0], "rating": 0.95},
+      "S3_low": {"range": [5.2, 5.6], "rating": 0.85},
+      "S3_high": {"range": [7.0, 7.5], "rating": 0.85},
+      "N_low": {"range": [null, 5.2], "rating": 0.60},
+      "N_high": {"range": [8.2, null], "rating": 0.40}
     },
     "organic_carbon_pct": {
-      "S1": [2.4, null],
-      "S2": [1.5, 2.4],
-      "S3": [0.8, 1.5],
-      "N": [null, 0.8]
+      "S1": {"range": [2.4, null], "rating": 1.0},
+      "S2": {"range": [1.5, 2.4], "rating": 0.95},
+      "S3": {"range": [0.8, 1.5], "rating": 0.85},
+      "N": {"range": [null, 0.8], "rating": 0.60}
     }
   },
   "salinity_alkalinity_requirements": {
     "ece_ds_m": {
-      "S1": [0, 0.1],
-      "S2": [0.1, 2],
-      "S3": [2, 4],
-      "N": [8, null]
+      "S1": {"range": [0, 0.1], "rating": 1.0},
+      "S2": {"range": [0.1, 2], "rating": 0.95},
+      "S3": {"range": [2, 4], "rating": 0.85},
+      "N": {"range": [8, null], "rating": 0.25}
     },
     "esp_pct": {
-      "S1": [0, 0.2],
-      "S2": [0.2, 4],
-      "S3": [4, 8],
-      "N": [16, null]
+      "S1": {"range": [0, 0.2], "rating": 1.0},
+      "S2": {"range": [0.2, 4], "rating": 0.95},
+      "S3": {"range": [4, 8], "rating": 0.85},
+      "N": {"range": [16, null], "rating": 0.25}
     }
   },
-  "notes": "Banana is sensitive to waterlogging and frost. Requires consistent moisture and good drainage."
+  "notes": "Banana is sensitive to waterlogging and frost. Requires consistent moisture and good drainage.",
+  "rating_scale": {
+    "S1": 1.0,
+    "S2": 0.95,
+    "S2_alt": 0.85,
+    "S3": 0.60,
+    "S3_alt": 0.40,
+    "N": 0.25,
+    "N_complete": 0
+  }
 }

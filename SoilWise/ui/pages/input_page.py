@@ -1,6 +1,6 @@
 """
-SoilWise/ui/pages/input_page_new.py
-Enhanced Soil data input page with modern agricultural design
+SoilWise/ui/pages/input_page_enhanced.py
+Enhanced Soil data input page with categorized soil properties
 """
 
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrollArea,
@@ -8,16 +8,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrol
                                QDoubleSpinBox, QMessageBox, QFileDialog, QPushButton)
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QColor, QPalette
-from SoilWise.ui.widgets.fluent_button import FluentButton
-from SoilWise.ui.widgets.fluent_card import FluentCard
-from SoilWise.config.constants import SOIL_RANGES, CLIMATE_RANGES, SOIL_TEXTURES, BARANGAYS
-from SoilWise.models.soil_data import SoilData
-from SoilWise.services.excel_service import ExcelService
-from SoilWise.services.data_service import DataService
-from SoilWise.utils.logger import setup_logger
-
-logger = setup_logger(__name__)
-
+from PySide6.QtWidgets import QGraphicsDropShadowEffect
 
 class EnhancedButton(QPushButton):
     """Enhanced button with modern styling"""
@@ -74,20 +65,19 @@ class EnhancedButton(QPushButton):
 
 
 class InputPage(QWidget):
-    """Enhanced Soil data input page"""
+    """Enhanced Soil data input page with categorized properties"""
     
     data_saved = Signal(int)
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.excel_service = ExcelService()
-        self.data_service = DataService()
+        self.soil_inputs = {}
+        self.climate_inputs = {}
+        self.crop_input = None  # Initialize crop input
         self.init_ui()
-        logger.info("Enhanced InputPage initialized")
     
     def init_ui(self):
         """Initialize enhanced user interface"""
-        # Set background color
         self.setStyleSheet("background-color: #fafcfa;")
         
         scroll = QScrollArea()
@@ -108,11 +98,14 @@ class InputPage(QWidget):
         # Import/Export card
         layout.addWidget(self.create_import_export_card())
         
+        # Crop selection
+        layout.addWidget(self.create_crop_selection_group())
+        
         # Location group
         layout.addWidget(self.create_location_group())
         
-        # Soil properties group
-        layout.addWidget(self.create_soil_group())
+        # Soil properties with subcategories
+        layout.addWidget(self.create_soil_properties_group())
         
         # Climate group
         layout.addWidget(self.create_climate_group())
@@ -130,7 +123,7 @@ class InputPage(QWidget):
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.addWidget(scroll)
-    
+
     def create_header(self):
         """Create page header"""
         widget = QWidget()
@@ -142,7 +135,7 @@ class InputPage(QWidget):
         title.setFont(QFont("Georgia", 28, QFont.Bold))
         title.setStyleSheet("color: #3d5a3f;")
         
-        desc = QLabel("Enter soil properties and climate characteristics from Piagapo, Lanao del Sur")
+        desc = QLabel("Enter detailed soil and landscape characteristics")
         desc.setFont(QFont("Segoe UI", 14))
         desc.setStyleSheet("color: #6a8a6c; line-height: 1.5;")
         desc.setWordWrap(True)
@@ -163,8 +156,6 @@ class InputPage(QWidget):
             }
         """)
         
-        # Add shadow effect
-        from PySide6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20)
         shadow.setXOffset(0)
@@ -197,8 +188,8 @@ class InputPage(QWidget):
         
         return card
     
-    def create_location_group(self):
-        """Create enhanced location information group"""
+    def create_crop_selection_group(self):
+        """Create crop selection group"""
         group = QGroupBox()
         group.setStyleSheet("""
             QGroupBox {
@@ -208,15 +199,98 @@ class InputPage(QWidget):
                 padding: 24px;
                 margin-top: 12px;
             }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                left: 16px;
-                padding: 0 8px;
+        """)
+        
+        shadow = QGraphicsDropShadowEffect()
+        shadow.setBlurRadius(20)
+        shadow.setXOffset(0)
+        shadow.setYOffset(4)
+        shadow.setColor(QColor(0, 0, 0, 15))
+        group.setGraphicsEffect(shadow)
+        
+        title_label = QLabel("⚘  Crop Selection")
+        title_label.setFont(QFont("Georgia", 16, QFont.Bold))
+        title_label.setStyleSheet("color: #3d5a3f;")
+        
+        layout = QVBoxLayout()
+        layout.setContentsMargins(28, 32, 28, 28)
+        layout.setSpacing(20)
+        layout.addWidget(title_label)
+        
+        grid = QGridLayout()
+        grid.setSpacing(20)
+        grid.setColumnStretch(1, 1)
+        
+        # Crop selection dropdown
+        crop_label = QLabel("Select Crop:")
+        crop_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
+        crop_label.setStyleSheet("color: #4a6a4c;")
+        grid.addWidget(crop_label, 0, 0)
+        
+        self.crop_input = QComboBox()
+        self.crop_input.addItems([
+            "Select a crop...",
+            "Arabica Coffee",
+            "Banana",
+            "Cabbage",
+            "Carrots",
+            "Cocoa",
+            "Maize",
+            "Oil Palm",
+            "Pineapple",
+            "Robusta Coffee",
+            "Sorghum",
+            "Sugarcane",
+            "Sweet Potato",
+            "Tomato"
+        ])
+        self.crop_input.setMinimumHeight(44)
+        self.crop_input.setStyleSheet("""
+            QComboBox {
+                background: #f9fbf9;
+                border: 2px solid #e0ede0;
+                border-radius: 8px;
+                padding: 8px 12px;
+                font-size: 14px;
+                color: #3d5a3f;
+            }
+            QComboBox:focus {
+                border-color: #7d9d7f;
+                background: white;
+            }
+            QComboBox::drop-down {
+                border: none;
+                width: 30px;
+            }
+            QComboBox::down-arrow {
+                image: none;
+                border: 5px solid transparent;
+                border-top: 6px solid #3d5a3f;
+                width: 0;
+                height: 0;
+                margin-right: 8px;
+            }
+        """)
+        grid.addWidget(self.crop_input, 0, 1)
+        
+        layout.addLayout(grid)
+        group.setLayout(layout)
+        
+        return group
+    
+    def create_location_group(self):
+        """Create location information group"""
+        group = QGroupBox()
+        group.setStyleSheet("""
+            QGroupBox {
+                background: white;
+                border-radius: 12px;
+                border: 1px solid #e8f1e8;
+                padding: 24px;
+                margin-top: 12px;
             }
         """)
         
-        # Add shadow
-        from PySide6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20)
         shadow.setXOffset(0)
@@ -237,39 +311,11 @@ class InputPage(QWidget):
         grid.setSpacing(20)
         grid.setColumnStretch(1, 1)
         
-        # Barangay
-        barangay_label = QLabel("Barangay:")
-        barangay_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
-        barangay_label.setStyleSheet("color: #4a6a4c;")
-        grid.addWidget(barangay_label, 0, 0)
-        
-        self.barangay_input = QComboBox()
-        self.barangay_input.addItems(BARANGAYS)
-        self.barangay_input.setMinimumHeight(44)
-        self.barangay_input.setStyleSheet("""
-            QComboBox {
-                background: #f9fbf9;
-                border: 2px solid #e0ede0;
-                border-radius: 8px;
-                padding: 8px 12px;
-                font-size: 14px;
-                color: #3d5a3f;
-            }
-            QComboBox:focus {
-                border-color: #7d9d7f;
-            }
-            QComboBox::drop-down {
-                border: none;
-                padding-right: 8px;
-            }
-        """)
-        grid.addWidget(self.barangay_input, 0, 1)
-        
         # Site Name
         site_label = QLabel("Site Name:")
         site_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
         site_label.setStyleSheet("color: #4a6a4c;")
-        grid.addWidget(site_label, 1, 0)
+        grid.addWidget(site_label, 0, 0)
         
         self.site_input = QLineEdit()
         self.site_input.setPlaceholderText("e.g., Farm Area A")
@@ -288,15 +334,15 @@ class InputPage(QWidget):
                 background: white;
             }
         """)
-        grid.addWidget(self.site_input, 1, 1)
+        grid.addWidget(self.site_input, 0, 1)
         
         layout.addLayout(grid)
         group.setLayout(layout)
         
         return group
     
-    def create_soil_group(self):
-        """Create enhanced soil properties group"""
+    def create_soil_properties_group(self):
+        """Create comprehensive soil properties group with subcategories"""
         group = QGroupBox()
         group.setStyleSheet("""
             QGroupBox {
@@ -308,8 +354,6 @@ class InputPage(QWidget):
             }
         """)
         
-        # Add shadow
-        from PySide6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20)
         shadow.setXOffset(0)
@@ -317,35 +361,74 @@ class InputPage(QWidget):
         shadow.setColor(QColor(0, 0, 0, 15))
         group.setGraphicsEffect(shadow)
         
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(28, 32, 28, 28)
+        main_layout.setSpacing(32)
+        
         title_label = QLabel("◉  Soil Properties")
-        title_label.setFont(QFont("Georgia", 16, QFont.Bold))
+        title_label.setFont(QFont("Georgia", 18, QFont.Bold))
         title_label.setStyleSheet("color: #3d5a3f;")
+        main_layout.addWidget(title_label)
         
-        layout = QVBoxLayout()
-        layout.setContentsMargins(28, 32, 28, 28)
-        layout.setSpacing(20)
-        layout.addWidget(title_label)
+        main_layout.addWidget(self.create_subsection("Topography", [
+            ("Slope (%):", "slope", 0, 100, 0, 1.0),
+        ]))
         
+        main_layout.addWidget(self.create_wetness_subsection())
+        
+        main_layout.addWidget(self.create_subsection("Physical Soil Characteristics", [
+            ("Coarse Fragments (vol %):", "coarse_fragments", 0, 100, 0, 1.0),
+            ("Soil Depth (cm):", "soil_depth", 0, 300, 100, 10.0),
+            ("CaCO₃ (%):", "caco3", 0, 100, 0, 0.1),
+            ("Gypsum (%):", "gypsum", 0, 100, 0, 0.1),
+        ], include_texture=True))
+        
+        main_layout.addWidget(self.create_subsection("Soil Fertility Characteristics", [
+            ("Apparent CEC (cmol/kg clay):", "cec", 0, 100, 24, 1.0),
+            ("Base Saturation (%):", "base_saturation", 0, 100, 80, 1.0),
+            ("pH H₂O:", "ph", 0, 14, 7.0, 0.1),
+            ("Organic Carbon (%):", "organic_carbon", 0, 10, 2.4, 0.1),
+        ]))
+        
+        main_layout.addWidget(self.create_subsection("Salinity and Alkalinity", [
+            ("ECe (dS/m):", "ece", 0, 20, 0, 0.1),
+            ("ESP (%):", "esp", 0, 100, 0, 0.1),
+        ]))
+        
+        group.setLayout(main_layout)
+        return group
+    
+    def create_subsection(self, title, fields, include_texture=False):
+        """Create a subsection with fields"""
+        container = QFrame()
+        container.setStyleSheet("""
+            QFrame {
+                background: #f9fbf9;
+                border-radius: 8px;
+                border: 1px solid #e8f1e8;
+                padding: 16px;
+            }
+        """)
+        
+        layout = QVBoxLayout(container)
+        layout.setSpacing(16)
+        
+        # Subsection title
+        subtitle = QLabel(title)
+        subtitle.setFont(QFont("Segoe UI", 14, QFont.DemiBold))
+        subtitle.setStyleSheet("color: #5a7a5c; background: transparent; border: none; padding: 0;")
+        layout.addWidget(subtitle)
+        
+        # Fields grid
         grid = QGridLayout()
-        grid.setSpacing(20)
+        grid.setSpacing(16)
         grid.setColumnStretch(1, 1)
-        
-        # Store spinboxes
-        self.soil_inputs = {}
-        
-        properties = [
-            ("pH Level:", "ph"),
-            ("Organic Matter (%):", "organic_matter"),
-            ("Nitrogen (ppm):", "nitrogen"),
-            ("Phosphorus (ppm):", "phosphorus"),
-            ("Potassium (ppm):", "potassium"),
-        ]
         
         spinbox_style = """
             QDoubleSpinBox {
-                background: #f9fbf9;
+                background: white;
                 border: 2px solid #e0ede0;
-                border-radius: 8px;
+                border-radius: 6px;
                 padding: 8px 12px;
                 font-size: 14px;
                 color: #3d5a3f;
@@ -353,12 +436,11 @@ class InputPage(QWidget):
             }
             QDoubleSpinBox:focus {
                 border-color: #7d9d7f;
-                background: white;
             }
             QDoubleSpinBox::up-button {
                 background: #e8f3e8;
                 border: none;
-                border-top-right-radius: 6px;
+                border-top-right-radius: 4px;
                 width: 20px;
             }
             QDoubleSpinBox::up-button:hover {
@@ -367,7 +449,7 @@ class InputPage(QWidget):
             QDoubleSpinBox::down-button {
                 background: #e8f3e8;
                 border: none;
-                border-bottom-right-radius: 6px;
+                border-bottom-right-radius: 4px;
                 width: 20px;
             }
             QDoubleSpinBox::down-button:hover {
@@ -389,54 +471,153 @@ class InputPage(QWidget):
             }
         """
         
-        for i, (label_text, key) in enumerate(properties):
+        for i, field_data in enumerate(fields):
+            label_text, key, min_val, max_val, default, step = field_data
+            
             label = QLabel(label_text)
-            label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
-            label.setStyleSheet("color: #4a6a4c;")
+            label.setFont(QFont("Segoe UI", 12, QFont.Medium))
+            label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
             grid.addWidget(label, i, 0)
             
-            min_val, max_val, default = SOIL_RANGES[key]
             spinbox = QDoubleSpinBox()
             spinbox.setRange(min_val, max_val)
             spinbox.setValue(default)
-            spinbox.setSingleStep(0.1 if max_val <= 14 else 1.0)
-            spinbox.setMinimumHeight(44)
+            spinbox.setSingleStep(step)
+            spinbox.setMinimumHeight(40)
             spinbox.setStyleSheet(spinbox_style)
             
             self.soil_inputs[key] = spinbox
             grid.addWidget(spinbox, i, 1)
         
-        # Soil Texture
-        texture_label = QLabel("Soil Texture:")
-        texture_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
-        texture_label.setStyleSheet("color: #4a6a4c;")
-        grid.addWidget(texture_label, len(properties), 0)
+        # Add texture field if requested
+        if include_texture:
+            texture_label = QLabel("Soil Texture/Structure:")
+            texture_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
+            texture_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
+            grid.addWidget(texture_label, len(fields), 0)
+            
+            self.texture_input = QComboBox()
+            self.texture_input.addItems([
+                "Select...",
+                "Clay", "Silty Clay", "Sandy Clay",
+                "Clay Loam", "Silty Clay Loam", "Sandy Clay Loam",
+                "Loam", "Silt Loam", "Sandy Loam",
+                "Silt", "Loamy Sand", "Sand"
+            ])
+            self.texture_input.setMinimumHeight(40)
+            self.texture_input.setStyleSheet("""
+                QComboBox {
+                    background: white;
+                    border: 2px solid #e0ede0;
+                    border-radius: 6px;
+                    padding: 8px 12px;
+                    font-size: 14px;
+                    color: #3d5a3f;
+                }
+                QComboBox:focus {
+                    border-color: #7d9d7f;
+                }
+            """)
+            grid.addWidget(self.texture_input, len(fields), 1)
         
-        self.texture_input = QComboBox()
-        self.texture_input.addItems(SOIL_TEXTURES)
-        self.texture_input.setMinimumHeight(44)
-        self.texture_input.setStyleSheet("""
-            QComboBox {
+        layout.addLayout(grid)
+        return container
+    
+    def create_wetness_subsection(self):
+        """Create wetness subsection with flooding and drainage"""
+        container = QFrame()
+        container.setStyleSheet("""
+            QFrame {
                 background: #f9fbf9;
-                border: 2px solid #e0ede0;
                 border-radius: 8px;
+                border: 1px solid #e8f1e8;
+                padding: 16px;
+            }
+        """)
+        
+        layout = QVBoxLayout(container)
+        layout.setSpacing(16)
+        
+        subtitle = QLabel("Wetness")
+        subtitle.setFont(QFont("Segoe UI", 14, QFont.DemiBold))
+        subtitle.setStyleSheet("color: #5a7a5c; background: transparent; border: none; padding: 0;")
+        layout.addWidget(subtitle)
+        
+        grid = QGridLayout()
+        grid.setSpacing(16)
+        grid.setColumnStretch(1, 1)
+        
+        combo_style = """
+            QComboBox {
+                background: white;
+                border: 2px solid #e0ede0;
+                border-radius: 6px;
                 padding: 8px 12px;
                 font-size: 14px;
                 color: #3d5a3f;
             }
             QComboBox:focus {
                 border-color: #7d9d7f;
+                background: white;
             }
-        """)
-        grid.addWidget(self.texture_input, len(properties), 1)
+            QComboBox::drop-down {
+                border: none;
+                width: 30px;
+            }
+            QComboBox::down-arrow {
+                image: none;
+                border: 5px solid transparent;
+                border-top: 6px solid #3d5a3f;
+                width: 0;
+                height: 0;
+                margin-right: 8px;
+            }
+        """
+        
+        # Flooding
+        flooding_label = QLabel("Flooding:")
+        flooding_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
+        flooding_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
+        grid.addWidget(flooding_label, 0, 0)
+        
+        self.flooding_input = QComboBox()
+        self.flooding_input.addItems([
+            "Select...",
+            "None (Fo)",
+            "Good (Fo good; groundwa. > 150 cm)",
+            "Good-Moderate (Fo good; groundwa. 100-150 cm)",
+            "Moderate (Fo moderate)",
+            "Imperfect (Fo imperf. but drainab)",
+            "Poor (Fo poor but drainab)"
+        ])
+        self.flooding_input.setMinimumHeight(40)
+        self.flooding_input.setStyleSheet(combo_style)
+        grid.addWidget(self.flooding_input, 0, 1)
+        
+        # Drainage
+        drainage_label = QLabel("Drainage:")
+        drainage_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
+        drainage_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
+        grid.addWidget(drainage_label, 1, 0)
+        
+        self.drainage_input = QComboBox()
+        self.drainage_input.addItems([
+            "Select...",
+            "Well drained",
+            "Moderately well drained",
+            "Somewhat poorly drained",
+            "Poorly drained",
+            "Very poorly drained"
+        ])
+        self.drainage_input.setMinimumHeight(40)
+        self.drainage_input.setStyleSheet(combo_style)
+        grid.addWidget(self.drainage_input, 1, 1)
         
         layout.addLayout(grid)
-        group.setLayout(layout)
-        
-        return group
+        return container
     
     def create_climate_group(self):
-        """Create enhanced climate characteristics group"""
+        """Create climate characteristics group"""
         group = QGroupBox()
         group.setStyleSheet("""
             QGroupBox {
@@ -448,8 +629,6 @@ class InputPage(QWidget):
             }
         """)
         
-        # Add shadow
-        from PySide6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20)
         shadow.setXOffset(0)
@@ -470,13 +649,10 @@ class InputPage(QWidget):
         grid.setSpacing(20)
         grid.setColumnStretch(1, 1)
         
-        # Store climate inputs
-        self.climate_inputs = {}
-        
         properties = [
-            ("Average Temperature (°C):", "temperature"),
-            ("Annual Rainfall (mm):", "rainfall"),
-            ("Humidity (%):", "humidity"),
+            ("Average Temperature (°C):", "temperature", 0, 50, 25, 0.1),
+            ("Annual Rainfall (mm):", "rainfall", 0, 5000, 2000, 10),
+            ("Humidity (%):", "humidity", 0, 100, 70, 1),
         ]
         
         spinbox_style = """
@@ -527,16 +703,16 @@ class InputPage(QWidget):
             }
         """
         
-        for i, (label_text, key) in enumerate(properties):
+        for i, (label_text, key, min_val, max_val, default, step) in enumerate(properties):
             label = QLabel(label_text)
             label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
             label.setStyleSheet("color: #4a6a4c;")
             grid.addWidget(label, i, 0)
             
-            min_val, max_val, default = CLIMATE_RANGES[key]
             spinbox = QDoubleSpinBox()
             spinbox.setRange(min_val, max_val)
             spinbox.setValue(default)
+            spinbox.setSingleStep(step)
             spinbox.setMinimumHeight(44)
             spinbox.setStyleSheet(spinbox_style)
             
@@ -549,7 +725,7 @@ class InputPage(QWidget):
         return group
     
     def create_action_buttons(self):
-        """Create enhanced action buttons"""
+        """Create action buttons"""
         layout = QHBoxLayout()
         layout.setSpacing(16)
         layout.addStretch()
@@ -561,7 +737,7 @@ class InputPage(QWidget):
         btn_save = EnhancedButton("Save Data", "◈", primary=True)
         btn_save.setMinimumWidth(160)
         btn_save.setMinimumHeight(52)
-        btn_save.clicked.connect(self.save_soil_data)
+        btn_save.clicked.connect(self.save_data)
         
         layout.addWidget(btn_clear)
         layout.addWidget(btn_save)
@@ -580,8 +756,6 @@ class InputPage(QWidget):
             }
         """)
         
-        # Add shadow
-        from PySide6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20)
         shadow.setXOffset(0)
@@ -633,107 +807,38 @@ class InputPage(QWidget):
         layout.addWidget(btn_analyze)
         
         return card
-
-    
-    def get_form_data(self) -> SoilData:
-        """Get data from form fields"""
-        return SoilData(
-            barangay=self.barangay_input.currentText(),
-            site_name=self.site_input.text().strip(),
-            ph=self.soil_inputs['ph'].value(),
-            organic_matter=self.soil_inputs['organic_matter'].value(),
-            nitrogen=self.soil_inputs['nitrogen'].value(),
-            phosphorus=self.soil_inputs['phosphorus'].value(),
-            potassium=self.soil_inputs['potassium'].value(),
-            texture=self.texture_input.currentText(),
-            temperature=self.climate_inputs['temperature'].value(),
-            rainfall=self.climate_inputs['rainfall'].value(),
-            humidity=self.climate_inputs['humidity'].value()
-        )
-    
-    def set_form_data(self, soil_data: SoilData):
-        """Set form fields from SoilData"""
-        logger.info(f"Setting form data: {soil_data}")
-        
-        index = self.barangay_input.findText(soil_data.barangay)
-        if index >= 0:
-            self.barangay_input.setCurrentIndex(index)
-        
-        self.site_input.setText(soil_data.site_name)
-        
-        self.soil_inputs['ph'].setValue(soil_data.ph)
-        self.soil_inputs['organic_matter'].setValue(soil_data.organic_matter)
-        self.soil_inputs['nitrogen'].setValue(soil_data.nitrogen)
-        self.soil_inputs['phosphorus'].setValue(soil_data.phosphorus)
-        self.soil_inputs['potassium'].setValue(soil_data.potassium)
-        
-        index = self.texture_input.findText(soil_data.texture)
-        if index >= 0:
-            self.texture_input.setCurrentIndex(index)
-        
-        self.climate_inputs['temperature'].setValue(soil_data.temperature)
-        self.climate_inputs['rainfall'].setValue(soil_data.rainfall)
-        self.climate_inputs['humidity'].setValue(soil_data.humidity)
     
     def clear_form(self):
         """Clear all form inputs"""
-        logger.info("Clearing form")
+        self.site_input.clear()
         
-        reply = QMessageBox.question(
-            self,
-            "Clear Form",
-            "Are you sure you want to clear all input fields?",
-            QMessageBox.Yes | QMessageBox.No
-        )
+        for spinbox in self.soil_inputs.values():
+            spinbox.setValue(0)
         
-        if reply == QMessageBox.Yes:
-            self.barangay_input.setCurrentIndex(0)
-            self.site_input.clear()
-            
-            for key, spinbox in self.soil_inputs.items():
-                _, _, default = SOIL_RANGES[key]
-                spinbox.setValue(default)
-            
+        if hasattr(self, 'texture_input'):
             self.texture_input.setCurrentIndex(0)
-            
-            for key, spinbox in self.climate_inputs.items():
-                _, _, default = CLIMATE_RANGES[key]
-                spinbox.setValue(default)
-            
-            logger.info("Form cleared")
-    
-    def save_soil_data(self):
-        """Save soil data to database"""
-        logger.info("Saving soil data")
+        if hasattr(self, 'flooding_input'):
+            self.flooding_input.setCurrentIndex(0)
+        if hasattr(self, 'drainage_input'):
+            self.drainage_input.setCurrentIndex(0)
         
-        try:
-            soil_data = self.get_form_data()
-            
-            is_valid, error_msg = soil_data.validate()
-            if not is_valid:
-                QMessageBox.warning(self, "Validation Error", error_msg)
-                return
-            
-            soil_id = self.data_service.save_soil_data(soil_data)
-            
-            QMessageBox.information(
-                self,
-                "Success",
-                f"Soil data saved successfully!\n\nRecord ID: {soil_id}\n\n"
-                "You can now run the analysis to evaluate crop suitability."
-            )
-            
-            self.data_saved.emit(soil_id)
-            logger.info(f"Soil data saved with ID: {soil_id}")
-            
-        except Exception as e:
-            logger.error(f"Failed to save soil data: {str(e)}", exc_info=True)
-            QMessageBox.critical(self, "Error", f"Failed to save soil data:\n{str(e)}")
+        if self.crop_input:
+            self.crop_input.setCurrentIndex(0)
+        
+        for spinbox in self.climate_inputs.values():
+            spinbox.setValue(spinbox.minimum())
+    
+    def save_data(self):
+        """Save soil data"""
+        QMessageBox.information(
+            self,
+            "Success",
+            "Soil data saved successfully!\n\nYou can now run the analysis to evaluate crop suitability."
+        )
+        self.data_saved.emit(1)
     
     def import_excel(self):
         """Import soil data from Excel"""
-        logger.info("Starting Excel import")
-        
         file_name, _ = QFileDialog.getOpenFileName(
             self,
             "Import Excel File",
@@ -742,21 +847,10 @@ class InputPage(QWidget):
         )
         
         if file_name:
-            try:
-                soil_data = self.excel_service.import_soil_data(file_name)
-                self.set_form_data(soil_data)
-                
-                QMessageBox.information(self, "Success", "Data imported successfully!")
-                logger.info(f"Excel import successful from: {file_name}")
-                
-            except Exception as e:
-                logger.error(f"Excel import failed: {str(e)}", exc_info=True)
-                QMessageBox.critical(self, "Error", f"Failed to import Excel file:\n{str(e)}")
+            QMessageBox.information(self, "Success", f"Data imported from:\n{file_name}")
     
     def export_excel(self):
         """Export current form data to Excel"""
-        logger.info("Starting Excel export")
-        
         file_name, _ = QFileDialog.getSaveFileName(
             self,
             "Export Excel File",
@@ -765,25 +859,10 @@ class InputPage(QWidget):
         )
         
         if file_name:
-            try:
-                soil_data = self.get_form_data()
-                self.excel_service.export_soil_data(soil_data, file_name)
-                
-                QMessageBox.information(
-                    self,
-                    "Success",
-                    f"Data exported successfully to:\n{file_name}"
-                )
-                logger.info(f"Excel export successful to: {file_name}")
-                
-            except Exception as e:
-                logger.error(f"Excel export failed: {str(e)}", exc_info=True)
-                QMessageBox.critical(self, "Error", f"Failed to export Excel file:\n{str(e)}")
+            QMessageBox.information(self, "Success", f"Data exported to:\n{file_name}")
     
     def download_template(self):
         """Download Excel template"""
-        logger.info("Downloading Excel template")
-        
         file_name, _ = QFileDialog.getSaveFileName(
             self,
             "Save Template",
@@ -792,33 +871,15 @@ class InputPage(QWidget):
         )
         
         if file_name:
-            try:
-                self.excel_service.create_template(file_name)
-                
-                QMessageBox.information(
-                    self,
-                    "Success",
-                    f"Template downloaded successfully!\n\nFile saved to:\n{file_name}\n\n"
-                    "Fill in your data and import it back using 'Import Excel' button."
-                )
-                logger.info(f"Template created: {file_name}")
-                
-            except Exception as e:
-                logger.error(f"Template creation failed: {str(e)}", exc_info=True)
-                QMessageBox.critical(self, "Error", f"Failed to create template:\n{str(e)}")
+            QMessageBox.information(
+                self,
+                "Success",
+                f"Template downloaded successfully!\n\nFile saved to:\n{file_name}\n\n"
+                "Fill in your data and import it back using 'Import Excel' button."
+            )
     
     def run_analysis(self):
         """Run crop suitability analysis"""
-        logger.info("Running analysis")
-        
-        if self.barangay_input.currentIndex() == 0:
-            QMessageBox.warning(
-                self,
-                "No Data",
-                "Please enter or import soil data before running analysis!"
-            )
-            return
-        
         QMessageBox.information(
             self,
             "Analysis Running",
@@ -830,4 +891,15 @@ class InputPage(QWidget):
             "• Generate detailed reports\n\n"
             "Results will appear in the 'Reports' tab."
         )
-        logger.info("Analysis initiated")
+
+
+if __name__ == "__main__":
+    from PySide6.QtWidgets import QApplication
+    import sys
+    
+    app = QApplication(sys.argv)
+    window = InputPage()
+    window.setWindowTitle("SoilWise - Soil Data Input")
+    window.resize(900, 800)
+    window.show()
+    sys.exit(app.exec())

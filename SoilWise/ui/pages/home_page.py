@@ -365,7 +365,7 @@ class HomePage(QWidget):
         pills_layout.setAlignment(Qt.AlignLeft)
         
         feature_pills = [
-            ("●", "AI-Powered", "#5a9d5e", "#6eb172"),
+            ("●", "Performance-wise", "#5a9d5e", "#6eb172"),
             ("▣", "Data-Driven", "#6eb172", "#7fbc83"),
             ("◉", "Precise Results", "#7fbc83", "#90c894")
         ]
