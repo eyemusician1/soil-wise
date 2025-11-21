@@ -1,6 +1,6 @@
 """
 SoilWise/ui/main_window.py
-Main application window - FIXED with black icons
+Main application window - FIXED with Reports Page Integration
 """
 
 from PySide6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
@@ -10,6 +10,7 @@ from PySide6.QtGui import QFont
 from SoilWise.ui.widgets.collapsible_sidebar import CollapsibleSidebar, NavButton
 from SoilWise.ui.pages.home_page import HomePage
 from SoilWise.ui.pages.input_page import InputPage
+from SoilWise.ui.pages.reports_page import ReportsPage  # ADD THIS IMPORT
 from SoilWise.config.constants import APP_NAME, APP_VERSION, LOCATION
 from SoilWise.utils.logger import setup_logger
 
@@ -224,12 +225,22 @@ class MainWindow(QMainWindow):
         # Input page
         input_page = InputPage()
         input_page.data_saved.connect(self.on_data_saved)
+        # CRITICAL: Connect evaluation_complete signal
+        input_page.evaluation_complete.connect(self.on_evaluation_complete)
         self.pages['input'] = input_page
         self.pages_stack.addWidget(input_page)
         
-        # Placeholder pages
+        # Placeholder for Crop Evaluation
         self.pages_stack.addWidget(self.create_placeholder_page("Select crops to evaluate"))
-        self.pages_stack.addWidget(self.create_placeholder_page("View evaluation results"))
+        
+        # REPLACE PLACEHOLDER WITH ACTUAL REPORTS PAGE
+        reports_page = ReportsPage()
+        # Connect new evaluation signal to go back to input
+        reports_page.new_evaluation_requested.connect(self.on_new_evaluation_requested)
+        self.pages['reports'] = reports_page
+        self.pages_stack.addWidget(reports_page)
+        
+        # Knowledge Base placeholder
         self.pages_stack.addWidget(self.create_placeholder_page("Browse crop requirements"))
         
         logger.info("All pages created")
@@ -260,6 +271,37 @@ class MainWindow(QMainWindow):
         layout.addStretch()
         
         return page
+    
+    def on_evaluation_complete(self, results: dict):
+        """
+        Handle evaluation completion from Input Page.
+        
+        Args:
+            results: Evaluation results dictionary from SuitabilityEvaluator
+        """
+        logger.info(f"📊 Evaluation complete for {results['crop_name']}")
+        logger.info(f"   LSI: {results['lsi']:.2f}, Classification: {results['full_classification']}")
+        
+        # Pass results to reports page
+        self.pages['reports'].display_results(results)
+        
+        # Navigate to reports page (index 3)
+        self.change_page(3)
+        
+        logger.info("✅ Navigated to Reports page with results")
+    
+    def on_new_evaluation_requested(self):
+        """
+        Handle new evaluation request from Reports Page.
+        User clicked "New Evaluation" button on reports page.
+        """
+        logger.info("🔄 New evaluation requested, navigating to Input page")
+        
+        # Navigate back to input page (index 1)
+        self.change_page(1)
+        
+        # Optionally clear the form
+        # self.pages['input'].clear_form()
     
     def change_page(self, index):
         """Change current page"""
