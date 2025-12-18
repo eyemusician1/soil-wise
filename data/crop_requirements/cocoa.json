@@ -1,74 +1,86 @@
 {
-  "crop_name": "Banana",
-  "scientific_name": "Musa sp. L.",
+  "crop_name": "Cocoa",
+  "scientific_name": "Theobroma cacao L.",
   "requirements": {
     "climate": {
       "temperature": {
         "mean_annual": {
-          "s1_min": 22,
-          "s2_min": 22,
-          "s2_max": 18,
-          "s3_min": 18,
-          "s3_max": 16,
+          "s1_min": 26,
+          "s1_max": 25,
+          "s2_min": 25,
+          "s2_max": 23,
+          "s3_min": 23,
+          "s3_max": 22,
           "unit": "°C"
         },
-        "average_min_coldest_month": {
+        "mean_annual_max": {
+          "s1_max": 28,
+          "s2_min": 28,
+          "s2_max": 30,
+          "s3_min": 30,
+          "unit": "°C"
+        },
+        "mean_annual_min": {
           "s1_min": 20,
           "s2_min": 20,
           "s2_max": 15,
           "s3_min": 15,
-          "s3_max": 8,
-          "unit": "°C"
-        },
-        "absolute_min_coldest_month": {
-          "s1_min": 12,
-          "s2_min": 12,
-          "s2_max": 8,
-          "s3_min": 8,
-          "s3_max": 0,
+          "s3_max": 13,
           "unit": "°C"
         }
       },
       "rainfall": {
         "annual": {
-          "s1_min": 1800,
+          "s1_min": 1900,
+          "s1_max": 1800,
           "s2_min": 1800,
-          "s2_max": 1500,
-          "s3_min": 1500,
-          "s3_max": 1250,
+          "s2_max": 1600,
+          "s3_min": 1600,
+          "s3_max": 1400,
           "unit": "mm"
         },
         "dry_season_length": {
           "s1_max": 1,
           "s2_min": 1,
-          "s2_max": 3,
-          "s3_min": 3,
-          "s3_max": 4,
-          "unit": "months < PET/2PET"
+          "s2_max": 2,
+          "s3_min": 2,
+          "s3_max": 3,
+          "unit": "months P < 1/2PET"
+        }
+      },
+      "relative_humidity": {
+        "driest_month": {
+          "s1_min": 55,
+          "s1_max": 45,
+          "s2_min": 45,
+          "s2_max": 40,
+          "s3_min": 40,
+          "s3_max": 35,
+          "unit": "%"
         }
       }
     },
     "soil": {
       "ph": {
         "s1_min": 6.4,
-        "s1_max": 5.8,
-        "s2_min": 5.8,
-        "s2_max": 5.6,
-        "s3_min": 5.6,
-        "s3_max": 5.2,
-        "n1_max": 4.5
+        "s1_max": 6.2,
+        "s2_min": 6.2,
+        "s2_max": 6.0,
+        "s3_min": 6.0,
+        "s3_max": 5.5,
+        "n1_max": 5.0
       },
       "texture": {
-        "s1": ["CxGOs", "Co", "SiCs", "SiCL", "CL", "SiL"],
-        "s2": ["CSGOs", "CxGOv", "SC", "L"],
-        "s3": ["CxGv", "SCL", "SL", "LfS", "LS"]
+        "s1": ["CxGOs", "Co", "SiCL", "CL"],
+        "s2": ["CxGOs", "L", "SC"],
+        "s3": ["SCL", "CxGv", "LfS", "SL"]
       },
       "drainage": {
-        "s1": "good",
-        "s2": "moderate",
-        "s3": "imperfect/poor and aeric",
-        "n1": "poor but drainable",
-        "n2": "F3-poor/poor not drainable"
+        "s1": "good/groundwater > 150cm",
+        "s2": "good/groundwater 100-150cm",
+        "s3": "moderate",
+        "n1": "poor",
+        "n2": "F2+ very poor"
       },
       "coarse_fragments": {
         "s1_max": 3,
@@ -79,18 +91,17 @@
         "unit": "vol%"
       },
       "depth": {
-        "s1_min": 100,
-        "s2_min": 100,
-        "s2_max": 75,
-        "s3_min": 75,
-        "s3_max": 50,
+        "s1_min": 200,
+        "s2_min": 200,
+        "s2_max": 150,
+        "s3_min": 150,
+        "s3_max": 100,
         "unit": "cm"
       },
       "cec": {
         "s1_min": 24,
         "s2_min": 24,
         "s2_max": 16,
-        "s3_min": 16,
         "s3_max": 16,
         "unit": "cmol(+)/kg clay"
       },
@@ -112,12 +123,12 @@
       },
       "ph_h2o": {
         "s1_min": 6.4,
-        "s1_max": 5.8,
-        "s2_min": 5.8,
-        "s2_max": 5.6,
-        "s3_min": 5.6,
-        "s3_max": 5.2,
-        "n1_max": 4.5
+        "s1_max": 6.2,
+        "s2_min": 6.2,
+        "s2_max": 6.0,
+        "s3_min": 6.0,
+        "s3_max": 5.5,
+        "n1_max": 5.0
       },
       "organic_carbon": {
         "s1_min": 2.4,
@@ -128,17 +139,17 @@
         "unit": "%"
       },
       "caco3": {
-        "s1_max": 5,
+        "s1_max": 1,
         "s2_max": 5,
         "s3_min": 5,
         "s3_max": 10,
         "unit": "%"
       },
       "gypsum": {
-        "s1_max": 1,
-        "s2_max": 1,
-        "s3_min": 1,
-        "s3_max": 4,
+        "s1_max": 0.5,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 3,
         "unit": "%"
       }
     },
@@ -154,19 +165,19 @@
     },
     "salinity": {
       "ece": {
-        "s1_max": 1,
-        "s2_min": 1,
-        "s2_max": 2,
-        "s3_min": 2,
-        "s3_max": 4,
+        "s1_max": 0.5,
+        "s2_min": 0.5,
+        "s2_max": 1.1,
+        "s3_min": 1.1,
+        "s3_max": 1.8,
         "unit": "dS/m"
       },
       "esp": {
-        "s1_max": 2,
-        "s2_min": 2,
-        "s2_max": 4,
-        "s3_min": 4,
-        "s3_max": 8,
+        "s1_max": 5,
+        "s2_min": 5,
+        "s2_max": 10,
+        "s3_min": 10,
+        "s3_max": 15,
         "unit": "%"
       }
     }

@@ -1,0 +1,181 @@
+{
+  "crop_name": "Cabbage",
+  "scientific_name": "Brassica oleracea var. capitata L.",
+  "growing_cycle_days": "100-150",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_growing_cycle": {
+          "s1_min": 18,
+          "s1_max": 20,
+          "s2_min": 20,
+          "s2_max": 24,
+          "s3_min": 24,
+          "s3_max": 30,
+          "unit": "°C"
+        },
+        "mean_germination": {
+          "s1_min": 28,
+          "s1_max": 25,
+          "s2_min": 25,
+          "s2_max": 20,
+          "s3_min": 20,
+          "s3_max": 15,
+          "unit": "°C"
+        },
+        "day_night_difference": {
+          "s1_min": 11,
+          "s1_max": 10,
+          "s2_min": 10,
+          "s2_max": 8,
+          "s3_min": 8,
+          "s3_max": 4,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "growing_cycle": {
+          "s1_min": 450,
+          "s1_max": 400,
+          "s2_min": 400,
+          "s2_max": 350,
+          "s3_min": 350,
+          "s3_max": 300,
+          "unit": "mm"
+        }
+      },
+      "relative_humidity": {
+        "growing_cycle": {
+          "s1_min": 80,
+          "s1_max": 75,
+          "s2_min": 75,
+          "s2_max": 65,
+          "s3_min": 65,
+          "s3_max": 60,
+          "unit": "%"
+        }
+      }
+    },
+    "soil": {
+      "ph": {
+        "s1_min": 6.8,
+        "s1_max": 6.2,
+        "s2_min": 6.2,
+        "s2_max": 6.0,
+        "s3_min": 6.0,
+        "s3_max": 5.8
+      },
+      "texture": {
+        "s1": ["L", "SCL"],
+        "s2": ["SiC", "SL", "SC", "LcGOs", "fS", "LfS"],
+        "s3": ["LS", "LiS", "CxGOs", "LcS", "CxGv"]
+      },
+      "drainage": {
+        "s1": "good",
+        "s2": "moderate",
+        "s3": "imperfect/good",
+        "n1": "poor and aeric",
+        "n2": "poor but drainable"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 75,
+        "s2_min": 75,
+        "s2_max": 60,
+        "s3_min": 60,
+        "s3_max": 50,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 24,
+        "s2_min": 24,
+        "s2_max": 16,
+        "s3_min": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 50,
+        "s2_min": 50,
+        "s2_max": 35,
+        "s3_min": 35,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 5,
+        "s2_min": 5,
+        "s2_max": 3.5,
+        "s3_min": 3.5,
+        "s3_max": 2,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 6.8,
+        "s1_max": 6.2,
+        "s2_min": 6.2,
+        "s2_max": 6.0,
+        "s3_min": 6.0,
+        "s3_max": 5.8,
+        "n1_max": 5.5
+      },
+      "organic_carbon": {
+        "s1_min": 1.5,
+        "s2_min": 1.5,
+        "s2_max": 0.8,
+        "s3_max": 0.8,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 6,
+        "s2_min": 6,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 25,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 2,
+        "s2_max": 4,
+        "s3_min": 4,
+        "s3_max": 10,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 4.5,
+        "s3_min": 4.5,
+        "s3_max": 7,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 8,
+        "s2_min": 8,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 20,
+        "unit": "%"
+      }
+    }
+  }
+}

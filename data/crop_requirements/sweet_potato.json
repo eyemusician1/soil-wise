@@ -1,0 +1,186 @@
+{
+  "crop_name": "Sweet Potato",
+  "scientific_name": "Ipomoea batatas (L.) Lam.",
+  "growing_cycle_days": "120-150",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_growing_cycle": {
+          "s1_min": 25,
+          "s1_max": 26,
+          "s2_min": 26,
+          "s2_max": 32,
+          "s3_min": 32,
+          "s3_max": 35,
+          "unit": "°C"
+        },
+        "mean_min_growing_cycle": {
+          "s1_min": 17,
+          "s1_max": 16,
+          "s2_min": 16,
+          "s2_max": 12,
+          "s3_min": 12,
+          "s3_max": 9,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "annual": {
+          "s1_min": 950,
+          "s1_max": 750,
+          "s2_min": 750,
+          "s2_max": 650,
+          "s3_min": 650,
+          "s3_max": 500,
+          "unit": "mm"
+        },
+        "dry_months_in_growing_cycle": {
+          "s1_max": 0,
+          "s2_max": 1,
+          "s3_min": 1,
+          "s3_max": 2,
+          "unit": "months P < 1/2 PET"
+        }
+      },
+      "relative_humidity": {
+        "at_harvest": {
+          "s1_max": 60,
+          "s2_min": 60,
+          "s2_max": 75,
+          "s3_min": 75,
+          "s3_max": 85,
+          "unit": "%"
+        }
+      },
+      "n_n_ratio": {
+        "development_stage": {
+          "s1_min": 0.55,
+          "s1_max": 0.5,
+          "s2_min": 0.5,
+          "s2_max": 0.35,
+          "s3_max": 0.35
+        },
+        "maturation_stage": {
+          "s1_min": 0.7,
+          "s2_min": 0.7,
+          "s2_max": 0.5,
+          "s3_max": 0.5
+        }
+      }
+    },
+    "soil": {
+      "texture": {
+        "s1": ["CxGOs", "SiC", "Co", "SiCL", "Si"],
+        "s2": ["CxGov", "SL", "CxGos", "L", "SCL", "SC"],
+        "s3": ["CxGv", "LS", "LfS", "S"]
+      },
+      "drainage": {
+        "s1": "good",
+        "s2": "moderate",
+        "s3": "imperfect/good",
+        "n1": "poor and aeric",
+        "n2": "F2+ poor/poor not drainable"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 100,
+        "s2_min": 100,
+        "s2_max": 75,
+        "s3_min": 75,
+        "s3_max": 50,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 24,
+        "s2_min": 24,
+        "s2_max": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 50,
+        "s2_min": 50,
+        "s2_max": 35,
+        "s3_min": 35,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 5,
+        "s2_min": 5,
+        "s2_max": 3.5,
+        "s3_min": 3.5,
+        "s3_max": 2,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 6.6,
+        "s1_max": 6.0,
+        "s2_min": 6.0,
+        "s2_max": 5.2,
+        "s3_min": 5.2,
+        "s3_max": 4.8,
+        "n1_max": 4.5
+      },
+      "organic_carbon": {
+        "s1_min": 3,
+        "s2_min": 7.2,
+        "s2_max": 8.2,
+        "s3_min": 8.2,
+        "s3_max": 8.4,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 6,
+        "s2_min": 6,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 25,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 4,
+        "s3_min": 25,
+        "s3_max": 30,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 3,
+        "s3_min": 3,
+        "s3_max": 6,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 8,
+        "s2_min": 8,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 20,
+        "unit": "%"
+      }
+    }
+  }
+}

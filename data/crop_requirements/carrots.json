@@ -1,0 +1,157 @@
+{
+  "crop_name": "Carrots",
+  "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+  "growing_cycle_days": "100-150",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_growing_cycle": {
+          "s1_min": 19,
+          "s1_max": 18,
+          "s2_min": 18,
+          "s2_max": 16,
+          "s3_min": 16,
+          "s3_max": 13,
+          "unit": "°C"
+        },
+        "mean_germination": {
+          "s1_min": 17,
+          "s1_max": 7,
+          "s2_min": 7,
+          "s2_max": 6,
+          "s3_min": 6,
+          "s3_max": 5,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "growing_cycle": {
+          "s1_min": 325,
+          "s1_max": 300,
+          "s2_min": 300,
+          "s2_max": 250,
+          "s3_min": 250,
+          "s3_max": 200,
+          "unit": "mm"
+        }
+      },
+      "relative_humidity": {
+        "growing_cycle": {
+          "s1_min": 60,
+          "s1_max": 70,
+          "s2_min": 70,
+          "s2_max": 80,
+          "s3_min": 80,
+          "s3_max": 90,
+          "unit": "%"
+        }
+      }
+    },
+    "soil": {
+      "ph": {
+        "s1_min": 6.3,
+        "s1_max": 6.4,
+        "s2_min": 6.2,
+        "s2_max": 6.0,
+        "s3_min": 6.0,
+        "s3_max": 5.8
+      },
+      "texture": {
+        "s1": ["L", "SL", "LfS"],
+        "s2": ["LS", "SCL", "SiCL"],
+        "s3": ["SiCs", "SC", "Cs", "fS", "LcS", "C", "Gv", "Ca", "CxGv", "S"]
+      },
+      "drainage": {
+        "s1": "good",
+        "s2": "moderate",
+        "s3": "imperfect/good",
+        "n1": "poor and aeric",
+        "n2": "poor"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 100,
+        "s2_min": 100,
+        "s2_max": 90,
+        "s3_min": 90,
+        "s3_max": 75,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 24,
+        "s2_min": 24,
+        "s2_max": 16,
+        "s3_min": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 50,
+        "s2_min": 50,
+        "s2_max": 35,
+        "s3_min": 35,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "organic_carbon": {
+        "s1_min": 2,
+        "s2_min": 4,
+        "s2_max": 2,
+        "s3_min": 7,
+        "s3_max": 0,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 5,
+        "s3_min": 5,
+        "s3_max": 10,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 3,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 1.5,
+        "s3_min": 1.5,
+        "s3_max": 4.5,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 10,
+        "s2_min": 10,
+        "s2_max": 15,
+        "s3_min": 20,
+        "s3_max": 15,
+        "unit": "%"
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "crop_name": "Robusta Coffee",
+  "scientific_name": "Coffea canephora Pierre ex A.Froehner",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_annual": {
+          "s1_min": 25,
+          "s2_min": 25,
+          "s2_max": 22,
+          "s3_min": 22,
+          "s3_max": 20,
+          "unit": "°C"
+        },
+        "mean_annual_max": {
+          "s1_min": 29,
+          "s2_min": 29,
+          "s2_max": 27,
+          "s3_min": 27,
+          "s3_max": 24,
+          "unit": "°C"
+        },
+        "average_daily_min_coldest_month": {
+          "s1_min": 20,
+          "s2_min": 20,
+          "s2_max": 18,
+          "s3_min": 18,
+          "s3_max": 16,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "annual": {
+          "s1_min": 1900,
+          "s1_max": 1800,
+          "s2_min": 1800,
+          "s2_max": 1600,
+          "s3_min": 1600,
+          "s3_max": 1400,
+          "unit": "mm"
+        },
+        "dry_season_length": {
+          "s1_max": 1,
+          "s2_min": 1,
+          "s2_max": 2,
+          "s3_min": 2,
+          "s3_max": 3,
+          "unit": "months P < 1/2 PET"
+        }
+      },
+      "relative_humidity": {
+        "mean_driest_month": {
+          "s1_min": 65,
+          "s1_max": 75,
+          "s2_min": 75,
+          "s2_max": 80,
+          "s3_min": 80,
+          "s3_max": 90,
+          "unit": "%"
+        }
+      },
+      "n_n_ratio": {
+        "5_driest_months": {
+          "s1_min": 0.5,
+          "s2_min": 0.5,
+          "s2_max": 0.6,
+          "s3_max": 0.5
+        }
+      }
+    },
+    "soil": {
+      "texture": {
+        "s1": ["CxGOs", "Co", "SiCL", "CL", "SC"],
+        "s2": ["CxGOs", "L", "SCL"],
+        "s3": ["SL", "LS", "LfS"]
+      },
+      "drainage": {
+        "s1": "good/groundwater > 150cm",
+        "s2": "good/groundwater 100-150cm",
+        "s3": "moderate",
+        "n1": "imperfect",
+        "n2": "F2+ poor/poor not drainable"
+      },
+      "coarse_fragments": {
+        "s1_max": 1,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 200,
+        "s2_min": 200,
+        "s2_max": 150,
+        "s3_min": 150,
+        "s3_max": 100,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 16,
+        "s2_max": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 35,
+        "s2_min": 35,
+        "s2_max": 20,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 4,
+        "s2_min": 4,
+        "s2_max": 2.8,
+        "s3_min": 2.8,
+        "s3_max": 1.6,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 5.6,
+        "s1_max": 5.5,
+        "s2_min": 5.5,
+        "s2_max": 5.3,
+        "s3_min": 5.3,
+        "s3_max": 5.0,
+        "n1_max": 4.5
+      },
+      "organic_carbon": {
+        "s1_min": 1.5,
+        "s2_min": 1.5,
+        "s2_max": 0.8,
+        "s3_max": 0.8,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 0,
+        "s3_max": 1,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s3_max": 0.5,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 5,
+        "s2_min": 5,
+        "s2_max": 10,
+        "s3_min": 10,
+        "s3_max": 15,
+        "unit": "%"
+      }
+    }
+  }
+}

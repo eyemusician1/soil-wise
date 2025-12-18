@@ -5,201 +5,205 @@
   "seasons": null,
   "climate_requirements": {
     "annual_precipitation_mm": {
-      "S1_optimal": {"range": [1600, 1800], "rating": 1.0},
-      "S1_high": {"range": [1800, 2000], "rating": 1.0},
-      "S1_low": {"range": [1500, 1600], "rating": 1.0},
-      "S2_high": {"range": [2000, null], "rating": 0.85},
-      "S2_low": {"range": [1400, 1500], "rating": 0.85},
-      "S3_high": {"range": [1200, 1400], "rating": 0.60},
-      "S3_low": {"range": [1000, 1200], "rating": 0.60},
-      "N_high": {"range": [null, 800], "rating": 0.25},
-      "N_low": {"range": [800, 1000], "rating": 0.25}
+      "S1_0": {"range": [1600, 1800], "rating": 1.0},
+      "S1_1": {"range": [1800, 2000], "rating": 1.0},
+      "S1_2": {"range": [1500, 1599], "rating": 1.0},
+      "S2": {"range": [2001, null], "rating": 0.85},
+      "S2_low": {"range": [1400, 1499], "rating": 0.85},
+      "S3": {"range": [1200, 1399], "rating": 0.60},
+      "S3_low": {"range": [1000, 1199], "rating": 0.60},
+      "N2": {"range": [800, 999], "rating": 0.25},
+      "N2_extreme": {"range": [null, 799], "rating": 0.25}
     },
     "dry_season_months": {
-      "S1": {"range": [2.5, 3], "rating": 1.0},
-      "S2": {"range": [3, 4], "rating": 0.85},
-      "S3": {"range": [4, 5], "rating": 0.60},
-      "N_high": {"range": [5, 6], "rating": 0.25},
-      "N_extreme": {"range": [6, null], "rating": 0.25}
+      "S1_0": {"range": [2.5, 3.0], "rating": 1.0},
+      "S1_1": {"range": [2.0, 2.4], "rating": 0.95},
+      "S2": {"range": [3.1, 4.0], "rating": 0.85},
+      "S3": {"range": [4.1, 5.0], "rating": 0.60},
+      "N2": {"range": [5.1, 6.0], "rating": 0.25},
+      "N2_extreme": {"range": [6.1, null], "rating": 0.25}
     },
     "mean_annual_temp_c": {
-      "S1": {"range": [19, 20], "rating": 1.0},
-      "S2_low": {"range": [18, 19], "rating": 0.85},
-      "S2_high": {"range": [20, 22], "rating": 0.85},
-      "S3_low": {"range": [16, 18], "rating": 0.60},
-      "S3_high": {"range": [22, 24], "rating": 0.60},
-      "N_low": {"range": [15, 16], "rating": 0.25},
-      "N_high": {"range": [24, 26], "rating": 0.25},
-      "N_extreme_low": {"range": [null, 14], "rating": 0.0},
-      "N_extreme_high": {"range": [26, null], "rating": 0.0}
+      "S1_0": {"range": [19.0, 20.0], "rating": 1.0},
+      "S1_1": {"range": [18.0, 18.9], "rating": 0.95},
+      "S2_low": {"range": [16.0, 17.9], "rating": 0.85},
+      "S2_high": {"range": [20.1, 22.0], "rating": 0.85},
+      "S3_low": {"range": [15.0, 15.9], "rating": 0.60},
+      "S3_high": {"range": [22.1, 26.0], "rating": 0.60},
+      "N2_low": {"range": [14.0, 14.9], "rating": 0.25},
+      "N2_extreme_low": {"range": [null, 13.9], "rating": 0.25},
+      "N2_extreme_high": {"range": [26.1, null], "rating": 0.25}
     },
     "mean_annual_max_temp_c": {
-      "S1": {"range": [25, 26], "rating": 1.0},
-      "S2_low": {"range": [24, 25], "rating": 0.85},
-      "S2_high": {"range": [26, 28], "rating": 0.85},
-      "S3_low": {"range": [22, 24], "rating": 0.60},
-      "S3_high": {"range": [28, 30], "rating": 0.60},
-      "N_high": {"range": [30, 32], "rating": 0.25},
-      "N_extreme": {"range": [32, null], "rating": 0.0}
+      "S1_0": {"range": [25.0, 26.0], "rating": 1.0},
+      "S1_1": {"range": [24.0, 24.9], "rating": 0.95},
+      "S2_low": {"range": [22.0, 23.9], "rating": 0.85},
+      "S2_high": {"range": [26.1, 28.0], "rating": 0.85},
+      "S3_high": {"range": [28.1, 30.0], "rating": 0.60},
+      "N2_high": {"range": [30.1, 32.0], "rating": 0.25},
+      "N2_extreme": {"range": [32.1, null], "rating": 0.25}
     },
     "mean_daily_min_temp_coldest_month_c": {
-      "S1": {"range": [15, 17], "rating": 1.0},
-      "S2_low": {"range": [14, 15], "rating": 0.85},
-      "S2_high": {"range": [17, 19], "rating": 0.85},
-      "S3_low": {"range": [null, 14], "rating": 0.60},
-      "S3_high": {"range": [19, 21], "rating": 0.60},
-      "N_high": {"range": [21, 23], "rating": 0.25},
-      "N_extreme": {"range": [23, null], "rating": 0.0}
+      "S1_0": {"range": [15.0, 17.0], "rating": 1.0},
+      "S1_1": {"range": [14.0, 14.9], "rating": 0.95},
+      "S2_high": {"range": [17.1, 19.0], "rating": 0.85},
+      "S3_high": {"range": [19.1, 21.0], "rating": 0.60},
+      "N2_high": {"range": [21.1, 23.0], "rating": 0.25},
+      "N2_extreme": {"range": [23.1, null], "rating": 0.25},
+      "N2_extreme_low": {"range": [null, 13.9], "rating": 0.25}
     },
     "mean_relative_humidity_driest_month_pct": {
-      "S1": {"range": [55, 60], "rating": 1.0},
-      "S2_low": {"range": [50, 55], "rating": 0.85},
-      "S2_high": {"range": [60, 70], "rating": 0.85},
-      "S3_low": {"range": [40, 50], "rating": 0.60},
-      "S3_high": {"range": [70, 80], "rating": 0.60},
-      "N_low": {"range": [30, 40], "rating": 0.25},
-      "N_high": {"range": [80, 90], "rating": 0.25},
-      "N_extreme_high": {"range": [90, null], "rating": 0.0},
-      "N_extreme_low": {"range": [null, 20], "rating": 0.0}
+      "S1_0": {"range": [55.0, 60.0], "rating": 1.0},
+      "S1_1": {"range": [50.0, 54.9], "rating": 0.95},
+      "S2_low": {"range": [40.0, 49.9], "rating": 0.85},
+      "S2_high": {"range": [60.1, 70.0], "rating": 0.85},
+      "S3_high": {"range": [70.1, 80.0], "rating": 0.60},
+      "N2_low": {"range": [30.0, 39.9], "rating": 0.25},
+      "N2_high": {"range": [80.1, 90.0], "rating": 0.25},
+      "N2_extreme_high": {"range": [90.1, null], "rating": 0.25},
+      "N2_extreme_low": {"range": [null, 29.9], "rating": 0.25}
     },
     "n_over_N_5_driest_months": {
-      "S1": {"range": [0.65, null], "rating": 1.0},
-      "S2": {"range": [0.5, 0.65], "rating": 0.85},
-      "S3": {"range": [0.0, 0.5], "rating": 0.60}
+      "S1_0": {"range": [0.65, null], "rating": 1.0},
+      "S2": {"range": [0.50, 0.649], "rating": 0.85},
+      "S3": {"range": [0.0, 0.499], "rating": 0.60}
     }
   },
   "topography_requirements": {
     "slope_pct": {
       "level1": {
-        "S1": {"range": [0, 1], "rating": 1.0},
-        "S2": {"range": [1, 2], "rating": 0.95},
-        "S3": {"range": [2, 4], "rating": 0.85},
-        "N": {"range": [6, null], "rating": 0.25}
+        "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
+        "S1_1": {"range": [1.1, 2.0], "rating": 0.95},
+        "S2": {"range": [2.1, 4.0], "rating": 0.85},
+        "S3": {"range": [4.1, 6.0], "rating": 0.60},
+        "N2": {"range": [6.1, null], "rating": 0.25}
       },
       "level2": {
-        "S1": {"range": [0, 2], "rating": 1.0},
-        "S2": {"range": [2, 4], "rating": 0.95},
-        "S3": {"range": [4, 8], "rating": 0.85},
-        "N": {"range": [16, null], "rating": 0.25}
+        "S1_0": {"range": [0.0, 2.0], "rating": 1.0},
+        "S1_1": {"range": [2.1, 4.0], "rating": 0.95},
+        "S2": {"range": [4.1, 8.0], "rating": 0.85},
+        "S3": {"range": [8.1, 16.0], "rating": 0.60},
+        "N2": {"range": [16.1, null], "rating": 0.25}
       },
       "level3": {
-        "S1": {"range": [0, 4], "rating": 1.0},
-        "S2": {"range": [4, 8], "rating": 0.95},
-        "S3": {"range": [8, 16], "rating": 0.85},
-        "N_high": {"range": [16, 50], "rating": 0.60},
-        "N_extreme": {"range": [50, null], "rating": 0.25}
+        "S1_0": {"range": [0.0, 4.0], "rating": 1.0},
+        "S1_1": {"range": [4.1, 8.0], "rating": 0.95},
+        "S2": {"range": [8.1, 16.0], "rating": 0.85},
+        "S3": {"range": [16.1, 30.0], "rating": 0.60},
+        "N2_high": {"range": [30.1, 50.0], "rating": 0.25},
+        "N2_extreme": {"range": [50.1, null], "rating": 0.25}
       }
     }
   },
   "wetness_requirements": {
     "flooding": {
-      "S1": {"values": ["Fo"], "rating": 1.0},
-      "S2": {"values": ["Fo"], "rating": 0.95},
-      "S3": {"values": ["Fo"], "rating": 0.85},
-      "N": {"values": ["F1+", "F1", "F2", "F3"], "rating": 0.25}
+      "S1_0": {"values": ["Fo"], "rating": 1.0},
+      "N2": {"values": ["F1+", "F1", "F2", "F3"], "rating": 0.25}
     },
     "drainage": {
-      "S1_optimal": {"values": ["good"], "rating": 1.0},
-      "S1_deep": {"values": ["good_gw_over_150"], "rating": 1.0},
-      "S2_moderate_deep": {"values": ["good_gw_100_150"], "rating": 0.95},
-      "S2_moderate": {"values": ["moderate"], "rating": 0.95},
-      "S3": {"values": ["imperfect"], "rating": 0.85},
-      "N_poor_drainable": {"values": ["poor_drainable"], "rating": 0.60},
-      "N_poor": {"values": ["poor_not_drainable"], "rating": 0.25}
+      "S1_0": {"values": ["good"], "rating": 1.0},
+      "S1_1": {"values": ["good_gw_over_150"], "rating": 1.0},
+      "S1_2": {"values": ["good_gw_100_150"], "rating": 0.95},
+      "S2": {"values": ["moderate"], "rating": 0.85},
+      "S3": {"values": ["imperfect"], "rating": 0.60},
+      "N2": {"values": ["poor_drainable", "poor_not_drainable"], "rating": 0.25}
     }
   },
   "physical_soil_requirements": {
     "texture": {
-      "S1": {"values": ["C<60s", "Co", "SiCL", "CL"], "rating": 1.0},
-      "S2": {"values": ["C>60s", "SC"], "rating": 0.95},
-      "S3": {"values": ["SCL"], "rating": 0.85},
-      "N": {"values": ["SL", "LfS", "Cm", "SiCm", "C>60v", "fS", "LcS", "cS", "fS"], "rating": 0.25}
+      "S1_0": {"values": ["C<60s", "Co", "SiCL", "CL"], "rating": 1.0},
+      "S2": {"values": ["C>60s", "SC"], "rating": 0.85},
+      "S3": {"values": ["SCL"], "rating": 0.60},
+      "N1": {"values": ["SL", "LfS"], "rating": 0.40},
+      "N2": {"values": ["SiC", "Cm", "SiCm", "C>60v", "fS", "LcS", "cS", "S"], "rating": 0.25}
     },
     "coarse_fragments_pct": {
-      "S1": {"range": [0, 3], "rating": 1.0},
-      "S2": {"range": [3, 15], "rating": 0.95},
-      "S3": {"range": [15, 35], "rating": 0.85},
-      "N": {"range": [55, null], "rating": 0.25}
+      "S1_0": {"range": [0.0, 3.0], "rating": 1.0},
+      "S1_1": {"range": [3.1, 15.0], "rating": 0.95},
+      "S2": {"range": [15.1, 35.0], "rating": 0.85},
+      "S3": {"range": [35.1, 55.0], "rating": 0.60},
+      "N2": {"range": [55.1, null], "rating": 0.25}
     },
     "soil_depth_cm": {
-      "S1": {"range": [200, null], "rating": 1.0},
-      "S2": {"range": [100, 200], "rating": 0.95},
-      "S3": {"range": [50, 100], "rating": 0.85},
-      "N": {"range": [null, 50], "rating": 0.25}
+      "S1_0": {"range": [200.0, null], "rating": 1.0},
+      "S1_1": {"range": [150.0, 199.9], "rating": 0.95},
+      "S2": {"range": [100.0, 149.9], "rating": 0.85},
+      "S3": {"range": [50.0, 99.9], "rating": 0.60},
+      "N2": {"range": [null, 49.9], "rating": 0.25}
     },
     "caco3_pct": {
-      "S1": {"range": [0, 0], "rating": 1.0},
-      "S2": {"range": [0, 1], "rating": 0.95},
-      "S3": {"range": [1, 2], "rating": 0.85},
-      "N_high": {"range": [2, 5], "rating": 0.60},
-      "N_extreme": {"range": [5, null], "rating": 0.25}
+      "S1_0": {"range": [0.0, 0.0], "rating": 1.0},
+      "S1_1": {"range": [0.1, 1.0], "rating": 0.95},
+      "S2": {"range": [1.1, 2.0], "rating": 0.85},
+      "S3": {"range": [2.1, 5.0], "rating": 0.60},
+      "N2": {"range": [5.1, null], "rating": 0.25}
     },
     "gypsum_pct": {
-      "S1": {"range": [0, 0], "rating": 1.0},
-      "S2": {"range": [0, 0.5], "rating": 0.95},
-      "S3": {"range": [0.5, 3], "rating": 0.85},
-      "N": {"range": [3, null], "rating": 0.25}
+      "S1_0": {"range": [0.0, 0.0], "rating": 1.0},
+      "S1_1": {"range": [0.1, 0.5], "rating": 0.95},
+      "S2": {"range": [0.6, 3.0], "rating": 0.85},
+      "N2": {"range": [3.1, null], "rating": 0.25}
     }
   },
   "soil_fertility_requirements": {
     "apparent_cec_cmol_kg_clay": {
-      "S1": {"range": [24, null], "rating": 1.0},
-      "S2": {"range": [16, 24], "rating": 0.95},
-      "S3_minus": {"range": [null, 16], "rating": 0.85},
-      "S3_plus": {"range": [null, 16], "rating": 0.60}
+      "S1_0": {"range": [24.0, null], "rating": 1.0},
+      "S1_1": {"range": [16.0, 23.9], "rating": 0.95},
+      "S2": {"range": [null, 15.9], "rating": 0.85}
     },
     "base_saturation_pct": {
-      "S1": {"range": [80, null], "rating": 1.0},
-      "S2": {"range": [50, 80], "rating": 0.95},
-      "S3": {"range": [35, 50], "rating": 0.85},
-      "N": {"range": [null, 20], "rating": 0.25}
+      "S1_0": {"range": [80.1, null], "rating": 1.0},
+      "S2": {"range": [50.0, 80.0], "rating": 0.85},
+      "S3": {"range": [35.0, 49.9], "rating": 0.60},
+      "N1": {"range": [20.0, 34.9], "rating": 0.40},
+      "N2": {"range": [null, 19.9], "rating": 0.25}
     },
     "sum_basic_cations_cmol_kg": {
-      "S1_high": {"range": [6.5, null], "rating": 1.0},
-      "S1_optimal": {"range": [6.0, 6.5], "rating": 1.0},
-      "S2_optimal": {"range": [5.8, 6.0], "rating": 0.95},
-      "S2_moderate": {"range": [4, 5.8], "rating": 0.95},
-      "S3_low": {"range": [2.8, 4], "rating": 0.85},
-      "S3_very_low": {"range": [1.6, 2.8], "rating": 0.60},
-      "N": {"range": [null, 1.6], "rating": 0.25}
+      "S1_0": {"range": [6.5, null], "rating": 1.0},
+      "S1_1": {"range": [6.0, 6.4], "rating": 1.0},
+      "S1_2": {"range": [5.8, 5.9], "rating": 0.95},
+      "S2": {"range": [4.0, 5.7], "rating": 0.85},
+      "S3_low": {"range": [2.8, 3.9], "rating": 0.60},
+      "S3_very_low": {"range": [1.6, 2.7], "rating": 0.60},
+      "N2": {"range": [null, 1.5], "rating": 0.25}
     },
     "ph_h2o": {
-      "S1_optimal": {"range": [6.0, 6.2], "rating": 1.0},
-      "S1_low": {"range": [5.8, 6.0], "rating": 1.0},
-      "S1_high": {"range": [6.2, 6.4], "rating": 1.0},
-      "S2_low": {"range": [5.6, 5.8], "rating": 0.95},
-      "S2_high": {"range": [6.4, 7.0], "rating": 0.95},
-      "S3_low": {"range": [5.2, 5.6], "rating": 0.85},
-      "S3_high": {"range": [7.0, 7.4], "rating": 0.85},
-      "N_low": {"range": [null, 5.2], "rating": 0.60},
-      "N_high": {"range": [7.8, null], "rating": 0.25}
+      "S1_0": {"range": [6.0, 6.2], "rating": 1.0},
+      "S1_1": {"range": [5.8, 5.9], "rating": 1.0},
+      "S1_2": {"range": [6.3, 6.4], "rating": 1.0},
+      "S1_3": {"range": [5.6, 5.7], "rating": 0.95},
+      "S2_low": {"range": [5.2, 5.5], "rating": 0.85},
+      "S2_high": {"range": [6.5, 7.0], "rating": 0.85},
+      "S3_high": {"range": [7.1, 7.4], "rating": 0.60},  
+      "N1_low": {"range": [null, 5.1], "rating": 0.40},
+      "N2_high": {"range": [7.5, 7.8], "rating": 0.25},
+      "N2_extreme": {"range": [7.9, null], "rating": 0.25}
     },
     "organic_carbon_pct": {
-      "S1": {"range": [2.4, null], "rating": 1.0},
-      "S2": {"range": [1.2, 2.4], "rating": 0.95},
-      "S3": {"range": [0.8, 1.2], "rating": 0.85},
-      "N": {"range": [null, 0.8], "rating": 0.60}
+      "S1_0": {"range": [2.4, null], "rating": 1.0},
+      "S1_1": {"range": [1.2, 2.3], "rating": 0.95},
+      "S2": {"range": [0.8, 1.1], "rating": 0.85},
+      "N1": {"range": [null, 0.7], "rating": 0.40}
     }
   },
   "salinity_alkalinity_requirements": {
     "ece_ds_m": {
-      "S1": {"range": [0, 0.5], "rating": 1.0},
-      "S3": {"range": [0.5, 2], "rating": 0.60},
-      "N_moderate": {"range": [2, 6], "rating": 0.40},
-      "N_high": {"range": [6, null], "rating": 0.25}
+      "S1_0": {"range": [0.0, 0.5], "rating": 1.0},
+      "S2": {"range": [0.6, 2.0], "rating": 0.85},
+      "N1": {"range": [2.1, 6.0], "rating": 0.40},
+      "N2": {"range": [6.1, null], "rating": 0.25}
     },
     "esp_pct": {
-      "S2": {"range": [0, null], "rating": 0.95}
+      "S1_1": {"range": [0.0, null], "rating": 0.95}
     }
   },
-  "notes": "Arabica Coffee requirements based on COA Extension Project 2024. Sensitive to frost, requires well-distributed rainfall with distinct dry season for flowering. Prefers cool highlands (1200-1800m elevation). Sensitive to waterlogging and requires good drainage with deep groundwater table.",
+  "notes": "Arabica Coffee requirements based on COA Extension Project 2024. Rating scale: S1_0=100(1.0), S1_1=95(0.95), S2=85(0.85), S3=60(0.60), N1=40(0.40), N2=25(0.25). All ranges non-overlapping. Sensitive to frost, requires well-distributed rainfall with distinct dry season. Prefers cool highlands (1200-1800m). Requires good drainage with deep groundwater table.",
   "rating_scale": {
-    "S1": 1.0,
-    "S2": 0.95,
-    "S2_alt": 0.85,
+    "S1_0": 1.0,
+    "S1_1": 0.95,
+    "S2": 0.85,
     "S3": 0.60,
-    "S3_alt": 0.40,
-    "N": 0.25,
-    "N_complete": 0
+    "N1": 0.40,
+    "N2": 0.25
   }
 }

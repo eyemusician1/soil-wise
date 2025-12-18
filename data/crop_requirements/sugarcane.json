@@ -1,0 +1,199 @@
+{
+  "crop_name": "Sugarcane",
+  "scientific_name": "Saccharum officinarum L.",
+  "growing_cycle_days": "270-2100",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_day_at_germination": {
+          "s1_min": 28,
+          "s1_max": 30,
+          "s2_min": 30,
+          "s2_max": 32,
+          "s3_min": 32,
+          "s3_max": 34,
+          "unit": "°C"
+        },
+        "mean_day_tillering": {
+          "s1_min": 27,
+          "s1_max": 28,
+          "s2_min": 28,
+          "s2_max": 32,
+          "s3_min": 32,
+          "s3_max": 35,
+          "unit": "°C"
+        },
+        "mean_day_vegetative": {
+          "s1_min": 26,
+          "s1_max": 25,
+          "s2_min": 25,
+          "s2_max": 22,
+          "s3_min": 22,
+          "s3_max": 20,
+          "unit": "°C"
+        },
+        "tmax_tmin_mean_maturation": {
+          "s1_min": 0.5,
+          "s2_min": 0.5,
+          "s2_max": 0.45,
+          "s3_min": 0.45,
+          "s3_max": 0.4,
+          "unit": "ratio"
+        }
+      },
+      "rainfall": {
+        "10_days": {
+          "s1_min": 70,
+          "s2_min": 70,
+          "s2_max": 60,
+          "s3_min": 60,
+          "s3_max": 50,
+          "unit": "mm"
+        }
+      },
+      "sunshine": {
+        "hours_per_year": {
+          "s1_min": 2200,
+          "s2_min": 2200,
+          "s2_max": 1800,
+          "s3_min": 1800,
+          "s3_max": 1400,
+          "unit": "hours"
+        }
+      },
+      "n_n_ratio": {
+        "mean_annual": {
+          "s1_min": 0.5,
+          "s2_min": 0.5,
+          "s2_max": 0.4,
+          "s3_min": 0.4,
+          "s3_max": 0.3,
+          "unit": "ratio"
+        }
+      },
+      "relative_humidity": {
+        "maturation_stage": {
+          "s1_max": 60,
+          "s2_min": 60,
+          "s2_max": 70,
+          "s3_min": 70,
+          "unit": "%"
+        }
+      }
+    },
+    "soil": {
+      "texture": {
+        "s1": ["CxGOs", "SiC", "Co", "SiCL", "CL"],
+        "s2": ["CxGOv", "CxGOs", "SC", "L", "SCL"],
+        "s3": ["CxGv", "SL", "LcS", "fS", "S"]
+      },
+      "drainage": {
+        "s1": "good",
+        "s2": "moderate",
+        "s3": "imperfect",
+        "n1": "poor and aeric",
+        "n2": "F2+ poor/poor not drainable"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 125,
+        "s2_min": 125,
+        "s2_max": 80,
+        "s3_min": 80,
+        "s3_max": 50,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 24,
+        "s2_min": 24,
+        "s2_max": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 80,
+        "s2_min": 80,
+        "s2_max": 50,
+        "s3_min": 50,
+        "s3_max": 35,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 8,
+        "s2_min": 8,
+        "s2_max": 5,
+        "s3_min": 5,
+        "s3_max": 3.5,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 6.5,
+        "s1_max": 6.0,
+        "s2_min": 6.0,
+        "s2_max": 5.5,
+        "s3_min": 5.5,
+        "s3_max": 5.0,
+        "n1_max": 4.5
+      },
+      "organic_carbon": {
+        "s1_min": 5,
+        "s2_min": 7.0,
+        "s2_max": 7.5,
+        "s3_min": 7.5,
+        "s3_max": 8.0,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 12,
+        "s2_min": 12,
+        "s2_max": 25,
+        "s3_min": 25,
+        "s3_max": 35,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 6,
+        "s3_min": 6,
+        "s3_max": 12,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 4,
+        "s3_min": 4,
+        "s3_max": 8,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 5,
+        "s3_min": 5,
+        "s3_max": 8,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 5,
+        "s2_min": 5,
+        "s2_max": 10,
+        "s3_min": 10,
+        "s3_max": 15,
+        "unit": "%"
+      }
+    }
+  }
+}

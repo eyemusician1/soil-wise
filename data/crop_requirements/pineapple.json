@@ -1,0 +1,157 @@
+{
+  "crop_name": "Pineapple",
+  "scientific_name": "Ananas comosus (L.) Merr.",
+  "growing_cycle_days": "365",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_annual": {
+          "s1_min": 23,
+          "s1_max": 22,
+          "s2_min": 22,
+          "s2_max": 20,
+          "s3_min": 20,
+          "s3_max": 18,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "annual": {
+          "s1_min": 1300,
+          "s1_max": 1200,
+          "s2_min": 1200,
+          "s2_max": 1000,
+          "s3_min": 1000,
+          "s3_max": 800,
+          "unit": "mm"
+        }
+      },
+      "relative_humidity": {
+        "annual": {
+          "s1_min": 70,
+          "s1_max": 80,
+          "s2_min": 60,
+          "s2_max": 50,
+          "s3_min": 50,
+          "s3_max": 40,
+          "unit": "%"
+        }
+      }
+    },
+    "soil": {
+      "texture": {
+        "s1": ["SCL", "L"],
+        "s2": ["SL", "SiL", "SC"],
+        "s3": ["LS", "LfS", "Co", "CxGOs", "CxGv", "C", "SiCs"]
+      },
+      "drainage": {
+        "s1": "good/imperfect",
+        "s2": "moderate",
+        "s3": "imperfect/good",
+        "n1": "poor and aeric",
+        "n2": "F1+ poor/poor not drainable"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 75,
+        "s2_min": 75,
+        "s2_max": 60,
+        "s3_min": 60,
+        "s3_max": 40,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 24,
+        "s2_min": 24,
+        "s2_max": 16,
+        "s3_max": 16,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 50,
+        "s2_min": 50,
+        "s2_max": 35,
+        "s3_min": 35,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 4,
+        "s2_min": 4,
+        "s2_max": 2.8,
+        "s3_min": 2.8,
+        "s3_max": 1.6,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 5.7,
+        "s1_max": 5.4,
+        "s2_min": 5.4,
+        "s2_max": 5.0,
+        "s3_min": 5.0,
+        "s3_max": 4.3,
+        "n1_min": 4.3,
+        "n1_max": 4.0
+      },
+      "organic_carbon": {
+        "s1_min": 2,
+        "s2_min": 2,
+        "s2_max": 1.2,
+        "s3_min": 1.2,
+        "s3_max": 0.8,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 3,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 3,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 4,
+        "s3_min": 4,
+        "s3_max": 8,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 1,
+        "s2_min": 1,
+        "s2_max": 2,
+        "s3_min": 2,
+        "s3_max": 4,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 5,
+        "s2_min": 5,
+        "s2_max": 10,
+        "s3_min": 10,
+        "s3_max": 15,
+        "unit": "%"
+      }
+    }
+  }
+}

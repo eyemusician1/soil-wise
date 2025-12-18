@@ -333,18 +333,7 @@ class HomePage(QWidget):
         """)
         title.setAlignment(Qt.AlignLeft)
         title.setWordWrap(True)
-        
-        # Tagline
-        tagline = QLabel("Cultivating Knowledge, Growing Success")
-        tagline.setStyleSheet("""
-            color: #3d6a3e;
-            font-size: 19px;
-            font-style: italic;
-            font-weight: 500;
-            background: transparent;
-        """)
-        tagline.setAlignment(Qt.AlignLeft)
-        
+                
         # Description
         description = QLabel(
             "An intelligent system for automated crop suitability evaluation based on soil characteristics. "
@@ -422,7 +411,6 @@ class HomePage(QWidget):
         pills_layout.addStretch()
         
         left_layout.addWidget(title)
-        left_layout.addWidget(tagline)
         left_layout.addSpacing(18)
         left_layout.addWidget(description)
         left_layout.addSpacing(24)

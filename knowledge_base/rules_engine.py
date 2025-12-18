@@ -1,5 +1,5 @@
 """
-Rules Engine for SoilWise
+Rules Engine for SoilWise - WITH DEBUG OUTPUT
 Implements the Square Root Method for crop suitability evaluation
 Reference: Khiddir et al. 1986, FAO 1976, COA Extension Project 2024
 """
@@ -94,6 +94,8 @@ class RulesEngine:
         Special handler for slope parameter which has nested levels.
         Uses level1 (most detailed) by default.
         
+        FIXED: Now iterates through all classification keys instead of hardcoded list.
+        
         Args:
             crop_name: Name of the crop
             slope_value: Slope percentage
@@ -115,13 +117,9 @@ class RulesEngine:
         if not level1:
             return (0.25, "N", "t")
         
-        # Check each classification in order (S1, S2, S3, N)
-        for classification_key in ['S1', 'S2', 'S3', 'N']:
-            if classification_key not in level1:
-                continue
-            
-            spec = level1[classification_key]
-            
+        # FIXED: Iterate through all classification keys in level1
+        # This handles keys like 'S1_0', 'S1_1', 'S2', 'S3', 'N2', etc.
+        for classification_key, spec in level1.items():
             if "range" not in spec:
                 continue
             
@@ -143,7 +141,11 @@ class RulesEngine:
         return (0.25, "N", "t")
     
     def _get_classification_from_key(self, key: str) -> str:
-        """Extract classification (S1, S2, S3, N) from key like 'S2_low' or 'S3_minus'"""
+        """
+        Extract classification (S1, S2, S3, N) from key like 'S2_low' or 'S3_minus'.
+        
+        Updated to handle new naming conventions like 'S1_0', 'S1_1', 'N2', etc.
+        """
         if key.startswith("S1"):
             return "S1"
         elif key.startswith("S2"):
@@ -252,6 +254,8 @@ class RulesEngine:
         """
         Identify limiting factors (subclass codes).
         
+        FIXED: Changed threshold from 0.1 to 0.001 to only catch exact minimum ratings.
+        
         Args:
             parameter_ratings: Dict mapping parameter names to (rating, class, subclass)
         
@@ -267,9 +271,9 @@ class RulesEngine:
         # Collect subclass codes for parameters with minimum rating
         limiting_subclasses = set()
         for param_name, (rating, classification, subclass) in parameter_ratings.items():
-            # Consider parameters close to minimum as limiting factors
-            # (within 0.1 threshold to account for multiple similar limitations)
-            if abs(rating - min_rating) < 0.1 and subclass:
+            # FIXED: Only consider exact minimum (within 0.001 for floating point precision)
+            # This prevents false positives from the previous 0.1 threshold
+            if abs(rating - min_rating) < 0.001 and subclass:
                 limiting_subclasses.add(subclass)
         
         # Sort alphabetically for consistency (c, f, n, s, t, w)
@@ -299,6 +303,12 @@ class RulesEngine:
             # Climate
             "temperature": ("climate_requirements", "mean_annual_temp_c"),
             "rainfall": ("climate_requirements", "annual_precipitation_mm"),
+            "humidity": ("climate_requirements", "mean_relative_humidity_driest_month_pct"),
+            "dry_season": ("climate_requirements", "dry_season_months"),
+            "max_temp": ("climate_requirements", "mean_annual_max_temp_c"),
+            "min_temp_coldest": ("climate_requirements", "mean_daily_min_temp_coldest_month_c"),
+            "humidity_driest": ("climate_requirements", "mean_relative_humidity_driest_month_pct"),
+            "n_over_N": ("climate_requirements", "n_over_N_5_driest_months"),
             
             # Topography
             "slope": ("topography_requirements", "slope_pct"),
@@ -318,6 +328,7 @@ class RulesEngine:
             "ph": ("soil_fertility_requirements", "ph_h2o"),
             "organic_carbon": ("soil_fertility_requirements", "organic_carbon_pct"),
             "base_saturation": ("soil_fertility_requirements", "base_saturation_pct"),
+            "sum_basic_cations": ("soil_fertility_requirements", "sum_basic_cations_cmol_kg"),
             "cec": ("soil_fertility_requirements", "apparent_cec_cmol_kg_clay"),
             
             # Salinity
@@ -327,6 +338,11 @@ class RulesEngine:
         
         # Calculate rating for each parameter
         ratings_list = []
+        
+        # DEBUG OUTPUT - START
+        print("\n" + "="*80)
+        print(f"DEBUG: PARAMETER RATINGS FOR {crop_name}")
+        print("="*80)
         
         for soil_key, value in soil_data.items():
             if soil_key in parameter_mapping:
@@ -340,9 +356,24 @@ class RulesEngine:
                     parameter_ratings[soil_key] = (rating, classification, subclass)
                     ratings_list.append(rating)
                     
+                    # DEBUG: Print each parameter evaluation
+                    print(f"{soil_key:20s} = {str(value):15s} → {classification:3s} ({rating:4.2f}) [{subclass}]")
+                    
                 except Exception as e:
-                    print(f"⚠️ Warning: Error evaluating {soil_key}: {e}")
+                    print(f"⚠️ ERROR evaluating {soil_key}: {e}")
                     continue
+            else:
+                # DEBUG: Show parameters that are NOT in mapping
+                print(f"{soil_key:20s} = {str(value):15s} → NOT MAPPED")
+        
+        print("="*80)
+        print(f"Ratings list: {ratings_list}")
+        print(f"Total parameters evaluated: {len(ratings_list)}")
+        if ratings_list:
+            print(f"Min rating (Rmin): {min(ratings_list):.2f}")
+            print(f"Count of min rating: {ratings_list.count(min(ratings_list))}")
+        print("="*80 + "\n")
+        # DEBUG OUTPUT - END
         
         if not ratings_list:
             return {

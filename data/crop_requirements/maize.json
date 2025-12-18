@@ -1,0 +1,224 @@
+{
+  "crop_name": "Maize",
+  "scientific_name": "Zea mays L.",
+  "growing_cycle_days": "90-140",
+  "requirements": {
+    "climate": {
+      "temperature": {
+        "mean_growing_cycle": {
+          "s1_min": 24,
+          "s1_max": 22,
+          "s2_min": 22,
+          "s2_max": 18,
+          "s3_min": 18,
+          "s3_max": 16,
+          "unit": "°C"
+        },
+        "mean_min_growing_cycle": {
+          "s1_min": 21,
+          "s1_max": 16,
+          "s2_min": 16,
+          "s2_max": 12,
+          "s3_min": 12,
+          "s3_max": 9,
+          "unit": "°C"
+        }
+      },
+      "rainfall": {
+        "growing_cycle": {
+          "s1_min": 750,
+          "s1_max": 900,
+          "s2_min": 900,
+          "s2_max": 1200,
+          "s3_min": 1200,
+          "s3_max": 1600,
+          "unit": "mm"
+        },
+        "first_month": {
+          "s1_min": 175,
+          "s1_max": 220,
+          "s2_min": 220,
+          "s2_max": 295,
+          "s3_min": 295,
+          "s3_max": 400,
+          "unit": "mm"
+        },
+        "second_month": {
+          "s1_min": 200,
+          "s1_max": 235,
+          "s2_min": 235,
+          "s2_max": 310,
+          "s3_min": 310,
+          "s3_max": 400,
+          "unit": "mm"
+        },
+        "third_month": {
+          "s1_min": 200,
+          "s1_max": 235,
+          "s2_min": 235,
+          "s2_max": 310,
+          "s3_min": 310,
+          "s3_max": 400,
+          "unit": "mm"
+        },
+        "fourth_month": {
+          "s1_min": 165,
+          "s1_max": 210,
+          "s2_min": 210,
+          "s2_max": 285,
+          "s3_min": 285,
+          "s3_max": 400,
+          "unit": "mm"
+        }
+      },
+      "relative_humidity": {
+        "development_stage": {
+          "s1_min": 65,
+          "s1_max": 50,
+          "s2_min": 50,
+          "s2_max": 42,
+          "s3_min": 42,
+          "s3_max": 36,
+          "unit": "%"
+        },
+        "maturation_stage": {
+          "s1_min": 40,
+          "s1_max": 30,
+          "s2_min": 30,
+          "s2_max": 24,
+          "s3_min": 24,
+          "s3_max": 20,
+          "unit": "%"
+        }
+      },
+      "n_n_ratio": {
+        "development_stage": {
+          "s1_min": 0.55,
+          "s1_max": 0.5,
+          "s2_min": 0.5,
+          "s2_max": 0.35,
+          "s3_max": 0.35
+        },
+        "maturation_stage": {
+          "s1_min": 0.7,
+          "s2_min": 0.7,
+          "s2_max": 0.5,
+          "s3_max": 0.5
+        }
+      }
+    },
+    "soil": {
+      "texture": {
+        "s1": ["L", "SCL", "SiL", "SiCL", "CL"],
+        "s2": ["LS", "SL", "SC", "SiC", "C"],
+        "s3": ["fS", "LfS", "Cm", "SiCm"]
+      },
+      "drainage": {
+        "s1": "good",
+        "s2": "moderate",
+        "s3": "imperfect",
+        "n1": "poor and aeric",
+        "n2": "poor"
+      },
+      "coarse_fragments": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 35,
+        "unit": "vol%"
+      },
+      "depth": {
+        "s1_min": 75,
+        "s2_min": 75,
+        "s2_max": 60,
+        "s3_min": 60,
+        "s3_max": 40,
+        "unit": "cm"
+      },
+      "cec": {
+        "s1_min": 16,
+        "s2_min": 16,
+        "s2_max": 10,
+        "s3_max": 10,
+        "unit": "cmol(+)/kg clay"
+      },
+      "base_saturation": {
+        "s1_min": 50,
+        "s2_min": 50,
+        "s2_max": 35,
+        "s3_min": 35,
+        "s3_max": 20,
+        "unit": "%"
+      },
+      "sum_basic_cations": {
+        "s1_min": 5,
+        "s2_min": 5,
+        "s2_max": 2.8,
+        "s3_min": 2.8,
+        "s3_max": 1.6,
+        "unit": "cmol(+)/kg soil"
+      },
+      "ph_h2o": {
+        "s1_min": 6.6,
+        "s1_max": 5.8,
+        "s2_min": 5.8,
+        "s2_max": 5.5,
+        "s3_min": 5.5,
+        "s3_max": 5.0,
+        "n1_max": 4.5
+      },
+      "organic_carbon": {
+        "s1_min": 1.5,
+        "s2_min": 1.5,
+        "s2_max": 0.8,
+        "s3_max": 0.8,
+        "unit": "%"
+      },
+      "caco3": {
+        "s1_max": 6,
+        "s2_min": 6,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 25,
+        "unit": "%"
+      },
+      "gypsum": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 4,
+        "s3_min": 4,
+        "s3_max": 10,
+        "unit": "%"
+      }
+    },
+    "topography": {
+      "slope": {
+        "s1_max": 2,
+        "s2_min": 2,
+        "s2_max": 4,
+        "s3_min": 4,
+        "s3_max": 8,
+        "unit": "%"
+      }
+    },
+    "salinity": {
+      "ece": {
+        "s1_max": 3,
+        "s2_min": 3,
+        "s2_max": 4.5,
+        "s3_min": 4.5,
+        "s3_max": 7,
+        "unit": "dS/m"
+      },
+      "esp": {
+        "s1_max": 10,
+        "s2_min": 10,
+        "s2_max": 15,
+        "s3_min": 15,
+        "s3_max": 20,
+        "unit": "%"
+      }
+    }
+  }
+}

@@ -503,6 +503,8 @@ if __name__ == "__main__":
     
     for key, value in sample_soil_data.items():
         print(f"  {key}: {value}")
+
+    
     
     # Evaluate Banana
     print("\n" + "="*80)
