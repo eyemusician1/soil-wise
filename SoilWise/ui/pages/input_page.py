@@ -5,9 +5,8 @@ Based on Escomen et al. 2024 methodology and Square Root Method
 """
 
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrollArea,
-                               QFrame, QGridLayout, QLineEdit, QComboBox, QGroupBox,
-                               QDoubleSpinBox, QMessageBox, QFileDialog, QPushButton,
-                               QApplication)
+                                QFrame, QGridLayout, QLineEdit, QComboBox, QGroupBox,
+                                QDoubleSpinBox, QMessageBox, QFileDialog, QPushButton, QApplication)
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QColor, QPalette
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
@@ -23,22 +22,21 @@ except ImportError as e:
 
 class EnhancedButton(QPushButton):
     """Enhanced button with modern styling"""
-    
     def __init__(self, text, icon="", primary=False, parent=None):
         super().__init__(parent)
-        self.setText(f"{icon}  {text}" if icon else text)
+        self.setText(f"{icon} {text}" if icon else text)
         self.primary = primary
         self.setCursor(Qt.PointingHandCursor)
         self.setMinimumHeight(48)
         self.apply_style()
-    
+
     def apply_style(self):
         """Apply modern agricultural styling"""
         if self.primary:
             self.setStyleSheet("""
                 QPushButton {
                     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                        stop:0 #7d9d7f, stop:1 #6b8a6d);
+                                stop:0 #7d9d7f, stop:1 #6b8a6d);
                     color: white;
                     border: none;
                     border-radius: 8px;
@@ -48,7 +46,7 @@ class EnhancedButton(QPushButton):
                 }
                 QPushButton:hover {
                     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                        stop:0 #8ab08c, stop:1 #7d9d7f);
+                                stop:0 #8ab08c, stop:1 #7d9d7f);
                 }
                 QPushButton:pressed {
                     background: #6b8a6d;
@@ -80,7 +78,7 @@ class InputPage(QWidget):
     
     data_saved = Signal(int)
     evaluation_complete = Signal(dict)  # Emits evaluation results for navigation
-    
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.soil_inputs = {}
@@ -108,7 +106,7 @@ class InputPage(QWidget):
             print("⚠️ Warning: Evaluation engine not available")
         
         self.init_ui()
-    
+
     def init_ui(self):
         """Initialize enhanced user interface"""
         self.setStyleSheet("background-color: #fafcfa;")
@@ -177,7 +175,7 @@ class InputPage(QWidget):
         layout.addWidget(desc)
         
         return widget
-    
+
     def create_import_export_card(self):
         """Create enhanced import/export card"""
         card = QFrame()
@@ -200,7 +198,7 @@ class InputPage(QWidget):
         layout.setContentsMargins(28, 24, 28, 24)
         layout.setSpacing(16)
         
-        label = QLabel("◰  Data Import/Export")
+        label = QLabel("◰ Data Import/Export")
         label.setFont(QFont("Georgia", 16, QFont.Bold))
         label.setStyleSheet("color: #3d5a3f;")
         
@@ -220,7 +218,7 @@ class InputPage(QWidget):
         layout.addWidget(export_btn)
         
         return card
-    
+
     def create_crop_selection_group(self):
         """Create crop selection group with seasonal support"""
         group = QGroupBox()
@@ -241,7 +239,7 @@ class InputPage(QWidget):
         shadow.setColor(QColor(0, 0, 0, 15))
         group.setGraphicsEffect(shadow)
         
-        title_label = QLabel("⚘  Crop Selection")
+        title_label = QLabel("⚘ Crop Selection")
         title_label.setFont(QFont("Georgia", 16, QFont.Bold))
         title_label.setStyleSheet("color: #3d5a3f;")
         
@@ -263,19 +261,9 @@ class InputPage(QWidget):
         self.crop_input = QComboBox()
         self.crop_input.addItems([
             "Select a crop...",
-            "Arabica Coffee",
-            "Banana",
-            "Cabbage",        # Seasonal
-            "Carrots",        # Seasonal
-            "Cocoa",          # Seasonal
-            "Maize",          # Seasonal
-            "Oil Palm",
-            "Pineapple",
-            "Robusta Coffee",
-            "Sorghum",        # Seasonal
-            "Sugarcane",      # Seasonal
-            "Sweet Potato",   # Seasonal
-            "Tomato"          # Seasonal
+            "Arabica Coffee", "Banana", "Cabbage", "Carrots", "Cocoa",
+            "Maize", "Oil Palm", "Pineapple", "Robusta Coffee",
+            "Sorghum", "Sugarcane", "Sweet Potato", "Tomato"
         ])
         self.crop_input.setMinimumHeight(44)
         self.crop_input.setStyleSheet("""
@@ -304,11 +292,10 @@ class InputPage(QWidget):
                 margin-right: 8px;
             }
         """)
-        # Connect signal to show/hide season selector
         self.crop_input.currentTextChanged.connect(self.on_crop_changed)
         grid.addWidget(self.crop_input, 0, 1)
         
-        # Season selection dropdown (hidden by default)
+        # Season selection
         self.season_label = QLabel("Growing Season:")
         self.season_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
         self.season_label.setStyleSheet("color: #4a6a4c;")
@@ -352,10 +339,7 @@ class InputPage(QWidget):
         self.season_input.setVisible(False)
         grid.addWidget(self.season_input, 1, 1)
         
-        # Info label for seasonal crops
-        self.seasonal_info = QLabel(
-            "⚠️ This crop has different suitability across growing seasons"
-        )
+        self.seasonal_info = QLabel("⚠️ This crop has different suitability across growing seasons")
         self.seasonal_info.setFont(QFont("Segoe UI", 11, QFont.Normal))
         self.seasonal_info.setStyleSheet("color: #c87b00; font-style: italic;")
         self.seasonal_info.setWordWrap(True)
@@ -366,7 +350,7 @@ class InputPage(QWidget):
         group.setLayout(layout)
         
         return group
-    
+
     def on_crop_changed(self, crop_name):
         """Show/hide season selector based on crop selection"""
         is_seasonal = crop_name in self.seasonal_crops
@@ -379,28 +363,21 @@ class InputPage(QWidget):
             self.seasonal_info.setVisible(is_seasonal)
         
         if not is_seasonal and self.season_input:
-            self.season_input.setCurrentIndex(0)  # Reset
-    
+            self.season_input.setCurrentIndex(0)
+
     def get_selected_season_code(self):
-        """
-        Convert UI season text to API season code.
-        
-        Returns:
-            str: Season code or None
-        """
+        """Convert UI season text to API season code"""
         if not self.season_input:
             return None
-        
+            
         season_text = self.season_input.currentText()
-        
         season_mapping = {
             "January - April (Dry Season)": "january_april",
             "May - August (Wet Season)": "may_august",
             "September - December (Cool Season)": "september_december"
         }
-        
         return season_mapping.get(season_text)
-    
+
     def create_location_group(self):
         """Create location information group"""
         group = QGroupBox()
@@ -421,7 +398,7 @@ class InputPage(QWidget):
         shadow.setColor(QColor(0, 0, 0, 15))
         group.setGraphicsEffect(shadow)
         
-        title_label = QLabel("◉  Location Information")
+        title_label = QLabel("◉ Location Information")
         title_label.setFont(QFont("Georgia", 16, QFont.Bold))
         title_label.setStyleSheet("color: #3d5a3f;")
         
@@ -434,7 +411,6 @@ class InputPage(QWidget):
         grid.setSpacing(20)
         grid.setColumnStretch(1, 1)
         
-        # Site Name
         site_label = QLabel("Site Name:")
         site_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
         site_label.setStyleSheet("color: #4a6a4c;")
@@ -463,7 +439,7 @@ class InputPage(QWidget):
         group.setLayout(layout)
         
         return group
-    
+
     def create_soil_properties_group(self):
         """Create comprehensive soil properties group with subcategories"""
         group = QGroupBox()
@@ -488,7 +464,7 @@ class InputPage(QWidget):
         main_layout.setContentsMargins(28, 32, 28, 28)
         main_layout.setSpacing(32)
         
-        title_label = QLabel("◉  Soil Properties")
+        title_label = QLabel("◉ Soil Properties")
         title_label.setFont(QFont("Georgia", 18, QFont.Bold))
         title_label.setStyleSheet("color: #3d5a3f;")
         main_layout.addWidget(title_label)
@@ -506,10 +482,12 @@ class InputPage(QWidget):
             ("Gypsum (%):", "gypsum", 0, 100, 0, 0.1),
         ], include_texture=True))
         
+        # ✅ MODIFIED: Added Sum of Basic Cations field
         main_layout.addWidget(self.create_subsection("Soil Fertility Characteristics", [
             ("Apparent CEC (cmol/kg clay):", "cec", 0, 200, 81.34, 0.1),
+            ("Sum of Basic Cations (cmol/kg):", "sum_basic_cations", 0, 100, 14.0, 0.1),  # NEW FIELD
             ("Base Saturation (%):", "base_saturation", 0, 100, 36.03, 0.1),
-            ("pH H₂O:", "ph", 0, 14, 6.20, 0.1),
+            ("pH (H₂O):", "ph", 0, 14, 6.20, 0.1),
             ("Organic Carbon (%):", "organic_carbon", 0, 10, 1.90, 0.1),
         ]))
         
@@ -520,7 +498,7 @@ class InputPage(QWidget):
         
         group.setLayout(main_layout)
         return group
-    
+
     def create_subsection(self, title, fields, include_texture=False):
         """Create a subsection with fields"""
         container = QFrame()
@@ -536,13 +514,11 @@ class InputPage(QWidget):
         layout = QVBoxLayout(container)
         layout.setSpacing(16)
         
-        # Subsection title
         subtitle = QLabel(title)
         subtitle.setFont(QFont("Segoe UI", 14, QFont.DemiBold))
         subtitle.setStyleSheet("color: #5a7a5c; background: transparent; border: none; padding: 0;")
         layout.addWidget(subtitle)
         
-        # Fields grid
         grid = QGridLayout()
         grid.setSpacing(16)
         grid.setColumnStretch(1, 1)
@@ -612,7 +588,6 @@ class InputPage(QWidget):
             self.soil_inputs[key] = spinbox
             grid.addWidget(spinbox, i, 1)
         
-        # Add texture field if requested
         if include_texture:
             texture_label = QLabel("Soil Texture:")
             texture_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
@@ -620,25 +595,14 @@ class InputPage(QWidget):
             grid.addWidget(texture_label, len(fields), 0)
             
             self.texture_input = QComboBox()
-            # USDA texture codes matching JSON requirements
             self.texture_input.addItems([
                 "Select texture...",
-                "C - Clay",
-                "SiC - Silty Clay", 
-                "SC - Sandy Clay",
-                "CL - Clay Loam",
-                "SiCL - Silty Clay Loam",
-                "SCL - Sandy Clay Loam",
-                "L - Loam",
-                "SiL - Silt Loam",
-                "SL - Sandy Loam",
-                "Si - Silt",
-                "LS - Loamy Sand",
-                "S - Sand",
-                "Cm - Clay (montmorillonitic)",
-                "CLm - Clay Loam (montmorillonitic)",
-                "fS - Fine Sand",
-                "vfS - Very Fine Sand"
+                "C - Clay", "SiC - Silty Clay", "SC - Sandy Clay",
+                "CL - Clay Loam", "SiCL - Silty Clay Loam", "SCL - Sandy Clay Loam",
+                "L - Loam", "SiL - Silt Loam", "SL - Sandy Loam",
+                "Si - Silt", "LS - Loamy Sand", "S - Sand",
+                "Cm - Clay (montmorillonitic)", "CLm - Clay Loam (montmorillonitic)",
+                "fS - Fine Sand", "vfS - Very Fine Sand"
             ])
             self.texture_input.setMinimumHeight(40)
             self.texture_input.setStyleSheet("""
@@ -670,7 +634,7 @@ class InputPage(QWidget):
         
         layout.addLayout(grid)
         return container
-    
+
     def create_wetness_subsection(self):
         """Create wetness subsection with flooding and drainage"""
         container = QFrame()
@@ -722,7 +686,6 @@ class InputPage(QWidget):
             }
         """
         
-        # Flooding
         flooding_label = QLabel("Flooding:")
         flooding_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
         flooding_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
@@ -746,7 +709,6 @@ class InputPage(QWidget):
         self.flooding_input.setStyleSheet(combo_style)
         grid.addWidget(self.flooding_input, 0, 1)
         
-        # Drainage
         drainage_label = QLabel("Drainage:")
         drainage_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
         drainage_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
@@ -756,7 +718,7 @@ class InputPage(QWidget):
         self.drainage_input.addItems([
             "Select drainage class...",
             "good - Well drained",
-            "good_moderate - Moderately well drained", 
+            "good_moderate - Moderately well drained",
             "moderate - Somewhat poorly drained",
             "poor - Poorly drained",
             "poor_not_drainable - Very poorly drained"
@@ -767,7 +729,7 @@ class InputPage(QWidget):
         
         layout.addLayout(grid)
         return container
-    
+
     def create_climate_group(self):
         """Create climate characteristics group"""
         group = QGroupBox()
@@ -788,7 +750,7 @@ class InputPage(QWidget):
         shadow.setColor(QColor(0, 0, 0, 15))
         group.setGraphicsEffect(shadow)
         
-        title_label = QLabel("◎  Climate Characteristics")
+        title_label = QLabel("◎ Climate Characteristics")
         title_label.setFont(QFont("Georgia", 16, QFont.Bold))
         title_label.setStyleSheet("color: #3d5a3f;")
         
@@ -875,7 +837,7 @@ class InputPage(QWidget):
         group.setLayout(layout)
         
         return group
-    
+
     def create_action_buttons(self):
         """Create action buttons"""
         layout = QHBoxLayout()
@@ -895,14 +857,14 @@ class InputPage(QWidget):
         layout.addWidget(btn_save)
         
         return layout
-    
+
     def create_analysis_card(self):
         """Create enhanced analysis section"""
         card = QFrame()
         card.setStyleSheet("""
             QFrame {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 #e8f3e8, stop:1 #f0f7f0);
+                            stop:0 #e8f3e8, stop:1 #f0f7f0);
                 border-radius: 12px;
                 border: none;
             }
@@ -919,7 +881,7 @@ class InputPage(QWidget):
         layout.setContentsMargins(32, 28, 32, 28)
         layout.setSpacing(12)
         
-        title = QLabel("◈  Ready to Analyze?")
+        title = QLabel("◈ Ready to Analyze?")
         title.setFont(QFont("Georgia", 20, QFont.Bold))
         title.setStyleSheet("color: #3d5a3f;")
         
@@ -931,12 +893,12 @@ class InputPage(QWidget):
         desc.setWordWrap(True)
         desc.setStyleSheet("color: #5a7a5c; margin: 8px 0 20px 0;")
         
-        btn_analyze = EnhancedButton("▶  Run Analysis", "", primary=True)
+        btn_analyze = EnhancedButton("▶ Run Analysis", "", primary=True)
         btn_analyze.setMinimumHeight(64)
         btn_analyze.setStyleSheet("""
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #7d9d7f, stop:1 #6b8a6d);
+                            stop:0 #7d9d7f, stop:1 #6b8a6d);
                 color: white;
                 border: none;
                 border-radius: 10px;
@@ -946,7 +908,7 @@ class InputPage(QWidget):
             }
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #8ab08c, stop:1 #7d9d7f);
+                            stop:0 #8ab08c, stop:1 #7d9d7f);
             }
             QPushButton:pressed {
                 background: #6b8a6d;
@@ -959,49 +921,43 @@ class InputPage(QWidget):
         layout.addWidget(btn_analyze)
         
         return card
-    
+
     def get_texture_code(self):
         """Extract USDA texture code from dropdown"""
         if not hasattr(self, 'texture_input'):
             return ""
         
         texture_text = self.texture_input.currentText()
-        
         if texture_text == "Select texture..." or not texture_text:
             return ""
         
-        # Extract code before the dash: "CL - Clay Loam" → "CL"
         code = texture_text.split(" - ")[0].strip()
         return code
-    
+
     def get_flooding_code(self):
         """Extract flooding code from dropdown"""
         if not hasattr(self, 'flooding_input'):
             return ""
         
         flooding_text = self.flooding_input.currentText()
-        
         if flooding_text == "Select flooding class..." or not flooding_text:
             return ""
         
-        # Extract code before the dash: "Fo - No flooding" → "Fo"
         code = flooding_text.split(" - ")[0].strip()
         return code
-    
+
     def get_drainage_code(self):
         """Extract drainage code from dropdown"""
         if not hasattr(self, 'drainage_input'):
             return ""
         
         drainage_text = self.drainage_input.currentText()
-        
         if drainage_text == "Select drainage class..." or not drainage_text:
             return ""
         
-        # Extract code before the dash: "good - Well drained" → "good"
         code = drainage_text.split(" - ")[0].strip()
         return code
-    
+
     def collect_form_data(self):
         """
         Collect all form data into a dictionary for evaluation.
@@ -1034,6 +990,7 @@ class InputPage(QWidget):
         data['ph'] = self.soil_inputs['ph'].value()
         data['organic_carbon'] = self.soil_inputs['organic_carbon'].value()
         data['base_saturation'] = self.soil_inputs['base_saturation'].value()
+        data['sum_basic_cations'] = self.soil_inputs['sum_basic_cations'].value()  # ✅ NEW LINE
         data['cec'] = self.soil_inputs['cec'].value()
         
         # ===== SALINITY =====
@@ -1041,7 +998,7 @@ class InputPage(QWidget):
         data['esp'] = self.soil_inputs['esp'].value()
         
         return data
-    
+
     def validate_form_data(self):
         """
         Validate form data before evaluation.
@@ -1049,52 +1006,34 @@ class InputPage(QWidget):
         Returns:
             tuple: (is_valid, error_message)
         """
-        # Check crop selection
         crop_name = self.crop_input.currentText()
         if crop_name == "Select a crop...":
             return False, "⚠️ Please select a crop for evaluation"
         
-        # Check season for seasonal crops
         if crop_name in self.seasonal_crops:
             season_text = self.season_input.currentText()
             if season_text == "Select season...":
                 return False, f"⚠️ {crop_name} is a seasonal crop. Please select a growing season."
         
-        # Validate critical fields
         data = self.collect_form_data()
         
         if data['temperature'] <= 0:
             return False, "⚠️ Temperature must be greater than 0°C"
-        
         if data['rainfall'] <= 0:
             return False, "⚠️ Annual rainfall must be greater than 0 mm"
-        
         if not data['texture']:
             return False, "⚠️ Please select a soil texture"
-        
         if not data['drainage']:
             return False, "⚠️ Please select a drainage class"
-        
         if not data['flooding']:
             return False, "⚠️ Please select a flooding class"
-        
         if data['ph'] <= 0 or data['ph'] > 14:
             return False, "⚠️ pH must be between 0 and 14"
         
         return True, ""
-    
+
     def run_analysis(self):
-        """
-        Run complete crop suitability analysis.
-        
-        This method:
-        1. Validates form data
-        2. Collects all input values
-        3. Calls the evaluation engine
-        4. Displays results
-        5. Emits signal for navigation to results page
-        """
-        # Check if evaluator is initialized
+        """Run complete crop suitability analysis"""
         if not self.evaluator:
             QMessageBox.critical(
                 self,
@@ -1105,38 +1044,27 @@ class InputPage(QWidget):
             )
             return
         
-        # Validate form
         is_valid, error_message = self.validate_form_data()
         if not is_valid:
-            QMessageBox.warning(
-                self,
-                "Validation Error",
-                error_message
-            )
+            QMessageBox.warning(self, "Validation Error", error_message)
             return
         
         try:
-            # Show progress
             progress = QMessageBox(self)
             progress.setWindowTitle("Running Analysis")
             progress.setText("Evaluating crop suitability...\n\nThis may take a moment.")
             progress.setStandardButtons(QMessageBox.NoButton)
             progress.setModal(True)
             progress.show()
-            
-            # Allow UI to update
             QApplication.processEvents()
             
-            # Collect data
             soil_data = self.collect_form_data()
             crop_name = self.crop_input.currentText()
             
-            # Get season if applicable
             season = None
             if crop_name in self.seasonal_crops:
                 season = self.get_selected_season_code()
             
-            # Log evaluation parameters
             print("\n" + "="*70)
             print("🔬 RUNNING CROP SUITABILITY EVALUATION")
             print("="*70)
@@ -1148,22 +1076,17 @@ class InputPage(QWidget):
                 print(f"  {key}: {value}")
             print("="*70)
             
-            # Run evaluation
             result = self.evaluator.evaluate_suitability(
                 soil_data=soil_data,
                 crop_name=crop_name,
                 season=season
             )
             
-            # Close progress dialog
             progress.close()
             progress.deleteLater()
             QApplication.processEvents()
             
-            # Display results summary
             self.show_results_summary(result)
-            
-            # Emit signal with full results for navigation
             self.evaluation_complete.emit(result)
             
             print("\n✅ Evaluation completed successfully")
@@ -1177,6 +1100,7 @@ class InputPage(QWidget):
                 f"Could not evaluate crop suitability:\n\n{str(e)}"
             )
             print(f"\n⚠️ Validation error: {e}\n")
+            
         except Exception as e:
             progress.close()
             QMessageBox.critical(
@@ -1188,39 +1112,31 @@ class InputPage(QWidget):
             print(f"\n❌ Error during evaluation:")
             import traceback
             traceback.print_exc()
-    
+
     def show_results_summary(self, result):
-        """
-        Display a summary of evaluation results.
-        
-        Args:
-            result: Evaluation result dictionary from SuitabilityEvaluator
-        """
-        # Format the summary message
+        """Display a summary of evaluation results"""
         lsi = result['lsi']
         lsc = result['lsc']
         full_class = result['full_classification']
         limiting = result['limiting_factors']
         
-        # Determine emoji based on classification
         emoji_map = {
-            'S1': '🟢',  # Green - Highly Suitable
-            'S2': '🟡',  # Yellow - Moderately Suitable
-            'S3': '🟠',  # Orange - Marginally Suitable
-            'N': '🔴'    # Red - Not Suitable
+            'S1': '🟢',
+            'S2': '🟡',
+            'S3': '🟠',
+            'N': '🔴'
         }
         emoji = emoji_map.get(lsc, '⚪')
         
-        # Build message
         message = f"""
 <h2>{emoji} Evaluation Complete</h2>
 
 <p><b>Crop:</b> {result['crop_name']}<br>
-<i>({result['scientific_name']})</i></p>
+<i>{result['scientific_name']}</i></p>
 
-<p><b>Land Suitability Index (LSI):</b> <span style='font-size:16pt; font-weight:bold;'>{lsi:.2f}</span></p>
+<p><b>Land Suitability Index (LSI):</b> <span style="font-size:16pt; font-weight:bold">{lsi:.2f}</span></p>
 
-<p><b>Classification:</b> <span style='font-size:14pt; font-weight:bold; color:{"#2d7a2d" if lsc=="S1" else "#d4a00a" if lsc=="S2" else "#d46a0a" if lsc=="S3" else "#c0392b"};'>{full_class}</span></p>
+<p><b>Classification:</b> <span style="font-size:14pt; font-weight:bold; color:{'#2d7a2d' if lsc=='S1' else '#d4a00a' if lsc=='S2' else '#d46a0a' if lsc=='S3' else '#c0392b'}">{full_class}</span></p>
 
 <p><b>Interpretation:</b><br>
 {result['interpretation']}</p>
@@ -1230,25 +1146,24 @@ class InputPage(QWidget):
             message += f"""
 <p><b>⚠️ Limiting Factors:</b><br>
 """
-            for detail in result['limiting_factors_detailed'][:3]:  # Show top 3
+            for detail in result['limiting_factors_detailed'][:3]:
                 message += f"• {detail['description']}: {detail['actual_value']}<br>"
             message += "</p>"
         
         message += """
 <hr>
-<p style='color:#666;'>View the <b>Reports</b> tab for detailed analysis and recommendations.</p>
+<p style="color:#666">View the <b>Reports</b> tab for detailed analysis and recommendations.</p>
 """
         
-        # Show in message box
-        msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Crop Suitability Results")
-        msg_box.setTextFormat(Qt.RichText)
-        msg_box.setText(message)
-        msg_box.setIcon(QMessageBox.Information)
-        msg_box.setStandardButtons(QMessageBox.Ok)
-        msg_box.setMinimumWidth(500)
-        msg_box.exec()
-    
+        msgbox = QMessageBox(self)
+        msgbox.setWindowTitle("Crop Suitability Results")
+        msgbox.setTextFormat(Qt.RichText)
+        msgbox.setText(message)
+        msgbox.setIcon(QMessageBox.Information)
+        msgbox.setStandardButtons(QMessageBox.Ok)
+        msgbox.setMinimumWidth(500)
+        msgbox.exec()
+
     def clear_form(self):
         """Clear all form inputs"""
         self.site_input.clear()
@@ -1265,63 +1180,69 @@ class InputPage(QWidget):
         
         if self.crop_input:
             self.crop_input.setCurrentIndex(0)
-        
         if self.season_input:
             self.season_input.setCurrentIndex(0)
         
         for spinbox in self.climate_inputs.values():
             spinbox.setValue(spinbox.minimum())
         
-        print("✓ Form cleared")
-    
+        print("✅ Form cleared")
+
     def save_data(self):
         """Save soil data"""
         QMessageBox.information(
             self,
             "Success",
-            "Soil data saved successfully!\n\nYou can now run the analysis to evaluate crop suitability."
+            "Soil data saved successfully!\n\n"
+            "You can now run the analysis to evaluate crop suitability."
         )
         self.data_saved.emit(1)
-    
+
     def import_excel(self):
         """Import soil data from Excel"""
-        file_name, _ = QFileDialog.getOpenFileName(
+        filename, _ = QFileDialog.getOpenFileName(
             self,
             "Import Excel File",
             "",
             "Excel Files (*.xlsx *.xls)"
         )
-        
-        if file_name:
-            QMessageBox.information(self, "Success", f"Data imported from:\n{file_name}")
-    
+        if filename:
+            QMessageBox.information(
+                self,
+                "Success",
+                f"Data imported from:\n{filename}"
+            )
+
     def export_excel(self):
         """Export current form data to Excel"""
-        file_name, _ = QFileDialog.getSaveFileName(
+        filename, _ = QFileDialog.getSaveFileName(
             self,
             "Export Excel File",
             "soilwise_data.xlsx",
             "Excel Files (*.xlsx)"
         )
-        
-        if file_name:
-            QMessageBox.information(self, "Success", f"Data exported to:\n{file_name}")
-    
+        if filename:
+            QMessageBox.information(
+                self,
+                "Success",
+                f"Data exported to:\n{filename}"
+            )
+
     def download_template(self):
         """Download Excel template"""
-        file_name, _ = QFileDialog.getSaveFileName(
+        filename, _ = QFileDialog.getSaveFileName(
             self,
             "Save Template",
             "soilwise_template.xlsx",
             "Excel Files (*.xlsx)"
         )
-        
-        if file_name:
+        if filename:
             QMessageBox.information(
                 self,
                 "Success",
-                f"Template downloaded successfully!\n\nFile saved to:\n{file_name}\n\n"
-                "Fill in your data and import it back using 'Import Excel' button."
+                f"Template downloaded successfully!\n\n"
+                f"Saved to: {filename}\n\n"
+                f"Fill in your data and import it back using 'Import Excel' button."
             )
 
 
