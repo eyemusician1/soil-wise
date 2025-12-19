@@ -1115,45 +1115,58 @@ class InputPage(QWidget):
 
     def show_results_summary(self, result):
         """Display a summary of evaluation results"""
-        lsi = result['lsi']
-        lsc = result['lsc']
-        full_class = result['full_classification']
-        limiting = result['limiting_factors']
+        lsi = result["lsi"]
+        lsc = result["lsc"]
+        fullclass = result["full_classification"]
+        limiting = result["limiting_factors"]
         
+        # Emoji mapping
         emoji_map = {
-            'S1': '🟢',
-            'S2': '🟡',
-            'S3': '🟠',
-            'N': '🔴'
+            "S1": "✅",
+            "S2": "⚠️",
+            "S3": "⚡",
+            "N": "❌"
         }
-        emoji = emoji_map.get(lsc, '⚪')
+        emoji = emoji_map.get(lsc, "ℹ️")
         
-        message = f"""
-<h2>{emoji} Evaluation Complete</h2>
-
-<p><b>Crop:</b> {result['crop_name']}<br>
-<i>{result['scientific_name']}</i></p>
-
-<p><b>Land Suitability Index (LSI):</b> <span style="font-size:16pt; font-weight:bold">{lsi:.2f}</span></p>
-
-<p><b>Classification:</b> <span style="font-size:14pt; font-weight:bold; color:{'#2d7a2d' if lsc=='S1' else '#d4a00a' if lsc=='S2' else '#d46a0a' if lsc=='S3' else '#c0392b'}">{full_class}</span></p>
-
-<p><b>Interpretation:</b><br>
-{result['interpretation']}</p>
-"""
+        # Color mapping
+        color = "#2d7a2d" if lsc == "S1" else "#d4a00a" if lsc == "S2" else "#d46a0a" if lsc == "S3" else "#c0392b"
         
-        if limiting:
-            message += f"""
-<p><b>⚠️ Limiting Factors:</b><br>
-"""
-            for detail in result['limiting_factors_detailed'][:3]:
-                message += f"• {detail['description']}: {detail['actual_value']}<br>"
+        # Build message
+        message = f"<h2>{emoji} Evaluation Complete</h2>"
+        message += f"<p><b>Crop:</b> {result['crop_name']}<br>"
+        message += f"<i>{result['scientific_name']}</i></p>"
+        message += f"<p><b>Land Suitability Index (LSI):</b> <span style='font-size:16pt; font-weight:bold;'>{lsi:.2f}</span></p>"
+        
+        # FIXED: Display classification without suffixes if S1 and no real limitations
+        display_class = fullclass
+        if lsc == "S1" and limiting:
+            # Check if all limiting factors are at S1 level (rating 0.95 or 1.0)
+            # If yes, display as pure "S1" without suffixes
+            has_real_limitations = False
+            if "limiting_factors_detailed" in result:
+                for detail in result["limiting_factors_detailed"]:
+                    if detail.get("rating", 1.0) < 0.95:  # Less than S1_1 rating
+                        has_real_limitations = True
+                        break
+            
+            # If no real limitations (all S1), show just "S1"
+            if not has_real_limitations:
+                display_class = lsc  # Just "S1" without suffixes
+                limiting = ""  # Clear limiting factors for pure S1
+        
+        message += f"<p><b>Classification:</b> <span style='font-size:14pt; font-weight:bold; color:{color};'>{display_class}</span></p>"
+        message += f"<p><b>Interpretation:</b><br>{result['interpretation']}</p>"
+        
+        # FIXED: Only show limiting factors if they exist AND classification is not pure S1
+        if limiting and (lsc != "S1" or display_class != lsc):
+            message += f"<p><b>⚠️ Limiting Factors:</b><br>"
+            for detail in result["limiting_factors_detailed"][:3]:
+                message += f"• {detail['description']} ({detail['actual_value']})<br>"
             message += "</p>"
         
-        message += """
-<hr>
-<p style="color:#666">View the <b>Reports</b> tab for detailed analysis and recommendations.</p>
-"""
+        message += "<hr>"
+        message += "<p style='color:#666;'>View the <b>Reports</b> tab for detailed analysis and recommendations.</p>"
         
         msgbox = QMessageBox(self)
         msgbox.setWindowTitle("Crop Suitability Results")
@@ -1163,6 +1176,7 @@ class InputPage(QWidget):
         msgbox.setStandardButtons(QMessageBox.Ok)
         msgbox.setMinimumWidth(500)
         msgbox.exec()
+
 
     def clear_form(self):
         """Clear all form inputs"""

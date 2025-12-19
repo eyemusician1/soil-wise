@@ -1,8 +1,11 @@
 """
-Rules Engine for SoilWise - CORRECTED & VERIFIED
+
+Rules Engine for SoilWise - CORRECTED & VERIFIED WITH SEASONAL SUPPORT
+
 Implements the Square Root Method for crop suitability evaluation
 
 FORMULA: LSI = Rmin × √(product of ALL ratings) × 100
+
 """
 
 import math
@@ -12,24 +15,26 @@ from knowledge_base.crop_rules import CropRules
 
 # Configure logging
 logging.basicConfig(
-    level=logging.DEBUG,  # Changed to DEBUG for maximum detail
+    level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
+
 logger = logging.getLogger(__name__)
 
 
 class RulesEngine:
     """
     CORRECTED FORMULA: LSI = Rmin × √(product of ALL ratings) × 100
+    SEASONAL SUPPORT: Handles crops with different requirements per season
     """
-
+    
     def __init__(self):
         self.crop_rules = CropRules()
         logger.info("="*80)
-        logger.info("RulesEngine initialized - CORRECTED FORMULA VERSION")
+        logger.info("RulesEngine initialized - CORRECTED FORMULA VERSION + SEASONAL SUPPORT")
         logger.info("Formula: LSI = Rmin × √(product of ALL ratings) × 100")
         logger.info("="*80)
-
+    
     def get_parameter_rating(
         self,
         crop_name: str,
@@ -44,8 +49,9 @@ class RulesEngine:
         if parameter == "slope_pct":
             return self._get_slope_rating(crop_name, value)
         
+        # ✅ FIXED: Pass season parameter to get_parameter_requirement
         requirements = self.crop_rules.get_parameter_requirement(
-            crop_name, category, parameter
+            crop_name, category, parameter, season=season
         )
         
         if not requirements:
@@ -61,7 +67,6 @@ class RulesEngine:
         for classification_key, spec in requirements.items():
             if "range" in spec:
                 min_val, max_val = spec["range"]
-                
                 if min_val is None:
                     min_val = float('-inf')
                 if max_val is None:
@@ -70,33 +75,28 @@ class RulesEngine:
                 if min_val <= value <= max_val:
                     rating = spec["rating"]
                     classification = self._get_classification_from_key(classification_key)
-                    
                     logger.debug(
                         f"  ✓ {parameter} = {value} → {classification} "
                         f"(rating: {rating:.4f}, range: [{min_val}, {max_val}])"
                     )
-                    
                     return (rating, classification, subclass)
             
             elif "values" in spec:
                 value_str = str(value)
-                
                 if value_str in spec["values"]:
                     rating = spec["rating"]
                     classification = self._get_classification_from_key(classification_key)
-                    
                     logger.debug(
                         f"  ✓ {parameter} = '{value_str}' → {classification} "
                         f"(rating: {rating:.4f})"
                     )
-                    
                     return (rating, classification, subclass)
         
         logger.warning(
             f"  ✗ No match for {parameter} = {value}. Defaulting to N (0.25)"
         )
         return (0.25, "N", subclass)
-
+    
     def _get_slope_rating(self, crop_name: str, slope_value: float) -> Tuple[float, str, str]:
         """Special handler for slope parameter."""
         logger.debug(f"Evaluating slope = {slope_value}% for {crop_name}")
@@ -107,8 +107,9 @@ class RulesEngine:
         
         topo_reqs = crop_data.get('topography_requirements', {})
         slope_reqs = topo_reqs.get('slope_pct', {})
-        level1 = slope_reqs.get('level1', {})
         
+        # Try level1 first
+        level1 = slope_reqs.get('level1', {})
         if not level1:
             return (0.25, "N", "t")
         
@@ -117,7 +118,6 @@ class RulesEngine:
                 continue
             
             min_val, max_val = spec["range"]
-            
             if min_val is None:
                 min_val = float('-inf')
             if max_val is None:
@@ -126,16 +126,14 @@ class RulesEngine:
             if min_val <= slope_value <= max_val:
                 rating = spec["rating"]
                 classification = self._get_classification_from_key(classification_key)
-                
                 logger.debug(
                     f"  ✓ slope = {slope_value}% → {classification} "
                     f"(rating: {rating:.4f})"
                 )
-                
                 return (rating, classification, "t")
         
         return (0.25, "N", "t")
-
+    
     def _get_classification_from_key(self, key: str) -> str:
         """Extract classification from key."""
         if key.startswith("S1"):
@@ -148,7 +146,7 @@ class RulesEngine:
             return "N"
         else:
             return key
-
+    
     def _get_subclass_code(self, category: str) -> str:
         """Get subclass code based on category."""
         mapping = {
@@ -160,19 +158,18 @@ class RulesEngine:
             "salinity_alkalinity_requirements": "n"
         }
         return mapping.get(category, "")
-
+    
     def calculate_lsi(self, ratings: List[float]) -> float:
         """
         Calculate LSI using CORRECTED formula.
-        
         FORMULA: LSI = Rmin × √(product of ALL ratings) × 100
         
         Example with Arabica Coffee:
-            ratings = [0.95, 0.60, 0.85, 0.95, 1.0, 1.0, 0.25, ...]
-            Rmin = 0.25
-            Product = 0.95 × 0.60 × ... × 0.25 = 0.088272
-            √Product = 0.297106
-            LSI = 0.25 × 0.297106 × 100 = 7.43 ✓
+        ratings = [0.95, 0.60, 0.85, 0.95, 1.0, 1.0, 0.25, ...]
+        Rmin = 0.25
+        Product = 0.95 × 0.60 × ... × 0.25 = 0.088272
+        √Product = 0.297106
+        LSI = 0.25 × 0.297106 × 100 = 7.43 ✓
         """
         logger.info("\n" + "="*80)
         logger.info("CALCULATING LSI - CORRECTED FORMULA")
@@ -221,7 +218,7 @@ class RulesEngine:
         logger.info("="*80 + "\n")
         
         return lsi_rounded
-
+    
     def classify_lsi(self, lsi: float) -> str:
         """Classify LSI into suitability class."""
         if lsi >= 75:
@@ -235,7 +232,7 @@ class RulesEngine:
         
         logger.info(f"📊 Classification: LSI {lsi:.2f} → {classification}")
         return classification
-
+    
     def identify_limiting_factors(
         self,
         parameter_ratings: Dict[str, Tuple[float, str, str]]
@@ -267,7 +264,7 @@ class RulesEngine:
         logger.info("="*80 + "\n")
         
         return limiting_codes
-
+    
     def evaluate(
         self,
         crop_name: str,
@@ -277,6 +274,8 @@ class RulesEngine:
         """Evaluate crop suitability."""
         logger.info("\n" + "="*100)
         logger.info(f"🌱 EVALUATING: {crop_name}")
+        if season:
+            logger.info(f"🗓️  SEASON: {season}")
         logger.info("="*100)
         logger.info(f"Input parameters: {len(soil_data)}")
         
@@ -312,8 +311,8 @@ class RulesEngine:
         for soil_key, value in soil_data.items():
             if soil_key in parameter_mapping:
                 category, parameter = parameter_mapping[soil_key]
-                
                 try:
+                    # ✅ FIXED: Pass season to get_parameter_rating
                     rating, classification, subclass = self.get_parameter_rating(
                         crop_name, category, parameter, value, season
                     )
@@ -325,7 +324,6 @@ class RulesEngine:
                         f"{soil_key:<25} = {str(value):<15} → {classification:<8} "
                         f"(rating: {rating:.4f}, subclass: {subclass})"
                     )
-                    
                 except Exception as e:
                     logger.error(f"❌ Error evaluating {soil_key}: {e}", exc_info=True)
                     continue
@@ -363,6 +361,8 @@ class RulesEngine:
         logger.info("📊 FINAL RESULTS")
         logger.info("="*100)
         logger.info(f"Crop: {crop_name}")
+        if season:
+            logger.info(f"Season: {season}")
         logger.info(f"LSI: {lsi:.2f}")
         logger.info(f"Classification: {full_classification}")
         logger.info("="*100 + "\n")
