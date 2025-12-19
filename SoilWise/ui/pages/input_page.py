@@ -470,30 +470,30 @@ class InputPage(QWidget):
         main_layout.addWidget(title_label)
         
         main_layout.addWidget(self.create_subsection("Topography", [
-            ("Slope (%):", "slope", 0, 100, 1.67, 0.1),
+            ("Slope (%):", "slope", 0, 100, 0, 0.1),
         ]))
         
         main_layout.addWidget(self.create_wetness_subsection())
         
         main_layout.addWidget(self.create_subsection("Physical Soil Characteristics", [
             ("Coarse Fragments (vol %):", "coarse_fragments", 0, 100, 0, 1.0),
-            ("Soil Depth (cm):", "soil_depth", 0, 300, 138, 1.0),
+            ("Soil Depth (cm):", "soil_depth", 0, 300, 0, 1.0),
             ("CaCO₃ (%):", "caco3", 0, 100, 0, 0.1),
             ("Gypsum (%):", "gypsum", 0, 100, 0, 0.1),
         ], include_texture=True))
         
         # ✅ MODIFIED: Added Sum of Basic Cations field
         main_layout.addWidget(self.create_subsection("Soil Fertility Characteristics", [
-            ("Apparent CEC (cmol/kg clay):", "cec", 0, 200, 81.34, 0.1),
-            ("Sum of Basic Cations (cmol/kg):", "sum_basic_cations", 0, 100, 14.0, 0.1),  # NEW FIELD
-            ("Base Saturation (%):", "base_saturation", 0, 100, 36.03, 0.1),
-            ("pH (H₂O):", "ph", 0, 14, 6.20, 0.1),
-            ("Organic Carbon (%):", "organic_carbon", 0, 10, 1.90, 0.1),
+            ("Apparent CEC (cmol/kg clay):", "cec", 0, 200, 0, 0.1),
+            ("Sum of Basic Cations (cmol/kg):", "sum_basic_cations", 0, 100, 0, 0.1),  # NEW FIELD
+            ("Base Saturation (%):", "base_saturation", 0, 100, 0, 0.1),
+            ("pH (H₂O):", "ph", 0, 14, 0, 0.1),
+            ("Organic Carbon (%):", "organic_carbon", 0, 10, 0, 0.1),
         ]))
         
         main_layout.addWidget(self.create_subsection("Salinity and Alkalinity", [
-            ("ECe (dS/m):", "ece", 0, 20, 0.12, 0.01),
-            ("ESP (%):", "esp", 0, 100, 0.09, 0.01),
+            ("ECe (dS/m):", "ece", 0, 20, 0, 0.01),
+            ("ESP (%):", "esp", 0, 100, 0, 0.01),
         ]))
         
         group.setLayout(main_layout)
@@ -764,9 +764,9 @@ class InputPage(QWidget):
         grid.setColumnStretch(1, 1)
         
         properties = [
-            ("Average Temperature (°C):", "temperature", 0, 50, 22.29, 0.1),
-            ("Annual Rainfall (mm):", "rainfall", 0, 5000, 2651.54, 10),
-            ("Humidity (%):", "humidity", 0, 100, 76.62, 1),
+            ("Average Temperature (°C):", "temperature", 0, 50, 0, 0.1),
+            ("Annual Rainfall (mm):", "rainfall", 0, 5000, 0, 10),
+            ("Humidity (%):", "humidity", 0, 100, 0, 1),
         ]
         
         spinbox_style = """
@@ -1122,10 +1122,10 @@ class InputPage(QWidget):
         
         # Emoji mapping
         emoji_map = {
-            "S1": "✅",
-            "S2": "⚠️",
-            "S3": "⚡",
-            "N": "❌"
+            "S1": "",
+            "S2": "",
+            "S3": "",
+            "N": ""
         }
         emoji = emoji_map.get(lsc, "ℹ️")
         
