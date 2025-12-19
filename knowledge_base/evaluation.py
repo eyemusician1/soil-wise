@@ -1,7 +1,11 @@
 """
+
 SoilWise Crop Suitability Evaluator - ENHANCED VERSION
+
 Orchestrates the complete evaluation workflow using the Square Root Method
+
 Reference: Khiddir et al. 1986, FAO 1976, Sys et al. 1993
+
 """
 
 import logging
@@ -14,6 +18,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
+
 logger = logging.getLogger(__name__)
 
 
@@ -28,15 +33,14 @@ class SuitabilityEvaluator:
     4. Identifies limiting factors
     5. Generates comprehensive evaluation reports
     """
-
+    
     def __init__(self):
         logger.info("Initializing SuitabilityEvaluator...")
         self.crop_rules = CropRules()
         self.rules_engine = RulesEngine()
-        
         num_crops = len(self.crop_rules.get_crop_names())
         logger.info(f"✓ SuitabilityEvaluator initialized with {num_crops} crops")
-
+    
     def evaluate_suitability(
         self,
         soil_data: Dict[str, float],
@@ -103,7 +107,7 @@ class SuitabilityEvaluator:
         logger.info("="*100 + "\n")
         
         return enriched_result
-
+    
     def evaluate_multiple_crops(
         self,
         soil_data: Dict[str, float],
@@ -136,13 +140,11 @@ class SuitabilityEvaluator:
         
         for i, crop_name in enumerate(crop_names, 1):
             logger.info(f"\n[{i}/{len(crop_names)}] Evaluating {crop_name}...")
-            
             try:
                 result = self.evaluate_suitability(soil_data, crop_name, season)
                 results.append(result)
                 success_count += 1
                 logger.info(f"  ✓ {crop_name}: LSI = {result['lsi']:.2f}, Class = {result['full_classification']}")
-                
             except Exception as e:
                 failure_count += 1
                 logger.error(f"  ✗ Failed to evaluate {crop_name}: {str(e)}")
@@ -169,7 +171,7 @@ class SuitabilityEvaluator:
         logger.info("="*100 + "\n")
         
         return results
-
+    
     def _enrich_evaluation_result(
         self,
         evaluation_result: Dict,
@@ -210,7 +212,7 @@ class SuitabilityEvaluator:
         logger.debug("Evaluation result enriched successfully")
         
         return enriched
-
+    
     def _get_limiting_factors_details(
         self,
         parameter_ratings: Dict[str, Tuple[float, str, str]],
@@ -218,12 +220,19 @@ class SuitabilityEvaluator:
     ) -> List[Dict]:
         """
         Get detailed information about limiting factors.
+        
+        ✅ MODIFIED: Added check for perfect score (min_rating == 1.0)
         """
         if not parameter_ratings:
             return []
         
         # Find minimum rating
         min_rating = min(r[0] for r in parameter_ratings.values())
+        
+        # ✅ NEW: If all ratings are perfect (1.0), no limiting factors
+        if min_rating >= 1.0:
+            logger.info("✅ No limiting factors - all parameters are highly suitable (S1)")
+            return []
         
         limiting_details = []
         threshold = 0.001  # Tolerance for floating-point comparison
@@ -245,7 +254,7 @@ class SuitabilityEvaluator:
         logger.info(f"Identified {len(limiting_details)} limiting factor(s)")
         
         return limiting_details
-
+    
     def _get_parameter_description(self, param_name: str) -> str:
         """Get human-readable description of parameter"""
         descriptions = {
@@ -277,7 +286,7 @@ class SuitabilityEvaluator:
         }
         
         return descriptions.get(param_name, param_name.replace('_', ' ').title())
-
+    
     def _get_category_name(self, subclass: str) -> str:
         """Get category name from subclass code"""
         categories = {
@@ -290,7 +299,7 @@ class SuitabilityEvaluator:
         }
         
         return categories.get(subclass, 'Unknown')
-
+    
     def _generate_recommendations(
         self,
         evaluation_result: Dict,
@@ -298,12 +307,23 @@ class SuitabilityEvaluator:
     ) -> List[str]:
         """
         Generate agronomic recommendations based on evaluation results.
+        
+        ✅ MODIFIED: Added special handling for S1 with no limiting factors
         """
         logger.debug("Generating recommendations...")
         
         recommendations = []
         lsc = evaluation_result['lsc']
         limiting_factors = evaluation_result['limiting_factors']
+        
+        # ✅ NEW: Special case for perfect suitability
+        if lsc == "S1" and not limiting_factors:
+            recommendations.append(
+                "✓ This crop is highly suitable for the given soil conditions with no limiting factors. "
+                "Standard cultivation practices are recommended for optimal yields."
+            )
+            logger.info(f"Generated {len(recommendations)} recommendation(s)")
+            return recommendations
         
         # General suitability recommendation
         if lsc == "S1":
@@ -358,7 +378,7 @@ class SuitabilityEvaluator:
         logger.info(f"Generated {len(recommendations)} recommendation(s)")
         
         return recommendations
-
+    
     def _get_fertility_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate fertility-specific recommendations"""
         recommendations = []
@@ -389,7 +409,7 @@ class SuitabilityEvaluator:
             )
         
         return recommendations
-
+    
     def _get_drainage_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate drainage-specific recommendations"""
         recommendations = []
@@ -409,7 +429,7 @@ class SuitabilityEvaluator:
             )
         
         return recommendations
-
+    
     def _get_physical_soil_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate physical soil recommendations"""
         recommendations = []
@@ -434,7 +454,7 @@ class SuitabilityEvaluator:
             )
         
         return recommendations
-
+    
     def _get_interpretation(self, lsc: str, lsi: float) -> str:
         """
         Get interpretation text for the suitability classification.
@@ -463,11 +483,11 @@ class SuitabilityEvaluator:
         }
         
         return interpretations.get(lsc, f"Classification: {lsc}, LSI: {lsi:.2f}")
-
+    
     def get_available_crops(self) -> List[str]:
         """Get list of all available crops in the knowledge base"""
         return self.crop_rules.get_crop_names()
-
+    
     def get_crop_info(self, crop_name: str) -> Optional[Dict]:
         """
         Get basic information about a crop.

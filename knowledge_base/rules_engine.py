@@ -51,9 +51,9 @@ class RulesEngine:
         if not requirements:
             logger.warning(
                 f"⚠️  No requirements for {parameter} in {category}. "
-                f"Defaulting to N (0.25)"
+                f"Defaulting to S1 (1.0)"
             )
-            return (0.25, "N", self._get_subclass_code(category))
+            return (1.0, "S1", self._get_subclass_code(category))
         
         subclass = self._get_subclass_code(category)
         

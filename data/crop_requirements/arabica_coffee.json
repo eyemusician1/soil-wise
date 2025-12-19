@@ -198,7 +198,7 @@
       "N2": {"range": [20.1, null], "rating": 0.25}
     }
   },
-  "notes": "Arabica Coffee requirements based on COA Extension Project 2024 - CORRECTED VERSION. Rating scale: S1=1.0/0.95, S2=0.85, S3=0.60, N1=0.40, N2=0.25. Ranges adjusted to match expected LSI of 7.42 for test data (1300mm rainfall, 73% humidity, 135cm soil depth, 50% base saturation).",
+  "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements",
   "rating_scale": {
     "S1_0": 1.0,
     "S1_1": 0.95,

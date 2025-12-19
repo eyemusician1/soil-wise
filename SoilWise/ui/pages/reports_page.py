@@ -1,11 +1,14 @@
 """
+
 SoilWise/ui/pages/reports_page.py
+
 Simplified Reports & Analysis Page - With Collapsible Recommendations
+
 """
 
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrollArea,
-                               QFrame, QGridLayout, QGroupBox, QPushButton, QTabWidget,
-                               QFileDialog, QMessageBox, QProgressDialog)
+                                QFrame, QGridLayout, QGroupBox, QPushButton, QTabWidget,
+                                QFileDialog, QMessageBox, QProgressDialog)
 from PySide6.QtCore import Qt, Signal, QTimer, QPropertyAnimation, QEasingCurve
 from PySide6.QtGui import QFont, QColor
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
@@ -14,8 +17,8 @@ import json
 
 # Import the extracted analysis components
 from SoilWise.ui.widgets.analysis_tabs import (
-    ParameterAnalysisTab, 
-    VisualAnalysisTab, 
+    ParameterAnalysisTab,
+    VisualAnalysisTab,
     LimitingFactorsTab
 )
 
@@ -44,7 +47,7 @@ class CollapsibleSection(QWidget):
         self.toggle_button.setStyleSheet("""
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #8ab08c, stop:1 #7d9d7f);
+                                          stop:0 #8ab08c, stop:1 #7d9d7f);
                 color: white;
                 border: none;
                 border-radius: 8px;
@@ -56,7 +59,7 @@ class CollapsibleSection(QWidget):
             }
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #9bc09d, stop:1 #8ab08c);
+                                          stop:0 #9bc09d, stop:1 #8ab08c);
             }
             QPushButton:pressed {
                 background: #7d9d7f;
@@ -70,7 +73,6 @@ class CollapsibleSection(QWidget):
         self.content_layout = QVBoxLayout(self.content_widget)
         self.content_layout.setContentsMargins(0, 12, 0, 0)
         self.content_layout.setSpacing(0)
-        
         main_layout.addWidget(self.content_widget)
         
         # Animation
@@ -81,12 +83,12 @@ class CollapsibleSection(QWidget):
     def update_button_text(self, title: str):
         """Update button text with arrow indicator"""
         arrow = "▼" if self.is_expanded else "▶"
-        self.toggle_button.setText(f"{arrow}  {title}")
+        self.toggle_button.setText(f"{arrow} {title}")
     
     def toggle(self):
         """Toggle the section visibility"""
         self.is_expanded = not self.is_expanded
-        self.update_button_text(self.toggle_button.text().split("  ", 1)[1])
+        self.update_button_text(self.toggle_button.text().split(" ", 1)[1])
         
         if self.is_expanded:
             self.expand()
@@ -158,7 +160,6 @@ class ReportsPage(QWidget):
         layout.addStretch()
         
         scroll.setWidget(container)
-        
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.addWidget(scroll)
@@ -269,7 +270,7 @@ class ReportsPage(QWidget):
         
         # Title row with timestamp
         title_row = QHBoxLayout()
-        title = QLabel("◈  Evaluation Summary")
+        title = QLabel("◈ Evaluation Summary")
         title.setFont(QFont("Georgia", 20, QFont.Bold))
         title.setStyleSheet("color: #3d5a3f;")
         title_row.addWidget(title)
@@ -304,23 +305,39 @@ class ReportsPage(QWidget):
         )
         metrics_grid.addWidget(lsi_widget, 0, 1)
         
-        # Classification
+        # Classification - ✅ FIXED: Check if limiting factors is empty
+        limiting_factors = results.get('limiting_factors', '')
+        
+        # ✅ NEW: If no limiting factors or empty detailed list, show just LSC
+        if not limiting_factors or not results.get('limiting_factors_detailed'):
+            full_classification = results['lsc']
+        else:
+            full_classification = results['full_classification']
+        
         class_text = self.get_classification_text(results['lsc'])
         class_widget = self.create_metric_widget(
             "Classification",
-            f"{results['full_classification']}",
+            full_classification,
             class_text,
             lsi_color
         )
         metrics_grid.addWidget(class_widget, 0, 2)
         
-        # Limiting factors
-        limiting = results['limiting_factors'] or "None"
+        # Limiting factors - ✅ FIXED: Show "None" when no limiting factors
+        if not limiting_factors or not results.get('limiting_factors_detailed'):
+            limiting_display = "None"
+            limiting_subtitle = "No significant limitations"
+            limiting_color = "#2d7a2d"
+        else:
+            limiting_display = limiting_factors.upper()
+            limiting_subtitle = self.decode_limiting_factors(limiting_factors)
+            limiting_color = "#c87b00"
+        
         limiting_widget = self.create_metric_widget(
             "Limiting Factors",
-            limiting.upper() if limiting != "None" else "None",
-            self.decode_limiting_factors(limiting),
-            "#c87b00" if limiting != "None" else "#2d7a2d"
+            limiting_display,
+            limiting_subtitle,
+            limiting_color
         )
         metrics_grid.addWidget(limiting_widget, 0, 3)
         
@@ -339,7 +356,7 @@ class ReportsPage(QWidget):
             season_layout = QHBoxLayout(season_container)
             season_layout.setContentsMargins(0, 0, 0, 0)
             
-            season_label = QLabel(f"◆  Growing Season: {self.format_season(results['season'])}")
+            season_label = QLabel(f"◆ Growing Season: {self.format_season(results['season'])}")
             season_label.setFont(QFont("Segoe UI", 12, QFont.DemiBold))
             season_label.setStyleSheet("color: #5a7a5c;")
             season_layout.addWidget(season_label)
@@ -358,7 +375,7 @@ class ReportsPage(QWidget):
         interp_layout = QVBoxLayout(interp_container)
         interp_layout.setSpacing(10)
         
-        interp_label = QLabel("◉  Interpretation")
+        interp_label = QLabel("◉ Interpretation")
         interp_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
         interp_label.setStyleSheet("color: #4a6a4c;")
         
@@ -385,7 +402,7 @@ class ReportsPage(QWidget):
             notes_layout = QVBoxLayout(notes_container)
             notes_layout.setSpacing(8)
             
-            notes_label = QLabel("◈  Additional Notes")
+            notes_label = QLabel("◈ Additional Notes")
             notes_label.setFont(QFont("Segoe UI", 11, QFont.DemiBold))
             notes_label.setStyleSheet("color: #6a5a00;")
             
@@ -487,12 +504,12 @@ class ReportsPage(QWidget):
         """)
         
         # Add tabs using extracted components
-        tabs.addTab(ParameterAnalysisTab(results), "◱  Parameter Analysis")
-        tabs.addTab(VisualAnalysisTab(results), "◐  Visual Analysis")
+        tabs.addTab(ParameterAnalysisTab(results), "◱ Parameter Analysis")
+        tabs.addTab(VisualAnalysisTab(results), "◐ Visual Analysis")
         
-        # Only add limiting factors tab if there are limiting factors
+        # ✅ FIXED: Only add limiting factors tab if there are actual limiting factors
         if results.get('limiting_factors_detailed'):
-            tabs.addTab(LimitingFactorsTab(results), "◈  Limiting Factors")
+            tabs.addTab(LimitingFactorsTab(results), "◈ Limiting Factors")
         
         layout.addWidget(tabs)
         
@@ -583,30 +600,30 @@ class ReportsPage(QWidget):
         layout = QHBoxLayout(widget)
         layout.setSpacing(16)
         
-        btn_export_pdf = QPushButton("▼  Export as PDF")
+        btn_export_pdf = QPushButton("▼ Export as PDF")
         btn_export_pdf.setMinimumHeight(48)
         btn_export_pdf.setStyleSheet(self.get_secondary_button_style())
         btn_export_pdf.setCursor(Qt.PointingHandCursor)
         btn_export_pdf.clicked.connect(self.export_pdf)
         
-        btn_export_excel = QPushButton("▤  Export as Excel")
+        btn_export_excel = QPushButton("▤ Export as Excel")
         btn_export_excel.setMinimumHeight(48)
         btn_export_excel.setStyleSheet(self.get_secondary_button_style())
         btn_export_excel.setCursor(Qt.PointingHandCursor)
         btn_export_excel.clicked.connect(self.export_excel)
         
-        btn_export_json = QPushButton("◈  Export as JSON")
+        btn_export_json = QPushButton("◈ Export as JSON")
         btn_export_json.setMinimumHeight(48)
         btn_export_json.setStyleSheet(self.get_secondary_button_style())
         btn_export_json.setCursor(Qt.PointingHandCursor)
         btn_export_json.clicked.connect(self.export_json)
         
-        btn_new = QPushButton("↻  New Evaluation")
+        btn_new = QPushButton("↻ New Evaluation")
         btn_new.setMinimumHeight(48)
         btn_new.setStyleSheet("""
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #7d9d7f, stop:1 #6b8a6d);
+                                          stop:0 #7d9d7f, stop:1 #6b8a6d);
                 color: white;
                 border: none;
                 border-radius: 8px;
@@ -616,7 +633,7 @@ class ReportsPage(QWidget):
             }
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #8ab08c, stop:1 #7d9d7f);
+                                          stop:0 #8ab08c, stop:1 #7d9d7f);
             }
             QPushButton:pressed {
                 background: #6b8a6d;
@@ -655,6 +672,7 @@ class ReportsPage(QWidget):
         """
     
     # Helper methods
+    
     def get_lsi_color(self, lsc: str) -> str:
         """Get color based on LSC"""
         colors = {'S1': '#2d7a2d', 'S2': '#d4a00a', 'S3': '#d46a0a', 'N': '#c0392b'}
@@ -698,6 +716,7 @@ class ReportsPage(QWidget):
         return seasons.get(season, season.replace('_', ' ').title())
     
     # Export methods
+    
     def export_pdf(self):
         """Export report to PDF"""
         if not self.current_results:
