@@ -1,0 +1,306 @@
+{
+  "timestamp": "2025-12-21T21:38:31.113131",
+  "soil_data": {
+    "base_saturation": 65.0,
+    "caco3": 0.0,
+    "cec": 14.0,
+    "coarse_fragments": 2.0,
+    "drainage": "moderate",
+    "ec": 0.0,
+    "esp": 0.0,
+    "flooding": "Fo",
+    "gypsum": 0.0,
+    "humidity": 63.0,
+    "organic_carbon": 3.0,
+    "ph": 2.0,
+    "rainfall": 2100.0,
+    "slope": 2.0,
+    "soil_depth": 200.0,
+    "sum_basic_cations": 12.0,
+    "temperature": 25.0,
+    "texture": "SiCL"
+  },
+  "season": "january_april",
+  "selected_crops": [
+    "Arabica Coffee",
+    "Banana"
+  ],
+  "results": [
+    {
+      "crop_name": "Arabica Coffee",
+      "lsi": 13.45,
+      "lsc": "N",
+      "full_classification": "Nf",
+      "limiting_factors": "f",
+      "parameter_ratings": {
+        "base_saturation": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          0.85,
+          "S2",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          0.85,
+          "S2",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.4,
+          "N",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          0.95,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 65.0,
+        "caco3": 0.0,
+        "cec": 14.0,
+        "coarse_fragments": 2.0,
+        "drainage": "moderate",
+        "ec": 0.0,
+        "esp": 0.0,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 63.0,
+        "organic_carbon": 3.0,
+        "ph": 2.0,
+        "rainfall": 2100.0,
+        "slope": 2.0,
+        "soil_depth": 200.0,
+        "sum_basic_cations": 12.0,
+        "temperature": 25.0,
+        "texture": "SiCL"
+      },
+      "scientific_name": "Coffea arabica L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "ph",
+          "actual_value": 2.0,
+          "rating": 0.4,
+          "classification": "N",
+          "subclass": "f",
+          "description": "Soil pH",
+          "category": "Soil Fertility"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Soil is strongly acidic (pH 2.00). Apply lime to raise pH to 6.0–6.5."
+      ],
+      "interpretation": "Not Suitable (LSI: 13.45). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements"
+    },
+    {
+      "crop_name": "Banana",
+      "lsi": 8.23,
+      "lsc": "N",
+      "full_classification": "Nf",
+      "limiting_factors": "f",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          0.6,
+          "S3",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          0.85,
+          "S2",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.25,
+          "N",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          0.85,
+          "S2",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 65.0,
+        "caco3": 0.0,
+        "cec": 14.0,
+        "coarse_fragments": 2.0,
+        "drainage": "moderate",
+        "ec": 0.0,
+        "esp": 0.0,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 63.0,
+        "organic_carbon": 3.0,
+        "ph": 2.0,
+        "rainfall": 2100.0,
+        "slope": 2.0,
+        "soil_depth": 200.0,
+        "sum_basic_cations": 12.0,
+        "temperature": 25.0,
+        "texture": "SiCL"
+      },
+      "scientific_name": "Musa sp. L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "ph",
+          "actual_value": 2.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "f",
+          "description": "Soil pH",
+          "category": "Soil Fertility"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Soil is strongly acidic (pH 2.00). Apply lime to raise pH to 6.0–6.5."
+      ],
+      "interpretation": "Not Suitable (LSI: 8.23). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Banana requirements calibrated to match study LSI 90.25 (S1) from Brgy. Gacap, Piagapo, Lanao del Sur. Based on FAO Land Evaluation framework adapted for Philippine conditions."
+    }
+  ]
+}

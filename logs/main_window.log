@@ -2063,3 +2063,314 @@
 2025-12-19 22:55:43 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
 2025-12-19 22:55:51 - SoilWise.ui.main_window - INFO - main_window.py:283 -    LSI: 1.32, Classification: Ncfnst
 2025-12-19 22:55:52 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 3
+2025-12-19 23:16:42 - SoilWise.ui.main_window - INFO - main_window.py:246 - All pages created
+2025-12-19 23:16:42 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:16:42 - SoilWise.ui.main_window - INFO - main_window.py:37 - MainWindow initialized
+2025-12-19 23:16:48 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:20:10 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:20:12 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:20:14 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:20:30 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 3
+2025-12-19 23:20:31 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:21:17 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:21:19 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 3
+2025-12-19 23:21:21 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:21:26 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:21:42 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:22:16 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:22:18 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 3
+2025-12-19 23:22:20 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:22:36 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:23:01 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 4
+2025-12-19 23:23:23 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:23:32 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:26:59 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:27:02 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:27:03 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:35:42 - SoilWise.ui.main_window - INFO - main_window.py:246 - All pages created
+2025-12-19 23:35:42 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:35:42 - SoilWise.ui.main_window - INFO - main_window.py:37 - MainWindow initialized
+2025-12-19 23:35:43 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:42:20 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:42:21 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:51:04 - SoilWise.ui.main_window - INFO - main_window.py:246 - All pages created
+2025-12-19 23:51:05 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 0
+2025-12-19 23:51:05 - SoilWise.ui.main_window - INFO - main_window.py:37 - MainWindow initialized
+2025-12-19 23:51:06 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:51:08 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 3
+2025-12-19 23:51:09 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 2
+2025-12-19 23:51:10 - SoilWise.ui.main_window - INFO - main_window.py:308 - Changing to page index: 1
+2025-12-19 23:55:25 - SoilWise.ui.main_window - INFO - main_window.py:267 - All pages created
+2025-12-19 23:55:25 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-19 23:55:25 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-19 23:55:27 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-19 23:55:52 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-19 23:56:35 - SoilWise.ui.main_window - INFO - main_window.py:304 -    LSI: 1.59, Classification: Ncs
+2025-12-19 23:56:35 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-19 23:56:37 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-19 23:59:39 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-19 23:59:40 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-19 23:59:43 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-19 23:59:44 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-19 23:59:53 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-19 23:59:57 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:00:13 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:00:14 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-20 00:00:14 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:00:15 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:00:15 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-20 00:05:43 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:05:53 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:05:57 - SoilWise.ui.main_window - INFO - main_window.py:367 - Data saved event received: soil_id=1
+2025-12-20 00:05:58 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:08:21 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:08:21 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:08:22 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-20 00:08:31 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:08:32 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:08:34 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:11:50 - SoilWise.ui.main_window - INFO - main_window.py:267 - All pages created
+2025-12-20 00:11:50 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-20 00:11:50 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-20 00:11:51 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:12:05 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:12:12 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-20 00:12:12 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:13:30 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 4
+2025-12-20 00:13:31 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:13:40 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:13:46 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:13:47 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-20 00:13:49 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-20 00:13:51 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-20 00:13:52 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-20 00:13:55 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:01:17 - SoilWise.ui.main_window - INFO - main_window.py:267 - All pages created
+2025-12-21 10:01:17 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 10:01:17 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-21 10:01:19 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:01:26 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:01:28 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:02:14 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:04:25 - SoilWise.ui.main_window - INFO - main_window.py:304 -    LSI: 7.43, Classification: Ns
+2025-12-21 10:04:26 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-21 10:05:45 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:05:58 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:05:59 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:06:00 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-21 10:06:01 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 4
+2025-12-21 10:06:19 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 10:06:20 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:06:38 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:08:15 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:08:30 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 3
+2025-12-21 10:08:37 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 10:09:15 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:09:19 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 10:09:32 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 10:09:37 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 16:08:17 - SoilWise.ui.main_window - INFO - main_window.py:267 - All pages created
+2025-12-21 16:08:17 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 16:08:17 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-21 16:08:20 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 16:08:42 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 0
+2025-12-21 16:08:43 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 16:08:44 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 1
+2025-12-21 16:09:25 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 16:09:40 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 4
+2025-12-21 16:09:44 - SoilWise.ui.main_window - INFO - main_window.py:348 - Changing to page index: 2
+2025-12-21 16:52:43 - SoilWise.ui.main_window - INFO - main_window.py:254 - All pages created
+2025-12-21 16:52:43 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 0
+2025-12-21 16:52:43 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-21 16:52:46 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:52:47 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 16:53:24 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:55:25 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 16:58:10 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:59:09 - SoilWise.ui.main_window - INFO - main_window.py:362 - Data saved event received: soil_id=1
+2025-12-21 16:59:15 - SoilWise.ui.main_window - INFO - main_window.py:291 -    LSI: 3.71, Classification: Nfs
+2025-12-21 16:59:15 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 3
+2025-12-21 16:59:21 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 16:59:33 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:59:34 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 16:59:35 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:59:40 - SoilWise.ui.main_window - INFO - main_window.py:291 -    LSI: 3.71, Classification: Nfs
+2025-12-21 16:59:40 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 3
+2025-12-21 16:59:46 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 16:59:49 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:06:56 - SoilWise.ui.main_window - INFO - main_window.py:254 - All pages created
+2025-12-21 17:06:56 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 0
+2025-12-21 17:06:56 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-21 17:06:59 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 17:07:49 - SoilWise.ui.main_window - INFO - main_window.py:291 -    LSI: 7.43, Classification: Ns
+2025-12-21 17:07:49 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 3
+2025-12-21 17:07:53 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:29:22 - SoilWise.ui.main_window - INFO - main_window.py:254 - All pages created
+2025-12-21 17:29:22 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 0
+2025-12-21 17:29:22 - SoilWise.ui.main_window - INFO - main_window.py:41 - MainWindow initialized
+2025-12-21 17:29:25 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:30:20 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 17:30:26 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:30:32 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:33:29 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 1
+2025-12-21 17:33:32 - SoilWise.ui.main_window - INFO - main_window.py:343 - Changing to page index: 2
+2025-12-21 17:37:10 - SoilWise.ui.main_window - INFO - main_window.py:272 - All pages created
+2025-12-21 17:37:10 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 0
+2025-12-21 17:37:10 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 17:37:12 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:37:13 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 2
+2025-12-21 17:37:15 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:38:14 - SoilWise.ui.main_window - INFO - main_window.py:310 -  LSI: 7.43, Classification: Ns
+2025-12-21 17:38:15 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 3
+2025-12-21 17:38:17 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 2
+2025-12-21 17:38:37 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:38:38 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 2
+2025-12-21 17:38:40 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:38:56 - SoilWise.ui.main_window - INFO - main_window.py:310 -  LSI: 7.31, Classification: Ns
+2025-12-21 17:38:56 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 3
+2025-12-21 17:38:58 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 2
+2025-12-21 17:39:08 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:39:12 - SoilWise.ui.main_window - INFO - main_window.py:310 -  LSI: 7.31, Classification: Ns
+2025-12-21 17:39:12 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 3
+2025-12-21 17:41:56 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:42:56 - SoilWise.ui.main_window - INFO - main_window.py:310 -  LSI: 7.43, Classification: Ns
+2025-12-21 17:42:56 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 3
+2025-12-21 17:43:03 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:44:03 - SoilWise.ui.main_window - INFO - main_window.py:310 -  LSI: 31.53, Classification: S3f
+2025-12-21 17:44:03 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 3
+2025-12-21 17:44:05 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 2
+2025-12-21 17:45:11 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:45:13 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 0
+2025-12-21 17:45:18 - SoilWise.ui.main_window - INFO - main_window.py:365 - Changing to page index: 1
+2025-12-21 17:53:18 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 17:53:18 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 17:53:18 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 17:53:18 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 17:53:21 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 17:54:19 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 17:54:19 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 6.85, Classification: Ns
+2025-12-21 17:54:19 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 17:54:20 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 17:54:25 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 17:55:49 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 17:55:49 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 6.85, Classification: Ns
+2025-12-21 17:55:49 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 17:55:49 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 17:55:51 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 17:56:29 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 17:56:29 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 17:56:29 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 17:56:29 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 17:56:34 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 17:56:53 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 17:57:11 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 17:57:15 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 17:59:19 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 17:59:19 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.31, Classification: Ns
+2025-12-21 17:59:19 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 17:59:19 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 17:59:21 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:09:13 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 18:09:13 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 18:09:13 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 18:09:13 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 18:09:17 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:10:12 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 18:10:12 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 18:10:12 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Arabica Coffee)
+2025-12-21 18:10:13 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:10:13 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:11:27 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:11:49 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:12:07 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 18:12:07 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 27.18, Classification: S3cst
+2025-12-21 18:12:07 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 18:12:07 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:12:07 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:12:09 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:12:10 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:21:56 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:21:59 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 18:21:59 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 27.18, Classification: S3cst
+2025-12-21 18:21:59 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 18:21:59 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:22:00 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:22:01 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:22:29 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 18:22:29 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 18:22:29 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 18:22:29 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 18:22:31 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:22:43 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:22:45 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:23:20 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 18:23:20 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 18:23:20 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Arabica Coffee)
+2025-12-21 18:23:20 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:23:20 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:23:22 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:24:00 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 18:24:00 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.21, Classification: Nc
+2025-12-21 18:24:00 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 18:24:00 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:24:00 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:24:02 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:26:48 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:28:59 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:50:56 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 18:50:56 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 18:50:56 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 18:50:56 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 18:50:59 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:52:44 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 18:52:44 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 18:52:44 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Arabica Coffee)
+2025-12-21 18:52:45 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 18:52:45 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 18:55:07 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 18:55:12 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 18:55:31 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 21:27:05 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 21:27:05 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 21:27:05 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 21:27:05 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 21:27:09 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:33:34 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 21:33:34 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 21:33:34 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Arabica Coffee)
+2025-12-21 21:33:34 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 21:33:34 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 21:33:38 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:33:44 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 21:33:46 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:38:21 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 21:38:21 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 8.23, Classification: Nf
+2025-12-21 21:38:21 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 21:38:21 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 21:38:22 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 21:38:24 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 21:38:50 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:38:52 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 21:38:52 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 8.23, Classification: Nf
+2025-12-21 21:38:52 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 21:38:53 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 21:38:53 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 21:38:56 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2
+2025-12-21 21:43:50 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:44:31 - SoilWise.ui.main_window - INFO - main_window.py:263 - Crop Evaluation page created
+2025-12-21 21:44:31 - SoilWise.ui.main_window - INFO - main_window.py:278 - All pages created
+2025-12-21 21:44:31 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 0
+2025-12-21 21:44:31 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2025-12-21 21:44:34 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:45:29 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Arabica Coffee
+2025-12-21 21:45:29 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 7.43, Classification: Ns
+2025-12-21 21:45:29 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Arabica Coffee)
+2025-12-21 21:45:29 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 21:45:29 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 21:45:31 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 1
+2025-12-21 21:45:49 - SoilWise.ui.main_window - INFO - main_window.py:321 - Evaluation complete for Banana
+2025-12-21 21:45:49 - SoilWise.ui.main_window - INFO - main_window.py:322 -  LSI: 6.91, Classification: Ns
+2025-12-21 21:45:49 - SoilWise.ui.main_window - INFO - main_window.py:334 - Passed soil data to Crop Evaluation page (Last crop: Banana)
+2025-12-21 21:45:49 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 3
+2025-12-21 21:45:49 - SoilWise.ui.main_window - INFO - main_window.py:343 - Navigated to Reports page with results
+2025-12-21 21:45:50 - SoilWise.ui.main_window - INFO - main_window.py:372 - Changing to page index: 2

@@ -289,3 +289,156 @@ NameError: name 'ClimateAdjustment' is not defined
 2025-12-19 22:32:39 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-19 22:35:32 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-19 22:47:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-19 23:16:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-19 23:35:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-19 23:51:03 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-19 23:55:24 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-20 00:11:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 10:01:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:08:13 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:36:19 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:36:20 - __main__ - CRITICAL - run.py:27 - Error: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 39, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 140, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 237, in create_pages
+    crop_evaluation_page = CropEvaluationPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 112, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 162, in init_ui
+    layout.addWidget(self.create_soil_source_card())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 274, in create_soil_source_card
+    self.update_saved_data_display()  # Load initial data
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 139, in update_saved_data_display
+    self.update_compare_button_text()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 602, in update_compare_button_text
+    self.compare_status_label.setText("Select at least 2 crops to compare")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+2025-12-21 16:40:44 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:40:45 - __main__ - CRITICAL - run.py:27 - Error: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 39, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 140, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 237, in create_pages
+    crop_evaluation_page = CropEvaluationPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 112, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 162, in init_ui
+    layout.addWidget(self.create_soil_source_card())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 274, in create_soil_source_card
+    self.update_saved_data_display()  # Load initial data
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 139, in update_saved_data_display
+    self.update_compare_button_text()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation.py", line 602, in update_compare_button_text
+    self.compare_status_label.setText("Select at least 2 crops to compare")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+2025-12-21 16:41:44 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:41:45 - __main__ - CRITICAL - run.py:27 - Error: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 39, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 140, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 237, in create_pages
+    crop_evaluation_page = CropEvaluationPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 112, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 162, in init_ui
+    layout.addWidget(self.create_soil_source_card())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 274, in create_soil_source_card
+    self.update_saved_data_display()  # Load initial data
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 139, in update_saved_data_display
+    self.update_compare_button_text()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 602, in update_compare_button_text
+    self.compare_status_label.setText("Select at least 2 crops to compare")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+2025-12-21 16:42:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 16:42:07 - __main__ - CRITICAL - run.py:27 - Error: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 39, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 140, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 237, in create_pages
+    crop_evaluation_page = CropEvaluationPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 112, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 162, in init_ui
+    layout.addWidget(self.create_soil_source_card())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 274, in create_soil_source_card
+    self.update_saved_data_display()  # Load initial data
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 139, in update_saved_data_display
+    self.update_compare_button_text()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\crop_evaluation_page.py", line 602, in update_compare_button_text
+    self.compare_status_label.setText("Select at least 2 crops to compare")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CropEvaluationPage' object has no attribute 'compare_status_label'
+2025-12-21 16:52:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 17:06:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 17:29:21 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 17:37:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 17:53:17 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 18:09:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 18:22:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 18:42:37 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 18:42:37 - __main__ - CRITICAL - run.py:27 - Error: 'InputPage' object has no attribute 'create_location_group'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 41, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 152, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 242, in create_pages
+    input_page = InputPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\input_page.py", line 128, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\input_page.py", line 163, in init_ui
+    layout.addWidget(self.create_location_group())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InputPage' object has no attribute 'create_location_group'
+2025-12-21 18:50:55 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 21:27:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 21:44:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0

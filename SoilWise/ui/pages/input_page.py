@@ -81,12 +81,15 @@ class InputPage(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+
+        self.current_soil_crop = None
         self.soil_inputs = {}
         self.climate_inputs = {}
         self.crop_input = None
         self.season_input = None
         self.season_label = None
         self.seasonal_info = None
+
         
         # Define seasonal crops based on Escomen et al. Table 7
         self.seasonal_crops = {
@@ -352,18 +355,43 @@ class InputPage(QWidget):
         return group
 
     def on_crop_changed(self, crop_name):
-        """Show/hide season selector based on crop selection"""
+        """Show/hide season selector and guard reusing soil across crops."""
+        # Existing behavior: seasonal UI
         is_seasonal = crop_name in self.seasonal_crops
-        
         if self.season_label:
             self.season_label.setVisible(is_seasonal)
         if self.season_input:
             self.season_input.setVisible(is_seasonal)
         if self.seasonal_info:
             self.seasonal_info.setVisible(is_seasonal)
-        
         if not is_seasonal and self.season_input:
             self.season_input.setCurrentIndex(0)
+
+        # New behavior: warn before reusing soil for a different crop
+        if (
+            self.current_soil_crop
+            and crop_name
+            and crop_name != "Select a crop..."
+            and crop_name != self.current_soil_crop
+        ):
+            reply = QMessageBox.question(
+                self,
+                "Use existing soil data?",
+                (
+                    f"The current soil inputs were entered for {self.current_soil_crop}.\n\n"
+                    f"Do you want to reuse this same soil data for {crop_name}, "
+                    "or start a fresh soil scenario?"
+                ),
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No,
+            )
+            if reply == QMessageBox.No:
+                # Start fresh: clear soil fields and reset association
+                self.clear_form()
+            else:
+                # Reuse: re-associate this soil with the new crop
+                self.current_soil_crop = crop_name
+
 
     def get_selected_season_code(self):
         """Convert UI season text to API season code"""
@@ -843,20 +871,47 @@ class InputPage(QWidget):
         layout = QHBoxLayout()
         layout.setSpacing(16)
         layout.addStretch()
-        
+
         btn_clear = EnhancedButton("Clear Form", "↻")
         btn_clear.setMinimumWidth(160)
         btn_clear.clicked.connect(self.clear_form)
-        
+
         btn_save = EnhancedButton("Save Data", "◈", primary=True)
         btn_save.setMinimumWidth(160)
         btn_save.setMinimumHeight(52)
         btn_save.clicked.connect(self.save_data)
-        
+
         layout.addWidget(btn_clear)
         layout.addWidget(btn_save)
-        
         return layout
+    
+    def clear_form(self):
+        """Clear soil and climate inputs and reset soil–crop association."""
+        # Clear climate numeric inputs
+        for widget in self.climate_inputs.values():
+            if isinstance(widget, QDoubleSpinBox):
+                widget.setValue(0.0)
+
+        # Clear soil numeric inputs
+        for widget in self.soil_inputs.values():
+            if isinstance(widget, QDoubleSpinBox):
+                widget.setValue(0.0)
+
+        # Reset coded dropdowns
+        if hasattr(self, "texture_input"):
+            self.texture_input.setCurrentIndex(0)
+        if hasattr(self, "drainage_input"):
+            self.drainage_input.setCurrentIndex(0)
+        if hasattr(self, "flooding_input"):
+            self.flooding_input.setCurrentIndex(0)
+
+        # Clear location text if present
+        if hasattr(self, "site_input"):
+            self.site_input.clear()
+
+        # Reset soil–crop association
+        self.current_soil_crop = None
+
 
     def create_analysis_card(self):
         """Create enhanced analysis section"""
@@ -1085,6 +1140,8 @@ class InputPage(QWidget):
             progress.close()
             progress.deleteLater()
             QApplication.processEvents()
+
+            self.current_soil_crop = crop_name
             
             self.show_results_summary(result)
             self.evaluation_complete.emit(result)
