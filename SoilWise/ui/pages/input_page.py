@@ -942,7 +942,7 @@ class InputPage(QWidget):
         
         desc = QLabel(
             "Once you've entered soil and climate data, "
-            "click the button below to run the crop suitability analysis using the Square Root Method."
+            "click the button below to run the crop suitability analysis."
         )
         desc.setFont(QFont("Segoe UI", 14))
         desc.setWordWrap(True)

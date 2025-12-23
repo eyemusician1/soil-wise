@@ -1,0 +1,445 @@
+{
+  "timestamp": "2025-12-21T23:03:29.366376",
+  "soil_data": {
+    "base_saturation": 50.0,
+    "caco3": 0.0,
+    "cec": 28.0,
+    "coarse_fragments": 3.0,
+    "drainage": "good",
+    "ec": 0.0,
+    "esp": 2.8,
+    "flooding": "Fo",
+    "gypsum": 0.0,
+    "humidity": 73.0,
+    "organic_carbon": 3.5,
+    "ph": 6.4,
+    "rainfall": 1300.0,
+    "slope": 3.29,
+    "soil_depth": 135.0,
+    "sum_basic_cations": 14.0,
+    "temperature": 24.87,
+    "texture": "SiC"
+  },
+  "season": "may_august",
+  "selected_crops": [
+    "Arabica Coffee",
+    "Banana",
+    "Cabbage"
+  ],
+  "results": [
+    {
+      "crop_name": "Arabica Coffee",
+      "lsi": 7.43,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          0.85,
+          "S2",
+          "t"
+        ],
+        "soil_depth": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 50.0,
+        "caco3": 0.0,
+        "cec": 28.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 0.0,
+        "esp": 2.8,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 73.0,
+        "organic_carbon": 3.5,
+        "ph": 6.4,
+        "rainfall": 1300.0,
+        "slope": 3.29,
+        "soil_depth": 135.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 24.87,
+        "texture": "SiC"
+      },
+      "scientific_name": "Coffea arabica L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiC",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Heavy clay texture limits drainage and root penetration. Add organic matter and practice deep tillage to improve structure."
+      ],
+      "interpretation": "Not Suitable (LSI: 7.43). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements"
+    },
+    {
+      "crop_name": "Banana",
+      "lsi": 7.31,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          0.95,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "slope": [
+          0.6,
+          "S3",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 50.0,
+        "caco3": 0.0,
+        "cec": 28.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 0.0,
+        "esp": 2.8,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 73.0,
+        "organic_carbon": 3.5,
+        "ph": 6.4,
+        "rainfall": 1300.0,
+        "slope": 3.29,
+        "soil_depth": 135.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 24.87,
+        "texture": "SiC"
+      },
+      "scientific_name": "Musa sp. L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiC",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Heavy clay texture limits drainage and root penetration. Add organic matter and practice deep tillage to improve structure."
+      ],
+      "interpretation": "Not Suitable (LSI: 7.31). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Banana requirements calibrated to match study LSI 90.25 (S1) from Brgy. Gacap, Piagapo, Lanao del Sur. Based on FAO Land Evaluation framework adapted for Philippine conditions."
+    },
+    {
+      "crop_name": "Cabbage",
+      "lsi": 6.91,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          0.6,
+          "S3",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.85,
+          "S2",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 50.0,
+        "caco3": 0.0,
+        "cec": 28.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 0.0,
+        "esp": 2.8,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 73.0,
+        "organic_carbon": 3.5,
+        "ph": 6.4,
+        "rainfall": 1300.0,
+        "slope": 3.29,
+        "soil_depth": 135.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 24.87,
+        "texture": "SiC"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 1300.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 6.91). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Cabbage (Brassica oleracea var. capitata L.) requirements for Philippine conditions. Seasonal thresholds account for dry season (Jan-Apr), wet season (May-Aug), and cool season (Sep-Dec) cultivation periods. Optimal temperature: 18-20°C. Preferred pH: 6.0-6.8. Best soil texture: loam to sandy clay loam with good drainage. Moderately sensitive to salinity (EC <2.0 dS/m optimal). Based on FAO Land Evaluation framework adapted for Philippine highland vegetable production systems."
+    }
+  ]
+}

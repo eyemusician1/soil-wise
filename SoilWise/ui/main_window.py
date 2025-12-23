@@ -262,13 +262,19 @@ class MainWindow(QMainWindow):
         self.pages_stack.addWidget(crop_evaluation_page)
         logger.info("Crop Evaluation page created")
 
-        # Reports page
-        reports_page = ReportsPage()
+        # Reports page – start with an empty placeholder
+        placeholder_results = {
+            "crop_name": "No crop selected",
+            "lsc": "N",
+            "lsi": 0.0,
+        }
+        reports_page = ReportsPage(placeholder_results)
         reports_page.new_evaluation_requested.connect(
             self.on_new_evaluation_requested
         )
         self.pages["reports"] = reports_page
         self.pages_stack.addWidget(reports_page)
+
 
         # Knowledge Base placeholder
         self.pages_stack.addWidget(
@@ -336,11 +342,25 @@ class MainWindow(QMainWindow):
                 crop_name,
             )
 
-        # Send results to Reports page and navigate there
+       # Send results to Reports page: recreate it with fresh data
         if "reports" in self.pages:
-            self.pages["reports"].display_results(results)
+            old_reports = self.pages["reports"]
+            index = self.pages_stack.indexOf(old_reports)
+
+            new_reports = ReportsPage(results)
+            new_reports.new_evaluation_requested.connect(
+                self.on_new_evaluation_requested
+            )
+
+            self.pages_stack.removeWidget(old_reports)
+            old_reports.deleteLater()
+
+            self.pages["reports"] = new_reports
+            self.pages_stack.insertWidget(index, new_reports)
+
         self.change_page(3)
-        logger.info("Navigated to Reports page with results")
+
+
 
     def on_comparison_complete(self, results: list):
         """

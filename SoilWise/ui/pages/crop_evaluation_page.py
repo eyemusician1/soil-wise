@@ -121,6 +121,8 @@ class CropEvaluationPage(QWidget):
         self.compare_btn = None
         self.last_comparison_results = None  # ✅ NEW: Store last results
         self.soil_data_timestamp = None  # ✅ NEW: Track when data was received
+        self.season_card = None
+
         
         # Define seasonal crops
         self.seasonal_crops = {
@@ -223,6 +225,8 @@ class CropEvaluationPage(QWidget):
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.addWidget(scroll)
+        self.update_season_card_state()
+
     
     def create_header(self):
         """Create page header"""
@@ -441,8 +445,9 @@ class CropEvaluationPage(QWidget):
                     border-color: #7d9d7f;
                 }
             """)
-            checkbox.stateChanged.connect(self.update_compare_button_text)
+            checkbox.stateChanged.connect(self.on_crop_selection_changed)
             crop_h_layout.addWidget(checkbox)
+            
             
             if crop in self.seasonal_crops:
                 season_label = QLabel("◐ Seasonal")
@@ -468,18 +473,18 @@ class CropEvaluationPage(QWidget):
         btn_layout = QHBoxLayout()
         btn_layout.setSpacing(12)
         
-        select_all_btn = EnhancedButton("Select All", "◫")
+        select_all_btn = EnhancedButton("Select All", " ")
         select_all_btn.clicked.connect(self.select_all_crops)
         
-        clear_all_btn = EnhancedButton("Clear All", "◻")
+        clear_all_btn = EnhancedButton("Clear All", "")
         clear_all_btn.clicked.connect(self.clear_all_crops)
         
-        seasonal_btn = EnhancedButton("Seasonal Crops", "◐")
+        seasonal_btn = EnhancedButton("Seasonal Crops", "")
         seasonal_btn.clicked.connect(
             lambda: self.select_preset(list(self.seasonal_crops))
         )
         
-        perennial_btn = EnhancedButton("Perennial Crops", "◕")
+        perennial_btn = EnhancedButton("Perennial Crops", "")
         perennial_btn.clicked.connect(self.select_perennial_crops)
         
         btn_layout.addWidget(select_all_btn)
@@ -493,6 +498,7 @@ class CropEvaluationPage(QWidget):
         card.setLayout(layout)
         return card
     
+    
     def select_perennial_crops(self):
         """Select all non-seasonal (perennial) crops"""
         self.clear_all_crops()
@@ -503,6 +509,7 @@ class CropEvaluationPage(QWidget):
     def create_season_card(self):
         """Create season selection card"""
         card = QGroupBox()
+        card.setObjectName("seasonCard")
         card.setStyleSheet("""
             QGroupBox {
                 background: white;
@@ -525,9 +532,9 @@ class CropEvaluationPage(QWidget):
         layout.setSpacing(20)
         
         # Title
-        title_label = QLabel("◐ Step 3: Select Growing Season (for seasonal crops)")
+        title_label = QLabel("◐ Step 3: Select Growing Season (for seasonal crops only)")
         title_label.setFont(QFont("Georgia", 16, QFont.Bold))
-        title_label.setStyleSheet("color: #3d5a3f;")
+        title_label.setStyleSheet("")
         layout.addWidget(title_label)
         
         # Info label
@@ -552,7 +559,7 @@ class CropEvaluationPage(QWidget):
         for season_text, season_code in seasons:
             radio = QRadioButton(season_text)
             radio.setFont(QFont("Segoe UI", 13))
-            radio.setStyleSheet("color: #4a6a4c;")
+            radio.setStyleSheet("")
             radio.setProperty("season_code", season_code)
             self.season_group.addButton(radio)
             layout.addWidget(radio)
@@ -561,7 +568,51 @@ class CropEvaluationPage(QWidget):
         self.season_group.buttons()[0].setChecked(True)
         
         card.setLayout(layout)
+        self.season_card = card
         return card
+    
+    def update_season_card_state(self):
+        """Enable Step 3 only if at least one seasonal crop is selected."""
+        if not self.season_card:
+            return
+
+        selected = self.get_selected_crops()
+        has_seasonal = any(c in self.seasonal_crops for c in selected)
+
+        if not has_seasonal:
+            self.season_card.setEnabled(False)
+            self.season_card.setStyleSheet("""
+            QGroupBox#seasonCard {
+                background: transparent;
+                border: none;
+                padding: 24px;
+                margin-top: 12px;
+            }
+            QGroupBox#seasonCard QLabel {
+                color: #b0b0b0;
+            }
+            QGroupBox#seasonCard QRadioButton {
+                color: #b0b0b0;
+            }
+            """)
+        else:
+            self.season_card.setEnabled(True)
+            self.season_card.setStyleSheet("""
+            QGroupBox#seasonCard {
+                background: white;
+                border-radius: 12px;
+                border: 1px solid #e8f1e8;
+                padding: 24px;
+                margin-top: 12px;
+            }
+            QGroupBox#seasonCard QLabel {
+                color: #3d5a3f;
+            }
+            QGroupBox#seasonCard QRadioButton {
+                color: #4a6a4c;
+            }
+            """)
+
     
     def create_compare_button(self):
         """Create comparison action button"""
@@ -637,6 +688,9 @@ class CropEvaluationPage(QWidget):
         """Select all crop checkboxes"""
         for checkbox in self.crop_checkboxes.values():
             checkbox.setChecked(True)
+        self.update_compare_button_text()
+        self.update_season_card_state()
+
     
     def clear_all_crops(self):
         """Clear all crop checkboxes"""
@@ -649,6 +703,11 @@ class CropEvaluationPage(QWidget):
         for crop_name in crop_names:
             if crop_name in self.crop_checkboxes:
                 self.crop_checkboxes[crop_name].setChecked(True)
+                
+    def on_crop_selection_changed(self, state):
+        self.update_compare_button_text()
+        self.update_season_card_state()
+
     
     def update_compare_button_text(self):
         """Update compare button text based on selection AND data availability"""

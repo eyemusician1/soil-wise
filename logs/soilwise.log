@@ -442,3 +442,84 @@ AttributeError: 'InputPage' object has no attribute 'create_location_group'
 2025-12-21 18:50:55 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-21 21:27:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-21 21:44:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 21:51:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:21:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:25:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:31:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:32:11 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:32:25 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:32:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:38:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:39:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:39:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:44:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 22:49:50 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 23:33:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 23:37:01 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 23:44:02 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 23:50:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-21 23:58:07 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:01:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:06:59 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:10:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:13:49 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:17:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:23:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:28:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:29:32 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:34:13 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 00:35:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 08:40:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 08:47:44 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 08:54:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:00:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:03:55 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:10:42 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:15:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:19:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:24:19 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:26:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:29:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 09:31:42 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:11:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:24:02 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:28:10 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:33:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:35:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:42:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:45:18 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:52:01 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 16:58:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 17:03:37 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 20:59:59 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:00:01 - __main__ - CRITICAL - run.py:27 - Error: 'ReportsPage' object has no attribute 'new_evaluation_requested'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 41, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 152, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 272, in create_pages
+    reports_page.new_evaluation_requested.connect(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ReportsPage' object has no attribute 'new_evaluation_requested'
+2025-12-22 21:02:57 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:09:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:17:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:17:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:25:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:34:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:39:24 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:42:02 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:45:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-22 21:55:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 00:19:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 00:37:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 09:54:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 10:03:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 10:07:02 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 10:08:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-23 10:10:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
