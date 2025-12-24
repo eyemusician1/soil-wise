@@ -539,13 +539,13 @@ class AdvancedReportsPage(QWidget):
         layout = QHBoxLayout(widget)
         layout.setSpacing(16)
 
-        btn_export_pdf = QPushButton("▼ Export as PDF")
+        btn_export_pdf = QPushButton("Export as PDF")
         btn_export_pdf.setMinimumHeight(48)
         btn_export_pdf.setStyleSheet(self.get_secondary_button_style())
         btn_export_pdf.setCursor(Qt.PointingHandCursor)
         btn_export_pdf.clicked.connect(self.export_pdf)
 
-        btn_export_excel = QPushButton("▤ Export as Excel")
+        btn_export_excel = QPushButton("Export as Excel")
         btn_export_excel.setMinimumHeight(48)
         btn_export_excel.setStyleSheet(self.get_secondary_button_style())
         btn_export_excel.setCursor(Qt.PointingHandCursor)

@@ -1,0 +1,315 @@
+{
+  "timestamp": "2025-12-23T10:44:46.827214",
+  "soil_data": {
+    "base_saturation": 60.0,
+    "caco3": 1.0,
+    "cec": 24.0,
+    "coarse_fragments": 5.0,
+    "drainage": "good",
+    "ec": 0.5,
+    "esp": 3.0,
+    "flooding": "Fo",
+    "gypsum": 0.3,
+    "humidity": 75.0,
+    "organic_carbon": 2.0,
+    "ph": 6.2,
+    "rainfall": 1600.0,
+    "slope": 1.5,
+    "soil_depth": 120.0,
+    "sum_basic_cations": 6.5,
+    "temperature": 20.0,
+    "texture": "CL"
+  },
+  "season": "may_august",
+  "selected_crops": [
+    "Cabbage",
+    "Carrots"
+  ],
+  "results": [
+    {
+      "crop_name": "Cabbage",
+      "lsi": 11.57,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          0.95,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.95,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 1.0,
+        "cec": 24.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 3.0,
+        "flooding": "Fo",
+        "gypsum": 0.3,
+        "humidity": 75.0,
+        "organic_carbon": 2.0,
+        "ph": 6.2,
+        "rainfall": 1600.0,
+        "slope": 1.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 6.5,
+        "temperature": 20.0,
+        "texture": "CL"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 1600.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 11.57). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Cabbage (Brassica oleracea var. capitata L.) requirements for Philippine conditions. Seasonal thresholds account for dry season (Jan-Apr), wet season (May-Aug), and cool season (Sep-Dec) cultivation periods. Optimal temperature: 18-20°C. Preferred pH: 6.0-6.8. Best soil texture: loam to sandy clay loam with good drainage. Moderately sensitive to salinity (EC <2.0 dS/m optimal). Based on FAO Land Evaluation framework adapted for Philippine highland vegetable production systems."
+    },
+    {
+      "crop_name": "Carrots",
+      "lsi": 4.79,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          0.95,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 1.0,
+        "cec": 24.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 3.0,
+        "flooding": "Fo",
+        "gypsum": 0.3,
+        "humidity": 75.0,
+        "organic_carbon": 2.0,
+        "ph": 6.2,
+        "rainfall": 1600.0,
+        "slope": 1.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 6.5,
+        "temperature": 20.0,
+        "texture": "CL"
+      },
+      "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 1600.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "CL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 4.79). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Carrots (Daucus carota subsp. sativus) based on Land Evaluation Book Part 3: Crop Requirements"
+    }
+  ]
+}

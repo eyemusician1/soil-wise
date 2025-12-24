@@ -367,7 +367,7 @@ class SuitabilityMapWidget(QWidget):
         title_row.addStretch()
 
         current_label = QLabel(
-            f"► Current: {self.results['crop_name']} - "
+            f"Current: {self.results['crop_name']} - "
             f"LSI {self.results['lsi']:.1f} ({self.results['lsc']})"
         )
         current_label.setFont(QFont("Segoe UI", 11, QFont.Bold))
@@ -403,7 +403,7 @@ class SuitabilityMapWidget(QWidget):
             classes_layout.addWidget(item)
         layout.addLayout(classes_layout)
 
-        note = QLabel("Note: Colors represent interpolated suitability estimates based on evaluation.")
+        note = QLabel("Note: This is not a real time and accurate report of the map. This is only an assumption.")
         note.setFont(QFont("Segoe UI", 10))
         note.setStyleSheet("color: #8a9a8c; font-style: italic;")
         note.setWordWrap(True)

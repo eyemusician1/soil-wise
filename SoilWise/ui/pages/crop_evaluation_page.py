@@ -645,7 +645,7 @@ class CropEvaluationPage(QWidget):
         layout.addWidget(self.compare_status_label)
         
         # Compare button
-        self.compare_btn = EnhancedButton("▶ Compare Crops", "", primary=True)
+        self.compare_btn = EnhancedButton("Compare Crops", "", primary=True)
         self.compare_btn.setMinimumHeight(64)
         self.compare_btn.setEnabled(False)
         self.compare_btn.setStyleSheet("""
@@ -881,7 +881,8 @@ class CropEvaluationPage(QWidget):
         """Display comparison results in dialog with enhanced features"""
         dialog = QDialog(self)
         dialog.setWindowTitle("Crop Comparison Results")
-        dialog.setMinimumSize(1200, 800)
+        dialog.resize(1100, 700)
+        dialog.setMinimumSize(900, 600)
         
         layout = QVBoxLayout()
         layout.setSpacing(16)
@@ -977,13 +978,13 @@ class CropEvaluationPage(QWidget):
         
         # ✅ ENHANCEMENT 3: Export to PDF button
         if EXCEL_AVAILABLE:
-            export_btn = EnhancedButton("📊 Export as Excel", "")
+            export_btn = EnhancedButton("Export as Excel", "")
             export_btn.clicked.connect(lambda: self.export_comparison_excel(results, dialog))
             btn_layout.addWidget(export_btn)
         
         btn_layout.addStretch()
         
-        close_btn = EnhancedButton("Close", "✕", primary=True)
+        close_btn = EnhancedButton("Close", "", primary=True)
         close_btn.clicked.connect(dialog.close)
         btn_layout.addWidget(close_btn)
         

@@ -201,11 +201,11 @@ class InputPage(QWidget):
         layout.setContentsMargins(28, 24, 28, 24)
         layout.setSpacing(16)
         
-        label = QLabel("◰ Data Import/Export")
+        label = QLabel("Data Import/Export")
         label.setFont(QFont("Georgia", 16, QFont.Bold))
         label.setStyleSheet("color: #3d5a3f;")
         
-        template_btn = EnhancedButton("Download Template", "▥")
+        template_btn = EnhancedButton("Download Template", "")
         template_btn.clicked.connect(self.download_template)
         
         import_btn = EnhancedButton("Import Excel", "↓")
@@ -876,7 +876,7 @@ class InputPage(QWidget):
         btn_clear.setMinimumWidth(160)
         btn_clear.clicked.connect(self.clear_form)
 
-        btn_save = EnhancedButton("Save Data", "◈", primary=True)
+        btn_save = EnhancedButton("Save Data", "", primary=True)
         btn_save.setMinimumWidth(160)
         btn_save.setMinimumHeight(52)
         btn_save.clicked.connect(self.save_data)
@@ -936,7 +936,7 @@ class InputPage(QWidget):
         layout.setContentsMargins(32, 28, 32, 28)
         layout.setSpacing(12)
         
-        title = QLabel("◈ Ready to Analyze?")
+        title = QLabel("Ready to Analyze?")
         title.setFont(QFont("Georgia", 20, QFont.Bold))
         title.setStyleSheet("color: #3d5a3f;")
         
@@ -948,7 +948,7 @@ class InputPage(QWidget):
         desc.setWordWrap(True)
         desc.setStyleSheet("color: #5a7a5c; margin: 8px 0 20px 0;")
         
-        btn_analyze = EnhancedButton("▶ Run Analysis", "", primary=True)
+        btn_analyze = EnhancedButton("Run Analysis", "", primary=True)
         btn_analyze.setMinimumHeight(64)
         btn_analyze.setStyleSheet("""
             QPushButton {

@@ -1,13 +1,11 @@
 """
 SoilWise Crop Suitability Evaluator - ENHANCED VERSION
-
 Orchestrates the complete evaluation workflow using the Square Root Method
 Reference: Khiddir et al. 1986, FAO 1976, Sys et al. 1993
 """
 
 import logging
 from typing import Dict, List, Optional, Tuple
-
 from knowledge_base.crop_rules import CropRules
 from knowledge_base.rules_engine import RulesEngine
 
@@ -23,7 +21,7 @@ logger = logging.getLogger(__name__)
 class SuitabilityEvaluator:
     """
     High-level evaluator that orchestrates crop suitability assessment.
-
+    
     This class:
     1. Loads crop requirements from the knowledge base
     2. Evaluates soil data against crop requirements
@@ -74,24 +72,39 @@ class SuitabilityEvaluator:
             error_msg = f"Crop '{crop_name}' not found in knowledge base"
             logger.error(error_msg)
             raise ValueError(error_msg)
+
         logger.info("✓ Crop data loaded successfully")
 
         # Check if crop is seasonal and season is provided
-        if crop_data.get("seasonal", False) and not season:
-            available_seasons = crop_data.get("seasons", [])
+        is_seasonal = crop_data.get("seasonal", False)
+        
+        if is_seasonal and not season:
+            available_seasons = list(crop_data.get("seasons", {}).keys())
             error_msg = (
                 f"{crop_name} is a seasonal crop. "
                 f"Please specify season: {', '.join(available_seasons)}"
             )
             logger.error(error_msg)
             raise ValueError(error_msg)
+        
+        # Validate season exists for seasonal crops
+        if is_seasonal and season:
+            if season not in crop_data.get("seasons", {}):
+                available_seasons = list(crop_data.get("seasons", {}).keys())
+                error_msg = (
+                    f"Invalid season '{season}' for {crop_name}. "
+                    f"Available seasons: {', '.join(available_seasons)}"
+                )
+                logger.error(error_msg)
+                raise ValueError(error_msg)
+            logger.info("✓ Seasonal crop detected - using '%s' season requirements", season)
 
         # Log input data
         logger.info("\n" + "-" * 100)
         logger.info("INPUT SOIL/CLIMATE DATA")
         logger.info("-" * 100)
         for key, value in sorted(soil_data.items()):
-            logger.info(" %-30s = %s", key, value)
+            logger.info("  %-30s = %s", key, value)
         logger.info("-" * 100)
 
         # Perform evaluation using rules engine
@@ -144,19 +157,20 @@ class SuitabilityEvaluator:
 
         for i, crop_name in enumerate(crop_names, 1):
             logger.info("\n[%d/%d] Evaluating %s...", i, len(crop_names), crop_name)
+            
             try:
                 result = self.evaluate_suitability(soil_data, crop_name, season)
                 results.append(result)
                 success_count += 1
                 logger.info(
-                    " ✓ %s: LSI = %.2f, Class = %s",
+                    "  ✓ %s: LSI = %.2f, Class = %s",
                     crop_name,
                     result["lsi"],
                     result["full_classification"],
                 )
             except Exception as e:
                 failure_count += 1
-                logger.error(" ✗ Failed to evaluate %s: %s", crop_name, str(e))
+                logger.error("  ✗ Failed to evaluate %s: %s", crop_name, str(e))
                 continue
 
         # Sort by LSI (descending)
@@ -172,7 +186,7 @@ class SuitabilityEvaluator:
             logger.info("\nTop 3 Most Suitable Crops:")
             for i, result in enumerate(results[:3], 1):
                 logger.info(
-                    " %d. %s: LSI = %.2f, Class = %s",
+                    "  %d. %s: LSI = %.2f, Class = %s",
                     i,
                     result["crop_name"],
                     result["lsi"],
@@ -205,6 +219,7 @@ class SuitabilityEvaluator:
         # Attach original inputs so UI pages can reuse them
         enriched["soil_data"] = soil_data
         enriched["crop_name"] = enriched.get("crop_name", crop_name)
+        
         if season is not None:
             enriched["season"] = season
 
@@ -331,8 +346,8 @@ class SuitabilityEvaluator:
         ✅ Special handling for S1 with no limiting factors.
         """
         logger.debug("Generating recommendations...")
-
         recommendations: List[str] = []
+
         lsc = evaluation_result["lsc"]
         limiting_factors = evaluation_result.get("limiting_factors", "")
 
@@ -371,20 +386,25 @@ class SuitabilityEvaluator:
         # Specific recommendations based on limiting factor groups
         if "f" in limiting_factors:
             recommendations.extend(self._get_fertility_recommendations(soil_data))
+
         if "c" in limiting_factors:
             recommendations.append(
                 "• Climate conditions are limiting. Consider protected cultivation "
                 "or select more climate-adapted varieties."
             )
+
         if "w" in limiting_factors:
             recommendations.extend(self._get_drainage_recommendations(soil_data))
+
         if "s" in limiting_factors:
             recommendations.extend(self._get_physical_soil_recommendations(soil_data))
+
         if "t" in limiting_factors:
             recommendations.append(
                 "• Slope is limiting. Implement soil conservation measures "
                 "such as terracing or contour farming."
             )
+
         if "n" in limiting_factors:
             recommendations.append(
                 "• Salinity/alkalinity is limiting. Consider leaching, "
@@ -413,6 +433,7 @@ class SuitabilityEvaluator:
 
         oc = soil_data.get("organic_carbon")
         om = soil_data.get("organic_matter")
+
         if oc is not None and oc < 1.5:
             recommendations.append(
                 f"• Organic carbon is low ({oc:.2f}%). Incorporate compost, "
@@ -499,7 +520,9 @@ class SuitabilityEvaluator:
         }
         return interpretations.get(lsc, f"Classification: {lsc}, LSI: {lsi:.2f}")
 
+    # ------------------------------------------------------------------ #
     # Convenience methods for other components (e.g., Knowledge Base page)
+    # ------------------------------------------------------------------ #
 
     def get_available_crops(self) -> List[str]:
         """Get list of all available crops in the knowledge base."""
@@ -510,11 +533,12 @@ class SuitabilityEvaluator:
         crop_data = self.crop_rules.get_crop_requirements(crop_name)
         if not crop_data:
             return None
+
         return {
             "name": crop_data.get("crop_name"),
             "scientific_name": crop_data.get("scientific_name"),
             "seasonal": crop_data.get("seasonal", False),
-            "seasons": crop_data.get("seasons", []),
+            "seasons": list(crop_data.get("seasons", {}).keys()) if crop_data.get("seasonal") else [],
             "notes": crop_data.get("notes", ""),
         }
 

@@ -12,9 +12,9 @@
           "S2_low": {"range": [350, 379], "rating": 0.85},
           "S2_high": {"range": [601, 1000], "rating": 0.85},
           "S3_low": {"range": [300, 349], "rating": 0.60},
-          "S3_high": {"range": [1001, 1500], "rating": 0.60},
+          "S3_high": {"range": [1001, 1600], "rating": 0.60},
           "N2_low": {"range": [null, 299], "rating": 0.25},
-          "N2_high": {"range": [1501, null], "rating": 0.25}
+          "N2_high": {"range": [1601, null], "rating": 0.25}
         },
         "mean_annual_temp_c": {
           "S1_0": {"range": [18.0, 20.0], "rating": 1.0},
@@ -45,11 +45,11 @@
           "S1_0": {"range": [450, 550], "rating": 1.0},
           "S1_1": {"range": [380, 449], "rating": 0.95},
           "S2_low": {"range": [350, 379], "rating": 0.85},
-          "S2_high": {"range": [551, 800], "rating": 0.85},
+          "S2_high": {"range": [551, 900], "rating": 0.85},
           "S3_low": {"range": [300, 349], "rating": 0.60},
-          "S3_high": {"range": [801, 1200], "rating": 0.60},
+          "S3_high": {"range": [901, 1600], "rating": 0.60},
           "N2_low": {"range": [null, 299], "rating": 0.25},
-          "N2_high": {"range": [1201, null], "rating": 0.25}
+          "N2_high": {"range": [1601, null], "rating": 0.25}
         },
         "mean_annual_temp_c": {
           "S1_0": {"range": [18.0, 20.0], "rating": 1.0},
@@ -80,11 +80,11 @@
           "S1_0": {"range": [450, 550], "rating": 1.0},
           "S1_1": {"range": [380, 449], "rating": 0.95},
           "S2_low": {"range": [350, 379], "rating": 0.85},
-          "S2_high": {"range": [551, 800], "rating": 0.85},
+          "S2_high": {"range": [551, 900], "rating": 0.85},
           "S3_low": {"range": [300, 349], "rating": 0.60},
-          "S3_high": {"range": [801, 1200], "rating": 0.60},
+          "S3_high": {"range": [901, 1600], "rating": 0.60},
           "N2_low": {"range": [null, 299], "rating": 0.25},
-          "N2_high": {"range": [1201, null], "rating": 0.25}
+          "N2_high": {"range": [1601, null], "rating": 0.25}
         },
         "mean_annual_temp_c": {
           "S1_0": {"range": [18.0, 20.0], "rating": 1.0},
@@ -109,6 +109,7 @@
       }
     }
   },
+  
   "topography_requirements": {
     "slope_pct": {
       "level1": {
@@ -117,23 +118,10 @@
         "S2": {"range": [1.6, 2.0], "rating": 0.85},
         "S3": {"range": [2.1, 4.0], "rating": 0.60},
         "N2": {"range": [4.1, null], "rating": 0.25}
-      },
-      "level2": {
-        "S1_0": {"range": [0.0, 2.0], "rating": 1.0},
-        "S1_1": {"range": [2.1, 3.0], "rating": 0.95},
-        "S2": {"range": [3.1, 4.0], "rating": 0.85},
-        "S3": {"range": [4.1, 8.0], "rating": 0.60},
-        "N2": {"range": [8.1, null], "rating": 0.25}
-      },
-      "level3": {
-        "S1_0": {"range": [0.0, 4.0], "rating": 1.0},
-        "S1_1": {"range": [4.1, 6.0], "rating": 0.95},
-        "S2": {"range": [6.1, 8.0], "rating": 0.85},
-        "S3": {"range": [8.1, 16.0], "rating": 0.60},
-        "N2": {"range": [16.1, null], "rating": 0.25}
       }
     }
   },
+  
   "wetness_requirements": {
     "flooding": {
       "S1_0": {"values": ["Fo"], "rating": 1.0},
@@ -150,6 +138,7 @@
       "N2": {"values": ["poor_not_drainable"], "rating": 0.25}
     }
   },
+  
   "physical_soil_requirements": {
     "texture": {
       "S1_0": {"values": ["L", "SCL", "SiL"], "rating": 1.0},
@@ -187,6 +176,7 @@
       "N2": {"range": [10.1, null], "rating": 0.25}
     }
   },
+  
   "soil_fertility_requirements": {
     "apparent_cec_cmol_kg_clay": {
       "S1_0": {"range": [24.0, null], "rating": 1.0},
@@ -226,6 +216,7 @@
       "N2": {"range": [null, 0.4], "rating": 0.25}
     }
   },
+  
   "salinity_alkalinity_requirements": {
     "ece_ds_m": {
       "S1_0": {"range": [0.0, 2.0], "rating": 1.0},
@@ -244,7 +235,9 @@
       "N2": {"range": [20.1, null], "rating": 0.25}
     }
   },
-  "notes": "Cabbage (Brassica oleracea var. capitata L.) requirements for Philippine conditions. Seasonal thresholds account for dry season (Jan-Apr), wet season (May-Aug), and cool season (Sep-Dec) cultivation periods. Optimal temperature: 18-20°C. Preferred pH: 6.0-6.8. Best soil texture: loam to sandy clay loam with good drainage. Moderately sensitive to salinity (EC <2.0 dS/m optimal). Based on FAO Land Evaluation framework adapted for Philippine highland vegetable production systems.",
+
+  "notes": "Cabbage requirements based on Land Evaluation Book Part 3: Crop Requirements.",
+
   "rating_scale": {
     "S1_0": 1.0,
     "S1_1": 0.95,
