@@ -32,8 +32,8 @@ class SuitabilityMapWidget(QWidget):
         layout.addWidget(title)
 
         subtitle = QLabel(
-            f"Choropleth map showing {self.results['crop_name']} "
-            f"suitability distribution by barangay zones"
+            f" This predefined map is showing {self.results['crop_name']} "
+            f"suitability distribution accross Piagapo."
         )
         subtitle.setFont(QFont("Segoe UI", 12))
         subtitle.setStyleSheet("color: #6a8a6c; padding-bottom: 8px;")

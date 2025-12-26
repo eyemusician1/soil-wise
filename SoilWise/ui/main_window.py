@@ -135,7 +135,11 @@ class MainWindow(QMainWindow):
 
         # Sidebar
         self.sidebar = self.create_sidebar()
+        # Collapse sidebar by default
+        if hasattr(self.sidebar, 'is_expanded') and self.sidebar.is_expanded:
+            self.sidebar.toggle_sidebar()
         main_layout.addWidget(self.sidebar)
+        
 
         # Content area
         self.content_area = QWidget()

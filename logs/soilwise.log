@@ -539,3 +539,90 @@ AttributeError: 'ReportsPage' object has no attribute 'new_evaluation_requested'
 2025-12-24 11:56:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-24 12:09:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-24 12:25:11 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 13:42:47 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 13:46:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 14:14:47 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 14:38:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 14:41:24 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 14:54:01 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 15:17:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 15:31:36 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-24 15:40:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 07:49:36 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:06:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:06:47 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:07:11 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:08:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:10:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:10:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 08:11:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 18:24:34 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 18:24:45 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 18:25:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-25 22:59:47 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 09:53:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 10:33:02 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:02:49 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:07:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:13:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:18:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:45:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 11:48:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:07:59 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:08:18 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:09:45 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:27:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:27:28 - __main__ - CRITICAL - run.py:27 - Error: Invalid parameter None passed to addLayoutOwnership().
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 42, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 157, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 247, in create_pages
+    input_page = InputPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\input_page.py", line 111, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\input_page.py", line 142, in init_ui
+    layout.addWidget(self.create_soil_properties_group())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\input_page.py", line 503, in create_soil_properties_group
+    main_layout.addWidget(self.create_subsection("Topography", [
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ("Slope (%):", "slope", 0, 100, 0, 0.1),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ]))
+    ^^^
+RuntimeError: Invalid parameter None passed to addLayoutOwnership().
+2025-12-26 12:29:10 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:33:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 12:39:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:05:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:13:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:18:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:26:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:28:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:29:44 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:34:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:38:55 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:51:34 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:53:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 13:57:36 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:00:25 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:02:50 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:04:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:09:30 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:12:45 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:13:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:17:11 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:18:22 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:28:44 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:32:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:34:25 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:35:22 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:35:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 14:38:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0

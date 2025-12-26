@@ -290,18 +290,17 @@ class HomePage(QWidget):
         main_layout.addWidget(scroll)
     
     def create_hero_section(self):
-        """Create modern hero welcome section with creative abstract layout"""
+        """Create modern hero welcome section with minimalist design"""
         card = QFrame()
         card.setStyleSheet("""
             QFrame {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 #F5F3ED, stop:1 #E8F3E8);
+                                        stop:0 #F5F3ED, stop:1 #E8F3E8);
                 border-radius: 24px;
                 border: none;
             }
         """)
         
-        # Add shadow
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(35)
         shadow.setXOffset(0)
@@ -333,11 +332,11 @@ class HomePage(QWidget):
         """)
         title.setAlignment(Qt.AlignLeft)
         title.setWordWrap(True)
-                
+        
         # Description
         description = QLabel(
-            "An intelligent system for automated crop suitability evaluation based on soil characteristics. "
-            "Using advanced knowledge base technology to provide accurate agricultural recommendations."
+            "Intelligent crop suitability evaluation using advanced soil analysis "
+            "and knowledge-based recommendations."
         )
         description.setWordWrap(True)
         description.setStyleSheet("""
@@ -348,166 +347,99 @@ class HomePage(QWidget):
             background: transparent;
         """)
         
-        # Feature pills (horizontal)
-        pills_layout = QHBoxLayout()
-        pills_layout.setSpacing(12)
-        pills_layout.setAlignment(Qt.AlignLeft)
+        # Minimalist feature tags (no icons, clean text)
+        tags_layout = QHBoxLayout()
+        tags_layout.setSpacing(10)
+        tags_layout.setAlignment(Qt.AlignLeft)
         
-        feature_pills = [
-            ("●", "Performance-wise", "#5a9d5e", "#6eb172"),
-            ("▣", "Data-Driven", "#6eb172", "#7fbc83"),
-            ("◉", "Precise Results", "#7fbc83", "#90c894")
+        feature_tags = [
+            ("Accurate", "#5a9d5e"),
+            ("Efficient", "#6eb172"),
+            ("Data-Driven", "#7fbc83")
         ]
         
-        for icon, text, grad_start, grad_end in feature_pills:
-            pill = QFrame()
-            pill.setStyleSheet(f"""
-                QFrame {{
-                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                        stop:0 {grad_start}, stop:1 {grad_end});
-                    border: none;
-                    border-radius: 20px;
-                    padding: 0px;
-                }}
-                QFrame:hover {{
-                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                        stop:0 #4a8c4d, stop:1 #5da061);
-                }}
-            """)
-            
-            pill_shadow = QGraphicsDropShadowEffect()
-            pill_shadow.setBlurRadius(18)
-            pill_shadow.setXOffset(0)
-            pill_shadow.setYOffset(5)
-            pill_shadow.setColor(QColor(0, 0, 0, 20))
-            pill.setGraphicsEffect(pill_shadow)
-            
-            pill_layout = QHBoxLayout(pill)
-            pill_layout.setContentsMargins(18, 12, 18, 12)
-            pill_layout.setSpacing(10)
-            
-            icon_label = QLabel(icon)
-            icon_label.setStyleSheet("""
-                color: white;
-                font-size: 15px;
-                font-weight: 700;
-                background: transparent;
-            """)
-            
-            text_label = QLabel(text)
-            text_label.setStyleSheet("""
-                color: white;
-                font-size: 14px;
-                font-weight: 700;
+        for text, color in feature_tags:
+            tag = QLabel(text)
+            tag.setStyleSheet(f"""
+                color: {color};
+                background: rgba(90, 157, 94, 0.12);
+                border: 1px solid {color}40;
+                border-radius: 6px;
+                padding: 6px 14px;
+                font-size: 12px;
+                font-weight: 600;
                 letter-spacing: 0.3px;
-                background: transparent;
             """)
-            
-            pill_layout.addWidget(icon_label)
-            pill_layout.addWidget(text_label)
-            
-            pills_layout.addWidget(pill)
+            tags_layout.addWidget(tag)
         
-        pills_layout.addStretch()
+        tags_layout.addStretch()
         
         left_layout.addWidget(title)
-        left_layout.addSpacing(18)
+        left_layout.addSpacing(8)
         left_layout.addWidget(description)
-        left_layout.addSpacing(24)
-        left_layout.addLayout(pills_layout)
+        left_layout.addSpacing(20)
+        left_layout.addLayout(tags_layout)
         left_layout.addStretch()
         
-        # Right section - Feature cards (40% width)
+        # Right section - Clean feature cards (40% width)
         right_section = QWidget()
         right_section.setStyleSheet("background: transparent;")
         right_layout = QVBoxLayout(right_section)
         right_layout.setContentsMargins(32, 56, 56, 56)
-        right_layout.setSpacing(20)
+        right_layout.setSpacing(16)
         
-        feature_cards_data = [
-            ("◆", "Knowledge Base", "Extensive agricultural database", "#a8d5a8", "#c5e5c5"),
-            ("⚘", "Smart Analysis", "Advanced crop recommendations", "#b5dbb5", "#d0ead0"),
-            ("◈", "Real-time Insights", "Instant evaluation results", "#c2e0c2", "#daeeda")
+        # Minimalist feature cards
+        features_data = [
+            ("Knowledge Base", "Extensive agricultural data"),
+            ("Smart Analysis", "AI-powered recommendations"),
+            ("Real-time Results", "Instant evaluation")
         ]
         
-        for icon, title_text, desc, grad_start, grad_end in feature_cards_data:
+        for title_text, desc in features_data:
             feature_card = QFrame()
-            feature_card.setStyleSheet(f"""
-                QFrame {{
-                    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                        stop:0 {grad_start}, stop:1 {grad_end});
+            feature_card.setStyleSheet("""
+                QFrame {
+                    background: rgba(255, 255, 255, 0.75);
                     border: none;
-                    border-radius: 14px;
+                    border-radius: 10px;
                     padding: 0px;
-                }}
-                QFrame:hover {{
-                    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                        stop:0 #9acc9a, stop:1 #b8ddb8);
-                }}
+                }
+                QFrame:hover {
+                    background: rgba(255, 255, 255, 0.95);
+                    border: 1px solid rgba(90, 157, 94, 0.3);
+                }
             """)
             
             card_shadow = QGraphicsDropShadowEffect()
-            card_shadow.setBlurRadius(20)
+            card_shadow.setBlurRadius(12)
             card_shadow.setXOffset(0)
-            card_shadow.setYOffset(4)
-            card_shadow.setColor(QColor(0, 0, 0, 12))
+            card_shadow.setYOffset(2)
+            card_shadow.setColor(QColor(0, 0, 0, 8))
             feature_card.setGraphicsEffect(card_shadow)
             
-            card_layout = QHBoxLayout(feature_card)
-            card_layout.setContentsMargins(24, 20, 24, 20)
-            card_layout.setSpacing(16)
-            
-            # Icon circle
-            icon_container = QFrame()
-            icon_container.setFixedSize(48, 48)
-            icon_container.setStyleSheet(f"""
-                QFrame {{
-                    background: rgba(255, 255, 255, 0.85);
-                    border: none;
-                    border-radius: 24px;
-                }}
-            """)
-            
-            icon_layout = QVBoxLayout(icon_container)
-            icon_layout.setContentsMargins(0, 0, 0, 0)
-            icon_layout.setAlignment(Qt.AlignCenter)
-            
-            icon_label = QLabel(icon)
-            icon_label.setStyleSheet(f"""
-                color: #3d6a3e;
-                font-size: 20px;
-                font-weight: 700;
-                background: transparent;
-            """)
-            icon_label.setAlignment(Qt.AlignCenter)
-            icon_layout.addWidget(icon_label)
-            
-            # Text content
-            text_container = QVBoxLayout()
-            text_container.setSpacing(4)
+            card_layout = QVBoxLayout(feature_card)
+            card_layout.setContentsMargins(20, 16, 20, 16)
+            card_layout.setSpacing(4)
             
             card_title = QLabel(title_text)
             card_title.setStyleSheet("""
                 color: #2d5a2e;
-                font-size: 15px;
+                font-size: 14px;
                 font-weight: 700;
                 background: transparent;
             """)
             
             card_desc = QLabel(desc)
             card_desc.setStyleSheet("""
-                color: #4a7a4b;
-                font-size: 12px;
+                color: #6a8a6c;
+                font-size: 11px;
                 font-weight: 500;
                 background: transparent;
             """)
             card_desc.setWordWrap(True)
             
-            text_container.addWidget(card_title)
-            text_container.addWidget(card_desc)
-            
-            card_layout.addWidget(icon_container)
-            card_layout.addLayout(text_container, 1)
+            card_layout.addWidget(card_title)
+            card_layout.addWidget(card_desc)
             
             right_layout.addWidget(feature_card)
         
@@ -517,6 +449,7 @@ class HomePage(QWidget):
         main_layout.addWidget(right_section, 4)
         
         return card
+
     
     def create_section_header(self, title, subtitle):
         """Create section header with title and subtitle"""

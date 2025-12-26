@@ -126,7 +126,7 @@ class CropEvaluationPage(QWidget):
         
         # Define seasonal crops
         self.seasonal_crops = {
-            "Cabbage", "Carrots", "Cocoa", "Maize", 
+            "Cabbage", "Carrots", "Maize", 
             "Sorghum", "Sugarcane", "Sweet Potato", "Tomato"
         }
         

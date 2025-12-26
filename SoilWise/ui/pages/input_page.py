@@ -10,6 +10,10 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrol
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QColor, QPalette
 from PySide6.QtWidgets import QGraphicsDropShadowEffect
+import openpyxl
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+from datetime import datetime
+import os
 
 # Import evaluation engine
 try:
@@ -93,7 +97,7 @@ class InputPage(QWidget):
         
         # Define seasonal crops based on Escomen et al. Table 7
         self.seasonal_crops = {
-            "Cabbage", "Carrots", "Cocoa", "Maize", 
+            "Cabbage", "Carrots", "Maize", 
             "Sorghum", "Sugarcane", "Sweet Potato", "Tomato"
         }
         
@@ -355,42 +359,45 @@ class InputPage(QWidget):
         return group
 
     def on_crop_changed(self, crop_name):
-        """Show/hide season selector and guard reusing soil across crops."""
-        # Existing behavior: seasonal UI
+        """Show/hide season selector, update drainage and texture options, and guard reusing soil across crops."""
+        
         is_seasonal = crop_name in self.seasonal_crops
+        
         if self.season_label:
             self.season_label.setVisible(is_seasonal)
         if self.season_input:
             self.season_input.setVisible(is_seasonal)
         if self.seasonal_info:
             self.seasonal_info.setVisible(is_seasonal)
+        
         if not is_seasonal and self.season_input:
             self.season_input.setCurrentIndex(0)
-
-        # New behavior: warn before reusing soil for a different crop
-        if (
-            self.current_soil_crop
-            and crop_name
-            and crop_name != "Select a crop..."
-            and crop_name != self.current_soil_crop
-        ):
+        
+        # === UPDATE BOTH DRAINAGE AND TEXTURE OPTIONS ===
+        if crop_name != "Select a crop...":
+            self.update_drainage_options(crop_name)
+            self.update_texture_options(crop_name)  # ← ADD THIS LINE
+        # ================================================
+        
+        if (self.current_soil_crop and crop_name and 
+            crop_name != "Select a crop..." and crop_name != self.current_soil_crop):
+            
             reply = QMessageBox.question(
-                self,
+                self, 
                 "Use existing soil data?",
-                (
-                    f"The current soil inputs were entered for {self.current_soil_crop}.\n\n"
-                    f"Do you want to reuse this same soil data for {crop_name}, "
-                    "or start a fresh soil scenario?"
-                ),
+                f"The current soil inputs were entered for {self.current_soil_crop}. "
+                f"Do you want to reuse this same soil data for {crop_name}, "
+                f"or start a fresh soil scenario?",
                 QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.No,
+                QMessageBox.No
             )
+            
             if reply == QMessageBox.No:
-                # Start fresh: clear soil fields and reset association
                 self.clear_form()
             else:
-                # Reuse: re-associate this soil with the new crop
                 self.current_soil_crop = crop_name
+        elif crop_name != "Select a crop...":
+            self.current_soil_crop = crop_name
 
 
     def get_selected_season_code(self):
@@ -617,20 +624,19 @@ class InputPage(QWidget):
             grid.addWidget(spinbox, i, 1)
         
         if include_texture:
-            texture_label = QLabel("Soil Texture:")
+            texture_label = QLabel("Soil Texture")
             texture_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
             texture_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
             grid.addWidget(texture_label, len(fields), 0)
             
             self.texture_input = QComboBox()
+            # Start with default options - will be updated by crop selection
             self.texture_input.addItems([
                 "Select texture...",
-                "C - Clay", "SiC - Silty Clay", "SC - Sandy Clay",
-                "CL - Clay Loam", "SiCL - Silty Clay Loam", "SCL - Sandy Clay Loam",
-                "L - Loam", "SiL - Silt Loam", "SL - Sandy Loam",
-                "Si - Silt", "LS - Loamy Sand", "S - Sand",
-                "Cm - Clay (montmorillonitic)", "CLm - Clay Loam (montmorillonitic)",
-                "fS - Fine Sand", "vfS - Very Fine Sand"
+                "C - Clay",
+                "CL - Clay Loam",
+                "L - Loam",
+                "S - Sand"
             ])
             self.texture_input.setMinimumHeight(40)
             self.texture_input.setStyleSheet("""
@@ -663,8 +669,12 @@ class InputPage(QWidget):
         layout.addLayout(grid)
         return container
 
+
     def create_wetness_subsection(self):
-        """Create wetness subsection with flooding and drainage"""
+        """
+        Create wetness subsection with flooding and drainage.
+        Drainage options dynamically update based on selected crop.
+        """
         container = QFrame()
         container.setStyleSheet("""
             QFrame {
@@ -714,7 +724,8 @@ class InputPage(QWidget):
             }
         """
         
-        flooding_label = QLabel("Flooding:")
+        # FLOODING
+        flooding_label = QLabel("Flooding")
         flooding_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
         flooding_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
         grid.addWidget(flooding_label, 0, 0)
@@ -723,21 +734,17 @@ class InputPage(QWidget):
         self.flooding_input.addItems([
             "Select flooding class...",
             "Fo - No flooding",
-            "Fo_good_gw_150 - Good drainage, GW > 150cm",
-            "Fo_good_gw_100_150 - Good drainage, GW 100-150cm",
-            "Fo_moderate - Moderate flooding risk",
-            "Fo_imperfect_drainable - Imperfect but drainable",
-            "Fo_poor_drainable - Poor but drainable",
-            "Fo_poor_not_drainable - Poor, not drainable",
             "F1 - Occasional flooding",
-            "F2 - Frequent flooding",
-            "F3 - Very frequent flooding"
+            "F2 - Frequent flooding", 
+            "F3 - Very frequent flooding",
+            "F1+ - Severe flooding"
         ])
         self.flooding_input.setMinimumHeight(40)
         self.flooding_input.setStyleSheet(combo_style)
         grid.addWidget(self.flooding_input, 0, 1)
         
-        drainage_label = QLabel("Drainage:")
+        # DRAINAGE
+        drainage_label = QLabel("Drainage")
         drainage_label.setFont(QFont("Segoe UI", 12, QFont.Medium))
         drainage_label.setStyleSheet("color: #4a6a4c; background: transparent; border: none;")
         grid.addWidget(drainage_label, 1, 0)
@@ -746,10 +753,16 @@ class InputPage(QWidget):
         self.drainage_input.addItems([
             "Select drainage class...",
             "good - Well drained",
-            "good_moderate - Moderately well drained",
-            "moderate - Somewhat poorly drained",
+            "good_gw_over_150 - Good drainage, groundwater >150 cm",
+            "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+            "moderate - Moderately drained",
+            "moder. - Moderately drained (alternate)",
+            "imperfect - Imperfectly drained",
+            "poor_aeric - Poorly drained, aeric conditions",
+            "poor_drainable - Poorly drained but drainable",
+            "poor_not_drainable - Poorly drained, not drainable",
             "poor - Poorly drained",
-            "poor_not_drainable - Very poorly drained"
+            "very_poor - Very poorly drained"
         ])
         self.drainage_input.setMinimumHeight(40)
         self.drainage_input.setStyleSheet(combo_style)
@@ -757,6 +770,7 @@ class InputPage(QWidget):
         
         layout.addLayout(grid)
         return container
+
 
     def create_climate_group(self):
         """Create climate characteristics group"""
@@ -1012,6 +1026,181 @@ class InputPage(QWidget):
         
         code = drainage_text.split(" - ")[0].strip()
         return code
+    
+    def update_drainage_options(self, crop_name):
+        """Update drainage dropdown based on selected crop from Land Evaluation Book Part 3."""
+        drainage_options = {
+            'Arabica Coffee': [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater >150 cm",
+                "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            'Banana': [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater >150 cm",
+                "moderate - Moderately drained",
+                "moder. - Moderately drained (alternate)",
+                "imperfect - Imperfectly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            'Cocoa': [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater >150 cm",
+                "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor - Poorly drained",
+                "very_poor - Very poorly drained"
+            ],
+            'Cabbage': [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater >150 cm",
+                "moderate - Moderately drained",
+                "moder. - Moderately drained (alternate)",
+                "imperfect - Imperfectly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            'Carrots': [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater >150 cm",
+                "moderate - Moderately drained",
+                "moder. - Moderately drained (alternate)",
+                "imperfect - Imperfectly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ]
+        }
+        
+        default_options = [
+            "Select drainage class...",
+            "good - Well drained",
+            "good_gw_over_150 - Good drainage, groundwater >150 cm",
+            "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+            "moderate - Moderately drained",
+            "imperfect - Imperfectly drained",
+            "poor_drainable - Poorly drained but drainable",
+            "poor_not_drainable - Poorly drained, not drainable"
+        ]
+        
+        if not hasattr(self, 'drainage_input') or not self.drainage_input:
+            return
+        
+        current_code = self.get_drainage_code()
+        options = drainage_options.get(crop_name, default_options)
+        
+        self.drainage_input.clear()
+        self.drainage_input.addItems(options)
+        
+        if current_code:
+            for i in range(self.drainage_input.count()):
+                item_text = self.drainage_input.itemText(i)
+                if item_text.startswith(current_code + " -") or item_text.startswith(current_code + "."):
+                    self.drainage_input.setCurrentIndex(i)
+                    break
+
+    def update_texture_options(self, crop_name):
+        """Update texture dropdown based on selected crop from JSON requirements."""
+        
+        # Texture descriptions mapping
+        texture_descriptions = {
+            'C': 'Clay',
+            'C<60s': 'Clay <60% smectitic',
+            'C>60s': 'Clay >60% smectitic',
+            'C>60v': 'Clay >60% vermiculitic',
+            'CL': 'Clay Loam',
+            'CSGOs': 'Clay Sandy Gravel over sand',
+            'Cm': 'Clay montmorillonitic',
+            'Co': 'Clay oxidic',
+            'CxGOs': 'Clay over Gravel over sand',
+            'CxGOv': 'Clay over Gravel oxidic/vermiculitic',
+            'CxGv': 'Clay over Gravel vermiculitic',
+            'L': 'Loam',
+            'LS': 'Loamy Sand',
+            'LcS': 'Loamy coarse Sand',
+            'LfS': 'Loamy fine Sand',
+            'S': 'Sand',
+            'SC': 'Sandy Clay',
+            'SCL': 'Sandy Clay Loam',
+            'SL': 'Sandy Loam',
+            'SiC': 'Silty Clay',
+            'SiCL': 'Silty Clay Loam',
+            'SiCm': 'Silty Clay montmorillonitic',
+            'SiCs': 'Silty Clay smectitic',
+            'SiL': 'Silt Loam',
+            'cS': 'coarse Sand',
+            'fS': 'fine Sand'
+        }
+        
+        texture_options = {
+            'Arabica Coffee': [
+                'C<60s', 'C>60s', 'C>60v', 'CL', 'Cm', 'Co', 'LcS', 'LfS', 
+                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'cS', 'fS'
+            ],
+            'Banana': [
+                'CL', 'CSGOs', 'Cm', 'Co', 'CxGOs', 'CxGOv', 'CxGv', 'L', 'LS', 
+                'LfS', 'S', 'SC', 'SCL', 'SL', 'SiCL', 'SiCm', 'SiCs', 'SiL', 'cS', 'fS'
+            ],
+            'Cocoa': [
+                'C', 'CL', 'Cm', 'Co', 'CxGOv', 'CxGv', 'L', 'LfS', 
+                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'cS'
+            ],
+            'Cabbage': [
+                'C', 'CL', 'Cm', 'L', 'LS', 'LcS', 'LfS', 
+                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
+            ],
+            'Carrots': [
+                'C', 'Cm', 'Co', 'CxGOs', 'CxGOv', 'L', 'LS', 'LcS', 'LfS', 
+                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
+            ]
+        }
+        
+        # Default textures if crop not in mapping
+        default_textures = [
+            'C', 'CL', 'Cm', 'L', 'LS', 'S', 'SC', 'SCL', 'SL', 
+            'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
+        ]
+        
+        if not hasattr(self, 'texture_input') or not self.texture_input:
+            return
+        
+        # Save current selection
+        current_code = self.get_texture_code()
+        
+        # Get texture codes for this crop
+        texture_codes = texture_options.get(crop_name, default_textures)
+        
+        # Build dropdown items with descriptions
+        items = ["Select texture..."]
+        for code in sorted(texture_codes):
+            description = texture_descriptions.get(code, code)
+            items.append(f"{code} - {description}")
+        
+        # Update dropdown
+        self.texture_input.clear()
+        self.texture_input.addItems(items)
+        
+        # Restore selection if valid for this crop
+        if current_code and current_code in texture_codes:
+            for i in range(self.texture_input.count()):
+                item_text = self.texture_input.itemText(i)
+                if item_text.startswith(current_code + " -"):
+                    self.texture_input.setCurrentIndex(i)
+                    break
+
 
     def collect_form_data(self):
         """
@@ -1270,44 +1459,512 @@ class InputPage(QWidget):
         self.data_saved.emit(1)
 
     def import_excel(self):
-        """Import soil data from Excel"""
+        """Import soil data from Excel file"""
         filename, _ = QFileDialog.getOpenFileName(
             self,
             "Import Excel File",
             "",
             "Excel Files (*.xlsx *.xls)"
         )
-        if filename:
+        
+        if not filename:
+            return
+        
+        try:
+            # Load workbook
+            wb = openpyxl.load_workbook(filename)
+            ws = wb.active
+            
+            # Parse data - looking for PARAMETER and VALUE columns
+            data_dict = {}
+            for row in ws.iter_rows(min_row=1, values_only=True):
+                if row[0] and row[1]:  # If both Parameter and Value exist
+                    param = str(row[0]).strip()
+                    value = row[1]
+                    if value is not None:
+                        value = str(value).strip()
+                        if value:  # Only store non-empty values
+                            data_dict[param] = value
+            
+            # Map parameters to form fields
+            imported_count = 0
+            
+            # CROP
+            if "Crop Name" in data_dict:
+                crop = data_dict["Crop Name"]
+                for i in range(self.crop_input.count()):
+                    if crop.lower() in self.crop_input.itemText(i).lower():
+                        self.crop_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+            
+            if "Season (if applicable)" in data_dict:
+                season = data_dict["Season (if applicable)"]
+                for i in range(self.season_input.count()):
+                    if season.lower() in self.season_input.itemText(i).lower():
+                        self.season_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+            
+            # LOCATION
+            if "Site Name" in data_dict:
+                self.site_input.setText(data_dict["Site Name"])
+                imported_count += 1
+            
+            # CLIMATE
+            if "Average Temperature (°C)" in data_dict or "Average Temperature (C)" in data_dict:
+                key = "Average Temperature (°C)" if "Average Temperature (°C)" in data_dict else "Average Temperature (C)"
+                try:
+                    self.climate_inputs['temperature'].setValue(float(data_dict[key]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Annual Rainfall (mm)" in data_dict:
+                try:
+                    self.climate_inputs['rainfall'].setValue(float(data_dict["Annual Rainfall (mm)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Humidity (%)" in data_dict:
+                try:
+                    self.climate_inputs['humidity'].setValue(float(data_dict["Humidity (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            # TOPOGRAPHY
+            if "Slope (%)" in data_dict:
+                try:
+                    self.soil_inputs['slope'].setValue(float(data_dict["Slope (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            # WETNESS
+            if "Flooding" in data_dict:
+                code = data_dict["Flooding"].strip()
+                for i in range(self.flooding_input.count()):
+                    if self.flooding_input.itemText(i).startswith(code + " -"):
+                        self.flooding_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+            
+            if "Drainage" in data_dict:
+                code = data_dict["Drainage"].strip()
+                for i in range(self.drainage_input.count()):
+                    if self.drainage_input.itemText(i).startswith(code + " -"):
+                        self.drainage_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+            
+            # PHYSICAL SOIL
+            if "Texture" in data_dict:
+                code = data_dict["Texture"].strip()
+                for i in range(self.texture_input.count()):
+                    if self.texture_input.itemText(i).startswith(code + " -"):
+                        self.texture_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+            
+            if "Coarse Fragments (vol%)" in data_dict:
+                try:
+                    self.soil_inputs['coarse_fragments'].setValue(float(data_dict["Coarse Fragments (vol%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Soil Depth (cm)" in data_dict:
+                try:
+                    self.soil_inputs['soil_depth'].setValue(float(data_dict["Soil Depth (cm)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "CaCO₃ (%)" in data_dict or "CaCO3 (%)" in data_dict:
+                key = "CaCO₃ (%)" if "CaCO₃ (%)" in data_dict else "CaCO3 (%)"
+                try:
+                    self.soil_inputs['caco3'].setValue(float(data_dict[key]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Gypsum (%)" in data_dict:
+                try:
+                    self.soil_inputs['gypsum'].setValue(float(data_dict["Gypsum (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            # SOIL FERTILITY
+            if "Apparent CEC (cmol/kg clay)" in data_dict:
+                try:
+                    self.soil_inputs['cec'].setValue(float(data_dict["Apparent CEC (cmol/kg clay)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Sum of Basic Cations (cmol/kg)" in data_dict:
+                try:
+                    self.soil_inputs['sum_basic_cations'].setValue(float(data_dict["Sum of Basic Cations (cmol/kg)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Base Saturation (%)" in data_dict:
+                try:
+                    self.soil_inputs['base_saturation'].setValue(float(data_dict["Base Saturation (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "pH (H₂O)" in data_dict or "pH (H2O)" in data_dict:
+                key = "pH (H₂O)" if "pH (H₂O)" in data_dict else "pH (H2O)"
+                try:
+                    self.soil_inputs['ph'].setValue(float(data_dict[key]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "Organic Carbon (%)" in data_dict:
+                try:
+                    self.soil_inputs['organic_carbon'].setValue(float(data_dict["Organic Carbon (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            # SALINITY & ALKALINITY
+            if "ECe (dS/m)" in data_dict:
+                try:
+                    self.soil_inputs['ece'].setValue(float(data_dict["ECe (dS/m)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
+            if "ESP (%)" in data_dict:
+                try:
+                    self.soil_inputs['esp'].setValue(float(data_dict["ESP (%)"]))
+                    imported_count += 1
+                except ValueError:
+                    pass
+            
             QMessageBox.information(
                 self,
-                "Success",
-                f"Data imported from:\n{filename}"
+                "Import Successful",
+                f"Data imported from:\n{os.path.basename(filename)}\n\n"
+                f"{imported_count} fields populated successfully!"
             )
+            
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "❌ Import Error",
+                f"Could not import data from Excel:\n{str(e)}"
+            )
+
 
     def export_excel(self):
         """Export current form data to Excel"""
         filename, _ = QFileDialog.getSaveFileName(
             self,
             "Export Excel File",
-            "soilwise_data.xlsx",
+            f"SoilWise_Data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
             "Excel Files (*.xlsx)"
         )
-        if filename:
+        
+        if not filename:
+            return
+        
+        try:
+            # Collect current form data
+            data = self.collect_form_data()
+            
+            # Create workbook
+            wb = openpyxl.Workbook()
+            ws = wb.active
+            ws.title = "Soil Data"
+            
+            # Define styles
+            header_fill = PatternFill(start_color="7d9d7f", end_color="7d9d7f", fill_type="solid")
+            header_font = Font(bold=True, color="FFFFFF", size=12)
+            section_fill = PatternFill(start_color="e8f3e8", end_color="e8f3e8", fill_type="solid")
+            section_font = Font(bold=True, size=11, color="3d5a3f")
+            border = Border(
+                left=Side(style='thin', color='d4e4d4'),
+                right=Side(style='thin', color='d4e4d4'),
+                top=Side(style='thin', color='d4e4d4'),
+                bottom=Side(style='thin', color='d4e4d4')
+            )
+            
+            # Set column widths
+            ws.column_dimensions['A'].width = 35
+            ws.column_dimensions['B'].width = 20
+            
+            row = 1
+            
+            # Title
+            ws.merge_cells(f'A{row}:B{row}')
+            title_cell = ws[f'A{row}']
+            title_cell.value = "SoilWise - Soil Data Export"
+            title_cell.font = Font(bold=True, size=14, color="3d5a3f")
+            title_cell.alignment = Alignment(horizontal='center', vertical='center')
+            row += 1
+            
+            # Export date
+            ws.merge_cells(f'A{row}:B{row}')
+            ws[f'A{row}'] = f"Exported: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+            ws[f'A{row}'].font = Font(italic=True, size=9)
+            ws[f'A{row}'].alignment = Alignment(horizontal='center')
+            row += 2
+            
+            # Helper function
+            def add_section(title, items):
+                nonlocal row
+                # Section header
+                ws.merge_cells(f'A{row}:B{row}')
+                section_cell = ws[f'A{row}']
+                section_cell.value = title
+                section_cell.fill = section_fill
+                section_cell.font = section_font
+                section_cell.border = border
+                row += 1
+                
+                # Column headers
+                ws[f'A{row}'] = "PARAMETER"
+                ws[f'B{row}'] = "VALUE"
+                for col in ['A', 'B']:
+                    cell = ws[f'{col}{row}']
+                    cell.fill = header_fill
+                    cell.font = header_font
+                    cell.alignment = Alignment(horizontal='center', vertical='center')
+                    cell.border = border
+                row += 1
+                
+                # Add items
+                for param, value in items:
+                    ws[f'A{row}'] = param
+                    ws[f'B{row}'] = value
+                    for col in ['A', 'B']:
+                        ws[f'{col}{row}'].border = border
+                    row += 1
+                row += 1
+            
+            # CROP
+            add_section("🌾 CROP SELECTION", [
+                ("Crop Name", self.crop_input.currentText()),
+                ("Season", self.season_input.currentText() if self.season_input.isVisible() else "N/A")
+            ])
+            
+            # LOCATION
+            add_section("📍 LOCATION", [
+                ("Site Name", self.site_input.text() or "N/A")
+            ])
+            
+            # CLIMATE
+            add_section("☁️ CLIMATE CHARACTERISTICS", [
+                ("Average Temperature (°C)", data.get('temperature', 0)),
+                ("Annual Rainfall (mm)", data.get('rainfall', 0)),
+                ("Humidity (%)", data.get('humidity', 0))
+            ])
+            
+            # TOPOGRAPHY
+            add_section("⛰️ TOPOGRAPHY", [
+                ("Slope (%)", data.get('slope', 0))
+            ])
+            
+            # WETNESS
+            add_section("💧 WETNESS", [
+                ("Flooding", data.get('flooding', 'N/A')),
+                ("Drainage", data.get('drainage', 'N/A'))
+            ])
+            
+            # PHYSICAL SOIL
+            add_section("🏔️ PHYSICAL SOIL CHARACTERISTICS", [
+                ("Texture", data.get('texture', 'N/A')),
+                ("Coarse Fragments (vol%)", data.get('coarse_fragments', 0)),
+                ("Soil Depth (cm)", data.get('soil_depth', 0)),
+                ("CaCO₃ (%)", data.get('caco3', 0)),
+                ("Gypsum (%)", data.get('gypsum', 0))
+            ])
+            
+            # SOIL FERTILITY
+            add_section("🌱 SOIL FERTILITY CHARACTERISTICS", [
+                ("Apparent CEC (cmol/kg clay)", data.get('cec', 0)),
+                ("Sum of Basic Cations (cmol/kg)", data.get('sum_basic_cations', 0)),
+                ("Base Saturation (%)", data.get('base_saturation', 0)),
+                ("pH (H₂O)", data.get('ph', 0)),
+                ("Organic Carbon (%)", data.get('organic_carbon', 0))
+            ])
+            
+            # SALINITY & ALKALINITY
+            add_section("⚗️ SALINITY & ALKALINITY", [
+                ("ECe (dS/m)", data.get('ec', 0)),
+                ("ESP (%)", data.get('esp', 0))
+            ])
+            
+            # Save file
+            wb.save(filename)
+            
             QMessageBox.information(
                 self,
-                "Success",
-                f"Data exported to:\n{filename}"
+                "Export Successful",
+                f"Data exported successfully!\n\n"
+                f"Saved to:\n{filename}"
+            )
+            
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Export Error",
+                f"Could not export data to Excel:\n{str(e)}"
             )
 
+
     def download_template(self):
-        """Download Excel template"""
+        """Generate and download Excel template with all input fields"""
         filename, _ = QFileDialog.getSaveFileName(
             self,
             "Save Template",
-            "soilwise_template.xlsx",
+            "SoilWise_Template.xlsx",
             "Excel Files (*.xlsx)"
         )
-        if filename:
+        
+        if not filename:
+            return
+        
+        try:
+            # Create workbook
+            wb = openpyxl.Workbook()
+            ws = wb.active
+            ws.title = "Soil Data Input"
+            
+            # Define styles
+            header_fill = PatternFill(start_color="7d9d7f", end_color="7d9d7f", fill_type="solid")
+            header_font = Font(bold=True, color="FFFFFF", size=12)
+            section_fill = PatternFill(start_color="e8f3e8", end_color="e8f3e8", fill_type="solid")
+            section_font = Font(bold=True, size=11, color="3d5a3f")
+            border = Border(
+                left=Side(style='thin', color='d4e4d4'),
+                right=Side(style='thin', color='d4e4d4'),
+                top=Side(style='thin', color='d4e4d4'),
+                bottom=Side(style='thin', color='d4e4d4')
+            )
+            
+            # Set column widths
+            ws.column_dimensions['A'].width = 35
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 50
+            
+            row = 1
+            
+            # Title
+            ws.merge_cells(f'A{row}:C{row}')
+            title_cell = ws[f'A{row}']
+            title_cell.value = "SoilWise - Soil Data Input Template"
+            title_cell.font = Font(bold=True, size=14, color="3d5a3f")
+            title_cell.alignment = Alignment(horizontal='center', vertical='center')
+            row += 2
+            
+            # Instructions
+            ws.merge_cells(f'A{row}:C{row}')
+            ws[f'A{row}'] = "Instructions: Fill in the VALUE column with your data. Do not modify the PARAMETER column."
+            ws[f'A{row}'].font = Font(italic=True, size=10)
+            row += 2
+            
+            # Helper function to add section
+            def add_section(title, fields):
+                nonlocal row
+                # Section header
+                ws.merge_cells(f'A{row}:C{row}')
+                section_cell = ws[f'A{row}']
+                section_cell.value = title
+                section_cell.fill = section_fill
+                section_cell.font = section_font
+                section_cell.alignment = Alignment(horizontal='left', vertical='center')
+                section_cell.border = border
+                row += 1
+                
+                # Column headers
+                ws[f'A{row}'] = "PARAMETER"
+                ws[f'B{row}'] = "VALUE"
+                ws[f'C{row}'] = "NOTES / OPTIONS"
+                for col in ['A', 'B', 'C']:
+                    cell = ws[f'{col}{row}']
+                    cell.fill = header_fill
+                    cell.font = header_font
+                    cell.alignment = Alignment(horizontal='center', vertical='center')
+                    cell.border = border
+                row += 1
+                
+                # Add fields
+                for param, note in fields:
+                    ws[f'A{row}'] = param
+                    ws[f'B{row}'] = ""
+                    ws[f'C{row}'] = note
+                    for col in ['A', 'B', 'C']:
+                        ws[f'{col}{row}'].border = border
+                    ws[f'A{row}'].alignment = Alignment(horizontal='left', vertical='center')
+                    ws[f'C{row}'].font = Font(size=9, italic=True)
+                    row += 1
+                row += 1
+            
+            # CROP SELECTION
+            add_section("CROP SELECTION", [
+                ("Crop Name", "Select: Arabica Coffee, Banana, Cabbage, Carrots, Cocoa, etc."),
+                ("Season (if applicable)", "For seasonal crops: january_april, may_august, september_december")
+            ])
+            
+            # LOCATION
+            add_section("LOCATION", [
+                ("Site Name", "Example: Farm Area A, Plot 123")
+            ])
+            
+            # CLIMATE
+            add_section("CLIMATE CHARACTERISTICS", [
+                ("Average Temperature (°C)", "Range: 0-50°C"),
+                ("Annual Rainfall (mm)", "Range: 0-5000 mm"),
+                ("Humidity (%)", "Range: 0-100%")
+            ])
+            
+            # TOPOGRAPHY
+            add_section("TOPOGRAPHY", [
+                ("Slope (%)", "Range: 0-100%")
+            ])
+            
+            # WETNESS
+            add_section("WETNESS", [
+                ("Flooding", "Codes: Fo, F1, F2, F3, F1+"),
+                ("Drainage", "Codes: good, good_gw_over_150, moderate, imperfect, poor, etc.")
+            ])
+            
+            # PHYSICAL SOIL
+            add_section("PHYSICAL SOIL CHARACTERISTICS", [
+                ("Texture", "Codes: C, CL, L, S, SC, SCL, SL, SiC, SiCL, etc."),
+                ("Coarse Fragments (vol%)", "Range: 0-100%"),
+                ("Soil Depth (cm)", "Range: 0-300 cm"),
+                ("CaCO₃ (%)", "Range: 0-100%"),
+                ("Gypsum (%)", "Range: 0-100%")
+            ])
+            
+            # SOIL FERTILITY
+            add_section("SOIL FERTILITY CHARACTERISTICS", [
+                ("Apparent CEC (cmol/kg clay)", "Range: 0-200"),
+                ("Sum of Basic Cations (cmol/kg)", "Range: 0-100"),
+                ("Base Saturation (%)", "Range: 0-100%"),
+                ("pH (H₂O)", "Range: 0-14"),
+                ("Organic Carbon (%)", "Range: 0-10%")
+            ])
+            
+            # SALINITY & ALKALINITY
+            add_section("SALINITY & ALKALINITY", [
+                ("ECe (dS/m)", "Range: 0-20"),
+                ("ESP (%)", "Range: 0-100%")
+            ])
+            
+            # Save file
+            wb.save(filename)
+            
             QMessageBox.information(
                 self,
                 "Success",
@@ -1315,6 +1972,14 @@ class InputPage(QWidget):
                 f"Saved to: {filename}\n\n"
                 f"Fill in your data and import it back using 'Import Excel' button."
             )
+            
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"Could not create template:\n{str(e)}"
+            )
+
 
 
 if __name__ == "__main__":

@@ -1,185 +1,225 @@
 {
   "crop_name": "Cocoa",
   "scientific_name": "Theobroma cacao L.",
-  "requirements": {
-    "climate": {
-      "temperature": {
-        "mean_annual": {
-          "s1_min": 26,
-          "s1_max": 25,
-          "s2_min": 25,
-          "s2_max": 23,
-          "s3_min": 23,
-          "s3_max": 22,
-          "unit": "°C"
-        },
-        "mean_annual_max": {
-          "s1_max": 28,
-          "s2_min": 28,
-          "s2_max": 30,
-          "s3_min": 30,
-          "unit": "°C"
-        },
-        "mean_annual_min": {
-          "s1_min": 20,
-          "s2_min": 20,
-          "s2_max": 15,
-          "s3_min": 15,
-          "s3_max": 13,
-          "unit": "°C"
-        }
-      },
-      "rainfall": {
-        "annual": {
-          "s1_min": 1900,
-          "s1_max": 1800,
-          "s2_min": 1800,
-          "s2_max": 1600,
-          "s3_min": 1600,
-          "s3_max": 1400,
-          "unit": "mm"
-        },
-        "dry_season_length": {
-          "s1_max": 1,
-          "s2_min": 1,
-          "s2_max": 2,
-          "s3_min": 2,
-          "s3_max": 3,
-          "unit": "months P < 1/2PET"
-        }
-      },
-      "relative_humidity": {
-        "driest_month": {
-          "s1_min": 55,
-          "s1_max": 45,
-          "s2_min": 45,
-          "s2_max": 40,
-          "s3_min": 40,
-          "s3_max": 35,
-          "unit": "%"
-        }
-      }
+  "seasonal": false,
+  
+  "climate_requirements": {
+    "annual_precipitation_mm": {
+      "S1_0": {"range": [1900, 2000], "rating": 1.0},
+      "S1_1": {"range": [1800, 1899], "rating": 0.95},
+      "S2_low": {"range": [1600, 1799], "rating": 0.85},
+      "S2_high": {"range": [2001, 2500], "rating": 0.85},
+      "S3_low": {"range": [1400, 1599], "rating": 0.6},
+      "S3_high": {"range": [2501, 3700], "rating": 0.6},
+      "N1": {"range": [3701, 4400], "rating": 0.4},
+      "N2_low": {"range": [null, 1199], "rating": 0.25},
+      "N2_high": {"range": [4401, null], "rating": 0.25}
     },
-    "soil": {
-      "ph": {
-        "s1_min": 6.4,
-        "s1_max": 6.2,
-        "s2_min": 6.2,
-        "s2_max": 6.0,
-        "s3_min": 6.0,
-        "s3_max": 5.5,
-        "n1_max": 5.0
-      },
-      "texture": {
-        "s1": ["CxGOs", "Co", "SiCL", "CL"],
-        "s2": ["CxGOs", "L", "SC"],
-        "s3": ["SCL", "CxGv", "LfS", "SL"]
-      },
-      "drainage": {
-        "s1": "good/groundwater > 150cm",
-        "s2": "good/groundwater 100-150cm",
-        "s3": "moderate",
-        "n1": "poor",
-        "n2": "F2+ very poor"
-      },
-      "coarse_fragments": {
-        "s1_max": 3,
-        "s2_min": 3,
-        "s2_max": 15,
-        "s3_min": 15,
-        "s3_max": 35,
-        "unit": "vol%"
-      },
-      "depth": {
-        "s1_min": 200,
-        "s2_min": 200,
-        "s2_max": 150,
-        "s3_min": 150,
-        "s3_max": 100,
-        "unit": "cm"
-      },
-      "cec": {
-        "s1_min": 24,
-        "s2_min": 24,
-        "s2_max": 16,
-        "s3_max": 16,
-        "unit": "cmol(+)/kg clay"
-      },
-      "base_saturation": {
-        "s1_min": 50,
-        "s2_min": 50,
-        "s2_max": 35,
-        "s3_min": 35,
-        "s3_max": 20,
-        "unit": "%"
-      },
-      "sum_basic_cations": {
-        "s1_min": 6.5,
-        "s2_min": 6.5,
-        "s2_max": 4,
-        "s3_min": 4,
-        "s3_max": 2.8,
-        "unit": "cmol(+)/kg soil"
-      },
-      "ph_h2o": {
-        "s1_min": 6.4,
-        "s1_max": 6.2,
-        "s2_min": 6.2,
-        "s2_max": 6.0,
-        "s3_min": 6.0,
-        "s3_max": 5.5,
-        "n1_max": 5.0
-      },
-      "organic_carbon": {
-        "s1_min": 2.4,
-        "s2_min": 2.4,
-        "s2_max": 1.5,
-        "s3_min": 1.5,
-        "s3_max": 0.8,
-        "unit": "%"
-      },
-      "caco3": {
-        "s1_max": 1,
-        "s2_max": 5,
-        "s3_min": 5,
-        "s3_max": 10,
-        "unit": "%"
-      },
-      "gypsum": {
-        "s1_max": 0.5,
-        "s2_max": 2,
-        "s3_min": 2,
-        "s3_max": 3,
-        "unit": "%"
-      }
+    "mean_annual_temp_c": {
+      "S1_0": {"range": [25.0, 26.0], "rating": 1.0},
+      "S1_1": {"range": [26.1, 28.0], "rating": 0.95},
+      "S2_low": {"range": [23.0, 24.9], "rating": 0.85},
+      "S2_high": {"range": [28.1, 29.0], "rating": 0.85},
+      "S3_low": {"range": [22.0, 22.9], "rating": 0.6},
+      "S3_high": {"range": [29.1, 30.0], "rating": 0.6},
+      "N1_low": {"range": [21.0, 21.9], "rating": 0.4},
+      "N2_low": {"range": [null, 20.9], "rating": 0.25},
+      "N2_high": {"range": [30.1, null], "rating": 0.25}
     },
-    "topography": {
-      "slope": {
-        "s1_max": 1,
-        "s2_min": 1,
-        "s2_max": 2,
-        "s3_min": 2,
-        "s3_max": 4,
-        "unit": "%"
-      }
+    "mean_annual_max_temp_c": {
+      "S1_0": {"range": [null, 28.0], "rating": 1.0},
+      "S2": {"range": [28.1, 30.0], "rating": 0.85},
+      "S3": {"range": [30.1, 32.0], "rating": 0.6},
+      "N2": {"range": [32.1, null], "rating": 0.25}
     },
-    "salinity": {
-      "ece": {
-        "s1_max": 0.5,
-        "s2_min": 0.5,
-        "s2_max": 1.1,
-        "s3_min": 1.1,
-        "s3_max": 1.8,
-        "unit": "dS/m"
-      },
-      "esp": {
-        "s1_max": 5,
-        "s2_min": 5,
-        "s2_max": 10,
-        "s3_min": 10,
-        "s3_max": 15,
-        "unit": "%"
+    "mean_annual_min_temp_c": {
+      "S1_0": {"range": [20.0, null], "rating": 1.0},
+      "S2": {"range": [15.0, 19.9], "rating": 0.85},
+      "S3": {"range": [13.0, 14.9], "rating": 0.6},
+      "N1": {"range": [10.0, 12.9], "rating": 0.4},
+      "N2": {"range": [null, 9.9], "rating": 0.25}
+    },
+    "mean_relative_humidity_driest_month_pct": {
+      "S1_0": {"range": [55.0, 65.0], "rating": 1.0},
+      "S1_1": {"range": [45.0, 54.9], "rating": 0.95},
+      "S2_low": {"range": [40.0, 44.9], "rating": 0.85},
+      "S2_high": {"range": [65.1, 75.0], "rating": 0.85},
+      "S3_low": {"range": [35.0, 39.9], "rating": 0.6},
+      "S3_high": {"range": [75.1, 80.0], "rating": 0.6},
+      "N2_low": {"range": [null, 34.9], "rating": 0.25},
+      "N2_high": {"range": [80.1, null], "rating": 0.25}
+    },
+    "dry_season_length_months": {
+      "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
+      "S1_1": {"range": [1.1, 2.0], "rating": 0.95},
+      "S2": {"range": [2.1, 3.0], "rating": 0.85},
+      "S3": {"range": [3.1, 4.0], "rating": 0.6},
+      "N2": {"range": [4.1, null], "rating": 0.25}
+    }
+  },
+  
+  "topography_requirements": {
+    "slope_pct": {
+      "level1": {
+        "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
+        "S1_1": {"range": [1.1, 2.0], "rating": 0.95},
+        "S2": {"range": [2.1, 4.0], "rating": 0.85},
+        "S3": {"range": [4.1, 6.0], "rating": 0.6},
+        "N1": {"range": [6.1, 16.0], "rating": 0.4},
+        "N2": {"range": [16.1, null], "rating": 0.25}
       }
     }
+  },
+  
+    "wetness_requirements": {
+    "flooding": {
+      "S1_0": {
+        "values": ["Fo"],
+        "rating": 1.0
+      },
+      "S2": {
+        "values": ["F1"],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": ["F2"],
+        "rating": 0.6
+      },
+      "N2": {
+        "values": ["F3", "F2+", "F3+"],
+        "rating": 0.25
+      }
+    },
+    "drainage": {
+      "S1_0": {
+        "values": ["good"],
+        "rating": 1.0
+      },
+      "S1_1": {
+        "values": ["good_gw_over_150"],
+        "rating": 0.95
+      },
+      "S2": {
+        "values": ["moderate", "good_gw_100_150"],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": ["imperfect"],
+        "rating": 0.6
+      },
+      "N1": {
+        "values": ["poor"],
+        "rating": 0.4
+      },
+      "N2": {
+        "values": ["very_poor", "poor_not_drainable"],
+        "rating": 0.25
+      }
+    }
+  },
+  
+  "physical_soil_requirements": {
+    "texture": {
+      "S1_0": {"values": ["CxGOv", "Co", "SiCL", "CL"], "rating": 1.0},
+      "S1_1": {"values": ["C", "SiC"], "rating": 0.95},
+      "S2": {"values": ["L", "SC", "CL"], "rating": 0.85},
+      "S3": {"values": ["SCL", "CxGv", "LfS", "SL"], "rating": 0.6},
+      "N2": {"values": ["Cm", "SiCm", "cS", "S"], "rating": 0.25}
+    },
+    "coarse_fragments_pct": {
+      "S1_0": {"range": [0.0, 3.0], "rating": 1.0},
+      "S1_1": {"range": [3.1, 15.0], "rating": 0.95},
+      "S2": {"range": [15.1, 35.0], "rating": 0.85},
+      "S3": {"range": [35.1, 55.0], "rating": 0.6},
+      "N2": {"range": [55.1, null], "rating": 0.25}
+    },
+    "soil_depth_cm": {
+      "S1_0": {"range": [200.0, null], "rating": 1.0},
+      "S1_1": {"range": [150.0, 199.9], "rating": 0.95},
+      "S2": {"range": [100.0, 149.9], "rating": 0.85},
+      "S3": {"range": [50.0, 99.9], "rating": 0.6},
+      "N2": {"range": [null, 49.9], "rating": 0.25}
+    },
+    "caco3_pct": {
+      "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
+      "S1_1": {"range": [1.1, 5.0], "rating": 0.95},
+      "S2": {"range": [5.1, 10.0], "rating": 0.85},
+      "S3": {"range": [10.1, 15.0], "rating": 0.6},
+      "N2": {"range": [15.1, null], "rating": 0.25}
+    },
+    "gypsum_pct": {
+      "S1_0": {"range": [0.0, 0.5], "rating": 1.0},
+      "S1_1": {"range": [0.6, 2.0], "rating": 0.95},
+      "S2": {"range": [2.1, 3.0], "rating": 0.85},
+      "S3": {"range": [3.1, 4.0], "rating": 0.6},
+      "N2": {"range": [4.1, null], "rating": 0.25}
+    }
+  },
+  
+  "soil_fertility_requirements": {
+    "apparent_cec_cmol_kg_clay": {
+      "S1_0": {"range": [24.0, null], "rating": 1.0},
+      "S1_1": {"range": [16.0, 23.9], "rating": 0.95},
+      "S3": {"range": [null, 15.9], "rating": 0.6}
+    },
+    "base_saturation_pct": {
+      "S1_0": {"range": [50.0, null], "rating": 1.0},
+      "S1_1": {"range": [35.0, 49.9], "rating": 0.95},
+      "S2": {"range": [20.0, 34.9], "rating": 0.85},
+      "N2": {"range": [null, 19.9], "rating": 0.25}
+    },
+    "sum_basic_cations_cmol_kg": {
+      "S1_0": {"range": [6.5, null], "rating": 1.0},
+      "S1_1": {"range": [4.0, 6.4], "rating": 0.95},
+      "S2": {"range": [2.8, 3.9], "rating": 0.85},
+      "S3": {"range": [1.6, 2.7], "rating": 0.6},
+      "N2": {"range": [null, 1.5], "rating": 0.25}
+    },
+    "ph_h2o": {
+      "S1_0": {"range": [6.2, 6.6], "rating": 1.0},
+      "S1_1": {"range": [6.0, 6.1], "rating": 0.95},
+      "S2_low": {"range": [5.5, 5.9], "rating": 0.85},
+      "S2_high": {"range": [6.7, 7.0], "rating": 0.85},
+      "S3_low": {"range": [5.0, 5.4], "rating": 0.6},
+      "S3_high": {"range": [7.1, 7.5], "rating": 0.6},
+      "N1": {"range": [4.5, 4.9], "rating": 0.4},
+      "N2_low": {"range": [null, 4.4], "rating": 0.25},
+      "N2_high": {"range": [7.6, null], "rating": 0.25}
+    },
+    "organic_carbon_pct": {
+      "S1_0": {"range": [2.4, null], "rating": 1.0},
+      "S1_1": {"range": [1.5, 2.3], "rating": 0.95},
+      "S2": {"range": [0.8, 1.4], "rating": 0.85},
+      "S3": {"range": [0.4, 0.7], "rating": 0.6},
+      "N2": {"range": [null, 0.3], "rating": 0.25}
+    }
+  },
+  
+  "salinity_alkalinity_requirements": {
+    "ece_ds_m": {
+      "S1_0": {"range": [0.0, 0.5], "rating": 1.0},
+      "S1_1": {"range": [0.6, 1.1], "rating": 0.95},
+      "S2": {"range": [1.2, 1.8], "rating": 0.85},
+      "S3": {"range": [1.9, 2.2], "rating": 0.6},
+      "N2": {"range": [2.3, null], "rating": 0.25}
+    },
+    "esp_pct": {
+      "S1_0": {"range": [0.0, 5.0], "rating": 1.0},
+      "S1_1": {"range": [5.1, 10.0], "rating": 0.95},
+      "S2": {"range": [10.1, 15.0], "rating": 0.85},
+      "S3": {"range": [15.1, 20.0], "rating": 0.6},
+      "N2": {"range": [20.1, null], "rating": 0.25}
+    }
+  },
+  
+  "notes": "Cocoa (Theobroma cacao L.) requirements based on Land Evaluation Book Part 3: Crop Requirements.",
+  
+  "rating_scale": {
+    "S1_0": 1.0,
+    "S1_1": 0.95,
+    "S2": 0.85,
+    "S3": 0.6,
+    "N1": 0.4,
+    "N2": 0.25
   }
 }

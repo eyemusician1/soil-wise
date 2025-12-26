@@ -1,6 +1,8 @@
 """
 SoilWise Crop Suitability Evaluator - ENHANCED VERSION
+
 Orchestrates the complete evaluation workflow using the Square Root Method
+
 Reference: Khiddir et al. 1986, FAO 1976, Sys et al. 1993
 """
 
@@ -49,12 +51,12 @@ class SuitabilityEvaluator:
     ) -> Dict:
         """
         Evaluate crop suitability for given soil data.
-
+        
         Args:
             soil_data: Dictionary containing soil and climate parameters.
             crop_name: Name of the crop to evaluate.
             season: Optional season for seasonal crops.
-
+            
         Returns:
             Dictionary containing comprehensive evaluation results.
             Always includes a 'soil_data' key so UI pages can reuse it.
@@ -72,12 +74,10 @@ class SuitabilityEvaluator:
             error_msg = f"Crop '{crop_name}' not found in knowledge base"
             logger.error(error_msg)
             raise ValueError(error_msg)
-
         logger.info("✓ Crop data loaded successfully")
 
         # Check if crop is seasonal and season is provided
         is_seasonal = crop_data.get("seasonal", False)
-        
         if is_seasonal and not season:
             available_seasons = list(crop_data.get("seasons", {}).keys())
             error_msg = (
@@ -86,7 +86,7 @@ class SuitabilityEvaluator:
             )
             logger.error(error_msg)
             raise ValueError(error_msg)
-        
+
         # Validate season exists for seasonal crops
         if is_seasonal and season:
             if season not in crop_data.get("seasons", {}):
@@ -104,7 +104,7 @@ class SuitabilityEvaluator:
         logger.info("INPUT SOIL/CLIMATE DATA")
         logger.info("-" * 100)
         for key, value in sorted(soil_data.items()):
-            logger.info("  %-30s = %s", key, value)
+            logger.info("   %-30s = %s", key, value)
         logger.info("-" * 100)
 
         # Perform evaluation using rules engine
@@ -122,7 +122,7 @@ class SuitabilityEvaluator:
         logger.info("\n" + "=" * 100)
         logger.info("EVALUATION COMPLETED SUCCESSFULLY")
         logger.info("=" * 100 + "\n")
-
+        
         return enriched_result
 
     def evaluate_multiple_crops(
@@ -133,12 +133,12 @@ class SuitabilityEvaluator:
     ) -> List[Dict]:
         """
         Evaluate suitability for multiple crops.
-
+        
         Args:
             soil_data: Dictionary containing soil and climate parameters.
             crop_names: List of crop names to evaluate. If None, evaluates all crops.
             season: Optional season for seasonal crops.
-
+            
         Returns:
             List of evaluation result dictionaries, sorted by LSI (descending).
         """
@@ -157,20 +157,19 @@ class SuitabilityEvaluator:
 
         for i, crop_name in enumerate(crop_names, 1):
             logger.info("\n[%d/%d] Evaluating %s...", i, len(crop_names), crop_name)
-            
             try:
                 result = self.evaluate_suitability(soil_data, crop_name, season)
                 results.append(result)
                 success_count += 1
                 logger.info(
-                    "  ✓ %s: LSI = %.2f, Class = %s",
+                    "   ✓ %s: LSI = %.2f, Class = %s",
                     crop_name,
                     result["lsi"],
                     result["full_classification"],
                 )
             except Exception as e:
                 failure_count += 1
-                logger.error("  ✗ Failed to evaluate %s: %s", crop_name, str(e))
+                logger.error("   ✗ Failed to evaluate %s: %s", crop_name, str(e))
                 continue
 
         # Sort by LSI (descending)
@@ -181,18 +180,18 @@ class SuitabilityEvaluator:
         logger.info("=" * 100)
         logger.info("Successfully evaluated: %d/%d", success_count, len(crop_names))
         logger.info("Failed evaluations: %d/%d", failure_count, len(crop_names))
-
+        
         if results:
             logger.info("\nTop 3 Most Suitable Crops:")
             for i, result in enumerate(results[:3], 1):
                 logger.info(
-                    "  %d. %s: LSI = %.2f, Class = %s",
+                    "   %d. %s: LSI = %.2f, Class = %s",
                     i,
                     result["crop_name"],
                     result["lsi"],
                     result["full_classification"],
                 )
-
+        
         logger.info("=" * 100 + "\n")
         return results
 
@@ -213,40 +212,38 @@ class SuitabilityEvaluator:
         Also attaches soil_data and metadata for UI reuse.
         """
         logger.debug("Enriching evaluation result...")
-
         enriched = evaluation_result.copy()
-
+        
         # Attach original inputs so UI pages can reuse them
         enriched["soil_data"] = soil_data
         enriched["crop_name"] = enriched.get("crop_name", crop_name)
-        
         if season is not None:
             enriched["season"] = season
-
+        
         # Add scientific name
         enriched["scientific_name"] = crop_data.get("scientific_name", "N/A")
-
+        
         # Add detailed limiting factors
         enriched["limiting_factors_detailed"] = self._get_limiting_factors_details(
             evaluation_result.get("parameter_ratings", {}),
             soil_data,
         )
-
+        
         # Generate recommendations
         enriched["recommendations"] = self._generate_recommendations(
             evaluation_result,
             soil_data,
         )
-
+        
         # Add interpretation
         enriched["interpretation"] = self._get_interpretation(
             evaluation_result["lsc"],
             evaluation_result["lsi"],
         )
-
+        
         # Add notes from crop data
         enriched["notes"] = crop_data.get("notes", "")
-
+        
         logger.debug("Evaluation result enriched successfully")
         return enriched
 
@@ -257,24 +254,25 @@ class SuitabilityEvaluator:
     ) -> List[Dict]:
         """
         Get detailed information about limiting factors.
+        
         ✅ If all ratings are perfect (>= 1.0), no limiting factors are returned.
         """
         if not parameter_ratings:
             return []
-
+        
         # Find minimum rating
         min_rating = min(r[0] for r in parameter_ratings.values())
-
+        
         # If all ratings are perfect
         if min_rating >= 1.0:
             logger.info(
                 "✅ No limiting factors - all parameters are highly suitable (S1)"
             )
             return []
-
+        
         limiting_details: List[Dict] = []
         threshold = 0.001  # Tolerance for floating-point comparison
-
+        
         for param_name, (rating, classification, subclass) in parameter_ratings.items():
             if abs(rating - min_rating) < threshold:
                 actual_value = soil_data.get(param_name, "N/A")
@@ -289,7 +287,7 @@ class SuitabilityEvaluator:
                         "category": self._get_category_name(subclass),
                     }
                 )
-
+        
         logger.info("Identified %d limiting factor(s)", len(limiting_details))
         return limiting_details
 
@@ -343,14 +341,15 @@ class SuitabilityEvaluator:
     ) -> List[str]:
         """
         Generate agronomic recommendations based on evaluation results.
+        
         ✅ Special handling for S1 with no limiting factors.
         """
         logger.debug("Generating recommendations...")
         recommendations: List[str] = []
-
+        
         lsc = evaluation_result["lsc"]
         limiting_factors = evaluation_result.get("limiting_factors", "")
-
+        
         # Special case for perfect suitability
         if lsc == "S1" and not limiting_factors:
             recommendations.append(
@@ -360,7 +359,7 @@ class SuitabilityEvaluator:
             )
             logger.info("Generated %d recommendation(s)", len(recommendations))
             return recommendations
-
+        
         # General suitability recommendation
         if lsc == "S1":
             recommendations.append(
@@ -382,42 +381,42 @@ class SuitabilityEvaluator:
                 "✗ This crop is not suitable for the given conditions. "
                 "Strongly recommend selecting alternative crops."
             )
-
+        
         # Specific recommendations based on limiting factor groups
         if "f" in limiting_factors:
             recommendations.extend(self._get_fertility_recommendations(soil_data))
-
+        
         if "c" in limiting_factors:
             recommendations.append(
                 "• Climate conditions are limiting. Consider protected cultivation "
                 "or select more climate-adapted varieties."
             )
-
+        
         if "w" in limiting_factors:
             recommendations.extend(self._get_drainage_recommendations(soil_data))
-
+        
         if "s" in limiting_factors:
             recommendations.extend(self._get_physical_soil_recommendations(soil_data))
-
+        
         if "t" in limiting_factors:
             recommendations.append(
                 "• Slope is limiting. Implement soil conservation measures "
                 "such as terracing or contour farming."
             )
-
+        
         if "n" in limiting_factors:
             recommendations.append(
                 "• Salinity/alkalinity is limiting. Consider leaching, "
                 "gypsum application, or salt-tolerant varieties."
             )
-
+        
         logger.info("Generated %d recommendation(s)", len(recommendations))
         return recommendations
 
     def _get_fertility_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate fertility-specific recommendations."""
         recommendations: List[str] = []
-
+        
         ph = soil_data.get("ph")
         if ph is not None:
             if ph < 5.5:
@@ -430,10 +429,9 @@ class SuitabilityEvaluator:
                     f"• Soil is alkaline (pH {ph:.2f}). Consider sulfur "
                     "application to lower pH."
                 )
-
+        
         oc = soil_data.get("organic_carbon")
         om = soil_data.get("organic_matter")
-
         if oc is not None and oc < 1.5:
             recommendations.append(
                 f"• Organic carbon is low ({oc:.2f}%). Incorporate compost, "
@@ -444,33 +442,33 @@ class SuitabilityEvaluator:
                 f"• Organic matter is low ({om:.2f}%). Incorporate compost, "
                 "manure, or green manure to improve soil health."
             )
-
+        
         return recommendations
 
     def _get_drainage_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate drainage-specific recommendations."""
         recommendations: List[str] = []
-
+        
         drainage = soil_data.get("drainage")
         if drainage in ["poor", "poor_not_drainable"]:
             recommendations.append(
                 "• Poor drainage detected. Install drainage systems or "
                 "raise beds to improve water management."
             )
-
+        
         flooding = soil_data.get("flooding")
         if flooding and flooding != "Fo":
             recommendations.append(
                 "• Flooding risk present. Implement flood protection measures "
                 "or select flood-tolerant varieties."
             )
-
+        
         return recommendations
 
     def _get_physical_soil_recommendations(self, soil_data: Dict) -> List[str]:
         """Generate physical soil recommendations."""
         recommendations: List[str] = []
-
+        
         texture = soil_data.get("texture")
         if texture in ["S", "LS", "fS"]:
             recommendations.append(
@@ -482,14 +480,14 @@ class SuitabilityEvaluator:
                 "• Heavy clay texture limits drainage and root penetration. "
                 "Add organic matter and practice deep tillage to improve structure."
             )
-
+        
         depth = soil_data.get("soil_depth")
         if depth is not None and depth < 50:
             recommendations.append(
                 f"• Shallow soil depth ({depth} cm) limits root growth. "
                 "Consider raised beds or select shallow-rooted crops."
             )
-
+        
         return recommendations
 
     def _get_interpretation(self, lsc: str, lsi: float) -> str:
@@ -533,7 +531,7 @@ class SuitabilityEvaluator:
         crop_data = self.crop_rules.get_crop_requirements(crop_name)
         if not crop_data:
             return None
-
+        
         return {
             "name": crop_data.get("crop_name"),
             "scientific_name": crop_data.get("scientific_name"),
