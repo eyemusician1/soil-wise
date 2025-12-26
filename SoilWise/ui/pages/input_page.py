@@ -446,16 +446,27 @@ class InputPage(QWidget):
         grid.setSpacing(20)
         grid.setColumnStretch(1, 1)
         
-        site_label = QLabel("Site Name:")
+        site_label = QLabel("Site Name (Barangay):")
         site_label.setFont(QFont("Segoe UI", 13, QFont.DemiBold))
         site_label.setStyleSheet("color: #4a6a4c;")
         grid.addWidget(site_label, 0, 0)
         
-        self.site_input = QLineEdit()
-        self.site_input.setPlaceholderText("e.g., Farm Area A")
+        self.site_input = QComboBox()
+        self.site_input.addItems([
+            "Select barangay...",
+            "Aposong", "Bagoaingud", "Bangco (Pob.)", "Bansayan",
+            "Basak", "Bobo", "Bualan", "Bubong Ilian",
+            "Bubong Tawa-an", "Bubonga Mamaanun", "Gacap", "Ilian",
+            "Ilian Poblacion", "Kalanganan", "Katumbacan", "Lininding",
+            "Lumbaca Mamaan", "Mamaanun", "Mentring", "Olango",
+            "Palacat", "Palao", "Paling", "Pantaon", "Pantar",
+            "Paridi", "Pindolonan", "Radapan", "Radapan Poblacion",
+            "Rantian", "Sapingit", "Talao", "Tambo", "Tapocan",
+            "Taporug", "Tawaan", "Udalo"
+        ])
         self.site_input.setMinimumHeight(44)
         self.site_input.setStyleSheet("""
-            QLineEdit {
+            QComboBox {
                 background: #f9fbf9;
                 border: 2px solid #e0ede0;
                 border-radius: 8px;
@@ -463,9 +474,21 @@ class InputPage(QWidget):
                 font-size: 14px;
                 color: #3d5a3f;
             }
-            QLineEdit:focus {
+            QComboBox:focus {
                 border-color: #7d9d7f;
                 background: white;
+            }
+            QComboBox::drop-down {
+                border: none;
+                width: 30px;
+            }
+            QComboBox::down-arrow {
+                image: none;
+                border: 5px solid transparent;
+                border-top: 6px solid #3d5a3f;
+                width: 0;
+                height: 0;
+                margin-right: 8px;
             }
         """)
         grid.addWidget(self.site_input, 0, 1)
@@ -921,7 +944,10 @@ class InputPage(QWidget):
 
         # Clear location text if present
         if hasattr(self, "site_input"):
-            self.site_input.clear()
+            if isinstance(self.site_input, QComboBox):
+                self.site_input.setCurrentIndex(0)
+            else:
+                self.site_input.clear()
 
         # Reset soil–crop association
         self.current_soil_crop = None
@@ -1333,6 +1359,16 @@ class InputPage(QWidget):
             self.current_soil_crop = crop_name
             
             self.show_results_summary(result)
+            
+              # Add site_name to results for map highlighting
+            selected_site = self.site_input.currentText().strip()  # ✅ FIXED: Use .currentText() for QComboBox
+            if selected_site and selected_site != "Select barangay...":
+                result['site_name'] = selected_site
+                print(f"✅ Passing site_name to reports: '{selected_site}'")
+            else:
+                result['site_name'] = ''
+                print("⚠️ No site name entered")
+            
             self.evaluation_complete.emit(result)
             
             print("\n✅ Evaluation completed successfully")
@@ -1508,8 +1544,16 @@ class InputPage(QWidget):
             
             # LOCATION
             if "Site Name" in data_dict:
-                self.site_input.setText(data_dict["Site Name"])
-                imported_count += 1
+                site_value = data_dict["Site Name"]
+                if isinstance(self.site_input, QComboBox):
+                    for i in range(self.site_input.count()):
+                        if self.site_input.itemText(i) == site_value:
+                            self.site_input.setCurrentIndex(i)
+                            imported_count += 1
+                            break
+                else:
+                    self.site_input.setText(site_value)
+                    imported_count += 1
             
             # CLIMATE
             if "Average Temperature (°C)" in data_dict or "Average Temperature (C)" in data_dict:
@@ -1758,7 +1802,7 @@ class InputPage(QWidget):
             
             # LOCATION
             add_section("📍 LOCATION", [
-                ("Site Name", self.site_input.text() or "N/A")
+                ("Site Name", self.site_input.text().strip() if isinstance(self.site_input, QComboBox) else (self.site_input.text() or "N/A"))
             ])
             
             # CLIMATE

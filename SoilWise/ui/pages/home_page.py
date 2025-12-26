@@ -265,7 +265,7 @@ class HomePage(QWidget):
         container = QWidget()
         container.setStyleSheet("background: transparent;")
         layout = QVBoxLayout(container)
-        layout.setContentsMargins(40, 40, 40, 40)
+        layout.setContentsMargins(40, 0, 40, 40)
         layout.setSpacing(40)
         
         # Hero welcome section
@@ -290,165 +290,220 @@ class HomePage(QWidget):
         main_layout.addWidget(scroll)
     
     def create_hero_section(self):
-        """Create modern hero welcome section with minimalist design"""
+        """Create modern hero section with darkened background image and responsive text"""
+        from PySide6.QtGui import QPixmap, QPainter, QPainterPath, QBrush, QColor
+        from PySide6.QtCore import QRectF
+        from pathlib import Path
+        
+        # Main container
         card = QFrame()
+        card.setFixedHeight(380)
         card.setStyleSheet("""
             QFrame {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                        stop:0 #F5F3ED, stop:1 #E8F3E8);
-                border-radius: 24px;
+                background: #2d5a2e;
+                border-radius: 20px;
                 border: none;
             }
         """)
         
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(35)
+        shadow.setBlurRadius(45)
         shadow.setXOffset(0)
-        shadow.setYOffset(10)
-        shadow.setColor(QColor(0, 0, 0, 18))
+        shadow.setYOffset(0)  # ← Changed from 12 to 0
+        shadow.setColor(QColor(0, 0, 0, 25))
         card.setGraphicsEffect(shadow)
+
         
-        main_layout = QHBoxLayout(card)
+        # Main layout
+        main_layout = QVBoxLayout(card)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
         
-        # Left content section (60% width)
+        # ========== DARKENED IMAGE LABEL ==========
+        class DarkenedImageLabel(QLabel):
+            """Custom label that draws image with dark overlay"""
+            def __init__(self, radius=32, darkness=0.55, parent=None):
+                super().__init__(parent)
+                self.radius = radius
+                self.darkness = darkness  # 0.0 = no dark, 1.0 = fully dark
+                self._pixmap = None
+                
+            def setPixmapDarkened(self, pixmap):
+                self._pixmap = pixmap
+                self.update()
+                
+            def paintEvent(self, event):
+                if self._pixmap:
+                    painter = QPainter(self)
+                    painter.setRenderHint(QPainter.Antialiasing)
+                    painter.setRenderHint(QPainter.SmoothPixmapTransform)
+                    
+                    # Create rounded rectangle clip path
+                    path = QPainterPath()
+                    path.addRoundedRect(QRectF(self.rect()), self.radius, self.radius)
+                    painter.setClipPath(path)
+                    
+                    # Draw scaled pixmap
+                    scaled_pixmap = self._pixmap.scaled(
+                        self.size(),
+                        Qt.KeepAspectRatioByExpanding,
+                        Qt.SmoothTransformation
+                    )
+                    
+                    x = (self.width() - scaled_pixmap.width()) // 2
+                    y = (self.height() - scaled_pixmap.height()) // 2
+                    painter.drawPixmap(x, y, scaled_pixmap)
+                    
+                    # Draw dark overlay on top
+                    darkness_alpha = int(self.darkness * 255)
+                    overlay_color = QColor(0, 0, 0, darkness_alpha)
+                    painter.fillRect(self.rect(), overlay_color)
+                else:
+                    super().paintEvent(event)
+        
+        
+        # Create darkened image label (60% darkness)
+        bg_image = DarkenedImageLabel(radius=20, darkness=0.60, parent=card)
+        bg_image.setGeometry(0, 0, card.width(), card.height())
+        
+        # Load image
+        try:
+            base_dir = Path(__file__).parent.parent.parent.parent
+            image_path = base_dir / "SoilWise" / "assets" / "images" / "hero-background.jpeg"
+            
+            if image_path.exists():
+                pixmap = QPixmap(str(image_path))
+                if not pixmap.isNull():
+                    bg_image.setPixmapDarkened(pixmap)
+                    print(f"✅ Hero background loaded with darkening!")
+                else:
+                    bg_image.setStyleSheet("background: #3d6a3e; border-radius: 32px;")
+                    print(f"❌ Could not load pixmap")
+            else:
+                bg_image.setStyleSheet("background: #3d6a3e; border-radius: 32px;")
+                print(f"⚠️ Image not found")
+        except Exception as e:
+            bg_image.setStyleSheet("background: #3d6a3e; border-radius: 32px;")
+            print(f"❌ Error: {e}")
+        
+        bg_image.lower()  # Send to back
+        
+        # ========== CONTENT LAYER ==========
+        content_container = QWidget(card)
+        content_layout = QHBoxLayout(content_container)
+        content_layout.setContentsMargins(64, 64, 64, 64)
+        content_layout.setSpacing(40)
+        
+        # Left content section
         left_section = QWidget()
         left_section.setStyleSheet("background: transparent;")
         left_layout = QVBoxLayout(left_section)
-        left_layout.setContentsMargins(56, 56, 32, 56)
+        left_layout.setContentsMargins(0, 0, 0, 0)
         left_layout.setSpacing(20)
-        left_layout.setAlignment(Qt.AlignTop)
+        left_layout.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         
-        # Title
+        # Title - RESPONSIVE SIZING
         title = QLabel("Welcome to SoilWise!")
         title.setStyleSheet("""
-            color: #2d5a2e;
-            font-size: 46px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 56px;
+            color: #ffffff;
+            font-size: 44px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
             background: transparent;
+            line-height: 1.1;
         """)
         title.setAlignment(Qt.AlignLeft)
         title.setWordWrap(True)
         
-        # Description
+        # Text shadow for depth
+        title_shadow = QGraphicsDropShadowEffect()
+        title_shadow.setBlurRadius(25)
+        title_shadow.setXOffset(0)
+        title_shadow.setYOffset(4)
+        title_shadow.setColor(QColor(0, 0, 0, 120))
+        title.setGraphicsEffect(title_shadow)
+        
+        # Description - RESPONSIVE
         description = QLabel(
             "Intelligent crop suitability evaluation using advanced soil analysis "
             "and knowledge-based recommendations."
         )
         description.setWordWrap(True)
         description.setStyleSheet("""
-            color: #4a7a4b;
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 26px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 28px;
             background: transparent;
         """)
         
-        # Minimalist feature tags (no icons, clean text)
-        tags_layout = QHBoxLayout()
-        tags_layout.setSpacing(10)
-        tags_layout.setAlignment(Qt.AlignLeft)
+        desc_shadow = QGraphicsDropShadowEffect()
+        desc_shadow.setBlurRadius(20)
+        desc_shadow.setXOffset(0)
+        desc_shadow.setYOffset(3)
+        desc_shadow.setColor(QColor(0, 0, 0, 110))
+        description.setGraphicsEffect(desc_shadow)
         
-        feature_tags = [
-            ("Accurate", "#5a9d5e"),
-            ("Efficient", "#6eb172"),
-            ("Data-Driven", "#7fbc83")
-        ]
+        # Button
+        action_button = QPushButton("Get Started →")
+        action_button.setCursor(Qt.PointingHandCursor)
+        action_button.setFixedHeight(54)
+        action_button.setFixedWidth(180)
+        action_button.setStyleSheet("""
+            QPushButton {
+                background: rgba(255, 255, 255, 0.25);
+                color: white;
+                border: 2px solid rgba(255, 255, 255, 0.6);
+                border-radius: 27px;
+                font-size: 16px;
+                font-weight: 700;
+                padding: 14px 28px;
+            }
+            QPushButton:hover {
+                background: rgba(255, 255, 255, 0.35);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+            }
+            QPushButton:pressed {
+                background: rgba(255, 255, 255, 0.18);
+            }
+        """)
         
-        for text, color in feature_tags:
-            tag = QLabel(text)
-            tag.setStyleSheet(f"""
-                color: {color};
-                background: rgba(90, 157, 94, 0.12);
-                border: 1px solid {color}40;
-                border-radius: 6px;
-                padding: 6px 14px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: 0.3px;
-            """)
-            tags_layout.addWidget(tag)
-        
-        tags_layout.addStretch()
+        button_shadow = QGraphicsDropShadowEffect()
+        button_shadow.setBlurRadius(20)
+        button_shadow.setXOffset(0)
+        button_shadow.setYOffset(6)
+        button_shadow.setColor(QColor(0, 0, 0, 90))
+        action_button.setGraphicsEffect(button_shadow)
         
         left_layout.addWidget(title)
-        left_layout.addSpacing(8)
+        left_layout.addSpacing(6)
         left_layout.addWidget(description)
-        left_layout.addSpacing(20)
-        left_layout.addLayout(tags_layout)
+        left_layout.addSpacing(22)
+        left_layout.addWidget(action_button, 0, Qt.AlignLeft)
         left_layout.addStretch()
         
-        # Right section - Clean feature cards (40% width)
-        right_section = QWidget()
-        right_section.setStyleSheet("background: transparent;")
-        right_layout = QVBoxLayout(right_section)
-        right_layout.setContentsMargins(32, 56, 56, 56)
-        right_layout.setSpacing(16)
+        # Right spacer
+        right_spacer = QWidget()
+        right_spacer.setStyleSheet("background: transparent;")
         
-        # Minimalist feature cards
-        features_data = [
-            ("Knowledge Base", "Extensive agricultural data"),
-            ("Smart Analysis", "AI-powered recommendations"),
-            ("Real-time Results", "Instant evaluation")
-        ]
+        content_layout.addWidget(left_section, 7)
+        content_layout.addWidget(right_spacer, 3)
         
-        for title_text, desc in features_data:
-            feature_card = QFrame()
-            feature_card.setStyleSheet("""
-                QFrame {
-                    background: rgba(255, 255, 255, 0.75);
-                    border: none;
-                    border-radius: 10px;
-                    padding: 0px;
-                }
-                QFrame:hover {
-                    background: rgba(255, 255, 255, 0.95);
-                    border: 1px solid rgba(90, 157, 94, 0.3);
-                }
-            """)
-            
-            card_shadow = QGraphicsDropShadowEffect()
-            card_shadow.setBlurRadius(12)
-            card_shadow.setXOffset(0)
-            card_shadow.setYOffset(2)
-            card_shadow.setColor(QColor(0, 0, 0, 8))
-            feature_card.setGraphicsEffect(card_shadow)
-            
-            card_layout = QVBoxLayout(feature_card)
-            card_layout.setContentsMargins(20, 16, 20, 16)
-            card_layout.setSpacing(4)
-            
-            card_title = QLabel(title_text)
-            card_title.setStyleSheet("""
-                color: #2d5a2e;
-                font-size: 14px;
-                font-weight: 700;
-                background: transparent;
-            """)
-            
-            card_desc = QLabel(desc)
-            card_desc.setStyleSheet("""
-                color: #6a8a6c;
-                font-size: 11px;
-                font-weight: 500;
-                background: transparent;
-            """)
-            card_desc.setWordWrap(True)
-            
-            card_layout.addWidget(card_title)
-            card_layout.addWidget(card_desc)
-            
-            right_layout.addWidget(feature_card)
+        main_layout.addWidget(content_container)
+        content_container.raise_()  # Bring to front
         
-        right_layout.addStretch()
-        
-        main_layout.addWidget(left_section, 6)
-        main_layout.addWidget(right_section, 4)
+        # ========== RESIZE HANDLER ==========
+        def resizeEvent(event):
+            # Always resize background to fill the entire card
+            bg_image.setGeometry(0, 0, card.width(), card.height())
+            bg_image.update()
+            QFrame.resizeEvent(card, event)
+
+        card._bg_image = bg_image
+        card.resizeEvent = resizeEvent
         
         return card
+
 
     
     def create_section_header(self, title, subtitle):
@@ -518,7 +573,7 @@ class HomePage(QWidget):
         btn_reports.clicked.connect(self.navigate_to_reports.emit)
         grid.addWidget(btn_reports, 1, 0)
         
-        btn_kb = EnhancedActionButton("Browse Knowledge Base", "◐", secondary=True)
+        btn_kb = EnhancedActionButton("Evaluation History", "◐", secondary=True)
         btn_kb.clicked.connect(self.navigate_to_knowledge.emit)
         grid.addWidget(btn_kb, 1, 1)
         

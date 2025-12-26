@@ -16,6 +16,7 @@ from SoilWise.ui.pages.home_page import HomePage
 from SoilWise.ui.pages.input_page import InputPage
 from SoilWise.ui.pages.crop_evaluation_page import CropEvaluationPage
 from SoilWise.ui.pages.reports_page import ReportsPage
+from SoilWise.ui.pages.evaluation_history_page import EvaluationHistoryPage
 from SoilWise.config.constants import APP_NAME, APP_VERSION, LOCATION
 from SoilWise.utils.logger import setup_logger
 
@@ -193,11 +194,12 @@ class MainWindow(QMainWindow):
         sidebar.add_nav_button(self.btn_reports)
         self.nav_buttons.append(self.btn_reports)
 
-        # Knowledge Base
-        self.btn_knowledge = NavButton("◧", "Knowledge Base")
-        self.btn_knowledge.clicked.connect(lambda: self.change_page(4))
-        sidebar.add_nav_button(self.btn_knowledge)
-        self.nav_buttons.append(self.btn_knowledge)
+        # Use proper icon instead of emoji
+        self.btnhistory = NavButton("◷", "Evaluation History")  # Clock icon
+        self.btnhistory.clicked.connect(lambda: self.change_page(4))
+        sidebar.add_nav_button(self.btnhistory)
+        self.nav_buttons.append(self.btnhistory)
+
 
         # Footer
         footer = QLabel(f"v{APP_VERSION}\n{LOCATION}")
@@ -214,8 +216,8 @@ class MainWindow(QMainWindow):
         title_bar.setStyleSheet(
             """
             QFrame {
-                background-color: white;
-                border-bottom: 1px solid #e5e8e5;
+                background-color: none;
+                border-bottom: none;
             }
             """
         )
@@ -281,12 +283,10 @@ class MainWindow(QMainWindow):
         self.pages_stack.addWidget(reports_page)
 
 
-        # Knowledge Base placeholder
-        self.pages_stack.addWidget(
-            self.create_placeholder_page("Browse crop requirements")
-        )
-
-        logger.info("All pages created")
+        history_page = EvaluationHistoryPage()
+        history_page.view_report_requested.connect(self.on_view_report_from_history)
+        self.pages['history'] = history_page
+        self.pages_stack.addWidget(history_page)
 
     def create_placeholder_page(self, description: str) -> QWidget:
         """Create placeholder page"""
@@ -406,8 +406,8 @@ class MainWindow(QMainWindow):
             "Home",
             "Soil Data Input",
             "Crop Evaluation",
-            "Reports & Analysis",
-            "Knowledge Base",
+            "View Reports",
+            "Evaluation History",
         ]
         if 0 <= index < len(titles):
             self.page_title.setText(titles[index])
@@ -421,3 +421,9 @@ class MainWindow(QMainWindow):
         logger.info("Data saved event received: soil_id=%s", soil_id)
         if "home" in self.pages:
             self.pages["home"].update_statistics()
+
+    def on_view_report_from_history(self, eval_data: dict):
+        """Handle viewing a report from history"""
+        logger.info(f"View report requested for: {eval_data.get('crop_name')}")
+        # Navigate to reports page with this evaluation
+        self.change_page(3)

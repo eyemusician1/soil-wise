@@ -1,180 +1,257 @@
 """
 SoilWise/ui/widgets/collapsible_sidebar.py
-Collapsible sidebar with animation - Fixed Version
+Collapsible sidebar with navigation buttons - NO GUIDE LINES
 """
 
-from PySide6.QtWidgets import QFrame, QVBoxLayout, QHBoxLayout, QWidget, QPushButton, QLabel
-from PySide6.QtCore import Qt, QPropertyAnimation, QEasingCurve
-from PySide6.QtGui import QFont, QCursor
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QFrame, QHBoxLayout
+from PySide6.QtCore import Qt, Signal, QPropertyAnimation, QEasingCurve, QSize
+from PySide6.QtGui import QFont
+
 
 class NavButton(QPushButton):
-    """Simple navigation button for sidebar"""
+    """Navigation button with icon and text"""
     
-    def __init__(self, icon_text, full_text, parent=None):
+    def __init__(self, icon, text, parent=None):
         super().__init__(parent)
-        self.icon_text = icon_text
-        self.full_text = full_text
-        self.is_collapsed = False
+        self.icon_text = icon
+        self.button_text = text
         self.is_active = False
         
-        self.setMinimumHeight(50)
-        self.setCursor(QCursor(Qt.PointingHandCursor))
-        self.update_appearance()
+        # Fixed size for consistent layout
+        self.setFixedHeight(52)
+        self.setCursor(Qt.PointingHandCursor)
         
-    def set_collapsed(self, collapsed):
-        """Update button for collapsed/expanded state"""
-        self.is_collapsed = collapsed
-        self.update_appearance()
+        # Main layout
+        self.layout = QHBoxLayout(self)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(0)
         
+        # Icon label - FIXED ALIGNMENT
+        self.icon_label = QLabel(icon)
+        self.icon_label.setFixedWidth(64)  # Same as collapsed sidebar width
+        self.icon_label.setAlignment(Qt.AlignCenter)
+        self.icon_label.setStyleSheet("""
+            QLabel {
+                color: #6a8a6c;
+                font-size: 20px;
+                font-weight: 600;
+                background: transparent;
+                border: none;
+                text-decoration: none;
+                padding: 0px;
+                margin: 0px;
+            }
+        """)
+        
+        # Text label
+        self.text_label = QLabel(text)
+        self.text_label.setStyleSheet("""
+            QLabel {
+                color: #6a8a6c;
+                font-size: 14px;
+                font-weight: 500;
+                background: transparent;
+                border: none;
+                text-decoration: none;
+                padding: 0px;
+                margin: 0px;
+            }
+        """)
+        
+        self.layout.addWidget(self.icon_label)
+        self.layout.addWidget(self.text_label)
+        self.layout.addStretch()
+        
+        self.update_style()
+    
     def set_active(self, active):
         """Set button active state"""
         self.is_active = active
-        self.update_appearance()
-        
-    def update_appearance(self):
-        """Update button text and style"""
-        if self.is_collapsed:
-            self.setText(self.icon_text)
-            self.setToolTip(self.full_text)  # Show tooltip when collapsed
-        else:
-            self.setText(f"{self.icon_text}   {self.full_text}")
-            self.setToolTip("")  # Remove tooltip when expanded
-            
+        self.update_style()
+    
+    def update_style(self):
+        """Update button styling - SUBTLE BORDER ACCENT"""
         if self.is_active:
             self.setStyleSheet("""
                 QPushButton {
-                    background-color: #e8f0e8;
-                    color: #2d4a2d;
+                    background: rgba(125, 157, 127, 0.12);
                     border: none;
-                    border-radius: 8px;
-                    padding: 12px 14px;
+                    border-left: 4px solid #7d9d7f;
                     text-align: left;
-                    font-size: 20px;
-                    font-weight: 500;
                 }
-                QPushButton:hover {
-                    background-color: #d9e8d9;
+            """)
+            self.icon_label.setStyleSheet("""
+                QLabel {
+                    color: #3d6a3e;
+                    font-size: 20px;
+                    font-weight: 700;
+                    background: transparent;
+                    padding: 0px;
+                    margin: 0px;
+                }
+            """)
+            self.text_label.setStyleSheet("""
+                QLabel {
+                    color: #3d6a3e;
+                    font-size: 14px;
+                    font-weight: 600;
+                    background: transparent;
+                    padding: 0px;
+                    margin: 0px;
                 }
             """)
         else:
             self.setStyleSheet("""
                 QPushButton {
-                    background-color: transparent;
-                    color: #5a7a5a;
+                    background: transparent;
                     border: none;
-                    border-radius: 8px;
-                    padding: 12px 14px;
+                    border-left: 4px solid transparent;
                     text-align: left;
-                    font-size: 20px;
-                    font-weight: 400;
                 }
                 QPushButton:hover {
-                    background-color: #f5f8f5;
+                    background: rgba(125, 157, 127, 0.1);
+                    border-left: 4px solid #c4dec5;
                 }
             """)
+            self.icon_label.setStyleSheet("""
+                QLabel {
+                    color: #6a8a6c;
+                    font-size: 20px;
+                    font-weight: 600;
+                    background: transparent;
+                    border: none;
+                    text-decoration: none;
+                    padding: 0px;
+                    margin: 0px;
+                }
+            """)
+            self.text_label.setStyleSheet("""
+                QLabel {
+                    color: #6a8a6c;
+                    font-size: 14px;
+                    font-weight: 500;
+                    background: transparent;
+                    border: none;
+                    text-decoration: none;
+                    padding: 0px;
+                    margin: 0px;
+                }
+            """)
+    
+    def set_text_visible(self, visible):
+        """Show/hide text label"""
+        self.text_label.setVisible(visible)
 
 
 class CollapsibleSidebar(QFrame):
-    """Collapsible sidebar with smooth animation - Fixed"""
+    """Collapsible sidebar with smooth animation"""
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.expanded_width = 260
-        self.collapsed_width = 70
-        self.is_expanded = True  # Start expanded
+        self.is_expanded = True
+        self.expanded_width = 240
+        self.collapsed_width = 64  # Width that fits icon perfectly
         
         self.setFixedWidth(self.expanded_width)
         self.setStyleSheet("""
             QFrame {
-                background-color: #fafbfa;
-                border-right: 2px solid #e8f0e8;
+                background-color: none;
+                border-right: none;
             }
         """)
         
-        # Create layout
-        self.main_layout = QVBoxLayout(self)
-        self.main_layout.setContentsMargins(0, 0, 0, 0)
-        self.main_layout.setSpacing(0)
+        # Main layout
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
         
-        # Header
-        self.create_header()
+        # Header with toggle button
+        header = self.create_header()
+        layout.addWidget(header)
         
-        # Navigation area
-        self.nav_widget = QWidget()
-        self.nav_layout = QVBoxLayout(self.nav_widget)
-        self.nav_layout.setContentsMargins(16, 24, 16, 0)
-        self.nav_layout.setSpacing(8)
+        # Navigation buttons container
+        self.nav_container = QWidget()
+        self.nav_layout = QVBoxLayout(self.nav_container)
+        self.nav_layout.setContentsMargins(0, 12, 0, 0)
+        self.nav_layout.setSpacing(4)
+        self.nav_layout.setAlignment(Qt.AlignTop)
         
-        self.main_layout.addWidget(self.nav_widget)
+        layout.addWidget(self.nav_container)
         
-        # Setup animations
-        self.setup_animations()
+        # Footer container
+        self.footer_container = QWidget()
+        self.footer_layout = QVBoxLayout(self.footer_container)
+        self.footer_layout.setContentsMargins(12, 12, 12, 12)
+        self.footer_layout.setSpacing(0)
         
+        layout.addStretch()
+        layout.addWidget(self.footer_container)
+        
+        # Animation
+        self.animation = QPropertyAnimation(self, b"minimumWidth")
+        self.animation.setDuration(250)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuart)
+        
+        self.animation2 = QPropertyAnimation(self, b"maximumWidth")
+        self.animation2.setDuration(250)
+        self.animation2.setEasingCurve(QEasingCurve.InOutQuart)
+        
+        self.nav_buttons = []
+    
     def create_header(self):
-        """Create header with toggle button and title"""
+        """Create header with logo and toggle button"""
         header = QFrame()
         header.setFixedHeight(80)
-        header.setStyleSheet("background-color: #fafbfa; border: none;")
-        header_layout = QHBoxLayout(header)
-        header_layout.setContentsMargins(16, 20, 16, 20)
+        header.setStyleSheet("background: transparent; border: none; border-bottom: 1px solid #d4e4d4;")
         
-        # Toggle button (☰ hamburger menu)
+        layout = QHBoxLayout(header)
+        layout.setContentsMargins(16, 0, 12, 0)
+        layout.setSpacing(12)
+        
+        # Logo/Title
+        self.title_label = QLabel("SoilWise")
+        self.title_label.setFont(QFont("Georgia", 18, QFont.Bold))
+        self.title_label.setStyleSheet("""
+            color: #3d6a3e; 
+            background: transparent; 
+            border: none;
+            text-decoration: none;
+        """)
+        
+        # Toggle button
         self.toggle_btn = QPushButton("☰")
-        self.toggle_btn.setFixedSize(40, 40)
-        self.toggle_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.toggle_btn.setFixedSize(32, 32)
+        self.toggle_btn.setCursor(Qt.PointingHandCursor)
         self.toggle_btn.setStyleSheet("""
             QPushButton {
-                background-color: transparent;
-                color: #5a7a5a;
+                background: transparent;
                 border: none;
-                border-radius: 8px;
+                color: #6a8a6c;
                 font-size: 20px;
                 font-weight: bold;
+                border-radius: 6px;
             }
             QPushButton:hover {
-                background-color: #e8f0e8;
+                background: rgba(125, 157, 127, 0.15);
             }
         """)
         self.toggle_btn.clicked.connect(self.toggle_sidebar)
         
-        self.title_container = QWidget()
-        title_layout = QHBoxLayout(self.title_container)
-        title_layout.setContentsMargins(12, 0, 0, 0)
-        title_layout.setSpacing(0)
+        layout.addWidget(self.title_label)
+        layout.addStretch()
+        layout.addWidget(self.toggle_btn)
         
-        self.title = QLabel("SoilWise")
-        self.title.setFont(QFont("Georgia", 18))
-        self.title.setStyleSheet("color: #5a7a5a; font-weight: 600;")
-        
-        title_layout.addWidget(self.title)
-        title_layout.addStretch()
-        
-        header_layout.addWidget(self.toggle_btn)
-        header_layout.addWidget(self.title_container)
-        
-        self.main_layout.addWidget(header)
-        
-    def setup_animations(self):
-        """Setup width animations"""
-        self.animation = QPropertyAnimation(self, b"minimumWidth")
-        self.animation.setDuration(300)
-        self.animation.setEasingCurve(QEasingCurve.InOutQuart)
-        
-        self.animation2 = QPropertyAnimation(self, b"maximumWidth")
-        self.animation2.setDuration(300)
-        self.animation2.setEasingCurve(QEasingCurve.InOutQuart)
-        
+        return header
+    
     def add_nav_button(self, button):
         """Add navigation button to sidebar"""
-        if isinstance(button, NavButton):
-            button.set_collapsed(not self.is_expanded)  # Set initial state
-            self.nav_layout.addWidget(button)
-        
-    def add_footer(self, footer):
-        """Add footer widget to sidebar"""
-        self.nav_layout.addStretch()
-        self.nav_layout.addWidget(footer)
-        
+        self.nav_layout.addWidget(button)
+        self.nav_buttons.append(button)
+    
+    def add_footer(self, widget):
+        """Add footer widget"""
+        self.footer_layout.addWidget(widget)
+    
     def toggle_sidebar(self):
         """Toggle sidebar expanded/collapsed state"""
         if self.is_expanded:
@@ -183,63 +260,26 @@ class CollapsibleSidebar(QFrame):
             self.animation.setEndValue(self.collapsed_width)
             self.animation2.setStartValue(self.expanded_width)
             self.animation2.setEndValue(self.collapsed_width)
-            self.is_expanded = False
-            self.title.hide()
-            self.title_container.setVisible(False)
+            
+            # Hide text labels
+            for btn in self.nav_buttons:
+                btn.set_text_visible(False)
+            
+            self.title_label.setVisible(False)
+            
         else:
             # Expand
             self.animation.setStartValue(self.collapsed_width)
             self.animation.setEndValue(self.expanded_width)
             self.animation2.setStartValue(self.collapsed_width)
             self.animation2.setEndValue(self.expanded_width)
-            self.is_expanded = True
-            self.title.show()
-            self.title_container.setVisible(True)
+            
+            # Show text labels
+            for btn in self.nav_buttons:
+                btn.set_text_visible(True)
+            
+            self.title_label.setVisible(True)
         
         self.animation.start()
         self.animation2.start()
-        
-        # Update all nav buttons
-        self.update_nav_buttons()
-        
-    def update_nav_buttons(self):
-        """Update collapsed state of all navigation buttons"""
-        for i in range(self.nav_layout.count()):
-            widget = self.nav_layout.itemAt(i).widget()
-            if isinstance(widget, NavButton):
-                widget.set_collapsed(not self.is_expanded)
-
-
-# Example usage for testing
-if __name__ == '__main__':
-    from PySide6.QtWidgets import QApplication, QMainWindow
-    import sys
-    
-    app = QApplication(sys.argv)
-    
-    window = QMainWindow()
-    sidebar = CollapsibleSidebar()
-    
-    # Add navigation items
-    nav_items = [
-        ("🏠", "Home"),
-        ("📊", "Soil Data Input"),
-        ("🌱", "Crop Evaluation"),
-        ("📋", "Reports"),
-        ("📚", "Knowledge Base"),
-    ]
-    
-    for icon, text in nav_items:
-        btn = NavButton(icon, text)
-        sidebar.add_nav_button(btn)
-    
-    # Set first button as active
-    first_btn = sidebar.nav_layout.itemAt(0).widget()
-    if first_btn:
-        first_btn.set_active(True)
-    
-    window.setCentralWidget(sidebar)
-    window.setGeometry(100, 100, 300, 600)
-    window.show()
-    
-    sys.exit(app.exec())
+        self.is_expanded = not self.is_expanded

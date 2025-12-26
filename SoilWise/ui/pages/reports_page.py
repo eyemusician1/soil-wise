@@ -1,11 +1,9 @@
-# SoilWise/ui/pages/reports_page.py
-
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrollArea,
     QFrame, QPushButton
 )
 from PySide6.QtCore import Qt, QPointF, Signal
-from PySide6.QtGui import QFont, QColor, QPainter, QPixmap, QPainterPath, QPolygonF
+from PySide6.QtGui import QFont, QColor, QPainter, QPixmap, QPainterPath, QPolygonF, QPen
 
 import json
 import os
@@ -131,6 +129,77 @@ class SuitabilityMapWidget(QWidget):
             import traceback
             traceback.print_exc()
             return self.create_fallback_map(base_map_path)
+        
+    def create_barangay_highlight_map(self, geojson_path: str, selected_barangay: str):
+        """Create a choropleth map highlighting the selected barangay with high contrast."""
+        try:
+            with open(geojson_path, "r", encoding="utf-8") as f:
+                geojson_data = json.load(f)
+            
+            features = geojson_data.get("features", [])
+            bounds = self.get_geojson_bounds(features)
+            
+            # Create canvas
+            width, height = 750, 550
+            result = QPixmap(width, height)
+            result.fill(Qt.white)
+            
+            painter = QPainter(result)
+            painter.setRenderHint(QPainter.Antialiasing)
+            
+            print(f"🎯 Highlighting barangay: {selected_barangay}")
+            
+            for feature in features:
+                brgy_name = feature.get("properties", {}).get("brgy_name", "")
+                geometry = feature.get("geometry", {})
+                
+                # High contrast colors
+                if brgy_name == selected_barangay:
+                    color = QColor(45, 122, 45, 200)  # Dark green (highlighted)
+                    border_color = QColor(29, 82, 29)  # Darker border
+                    border_width = 1
+                else:
+                    color = QColor(232, 243, 232, 160)  # Very light green (background)
+                    border_color = QColor(180, 200, 180, 100)  # Light gray border
+                    border_width = 1
+                
+                polygons = self.geojson_to_qt_polygons(geometry, bounds, width, height)
+                
+                for polygon in polygons:
+                    path = QPainterPath()
+                    path.addPolygon(polygon)
+                    
+                    painter.setPen(Qt.NoPen)
+                    painter.setBrush(color)
+                    painter.drawPath(path)
+                    
+                    painter.setPen(QPen(border_color, border_width))
+                    painter.setBrush(Qt.NoBrush)
+                    painter.drawPath(path)
+                
+                # Add label to highlighted barangay
+                if brgy_name == selected_barangay:
+                    polygons_for_centroid = self.geojson_to_qt_polygons(geometry, bounds, width, height)
+                    if polygons_for_centroid:
+                        centroid = polygons_for_centroid[0].boundingRect().center()
+                        
+                        painter.setFont(QFont("Segoe UI", 9, QFont.Bold))
+                        painter.setPen(Qt.white)
+                        
+                        # Draw text with shadow effect
+                        painter.drawText(int(centroid.x()) + 2, int(centroid.y()) + 2, selected_barangay)
+                        painter.setPen(QColor(45, 122, 45))
+                        painter.drawText(int(centroid.x()), int(centroid.y()), selected_barangay)
+            
+            painter.end()
+            print("✅ Barangay highlight map created!")
+            return result
+            
+        except Exception as e:
+            print(f"❌ Barangay highlight error: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
 
     def draw_geojson_polygons(self, painter: QPainter, geojson_path: str, width: int, height: int):
         """Draw polygons from GeoJSON with suitability colors based on evaluation."""
@@ -144,7 +213,19 @@ class SuitabilityMapWidget(QWidget):
             # Get the evaluation results
             lsc = self.results['lsc']
             lsi = self.results['lsi']
-            
+
+            # Get selected barangay from results (if any)
+            selected_barangay = self.results.get('site_name', '')
+
+            # Clean up the selected barangay name
+            if selected_barangay:
+                if selected_barangay == "Select barangay...":
+                    selected_barangay = ''
+                else:
+                    selected_barangay = selected_barangay.strip()
+
+            print(f"   🔍 Selected barangay: '{selected_barangay}'")
+
             # Determine value range based on classification
             if lsc == 'S1':
                 base_value = lsi
@@ -162,22 +243,58 @@ class SuitabilityMapWidget(QWidget):
                 base_value = lsi
                 variation = 8
                 min_val, max_val = 5, 30
-            
+
             print(f"   🎯 Base LSI: {lsi:.1f}, Range: {min_val}-{max_val}")
 
             # Generate values for each zone with realistic variation
             np.random.seed(42)
             zone_values = np.random.normal(base_value, variation, len(features))
             zone_values = np.clip(zone_values, min_val, max_val)
-            
             print(f"   📊 Zone values: {zone_values.min():.1f} - {zone_values.max():.1f}")
 
             bounds = self.get_geojson_bounds(features)
 
+            highlighted_count = 0
+
             for idx, feature in enumerate(features):
+                brgy_name = feature.get("properties", {}).get("brgy_name", "")
                 geometry = feature.get("geometry", {})
                 zone_value = float(zone_values[idx])
-                color = self.value_to_color(zone_value)
+
+                # Check if this is the selected barangay (exact match)
+                is_selected = (selected_barangay and brgy_name == selected_barangay)
+
+                if is_selected:
+                    highlighted_count += 1
+                    # MAXIMUM CONTRAST: Use the most extreme color in the gradient
+                    if lsc == 'S1':
+                        color = (34, 200, 34)  # Bright green
+                        border_color = QColor(0, 100, 0)
+                        border_width = 5
+                        alpha = 255  # Fully opaque
+                    elif lsc == 'S2':
+                        color = (255, 220, 0)  # Bright yellow
+                        border_color = QColor(200, 150, 0)
+                        border_width = 5
+                        alpha = 255
+                    elif lsc == 'S3':
+                        color = (255, 100, 0)  # Bright orange
+                        border_color = QColor(200, 50, 0)
+                        border_width = 5
+                        alpha = 255
+                    else:  # N
+                        color = (255, 0, 0)  # Bright red
+                        border_color = QColor(150, 0, 0)
+                        border_width = 5
+                        alpha = 255
+
+                    print(f"   ⭐ HIGHLIGHTING: '{brgy_name}' with {lsc} color!")
+                else:
+                    # Normal gradient color with reduced opacity
+                    color = self.value_to_color(zone_value)
+                    border_color = QColor(60, 60, 60, 80)
+                    border_width = 1
+                    alpha = 130  # More transparent for background
 
                 polygons = self.geojson_to_qt_polygons(geometry, bounds, width, height)
 
@@ -185,20 +302,53 @@ class SuitabilityMapWidget(QWidget):
                     path = QPainterPath()
                     path.addPolygon(polygon)
 
+                    # Draw filled polygon
                     painter.setPen(Qt.NoPen)
-                    painter.setBrush(QColor(color[0], color[1], color[2], 160))
+                    painter.setBrush(QColor(color[0], color[1], color[2], alpha))
                     painter.drawPath(path)
 
-                    painter.setPen(QColor(60, 60, 60, 100))
+                    # Draw border
+                    painter.setPen(QPen(border_color, border_width))
                     painter.setBrush(Qt.NoBrush)
                     painter.drawPath(path)
 
-            print("✅ Choropleth polygons rendered based on evaluation!")
+                # Add label to ALL barangays
+                if polygons:
+                    centroid = polygons[0].boundingRect().center()
+
+                    if is_selected:
+                        # Selected barangay: larger, bold, white text
+                        painter.setFont(QFont("Segoe UI", 14, QFont.Bold))
+
+                        # Shadow
+                        painter.setPen(QColor(0, 0, 0, 200))
+                        painter.drawText(int(centroid.x()) + 2, int(centroid.y()) + 2, brgy_name)
+
+                        # Main text in white
+                        painter.setPen(Qt.white)
+                        painter.drawText(int(centroid.x()), int(centroid.y()), brgy_name)
+                    else:
+                        # Non-selected barangays: smaller, subtle text
+                        painter.setFont(QFont("Segoe UI", 9))
+
+                        # Dark text with slight transparency
+                        painter.setPen(QColor(60, 80, 60, 180))
+                        painter.drawText(int(centroid.x()), int(centroid.y()), brgy_name)
+
+            if selected_barangay and highlighted_count == 0:
+                print(f"   ⚠️ WARNING: '{selected_barangay}' not found in map!")
+                print(f"   Available barangays: {[f.get('properties', {}).get('brgy_name', '') for f in features[:5]]}...")
+            elif highlighted_count > 0:
+                print(f"   ✅ Successfully highlighted {highlighted_count} polygon(s)")
+
+            print("✅ Choropleth polygons rendered!")
+
         except Exception as e:
             print(f"❌ GeoJSON rendering failed: {e}")
             import traceback
             traceback.print_exc()
             self.draw_synthetic_zones(painter, width, height)
+
 
     def get_geojson_bounds(self, features: list):
         min_lon = min_lat = float("inf")
@@ -445,25 +595,33 @@ class ReportsPage(QWidget):
         self.init_ui()
 
     def init_ui(self):
+        """Initialize the Reports page UI"""
+        # Add border: none to the main widget
+        self.setStyleSheet("background-color: #fafcfa; border: none;")
+        
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.NoFrame)  # Add this line
+        scroll.setStyleSheet("QScrollArea { border: none; background-color: transparent; }")  # Add this line
+        
         content = QWidget()
+        content.setStyleSheet("background-color: transparent; border: none;")  # Add this line
         scroll.setWidget(content)
-
+        
         content_layout = QVBoxLayout(content)
         content_layout.setContentsMargins(16, 16, 16, 16)
         content_layout.setSpacing(16)
-
+        
         map_widget = SuitabilityMapWidget(self.results, self)
         content_layout.addWidget(map_widget)
-
+        
         buttons_row = QHBoxLayout()
         buttons_row.setSpacing(12)
-
+        
         btn_advanced = QPushButton("View Detailed Report")
         btn_advanced.setFixedHeight(40)
         btn_advanced.setStyleSheet("""
@@ -482,7 +640,7 @@ class ReportsPage(QWidget):
         """)
         btn_advanced.clicked.connect(self.open_advanced_report)
         buttons_row.addWidget(btn_advanced)
-
+        
         btn_new = QPushButton("New Evaluation")
         btn_new.setFixedHeight(40)
         btn_new.setStyleSheet("""
@@ -499,11 +657,13 @@ class ReportsPage(QWidget):
         """)
         btn_new.clicked.connect(self.new_evaluation_requested.emit)
         buttons_row.addWidget(btn_new)
-
+        
         buttons_row.addStretch()
         content_layout.addLayout(buttons_row)
         content_layout.addStretch()
+        
         main_layout.addWidget(scroll)
+
 
     def open_advanced_report(self):
         """Open the full AdvancedReportsPage in a separate window."""

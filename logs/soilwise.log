@@ -626,3 +626,185 @@ RuntimeError: Invalid parameter None passed to addLayoutOwnership().
 2025-12-26 14:35:22 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-26 14:35:52 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-26 14:38:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:05:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:20:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:22:56 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:37:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:42:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:43:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:44:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:46:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:46:10 - __main__ - CRITICAL - run.py:27 - Error: 'EvaluationHistoryPage' object has no attribute 'stat_most_crop'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 43, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 158, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 286, in create_pages
+    history_page = EvaluationHistoryPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 29, in __init__
+    self.load_history()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 429, in load_history
+    self.create_sample_data()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 464, in create_sample_data
+    self.update_statistics()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 632, in update_statistics
+    self.stat_most_crop.setText(most_crop)
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EvaluationHistoryPage' object has no attribute 'stat_most_crop'
+2025-12-26 18:47:24 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:50:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:54:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:57:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 18:59:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:00:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:13:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:14:42 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:21:17 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:22:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:26:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:27:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:32:06 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:44:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:46:03 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 19:47:39 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 20:22:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 20:57:39 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:16:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:18:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:20:11 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:30:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:50:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:51:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:55:01 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:55:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 21:58:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:02:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:02:50 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:04:34 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:05:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:10:22 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:10:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:15:25 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:16:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:19:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:19:04 - __main__ - CRITICAL - run.py:27 - Error: 'HomePage' object has no attribute 'create_section_header'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 43, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 158, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 240, in create_pages
+    home_page = HomePage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\home_page.py", line 253, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\home_page.py", line 275, in init_ui
+    layout.addWidget(self.create_section_header("Overview", "Track your agricultural data at a glance"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HomePage' object has no attribute 'create_section_header'
+2025-12-26 22:19:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:23:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:26:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:28:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:28:14 - __main__ - CRITICAL - run.py:27 - Error: 'HomePage' object has no attribute 'create_section_header'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 21, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 43, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 158, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 240, in create_pages
+    home_page = HomePage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\home_page.py", line 253, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\home_page.py", line 275, in init_ui
+    layout.addWidget(self.create_section_header("Overview", "Track your agricultural data at a glance"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HomePage' object has no attribute 'create_section_header'
+2025-12-26 22:28:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:30:37 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:31:57 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:32:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:34:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:37:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:39:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:41:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:43:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:46:09 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:46:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:46:59 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:48:30 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:48:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:50:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:50:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:55:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:56:50 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:58:16 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:59:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 22:59:46 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:00:12 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:02:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:10:08 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:12:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:13:47 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:18:59 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:22:38 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:23:58 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:32:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:33:23 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:45:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:47:14 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:48:00 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:52:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:53:08 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-26 23:58:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:01:34 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:10:19 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:10:41 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:11:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:13:15 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:14:08 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:21:56 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:25:17 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:33:04 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:37:08 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:39:28 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:41:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:42:20 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:49:31 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:50:35 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:50:54 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:52:33 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:55:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:55:49 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 00:57:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:06:48 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:07:43 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:10:51 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:15:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:16:40 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:20:26 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:20:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:24:56 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:27:10 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:29:29 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:30:57 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:31:30 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:33:53 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-27 01:34:13 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
