@@ -233,91 +233,66 @@ class CropRules:
         return fertility_reqs
     
     def get_parameter_requirement(
-        self,
-        crop_name: str,
-        category: str,
-        parameter: str,
-        season: Optional[str] = None
-    ) -> Optional[Dict[str, Any]]:
-        """
-        Get specific parameter requirement for a crop.
-        SUPPORTS SEASONAL CROPS!
-        
-        Args:
-            crop_name: Name of the crop
-            category: Category name (e.g., 'climate_requirements', 'soil_fertility_requirements')
-            parameter: Parameter name (e.g., 'ph_h2o', 'soil_depth_cm')
-            season: Season key (e.g., 'january_april') for seasonal crops
-            
-        Returns:
-            Dictionary with S1, S2, S3, N classifications, or None
-        """
+    self,
+    crop_name: str,
+    category: str,
+    parameter: str,
+    season: Optional[str] = None
+) -> Optional[Dict[str, Any]]:
+        """Get specific parameter requirement for a crop."""
         crop_data = self.get_crop_requirements(crop_name)
         if not crop_data:
-            logger.debug(f"No crop data found for '{crop_name}'")
             return None
         
-        # ✅ SEASONAL SUPPORT: Check if crop is seasonal
+        # ✅ ADD THIS DEBUG LOG
+        print(f"\n🔍 DEBUG: get_parameter_requirement called")
+        print(f"   Crop: {crop_name}")
+        print(f"   Category: {category}")
+        print(f"   Parameter: {parameter}")
+        print(f"   Season: {season}")
+        print(f"   Is Seasonal: {crop_data.get('seasonal', False)}")
+        
+        # ✅ SEASONAL SUPPORT
         if crop_data.get('seasonal'):
             if not season:
-                logger.warning(
-                    f"Crop '{crop_name}' is seasonal but no season provided. "
-                    f"Available seasons: {list(crop_data.get('seasons', {}).keys())}"
-                )
+                logger.warning(...)
                 return None
             
-            # Navigate to seasonal requirements
             seasons = crop_data.get('seasons', {})
             season_data = seasons.get(season)
             
+            # ✅ ADD THIS DEBUG LOG
+            print(f"   Season found: {season_data is not None}")
+            
             if not season_data:
-                logger.warning(
-                    f"Season '{season}' not found for crop '{crop_name}'. "
-                    f"Available: {list(seasons.keys())}"
-                )
+                logger.warning(...)
                 return None
             
-            # For climate requirements, look inside season data
             if category == 'climate_requirements':
                 category_data = season_data.get(category)
-                logger.debug(
-                    f"Using seasonal {category} for '{crop_name}' (season: {season})"
-                )
+                
+                # ✅ ADD THIS DEBUG LOG
+                print(f"   Using SEASONAL climate_requirements")
+                print(f"   Available climate params: {list(category_data.keys()) if category_data else None}")
             else:
-                # Non-climate categories are at root level
                 category_data = crop_data.get(category)
-                logger.debug(
-                    f"Using root-level {category} for '{crop_name}' (shared across seasons)"
-                )
+                print(f"   Using ROOT-LEVEL {category}")
         else:
-            # Non-seasonal crop: simple access
             category_data = crop_data.get(category)
-            logger.debug(f"Using non-seasonal {category} for '{crop_name}'")
+            print(f"   Using NON-SEASONAL {category}")
         
         if not category_data:
-            logger.debug(f"Category '{category}' not found for '{crop_name}'")
             return None
         
         param_req = category_data.get(parameter)
         
+        # ✅ ADD THIS DEBUG LOG
+        print(f"   Found parameter: {param_req is not None}")
         if param_req:
-            if season:
-                logger.debug(
-                    f"Retrieved parameter '{parameter}' from category '{category}' "
-                    f"for crop '{crop_name}' (season: {season})"
-                )
-            else:
-                logger.debug(
-                    f"Retrieved parameter '{parameter}' from category '{category}' "
-                    f"for crop '{crop_name}'"
-                )
-        else:
-            logger.debug(
-                f"Parameter '{parameter}' not found in category '{category}' "
-                f"for crop '{crop_name}'"
-            )
+            print(f"   Classifications: {list(param_req.keys())}")
         
         return param_req
+
     
     def __repr__(self):
         return f"CropRules(loaded_crops={len(self.crop_requirements)})"

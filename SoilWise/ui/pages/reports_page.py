@@ -268,24 +268,24 @@ class SuitabilityMapWidget(QWidget):
                     highlighted_count += 1
                     # MAXIMUM CONTRAST: Use the most extreme color in the gradient
                     if lsc == 'S1':
-                        color = (34, 200, 34)  # Bright green
+                        color = (25, 200, 34)  # Bright green
                         border_color = QColor(0, 100, 0)
-                        border_width = 5
+                        border_width = 0
                         alpha = 255  # Fully opaque
                     elif lsc == 'S2':
-                        color = (255, 220, 0)  # Bright yellow
+                        color = (200, 220, 0)  # Bright yellow
                         border_color = QColor(200, 150, 0)
-                        border_width = 5
+                        border_width = 0
                         alpha = 255
                     elif lsc == 'S3':
-                        color = (255, 100, 0)  # Bright orange
+                        color = (200, 100, 0)  # Bright orange
                         border_color = QColor(200, 50, 0)
-                        border_width = 5
+                        border_width = 0
                         alpha = 255
                     else:  # N
-                        color = (255, 0, 0)  # Bright red
+                        color = (160, 0, 0)  # Bright red
                         border_color = QColor(150, 0, 0)
-                        border_width = 5
+                        border_width = 0
                         alpha = 255
 
                     print(f"   ⭐ HIGHLIGHTING: '{brgy_name}' with {lsc} color!")

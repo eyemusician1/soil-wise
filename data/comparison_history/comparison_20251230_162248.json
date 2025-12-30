@@ -1,0 +1,332 @@
+{
+  "timestamp": "2025-12-30T16:22:48.731176",
+  "soil_data": {
+    "base_saturation": 60.0,
+    "caco3": 0.5,
+    "cec": 85.0,
+    "coarse_fragments": 5.0,
+    "drainage": "good",
+    "ec": 0.5,
+    "esp": 0.1,
+    "flooding": "Fo",
+    "gypsum": 0.1,
+    "humidity": 75.0,
+    "organic_carbon": 3.5,
+    "ph": 6.0,
+    "rainfall": 2400.0,
+    "slope": 0.5,
+    "soil_depth": 120.0,
+    "sum_basic_cations": 14.0,
+    "temperature": 27.0,
+    "texture": "L"
+  },
+  "season": "january_april",
+  "selected_crops": [
+    "Banana",
+    "Cocoa"
+  ],
+  "results": [
+    {
+      "crop_name": "Banana",
+      "lsi": 76.38,
+      "lsc": "S1",
+      "full_classification": "S1s",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.85,
+          "S2",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "L"
+      },
+      "scientific_name": "Musa sp. L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "L",
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✓ This crop is highly suitable for the given soil conditions. Standard cultivation practices are recommended."
+      ],
+      "interpretation": "Highly Suitable (LSI: 76.38). Land has no significant limitations for sustained application of the given use. Expected yields are high with minimal inputs.",
+      "notes": "Banana requirements calibrated to match study LSI 90.25 (S1) from Brgy. Gacap, Piagapo, Lanao del Sur. Based on FAO Land Evaluation framework adapted for Philippine conditions."
+    },
+    {
+      "crop_name": "Cocoa",
+      "lsi": 56.86,
+      "lsc": "S2",
+      "full_classification": "S2cs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.85,
+          "S2",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "L"
+      },
+      "scientific_name": "Theobroma cacao L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "humidity",
+          "actual_value": 75.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Relative Humidity",
+          "category": "Climate"
+        },
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "soil_depth",
+          "actual_value": 120.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Soil Depth",
+          "category": "Physical Soil"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "L",
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is moderately suitable. Some management interventions are needed to address limiting factors.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Moderately Suitable (LSI: 56.86). Land has limitations that reduce productivity or require increased inputs. Expected yields are moderate with proper management.",
+      "notes": "Cocoa (Theobroma cacao L.) requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    }
+  ]
+}

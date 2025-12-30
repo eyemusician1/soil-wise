@@ -101,6 +101,50 @@ class InputPage(QWidget):
             "Sorghum", "Sugarcane", "Sweet Potato", "Tomato"
         }
         
+
+        # ✅ NEW: Cache for dropdown options to prevent loss on clear
+        self._cached_site_names = [
+            "Select barangay...", "Aposong", "Bagoaingud", "Bangco (Pob.)",
+            "Bansayan", "Basak", "Bobo", "Bualan", "Bubong Ilian",
+            "Bubong Tawa-an", "Bubonga Mamaanun", "Gacap", "Ilian",
+            "Ilian Poblacion", "Kalanganan", "Katumbacan", "Lininding",
+            "Lumbaca Mamaan", "Mamaanun", "Mentring", "Olango", "Palacat",
+            "Palao", "Paling", "Pantaon", "Pantar", "Paridi", "Pindolonan",
+            "Radapan", "Radapan Poblacion", "Rantian", "Sapingit", "Talao",
+            "Tambo", "Tapocan", "Taporug", "Tawaan", "Udalo"
+        ]
+
+        self._cached_flooding_options = [
+            "Select flooding class...",
+            "Fo - No flooding",
+            "F1 - Occasional flooding",
+            "F2 - Frequent flooding",
+            "F3 - Very frequent flooding",
+            "F1+ - Severe flooding"
+        ]
+
+        self._cached_default_drainage_options = [
+            "Select drainage class...",
+            "good - Well drained",
+            "good_gw_over_150 - Good drainage, groundwater >150 cm",
+            "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+            "moderate - Moderately drained",
+            "imperfect - Imperfectly drained",
+            "poor_drainable - Poorly drained but drainable",
+            "poor_not_drainable - Poorly drained, not drainable"
+        ]
+
+        self._cached_default_texture_options = [
+            "Select texture...",
+            "C - Clay",
+            "CL - Clay Loam",
+            "L - Loam",
+            "S - Sand"
+        ]
+
+        self._current_drainage_options = self._cached_default_drainage_options.copy()
+        self._current_texture_options = self._cached_default_texture_options.copy()
+
         # Initialize evaluation engine
         self.evaluator = None
         if EVALUATOR_AVAILABLE:
@@ -385,9 +429,9 @@ class InputPage(QWidget):
             reply = QMessageBox.question(
                 self, 
                 "Use existing soil data?",
-                f"The current soil inputs were entered for {self.current_soil_crop}. "
-                f"Do you want to reuse this same soil data for {crop_name}, "
-                f"or start a fresh soil scenario?",
+                f"The current soil inputs entered were for {self.current_soil_crop}. "
+                f"It is recommended to use another set of soil data. "
+                f"Start a new one instead?",
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.No
             )
@@ -923,7 +967,10 @@ class InputPage(QWidget):
         return layout
     
     def clear_form(self):
-        """Clear soil and climate inputs and reset soil–crop association."""
+        """
+        Clear all form inputs while preserving dropdown options.
+        ✅ FIXED: Now uses cached lists to restore dropdowns after clearing.
+        """
         # Clear climate numeric inputs
         for widget in self.climate_inputs.values():
             if isinstance(widget, QDoubleSpinBox):
@@ -934,23 +981,43 @@ class InputPage(QWidget):
             if isinstance(widget, QDoubleSpinBox):
                 widget.setValue(0.0)
 
-        # Reset coded dropdowns
-        if hasattr(self, "texture_input"):
+        # ✅ FIXED: Reset dropdowns to first item (index 0) instead of clearing items
+        if hasattr(self, 'texture_input') and self.texture_input:
+            # Restore cached texture options if needed
+            if self.texture_input.count() == 0:
+                self.texture_input.addItems(self._current_texture_options)
             self.texture_input.setCurrentIndex(0)
-        if hasattr(self, "drainage_input"):
+
+        if hasattr(self, 'drainage_input') and self.drainage_input:
+            # Restore cached drainage options if needed
+            if self.drainage_input.count() == 0:
+                self.drainage_input.addItems(self._current_drainage_options)
             self.drainage_input.setCurrentIndex(0)
-        if hasattr(self, "flooding_input"):
+
+        if hasattr(self, 'flooding_input') and self.flooding_input:
+            # Restore cached flooding options if needed
+            if self.flooding_input.count() == 0:
+                self.flooding_input.addItems(self._cached_flooding_options)
             self.flooding_input.setCurrentIndex(0)
 
-        # Clear location text if present
-        if hasattr(self, "site_input"):
-            if isinstance(self.site_input, QComboBox):
-                self.site_input.setCurrentIndex(0)
-            else:
-                self.site_input.clear()
+        # ✅ FIXED: Reset site selection while preserving the list
+        if hasattr(self, 'site_input') and self.site_input:
+            # Restore cached site names if needed
+            if self.site_input.count() == 0:
+                self.site_input.addItems(self._cached_site_names)
+            self.site_input.setCurrentIndex(0)
 
-        # Reset soil–crop association
+        # Reset crop and season selections
+        if self.cropinput:
+            self.crop_input.setCurrentIndex(0)
+
+        if self.season_input:
+            self.season_input.setCurrentIndex(0)
+
+        # Reset soil-crop association
         self.current_soil_crop = None
+
+        print("✅ Form cleared successfully - all dropdowns preserved")
 
 
     def create_analysis_card(self):
@@ -1108,7 +1175,17 @@ class InputPage(QWidget):
                 "poor_aeric - Poorly drained, aeric conditions",
                 "poor_drainable - Poorly drained but drainable",
                 "poor_not_drainable - Poorly drained, not drainable"
-            ]
+            ],
+                "Robusta Coffee": [
+                "Select drainage class...",
+                "good - Well drained",
+                "good_gw_over_150 - Good drainage, groundwater > 150 cm",
+                "good_gw_100_150 - Good drainage, groundwater 100-150 cm",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor - Poorly drained",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
         }
         
         default_options = [
@@ -1127,6 +1204,9 @@ class InputPage(QWidget):
         
         current_code = self.get_drainage_code()
         options = drainage_options.get(crop_name, default_options)
+
+        # ✅ NEW: Cache the current drainage options for this crop
+        self._current_drainage_options = options.copy()
         
         self.drainage_input.clear()
         self.drainage_input.addItems(options)
@@ -1191,7 +1271,10 @@ class InputPage(QWidget):
             'Carrots': [
                 'C', 'Cm', 'Co', 'CxGOs', 'CxGOv', 'L', 'LS', 'LcS', 'LfS', 
                 'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
-            ]
+            ],
+            "Robusta Coffee": [
+                "C<60s", "Co", "SiCL", "CL", "SC", "C>60s", "L", "SCL", 
+                "SL", "LS", "LfS", "Cm", "SiCm", "C>60v", "S", "cS"],
         }
         
         # Default textures if crop not in mapping
@@ -1215,7 +1298,11 @@ class InputPage(QWidget):
             description = texture_descriptions.get(code, code)
             items.append(f"{code} - {description}")
         
-        # Update dropdown
+
+
+        # ✅ NEW: Cache the current texture options
+        self._current_texture_options = items.copy()
+                # Update dropdown
         self.texture_input.clear()
         self.texture_input.addItems(items)
         
@@ -1545,15 +1632,18 @@ class InputPage(QWidget):
             # LOCATION
             if "Site Name" in data_dict:
                 site_value = data_dict["Site Name"]
-                if isinstance(self.site_input, QComboBox):
-                    for i in range(self.site_input.count()):
-                        if self.site_input.itemText(i) == site_value:
-                            self.site_input.setCurrentIndex(i)
-                            imported_count += 1
-                            break
-                else:
-                    self.site_input.setText(site_value)
-                    imported_count += 1
+                # FIXED: Restore site names from cache if dropdown is empty
+                if self.site_input.count() == 0:
+                    self.site_input.addItems(self._cached_site_names)
+                    print("Site names restored from cache during import")
+                
+                # Find and select the matching site
+                for i in range(self.site_input.count()):
+                    if self.site_input.itemText(i) == site_value:
+                        self.site_input.setCurrentIndex(i)
+                        imported_count += 1
+                        break
+
             
             # CLIMATE
             if "Average Temperature (°C)" in data_dict or "Average Temperature (C)" in data_dict:
@@ -2036,3 +2126,40 @@ if __name__ == "__main__":
     window.resize(900, 800)
     window.show()
     sys.exit(app.exec())
+
+    def restore_all_dropdowns(self):
+        """Restore all dropdowns from cache if they were accidentally cleared."""
+        if hasattr(self, 'site_input') and self.site_input.count() == 0:
+            self.site_input.addItems(self._cached_site_names)
+            print("✅ Site names restored from cache")
+
+        if hasattr(self, 'flooding_input') and self.flooding_input.count() == 0:
+            self.flooding_input.addItems(self._cached_flooding_options)
+            print("✅ Flooding options restored from cache")
+
+        if hasattr(self, 'drainage_input') and self.drainage_input.count() == 0:
+            self.drainage_input.addItems(self._current_drainage_options)
+            print("✅ Drainage options restored from cache")
+
+        if hasattr(self, 'texture_input') and self.texture_input.count() == 0:
+            self.texture_input.addItems(self._current_texture_options)
+            print("✅ Texture options restored from cache")
+
+    def verify_dropdowns(self):
+        """Verify all dropdowns have options, restore if needed."""
+        issues = []
+
+        if hasattr(self, 'site_input') and self.site_input.count() == 0:
+            issues.append("Site names missing")
+        if hasattr(self, 'flooding_input') and self.flooding_input.count() == 0:
+            issues.append("Flooding options missing")
+        if hasattr(self, 'drainage_input') and self.drainage_input.count() == 0:
+            issues.append("Drainage options missing")
+        if hasattr(self, 'texture_input') and self.texture_input.count() == 0:
+            issues.append("Texture options missing")
+
+        if issues:
+            print(f"⚠️ Dropdown issues detected: {', '.join(issues)}")
+            self.restore_all_dropdowns()
+            return False
+        return True

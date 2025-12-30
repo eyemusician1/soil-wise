@@ -1,0 +1,868 @@
+{
+  "timestamp": "2025-12-30T23:44:11.800450",
+  "soil_data": {
+    "base_saturation": 60.0,
+    "caco3": 0.5,
+    "cec": 85.0,
+    "coarse_fragments": 5.0,
+    "drainage": "good",
+    "ec": 0.5,
+    "esp": 0.1,
+    "flooding": "Fo",
+    "gypsum": 0.1,
+    "humidity": 75.0,
+    "organic_carbon": 3.5,
+    "ph": 6.0,
+    "rainfall": 2400.0,
+    "slope": 0.5,
+    "soil_depth": 120.0,
+    "sum_basic_cations": 14.0,
+    "temperature": 27.0,
+    "texture": "SiL"
+  },
+  "season": "may_august",
+  "selected_crops": [
+    "Arabica Coffee",
+    "Banana",
+    "Cabbage",
+    "Carrots",
+    "Cocoa",
+    "Robusta Coffee"
+  ],
+  "results": [
+    {
+      "crop_name": "Banana",
+      "lsi": 92.59,
+      "lsc": "S1",
+      "full_classification": "S1s",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Musa sp. L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "coarse_fragments",
+          "actual_value": 5.0,
+          "rating": 0.95,
+          "classification": "S1",
+          "subclass": "s",
+          "description": "Coarse Fragments",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✓ This crop is highly suitable for the given soil conditions. Standard cultivation practices are recommended."
+      ],
+      "interpretation": "Highly Suitable (LSI: 92.59). Land has no significant limitations for sustained application of the given use. Expected yields are high with minimal inputs.",
+      "notes": "Banana requirements calibrated to match study LSI 90.25 (S1) from Brgy. Gacap, Piagapo, Lanao del Sur. Based on FAO Land Evaluation framework adapted for Philippine conditions."
+    },
+    {
+      "crop_name": "Cabbage",
+      "lsi": 9.44,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 9.44). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Cabbage requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Cocoa",
+      "lsi": 9.07,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Theobroma cacao L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops."
+      ],
+      "interpretation": "Not Suitable (LSI: 9.07). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Cocoa (Theobroma cacao L.) requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Carrots",
+      "lsi": 8.97,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.95,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 8.97). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Carrots (Daucus carota subsp. sativus) requirements based from the Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Robusta Coffee",
+      "lsi": 6.4,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.6,
+          "S3",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          0.6,
+          "S3",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Coffea canephora Pierre ex Froehner",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops."
+      ],
+      "interpretation": "Not Suitable (LSI: 6.40). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Robusta Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements. More heat-tolerant than Arabica Coffee."
+    },
+    {
+      "crop_name": "Arabica Coffee",
+      "lsi": 4.67,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Coffea arabica L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "temperature",
+          "actual_value": 27.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Mean Annual Temperature",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 4.67). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements"
+    }
+  ]
+}

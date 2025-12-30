@@ -445,7 +445,7 @@ class HomePage(QWidget):
         description.setGraphicsEffect(desc_shadow)
         
         # Button
-        action_button = QPushButton("Get Started →")
+        action_button = QPushButton("Get Started")
         action_button.setCursor(Qt.PointingHandCursor)
         action_button.setFixedHeight(54)
         action_button.setFixedWidth(180)
