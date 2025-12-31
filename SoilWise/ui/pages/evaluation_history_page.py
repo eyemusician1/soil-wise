@@ -13,6 +13,7 @@ from datetime import datetime
 import json
 import csv
 import os
+from database.db_manager import get_database
 
 
 class EvaluationHistoryPage(QWidget):
@@ -26,7 +27,16 @@ class EvaluationHistoryPage(QWidget):
         self.evaluation_data = []  # Store all evaluations
         self.filtered_data = []    # Store filtered results
         self.init_ui()
+        # Initialize database
+        try:
+            self.db = get_database()
+            print("Database connected in Evaluation History Page")
+        except Exception as e:
+            print(f"Database connection failed: {e}")
+            self.db = None
         self.load_history()
+        
+
     
     def init_ui(self):
         """Initialize the page UI"""
@@ -407,26 +417,45 @@ class EvaluationHistoryPage(QWidget):
         return card
     
     def load_history(self):
-        """Load evaluation history from database or file"""
-        # TODO: Replace with actual database query
-        # For now, load from a JSON file if it exists
-        
-        history_file = "data/evaluation_history.json"
-        
-        if os.path.exists(history_file):
-            try:
-                with open(history_file, 'r') as f:
-                    self.evaluation_data = json.load(f)
-                self.filtered_data = self.evaluation_data.copy()
-                self.populate_table()
-                self.update_statistics()
-            except Exception as e:
-                print(f"Error loading history: {e}")
-                self.evaluation_data = []
-                self.filtered_data = []
-        else:
-            # Create sample data for demonstration
+        """Load evaluation history from database"""
+        if not self.db:
+            print("Database not available - using sample data")
             self.create_sample_data()
+            return
+        
+        try:
+            # Load from database
+            db_evaluations = self.db.get_evaluation_history(limit=100)
+            
+            print(f"Loaded {len(db_evaluations)} evaluations from database")
+            
+            # Convert to internal format
+            self.evaluation_data = []
+            for eval_data in db_evaluations:
+                formatted = {
+                    'id': f"eval_{eval_data['evaluation_id']}",
+                    'date': eval_data.get('created_at', '')[:19].replace('T', ' '),
+                    'crop_name': eval_data.get('crop_id', '').replace('_', ' ').title(),
+                    'lsi': eval_data.get('lsi', 0),
+                    'lsc': eval_data.get('lsc', 'N/A'),
+                    'classification': eval_data.get('full_classification', 'N/A'),
+                    'limiting_factors': eval_data.get('limiting_factors', ''),
+                    'location': eval_data.get('location', 'N/A')
+                }
+                self.evaluation_data.append(formatted)
+            
+            self.filtered_data = self.evaluation_data.copy()
+            self.populate_table()
+            self.update_statistics()
+            
+        except Exception as e:
+            print(f"Error loading from database: {e}")
+            import traceback
+            traceback.print_exc()
+            
+            # Fallback to sample data
+            self.create_sample_data()
+
     
     def create_sample_data(self):
         """Create sample evaluation data"""

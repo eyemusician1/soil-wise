@@ -14,6 +14,8 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from datetime import datetime
 import os
+from database.db_manager import get_database
+
 
 # Import evaluation engine
 try:
@@ -157,6 +159,15 @@ class InputPage(QWidget):
             print("⚠️ Warning: Evaluation engine not available")
         
         self.init_ui()
+
+        # Initialize database connection
+        try:
+            self.db = get_database()
+            print("Database connected in Input Page")
+        except Exception as e:
+            print(f"Database connection failed: {e}")
+            self.db = None
+
 
     def init_ui(self):
         """Initialize enhanced user interface"""
@@ -1438,6 +1449,28 @@ class InputPage(QWidget):
                 crop_name=crop_name,
                 season=season
             )
+
+            # Save evaluation result to database
+            if self.db:
+                try:
+                    eval_data = {
+                        'input_id': getattr(self, 'current_input_id', None),
+                        'crop_id': crop_name.lower().replace(' ', '_'),
+                        'season': season,
+                        'lsi': result['lsi'],
+                        'lsc': result['lsc'],
+                        'full_classification': result['full_classification'],
+                        'limiting_factors': result.get('limiting_factors', ''),
+                        'recommendation': ', '.join(result.get('recommendations', []))[:500],
+                        'full_result': result
+                    }
+                    
+                    eval_id = self.db.save_evaluation_result(eval_data)
+                    print(f"Evaluation result saved to database (ID: {eval_id})")
+                    
+                except Exception as db_error:
+                    print(f"Could not save evaluation to database: {db_error}")
+
             
             progress.close()
             progress.deleteLater()
@@ -1572,14 +1605,56 @@ class InputPage(QWidget):
         print("✅ Form cleared")
 
     def save_data(self):
-        """Save soil data"""
-        QMessageBox.information(
-            self,
-            "Success",
-            "Soil data saved successfully!\n\n"
-            "You can now run the analysis to evaluate crop suitability."
-        )
-        self.data_saved.emit(1)
+        """Save soil data to database"""
+        # Validate form first
+        is_valid, error_message = self.validate_form_data()
+        if not is_valid:
+            QMessageBox.warning(self, "Validation Error", error_message)
+            return
+        
+        if not self.db:
+            QMessageBox.warning(
+                self, 
+                "Database Not Available",
+                "Database is not connected. Data will not be saved."
+            )
+            return
+        
+        try:
+            # Collect form data
+            soil_data = self.collect_form_data()
+            
+            # Add metadata
+            soil_data['location'] = self.site_input.currentText()
+            soil_data['notes'] = f"Crop: {self.crop_input.currentText()}"
+            
+            # Save to database
+            input_id = self.db.save_soil_input(soil_data)
+            
+            # Store for later use
+            self.current_input_id = input_id
+            
+            print(f"Soil data saved to database with ID: {input_id}")
+            
+            QMessageBox.information(
+                self, 
+                "Success", 
+                f"Soil data saved successfully!\n\nInput ID: {input_id}\n\n"
+                "You can now run the analysis to evaluate crop suitability."
+            )
+            
+            self.data_saved.emit(input_id)
+            
+        except Exception as e:
+            print(f"Error saving soil data: {e}")
+            import traceback
+            traceback.print_exc()
+            
+            QMessageBox.critical(
+                self,
+                "Save Error",
+                f"Failed to save soil data:\n{str(e)}"
+            )
 
     def import_excel(self):
         """Import soil data from Excel file"""

@@ -9,6 +9,9 @@ import json
 import os
 import numpy as np
 from SoilWise.ui.pages.advanced_reports_page import AdvancedReportsPage
+from database.db_manager import get_database
+from PySide6.QtWidgets import QTableWidgetItem
+
 
 
 class SuitabilityMapWidget(QWidget):
@@ -593,6 +596,17 @@ class ReportsPage(QWidget):
         self.results = results
         self.advanced_window = None
         self.init_ui()
+        # Initialize database
+        try:
+            self.db = get_database()
+            print("Database connected in Reports Page")
+        except Exception as e:
+            print(f"Database connection failed: {e}")
+            self.db = None
+
+        # Load evaluations from database
+        self.load_evaluations()
+
 
     def init_ui(self):
         """Initialize the Reports page UI"""
@@ -673,3 +687,59 @@ class ReportsPage(QWidget):
         self.advanced_window.show()
         self.advanced_window.raise_()
         self.advanced_window.activateWindow()
+
+    def load_evaluations(self):
+        """Load evaluation results from database"""
+        if not self.db:
+            print("Database not available")
+            return
+        
+        try:
+            # Get recent evaluations from database
+            evaluations = self.db.get_evaluation_history(limit=50)
+            
+            print(f"Loaded {len(evaluations)} evaluations from database")
+            
+            # Clear existing table
+            if hasattr(self, 'results_table'):
+                self.results_table.setRowCount(0)
+            
+            # Populate table with database results
+            for eval_data in evaluations:
+                self.add_evaluation_to_table(eval_data)
+            
+            return evaluations
+            
+        except Exception as e:
+            print(f"Error loading evaluations: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+
+    def add_evaluation_to_table(self, eval_data):
+        """Add a single evaluation to the table"""
+        if not hasattr(self, 'results_table'):
+            return
+        
+        row = self.results_table.rowCount()
+        self.results_table.insertRow(row)
+        
+        # Date
+        date_str = eval_data.get('created_at', '')[:16] if eval_data.get('created_at') else 'N/A'
+        self.results_table.setItem(row, 0, QTableWidgetItem(date_str))
+        
+        # Crop name
+        crop_name = eval_data.get('crop_id', '').replace('_', ' ').title()
+        self.results_table.setItem(row, 1, QTableWidgetItem(crop_name))
+        
+        # LSI
+        lsi = eval_data.get('lsi', 0)
+        self.results_table.setItem(row, 2, QTableWidgetItem(f"{lsi:.2f}"))
+        
+        # Classification
+        classification = eval_data.get('full_classification', 'N/A')
+        self.results_table.setItem(row, 3, QTableWidgetItem(classification))
+        
+        # Location (if available)
+        location = eval_data.get('location', 'N/A')
+        self.results_table.setItem(row, 4, QTableWidgetItem(location))

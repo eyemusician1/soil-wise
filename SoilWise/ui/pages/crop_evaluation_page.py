@@ -15,6 +15,8 @@ import os
 import copy  
 from datetime import datetime
 from pathlib import Path
+from database.db_manager import get_database
+
 
 # Import evaluation engine
 try:
@@ -136,6 +138,15 @@ class CropEvaluationPage(QWidget):
                 print(f"⚠️ Warning: Could not initialize evaluator: {e}")
         else:
             print("⚠️ Warning: Evaluation engine not available")
+
+        # Initialize database
+        try:
+            self.db = get_database()
+            print("Database connected in Crop Evaluation Page")
+        except Exception as e:
+            print(f"Database connection failed: {e}")
+            self.db = None
+
 
         self.init_ui()
 
@@ -909,6 +920,32 @@ class CropEvaluationPage(QWidget):
 
             # Save comparison history
             self.save_comparison_history(results, selected_crops, season)
+
+            # Save comparison to database
+            if self.db:
+                try:
+                    comparison_data = {
+                        'input_id': None,
+                        'season': season,
+                        'crop_ids': selected_crops,
+                        'results': [
+                            {
+                                'crop_name': r['crop_name'],
+                                'lsi': r['lsi'],
+                                'lsc': r['lsc'],
+                                'classification': r['full_classification']
+                            }
+                            for r in results
+                        ],
+                        'notes': f"Compared {len(results)} crops"
+                    }
+                    
+                    comparison_id = self.db.save_comparison(comparison_data)
+                    print(f"Comparison saved to database (ID: {comparison_id})")
+                    
+                except Exception as db_error:
+                    print(f"Could not save comparison: {db_error}")
+
 
             # Show comparison dialog
             self.show_comparison_results(results, is_cached=False)

@@ -907,3 +907,58 @@ AttributeError: 'CropEvaluationPage' object has no attribute 'compare_crops'. Di
 2025-12-31 11:05:45 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-31 11:36:42 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
 2025-12-31 11:38:27 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-31 12:05:18 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-31 15:17:05 - __main__ - INFO - run.py:15 - Starting SoilWise v1.0.0
+2025-12-31 17:30:50 - __main__ - INFO - run.py:146 - ======================================================================
+2025-12-31 17:30:50 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2025-12-31 17:30:50 - __main__ - INFO - run.py:148 - ======================================================================
+2025-12-31 17:30:50 - __main__ - INFO - run.py:28 - Initializing database...
+2025-12-31 17:30:50 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 0 evaluations
+2025-12-31 17:30:50 - __main__ - INFO - run.py:163 - Creating main window...
+2025-12-31 17:30:53 - __main__ - CRITICAL - run.py:174 - Critical error: 'EvaluationHistoryPage' object has no attribute 'db'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 164, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 43, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 158, in init_ui
+    self.create_pages()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 286, in create_pages
+    history_page = EvaluationHistoryPage()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 30, in __init__
+    self.load_history()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\pages\evaluation_history_page.py", line 420, in load_history
+    if not self.db:
+           ^^^^^^^
+AttributeError: 'EvaluationHistoryPage' object has no attribute 'db'
+2025-12-31 17:31:10 - __main__ - INFO - run.py:188 - Application shutting down
+2025-12-31 17:33:14 - __main__ - INFO - run.py:146 - ======================================================================
+2025-12-31 17:33:14 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2025-12-31 17:33:14 - __main__ - INFO - run.py:148 - ======================================================================
+2025-12-31 17:33:14 - __main__ - INFO - run.py:28 - Initializing database...
+2025-12-31 17:33:14 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 0 evaluations
+2025-12-31 17:33:14 - __main__ - INFO - run.py:163 - Creating main window...
+2025-12-31 17:33:16 - __main__ - INFO - run.py:168 - ======================================================================
+2025-12-31 17:33:51 - __main__ - INFO - run.py:188 - Application shutting down
+2025-12-31 17:33:57 - __main__ - INFO - run.py:146 - ======================================================================
+2025-12-31 17:33:57 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2025-12-31 17:33:57 - __main__ - INFO - run.py:148 - ======================================================================
+2025-12-31 17:33:57 - __main__ - INFO - run.py:28 - Initializing database...
+2025-12-31 17:33:57 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 0 evaluations
+2025-12-31 17:33:57 - __main__ - INFO - run.py:163 - Creating main window...
+2025-12-31 17:33:59 - __main__ - INFO - run.py:168 - ======================================================================
+2025-12-31 17:34:19 - __main__ - INFO - run.py:188 - Application shutting down
+2025-12-31 17:42:04 - __main__ - INFO - run.py:146 - ======================================================================
+2025-12-31 17:42:04 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2025-12-31 17:42:04 - __main__ - INFO - run.py:148 - ======================================================================
+2025-12-31 17:42:04 - __main__ - INFO - run.py:28 - Initializing database...
+2025-12-31 17:42:04 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2025-12-31 17:42:04 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 0 evaluations
+2025-12-31 17:42:04 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2025-12-31 17:42:04 - __main__ - INFO - run.py:163 - Creating main window...
+2025-12-31 17:42:06 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2025-12-31 17:42:06 - __main__ - INFO - run.py:168 - ======================================================================
+2025-12-31 17:43:04 - __main__ - INFO - run.py:188 - Application shutting down
