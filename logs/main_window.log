@@ -5544,3 +5544,21 @@
 2025-12-31 00:13:59 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 0
 2025-12-31 00:14:06 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 1
 2025-12-31 00:14:11 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 2
+2025-12-31 00:16:05 - SoilWise.ui.main_window - INFO - main_window.py:270 - Crop Evaluation page created
+2025-12-31 00:16:06 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 0
+2025-12-31 00:16:06 - SoilWise.ui.main_window - INFO - main_window.py:45 - MainWindow initialized
+2025-12-31 00:16:07 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 1
+2025-12-31 00:16:25 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 2
+2025-12-31 00:16:32 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 3
+2025-12-31 00:16:47 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 4
+2025-12-31 00:16:51 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 2
+2025-12-31 00:16:52 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 3
+2025-12-31 00:16:52 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 1
+2025-12-31 00:16:53 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 2
+2025-12-31 00:16:54 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 1
+2025-12-31 00:16:54 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 2
+2025-12-31 00:17:13 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 3
+2025-12-31 00:17:14 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 4
+2025-12-31 09:46:35 - SoilWise.ui.main_window - INFO - main_window.py:270 - Crop Evaluation page created
+2025-12-31 09:46:36 - SoilWise.ui.main_window - INFO - main_window.py:397 - Changing to page index: 0
+2025-12-31 09:46:36 - SoilWise.ui.main_window - INFO - main_window.py:45 - MainWindow initialized
