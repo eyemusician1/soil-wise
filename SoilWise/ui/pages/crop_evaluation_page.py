@@ -694,7 +694,7 @@ class CropEvaluationPage(QWidget):
         layout.addWidget(self.compare_status_label)
 
         # Compare button
-        self.compare_btn = EnhancedButton("Compare Crops", "", primary=True)
+        self.compare_btn = EnhancedButton("Compare Crops", primary=True)
         self.compare_btn.setMinimumHeight(64)
         self.compare_btn.setEnabled(False)
         self.compare_btn.setStyleSheet("""
@@ -781,14 +781,14 @@ class CropEvaluationPage(QWidget):
         if count == 0:
             self.compare_status_label.setText("Select at least 2 crops to compare")
             self.compare_status_label.setStyleSheet("color: #6a8a6c;")
-            self.compare_btn.setText("▶ Compare Crops")
+            self.compare_btn.setText("Compare Crops")
             self.compare_btn.setEnabled(False)
         elif count == 1:
             self.compare_status_label.setText(
                 "Select at least one more crop for comparison"
             )
             self.compare_status_label.setStyleSheet("color: #6a8a6c;")
-            self.compare_btn.setText("▶ Compare Crops")
+            self.compare_btn.setText("Compare Crops")
             self.compare_btn.setEnabled(False)
         elif not has_data:
             self.compare_status_label.setText(
@@ -796,7 +796,7 @@ class CropEvaluationPage(QWidget):
                 "Please run an analysis on the Soil Data Input page first."
             )
             self.compare_status_label.setStyleSheet("color: #d46a00; font-weight: 600;")
-            self.compare_btn.setText("▶ Compare Crops")
+            self.compare_btn.setText("Compare Crops")
             self.compare_btn.setEnabled(False)
         else:
             if seasonal_count > 0 and perennial_count > 0:
@@ -808,7 +808,7 @@ class CropEvaluationPage(QWidget):
 
             self.compare_status_label.setText(status)
             self.compare_status_label.setStyleSheet("color: #6a8a6c;")
-            self.compare_btn.setText(f"▶ Compare {count} Crops")
+            self.compare_btn.setText(f"Compare {count} Crops")
             self.compare_btn.setEnabled(True)
 
     def get_selected_season(self):
@@ -948,139 +948,555 @@ class CropEvaluationPage(QWidget):
         except Exception as e:
             print(f"⚠️ Warning: Could not save comparison history: {e}")
 
+        # --- Suffix legend for limiting factor groups ---
+    # Matches evaluator/rules grouping: c, t, w, s, f, n [see evaluation engine mappings]
+    _SUFFIX_MAP = {
+        "c": "Climate",
+        "t": "Topography",
+        "w": "Wetness",
+        "s": "Physical Soil",
+        "f": "Soil Fertility",
+        "n": "Salinity/Alkalinity",
+    }
+
+    def _suffix_description(self, codes: str) -> str:
+        """Convert limiting-factor suffix codes like 'ctf' into 'Climate, Topography, Soil Fertility'."""
+        if not codes:
+            return ""
+        seen = set()
+        parts = []
+        for ch in str(codes):
+            if ch in self._SUFFIX_MAP and ch not in seen:
+                parts.append(self._SUFFIX_MAP[ch])
+                seen.add(ch)
+        return ", ".join(parts)
+
+    def _extract_suffixes_from_classification(self, full_classification: str) -> str:
+        """
+        From 'S2cft' -> 'cft'.
+        From 'S1' -> ''.
+        """
+        if not full_classification:
+            return ""
+        return "".join([ch for ch in str(full_classification) if ch.isalpha()])
+
+    def _top_limiting_params_text(self, result: dict, max_items: int = 2) -> str:
+        """
+        Build short text like: 'Soil pH=5.2; Drainage Condition=poor'
+        Uses limiting_factors_detailed when available.
+        """
+        details = result.get("limiting_factors_detailed", []) or []
+        parts = []
+        for d in details[:max_items]:
+            desc = d.get("description") or d.get("parameter") or "Factor"
+            val = d.get("actual_value", "N/A")
+            parts.append(f"{desc}={val}")
+        return "; ".join(parts)
+
+    def _soil_summary_text(self, soil_data: dict) -> str:
+        """Compact soil summary for recommendations."""
+        if not soil_data:
+            return ""
+        bits = []
+        if soil_data.get("ph") not in (None, "", "N/A"):
+            bits.append(f"pH {soil_data.get('ph')}")
+        if soil_data.get("texture"):
+            bits.append(f"Texture {soil_data.get('texture')}")
+        if soil_data.get("drainage"):
+            bits.append(f"Drainage {soil_data.get('drainage')}")
+        if soil_data.get("flooding"):
+            bits.append(f"Flooding {soil_data.get('flooding')}")
+        return ", ".join(bits)
+
+
     def show_comparison_results(self, results, is_cached=False):
-        """Display comparison results in dialog with cache indicator"""
+        """Display comparison results in a clean, minimal dialog"""
         dialog = QDialog(self)
         dialog.setWindowTitle("Crop Comparison Results")
-        dialog.resize(1100, 700)
-        dialog.setMinimumSize(900, 600)
-
-        layout = QVBoxLayout()
-        layout.setSpacing(16)
-
+        dialog.resize(1200, 800)
+        dialog.setMinimumSize(1000, 700)
+        
+        # Main layout
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # ===== HEADER SECTION =====
+        header_widget = QWidget()
+        header_widget.setStyleSheet("""
+            QWidget {
+                background: #7d9d7f;
+                border: none;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+        """)
+        header_layout = QVBoxLayout(header_widget)
+        header_layout.setContentsMargins(40, 30, 40, 30)
+        header_layout.setSpacing(8)
+        
         # Title
-        title = QLabel("◉ Crop Suitability Comparison")
-        title.setFont(QFont("Georgia", 18, QFont.Bold))
-        title.setStyleSheet("color: #3d5a3f;")
-        layout.addWidget(title)
-
-        # ✅ NEW: Show cache status indicator
+        title = QLabel("Crop Suitability Comparison")
+        title.setFont(QFont("Georgia", 24, QFont.Bold))
+        title.setStyleSheet("color: white;")
+        header_layout.addWidget(title)
+        
+        # Subtitle
+        subtitle = QLabel(f"Analyzed {len(results)} crop(s) for your soil conditions")
+        subtitle.setFont(QFont("Segoe UI", 12))
+        subtitle.setStyleSheet("color: rgba(255, 255, 255, 0.9);")
+        header_layout.addWidget(subtitle)
+        
+        # Cache indicator
         if is_cached:
-            cache_label = QLabel("📋 Showing previously generated results (cached)")
-            cache_label.setFont(QFont("Segoe UI", 11))
-            cache_label.setStyleSheet("""
-                background: #fff8dc;
-                color: #856404;
-                padding: 10px 16px;
-                border-radius: 6px;
-                border: 1px solid #ffeeba;
-            """)
-            cache_label.setAlignment(Qt.AlignCenter)
-            layout.addWidget(cache_label)
+            cache_label = QLabel("Showing cached results")
+            cache_label.setFont(QFont("Segoe UI", 10))
+            cache_label.setStyleSheet("color: rgba(255, 255, 255, 0.8);")
+            header_layout.addWidget(cache_label)
+        
+        main_layout.addWidget(header_widget)
+        
+        # ===== CONTENT AREA =====
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.NoFrame)
+        scroll.setStyleSheet("""
+            QScrollArea {
+                background-color: #fafafa;
+                border: none;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #e8e8e8;
+                width: 10px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background: #7d9d7f;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+        """)
+        
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background-color: #fafafa;")
+        content_layout = QVBoxLayout(content_widget)
+        content_layout.setContentsMargins(40, 30, 40, 30)
+        content_layout.setSpacing(24)
+        
+        # ===== SUMMARY CARDS =====
+        summary_layout = QHBoxLayout()
+        summary_layout.setSpacing(16)
 
-        # Visual chart
+        best_crop = results[0]
+        worst_crop = results[-1]
+        avg_lsi = sum(r['lsi'] for r in results) / len(results)
+
+        # Best Crop Card
+        best_card = self._create_summary_card(
+            "Most Suitable",
+            best_crop['crop_name'],
+            f"LSI: {best_crop['lsi']:.2f}",
+            "#2e7d32"
+        )
+        summary_layout.addWidget(best_card)
+
+        # Average LSI Card
+        avg_card = self._create_summary_card(
+            "Average LSI",
+            f"{avg_lsi:.2f}",
+            f"Across {len(results)} crops",
+            "#666666"
+        )
+        summary_layout.addWidget(avg_card)
+
+        # Least Suitable Card
+        least_card = self._create_summary_card(
+            "Least Suitable",
+            worst_crop['crop_name'],
+            f"LSI: {worst_crop['lsi']:.2f}",
+            "#c62828"
+        )
+        summary_layout.addWidget(least_card)
+
+        content_layout.addLayout(summary_layout)
+
+        
+        # ===== CHART =====
+        chart_card = QGroupBox()
+        chart_card.setStyleSheet("""
+            QGroupBox {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+                padding: 20px;
+            }
+        """)
+        chart_layout = QVBoxLayout(chart_card)
+        chart_layout.setContentsMargins(20, 20, 20, 20)
+        
+        chart_title = QLabel("Suitability Comparison Chart")
+        chart_title.setFont(QFont("Segoe UI", 14, QFont.Bold))
+        chart_title.setStyleSheet("color: #333333;")
+        chart_layout.addWidget(chart_title)
+        
         chart_view = self.create_comparison_chart(results)
-        chart_view.setMaximumHeight(300)
-        layout.addWidget(chart_view)
-
-        # Results table
+        chart_view.setMinimumHeight(280)
+        chart_view.setMaximumHeight(350)
+        chart_layout.addWidget(chart_view)
+        
+        content_layout.addWidget(chart_card)
+        
+        # ===== TABLE =====
+        table_card = QGroupBox()
+        table_card.setStyleSheet("""
+            QGroupBox {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+                padding: 20px;
+            }
+        """)
+        table_layout = QVBoxLayout(table_card)
+        table_layout.setContentsMargins(20, 20, 20, 20)
+        
+        table_header = QHBoxLayout()
+        table_title = QLabel("Detailed Comparison Results")
+        table_title.setFont(QFont("Segoe UI", 14, QFont.Bold))
+        table_title.setStyleSheet("color: #333333;")
+        table_header.addWidget(table_title)
+        table_header.addStretch()
+        
+        legend_label = QLabel("Hover over cells for details")
+        legend_label.setFont(QFont("Segoe UI", 10))
+        legend_label.setStyleSheet("color: #666666;")
+        table_header.addWidget(legend_label)
+        
+        table_layout.addLayout(table_header)
+        
+        # Create table
         table = QTableWidget()
         table.setColumnCount(5)
         table.setHorizontalHeaderLabels([
-            "Rank", "Crop", "LSI", "Classification", "Limiting Factors"
+            "RANK", "CROP NAME", "LSI SCORE", "CLASSIFICATION", "LIMITING FACTORS"
         ])
         table.setRowCount(len(results))
         table.setStyleSheet("""
             QTableWidget {
                 background: white;
-                border: 1px solid #e0ede0;
-                border-radius: 8px;
-                gridline-color: #e8f1e8;
+                border: none;
+                gridline-color: #e8e8e8;
+                font-size: 13px;
+                color: #333333;
             }
             QHeaderView::section {
-                background: #f9fbf9;
-                color: #3d5a3f;
-                padding: 8px;
+                background: #f5f5f5;
+                color: #555555;
+                padding: 12px 8px;
                 border: none;
-                border-bottom: 2px solid #e0ede0;
-                font-weight: bold;
+                border-bottom: 2px solid #cccccc;
+                font-weight: 600;
+                font-size: 11px;
+                letter-spacing: 0.5px;
+            }
+            QTableWidget::item {
+                padding: 12px 8px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            QTableWidget::item:selected {
+                background-color: #f5f5f5;
+                color: #333333;
             }
         """)
-
+        table.setSelectionBehavior(QTableWidget.SelectRows)
+        table.setSelectionMode(QTableWidget.SingleSelection)
+        table.verticalHeader().setVisible(False)
+        table.setShowGrid(False)
+        
+        # Populate table
         for row, result in enumerate(results):
             # Rank
             rank_item = QTableWidgetItem(str(row + 1))
             rank_item.setTextAlignment(Qt.AlignCenter)
+            rank_item.setFont(QFont("Segoe UI", 13, QFont.Bold))
             table.setItem(row, 0, rank_item)
-
-            # Crop
-            table.setItem(row, 1, QTableWidgetItem(result['crop_name']))
-
-            # LSI
-            lsi_item = QTableWidgetItem(f"{result['lsi']:.2f}")
+            
+            # Crop name
+            crop_item = QTableWidgetItem(result['crop_name'])
+            crop_item.setFont(QFont("Segoe UI", 13, QFont.Bold if row == 0 else QFont.Normal))
+            table.setItem(row, 1, crop_item)
+            
+            # LSI Score
+            lsi_val = float(result.get('lsi', 0.0))
+            lsi_item = QTableWidgetItem(f"{lsi_val:.2f}")
             lsi_item.setTextAlignment(Qt.AlignCenter)
+            lsi_item.setFont(QFont("Segoe UI", 13, QFont.Bold))
             table.setItem(row, 2, lsi_item)
-
-            # Classification with color
-            class_item = QTableWidgetItem(result['full_classification'])
+            
+            # Classification
+            full_class = result.get("full_classification", "")
+            lsc = result.get("lsc", "")
+            suffixes = self._extract_suffixes_from_classification(full_class)
+            suffix_desc = self._suffix_description(suffixes)
+            
+            class_display = full_class
+            
+            class_item = QTableWidgetItem(class_display)
             class_item.setTextAlignment(Qt.AlignCenter)
-            lsc = result['lsc']
-
-            if lsc == 'S1':
-                class_item.setBackground(QColor("#7d9d7f"))
-            elif lsc == 'S2':
-                class_item.setBackground(QColor("#a8c4a8"))
-            elif lsc == 'S3':
-                class_item.setBackground(QColor("#e6b84d"))
+            class_item.setFont(QFont("Segoe UI", 12))
+            
+            # Subtle color coding
+            if lsc == "S1":
+                class_item.setForeground(QColor("#2e7d32"))
+            elif lsc == "S2":
+                class_item.setForeground(QColor("#f57c00"))
+            elif lsc == "S3":
+                class_item.setForeground(QColor("#e65100"))
             else:
-                class_item.setBackground(QColor("#d46a6a"))
-
-            class_item.setForeground(QColor("white"))
+                class_item.setForeground(QColor("#c62828"))
+            
+            if suffix_desc:
+                class_item.setToolTip(f"{suffix_desc}")
+            
             table.setItem(row, 3, class_item)
-
+            
             # Limiting factors
-            limiting = result.get('limiting_factors', '')
-            table.setItem(row, 4, QTableWidgetItem(limiting if limiting else "-"))
+            lf_codes = result.get("limiting_factors", "")
+            lf_desc = self._suffix_description(lf_codes)
+            
+            lf_display = lf_codes if lf_codes else "None"
+            
+            lf_item = QTableWidgetItem(lf_display)
+            lf_item.setTextAlignment(Qt.AlignCenter)
+            lf_item.setFont(QFont("Segoe UI", 12))
+            
+            if lf_desc:
+                lf_item.setToolTip(f"{lf_desc}")
+            
+            table.setItem(row, 4, lf_item)
+        
+        # Column widths
+        table.setColumnWidth(0, 80)
+        table.setColumnWidth(1, 180)
+        table.setColumnWidth(2, 120)
+        table.horizontalHeader().setSectionResizeMode(3, QHeaderView.Stretch)
+        table.horizontalHeader().setSectionResizeMode(4, QHeaderView.Stretch)
+        
+        # Row heights
+        for row in range(len(results)):
+            table.setRowHeight(row, 60)
+        
+        table_layout.addWidget(table)
+        
+        table_layout.addWidget(table)
 
-        table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        layout.addWidget(table)
+        content_layout.addWidget(table_card)
 
-        # Recommendation
-        best_crop = results[0]
-        rec_label = QLabel(
-            f"◈ Recommendation: {best_crop['crop_name']} is most suitable "
-            f"(LSI: {best_crop['lsi']:.2f}, {best_crop['full_classification']})"
+        # Suffix legend - positioned OUTSIDE the table card to prevent overlap
+        legend = QLabel(
+            "Suffix codes: c = Climate, t = Topography, w = Wetness, "
+            "s = Physical Soil, f = Soil Fertility, n = Salinity/Alkalinity"
         )
-        rec_label.setFont(QFont("Segoe UI", 13, QFont.Bold))
-        rec_label.setStyleSheet("""
-            background: #e8f3e8;
-            color: #3d5a3f;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #d4e4d4;
+        legend.setFont(QFont("Segoe UI", 9))
+        legend.setStyleSheet("""
+            color: #888888; 
+            padding: 12px 20px; 
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
         """)
-        rec_label.setWordWrap(True)
-        layout.addWidget(rec_label)
+        legend.setWordWrap(True)
+        content_layout.addWidget(legend)
 
-        # Buttons
-        btn_layout = QHBoxLayout()
-
-        # Export to Excel button
+        
+        # ===== RECOMMENDATIONS =====
+        rec_group = QGroupBox("Expert Recommendations & Analysis")
+        rec_group.setFont(QFont("Segoe UI", 14, QFont.Bold))
+        rec_group.setStyleSheet("""
+            QGroupBox {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+                padding: 20px;
+                margin-top: 10px;
+                font-weight: bold;
+                color: #333333;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 15px;
+                padding: 0 8px;
+                background: white;
+            }
+        """)
+        
+        rec_layout = QVBoxLayout()
+        rec_layout.setContentsMargins(20, 25, 20, 20)
+        rec_layout.setSpacing(16)
+        
+        # Build recommendation content
+        best_crop = results[0]
+        best_name = best_crop.get("crop_name", "Selected crop")
+        best_lsi = float(best_crop.get("lsi", 0.0))
+        best_fullclass = best_crop.get("full_classification", "")
+        best_lf_codes = best_crop.get("limiting_factors", "")
+        best_lf_desc = self._suffix_description(best_lf_codes)
+        
+        soil_data = best_crop.get("soil_data") or self.last_soil_data or {}
+        soil_summary = self._soil_summary_text(soil_data)
+        best_limiting_params = self._top_limiting_params_text(best_crop, max_items=2)
+        
+        # Recommended crop
+        rec_header = QLabel(f"Recommended: {best_name}")
+        rec_header.setFont(QFont("Georgia", 16, QFont.Bold))
+        rec_header.setStyleSheet("color: #2e7d32; padding: 10px;")
+        rec_layout.addWidget(rec_header)
+        
+        # Why this crop
+        why_best_label = QLabel("Why this crop is most suitable:")
+        why_best_label.setFont(QFont("Segoe UI", 12, QFont.Bold))
+        why_best_label.setStyleSheet("color: #333333;")
+        rec_layout.addWidget(why_best_label)
+        
+        why_best_lines = []
+        why_best_lines.append(f"Highest suitability score among all evaluated crops (LSI: {best_lsi:.2f})")
+        if best_fullclass:
+            why_best_lines.append(f"Classification: {best_fullclass}")
+        if soil_summary:
+            why_best_lines.append(f"Soil conditions: {soil_summary}")
+        if best_lf_desc:
+            why_best_lines.append(f"Main limitations: {best_lf_desc}")
+        else:
+            why_best_lines.append(f"No significant limitations detected")
+        if best_limiting_params:
+            why_best_lines.append(f"Key factors to monitor: {best_limiting_params}")
+        
+        why_best_text = QLabel("\n".join(f"• {line}" for line in why_best_lines))
+        why_best_text.setFont(QFont("Segoe UI", 11))
+        why_best_text.setStyleSheet("color: #555555; padding: 15px; line-height: 1.6;")
+        why_best_text.setWordWrap(True)
+        rec_layout.addWidget(why_best_text)
+        
+        # Other crops
+        if len(results) > 1:
+            rec_layout.addSpacing(10)
+            
+            why_others_label = QLabel("Analysis of other crops:")
+            why_others_label.setFont(QFont("Segoe UI", 12, QFont.Bold))
+            why_others_label.setStyleSheet("color: #333333;")
+            rec_layout.addWidget(why_others_label)
+            
+            other_scroll = QScrollArea()
+            other_scroll.setMaximumHeight(200)
+            other_scroll.setWidgetResizable(True)
+            other_scroll.setFrameShape(QFrame.NoFrame)
+            other_scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
+            
+            other_widget = QWidget()
+            other_layout = QVBoxLayout(other_widget)
+            other_layout.setContentsMargins(0, 0, 0, 0)
+            other_layout.setSpacing(10)
+            
+            for r in results[1:]:
+                name = r.get("crop_name", "Other crop")
+                lsi = float(r.get("lsi", 0.0))
+                fullclass = r.get("full_classification", "")
+                lsc = r.get("lsc", "")
+                lf_codes = r.get("limiting_factors", "")
+                lf_desc = self._suffix_description(lf_codes)
+                limiting_params = self._top_limiting_params_text(r, max_items=1)
+                
+                crop_card = QLabel()
+                crop_card.setStyleSheet("background: #fafafa; padding: 12px; border-radius: 4px;")
+                
+                reasons = [f"{name} (LSI: {lsi:.2f}, {fullclass})"]
+                
+                if lsc == "N":
+                    reasons.append("Not suitable for current conditions")
+                elif lsc == "S3":
+                    reasons.append("Marginal - requires significant management")
+                elif lsc == "S2":
+                    reasons.append("Moderate - needs interventions")
+                
+                if lf_desc:
+                    reasons.append(f"Limitations: {lf_desc}")
+                if limiting_params:
+                    reasons.append(f"Key issue: {limiting_params}")
+                
+                crop_card.setText("\n".join(f"  {line}" for line in reasons))
+                crop_card.setFont(QFont("Segoe UI", 10))
+                crop_card.setStyleSheet("color: #555555; background: #fafafa; padding: 12px; border-radius: 4px;")
+                crop_card.setWordWrap(True)
+                other_layout.addWidget(crop_card)
+            
+            other_scroll.setWidget(other_widget)
+            rec_layout.addWidget(other_scroll)
+        
+        rec_group.setLayout(rec_layout)
+        content_layout.addWidget(rec_group)
+        
+        content_layout.addStretch()
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
+        
+        # ===== FOOTER =====
+        footer_widget = QWidget()
+        footer_widget.setStyleSheet("QWidget { background: white; border-top: 1px solid #e0e0e0; }")
+        footer_layout = QHBoxLayout(footer_widget)
+        footer_layout.setContentsMargins(40, 20, 40, 20)
+        footer_layout.setSpacing(12)
+        
         if EXCEL_AVAILABLE:
-            export_btn = EnhancedButton("Export as Excel", "")
+            export_btn = EnhancedButton("Export to Excel", primary=False)
             export_btn.clicked.connect(lambda: self.export_comparison_excel(results, dialog))
-            btn_layout.addWidget(export_btn)
-
-        btn_layout.addStretch()
-
-        close_btn = EnhancedButton("Close", "", primary=True)
-        close_btn.clicked.connect(dialog.close)
-        btn_layout.addWidget(close_btn)
-
-        layout.addLayout(btn_layout)
-
-        dialog.setLayout(layout)
+            footer_layout.addWidget(export_btn)
+        
+        footer_layout.addStretch()
+        
+        close_btn = EnhancedButton("Close", primary=True)
+        close_btn.setMinimumWidth(150)
+        close_btn.clicked.connect(dialog.accept)
+        footer_layout.addWidget(close_btn)
+        
+        main_layout.addWidget(footer_widget)
+        
+        dialog.setLayout(main_layout)
         dialog.exec()
+
+
+    def _create_summary_card(self, title, main_text, sub_text, text_color):
+        """Create a minimal summary card widget"""
+        card = QGroupBox()
+        card.setStyleSheet("""
+            QGroupBox {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+                padding: 20px;
+            }
+        """)
+        
+        layout = QVBoxLayout(card)
+        layout.setSpacing(8)
+        
+        title_label = QLabel(title)
+        title_label.setFont(QFont("Segoe UI", 10))
+        title_label.setStyleSheet("color: #666666; font-weight: 600;")
+        layout.addWidget(title_label)
+        
+        main_label = QLabel(main_text)
+        main_label.setFont(QFont("Segoe UI", 20, QFont.Bold))
+        main_label.setStyleSheet(f"color: {text_color};")
+        main_label.setWordWrap(True)
+        layout.addWidget(main_label)
+        
+        sub_label = QLabel(sub_text)
+        sub_label.setFont(QFont("Segoe UI", 9))
+        sub_label.setStyleSheet("color: #888888;")
+        layout.addWidget(sub_label)
+        
+        return card
+
 
     def create_comparison_chart(self, results):
         """Create bar chart comparing LSI values"""

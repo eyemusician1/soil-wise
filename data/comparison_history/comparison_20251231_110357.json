@@ -1,0 +1,325 @@
+{
+  "timestamp": "2025-12-31T11:03:57.186943",
+  "soil_data": {
+    "base_saturation": 50.0,
+    "caco3": 0.0,
+    "cec": 28.0,
+    "coarse_fragments": 3.0,
+    "drainage": "good",
+    "ec": 0.0,
+    "esp": 2.8,
+    "flooding": "Fo",
+    "gypsum": 0.0,
+    "humidity": 73.0,
+    "organic_carbon": 3.5,
+    "ph": 6.4,
+    "rainfall": 1300.0,
+    "slope": 3.29,
+    "soil_depth": 135.0,
+    "sum_basic_cations": 14.0,
+    "temperature": 24.87,
+    "texture": "SiC"
+  },
+  "season": "january_april",
+  "selected_crops": [
+    "Cabbage",
+    "Carrots"
+  ],
+  "results": [
+    {
+      "crop_name": "Cabbage",
+      "lsi": 25.71,
+      "lsc": "S3",
+      "full_classification": "S3ct",
+      "limiting_factors": "ct",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "slope": [
+          0.6,
+          "S3",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.85,
+          "S2",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 50.0,
+        "caco3": 0.0,
+        "cec": 28.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 0.0,
+        "esp": 2.8,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 73.0,
+        "organic_carbon": 3.5,
+        "ph": 6.4,
+        "rainfall": 1300.0,
+        "slope": 3.29,
+        "soil_depth": 135.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 24.87,
+        "texture": "SiC"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 1300.0,
+          "rating": 0.6,
+          "classification": "S3",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "slope",
+          "actual_value": 3.29,
+          "rating": 0.6,
+          "classification": "S3",
+          "subclass": "t",
+          "description": "Slope Percentage",
+          "category": "Topography"
+        },
+        {
+          "parameter": "temperature",
+          "actual_value": 24.87,
+          "rating": 0.6,
+          "classification": "S3",
+          "subclass": "c",
+          "description": "Mean Annual Temperature",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is marginally suitable. Significant management interventions are required. Consider alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties.",
+        "• Slope is limiting. Implement soil conservation measures such as terracing or contour farming."
+      ],
+      "interpretation": "Marginally Suitable (LSI: 25.71). Land has severe limitations that reduce productivity or require intensive management. Expected yields are low even with inputs.",
+      "notes": "Cabbage requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Carrots",
+      "lsi": 10.84,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.4,
+          "N",
+          "c"
+        ],
+        "slope": [
+          0.6,
+          "S3",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.6,
+          "S3",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 50.0,
+        "caco3": 0.0,
+        "cec": 28.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 0.0,
+        "esp": 2.8,
+        "flooding": "Fo",
+        "gypsum": 0.0,
+        "humidity": 73.0,
+        "organic_carbon": 3.5,
+        "ph": 6.4,
+        "rainfall": 1300.0,
+        "slope": 3.29,
+        "soil_depth": 135.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 24.87,
+        "texture": "SiC"
+      },
+      "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 1300.0,
+          "rating": 0.4,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 10.84). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Carrots (Daucus carota subsp. sativus) requirements based from the Land Evaluation Book Part 3: Crop Requirements."
+    }
+  ]
+}
