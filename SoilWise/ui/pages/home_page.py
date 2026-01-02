@@ -9,6 +9,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PySide6.QtCore import Qt, Signal, QPropertyAnimation, QEasingCurve, QRect, Property
 from PySide6.QtGui import QFont, QColor, QPalette
 import sys
+from database.db_manager import DatabaseManager
+
 
 
 class EnhancedStatCard(QFrame):
@@ -48,7 +50,8 @@ class EnhancedStatCard(QFrame):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(28, 32, 28, 32)
         layout.setSpacing(0)
-        layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        layout.setAlignment(Qt.AlignCenter)
+
         
         icon_container = QFrame()
         icon_container.setFixedSize(64, 64)
@@ -84,7 +87,7 @@ class EnhancedStatCard(QFrame):
         icon_label.setAlignment(Qt.AlignCenter)
         icon_layout.addWidget(icon_label)
         
-        layout.addWidget(icon_container, 0, Qt.AlignLeft | Qt.AlignTop)
+        layout.addWidget(icon_container, 0, Qt.AlignCenter)
         layout.addSpacing(24)
         
         # Title
@@ -100,27 +103,27 @@ class EnhancedStatCard(QFrame):
             padding: 0px;
         """)
         title_label.setFixedHeight(18)
-        title_label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        title_label.setAlignment(Qt.AlignCenter) 
         title_label.setWordWrap(False)
-        
-        layout.addWidget(title_label, 0, Qt.AlignLeft | Qt.AlignTop)
+        layout.addWidget(title_label, 0, Qt.AlignCenter) 
         layout.addSpacing(14)
-        
+
         # Value
-        self.value_label = QLabel(value)
+        self.value_label = QLabel(value) 
+
+        # Then set the stylesheet
         self.value_label.setStyleSheet(f"""
             color: #1e293b;
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 900;
             background: transparent;
             border: none;
             padding: 0px;
             letter-spacing: -1px;
         """)
-        self.value_label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        
-        layout.addWidget(self.value_label, 0, Qt.AlignLeft | Qt.AlignTop)
-        layout.addStretch()
+        self.value_label.setAlignment(Qt.AlignCenter)  
+        layout.addWidget(self.value_label, 0, Qt.AlignCenter)  
+
         
     def update_value(self, value):
         """Update card value"""
@@ -547,7 +550,7 @@ class HomePage(QWidget):
         ]
         
         for i, (icon, title, value, color) in enumerate(stats):
-            key = title.lower().replace(" ", "_")
+            key = title.lower() 
             card = EnhancedStatCard(icon, title, value, color)
             self.stat_cards[key] = card
             grid.addWidget(card, 0, i)
@@ -589,26 +592,92 @@ class HomePage(QWidget):
                 'success_rate': 0
             }
         
-        self.stat_cards['soil_samples'].update_value(str(stats.get('soil_samples', 0)))
-        self.stat_cards['crops_evaluated'].update_value(str(stats.get('crops_evaluated', 0)))
-        self.stat_cards['reports_generated'].update_value(str(stats.get('evaluations', 0)))
+        # Update each stat card (using lowercase keys with spaces)
+        self.stat_cards['soil samples'].update_value(
+            str(stats.get('soil_samples', 0))
+        )
+        self.stat_cards['crops evaluated'].update_value(
+            str(stats.get('crops_evaluated', 0))
+        )
+        self.stat_cards['reports generated'].update_value(
+            str(stats.get('evaluations', 0))
+        )
         
+        # Format success rate with % symbol
         success_rate = stats.get('success_rate', 0)
-        if stats.get('evaluations', 0) > 0 and success_rate == 0:
-            success_rate = 85
-        self.stat_cards['success_rate'].update_value(f"{success_rate}%")
+        self.stat_cards['success rate'].update_value(f"{success_rate}%")
+
 
     def refresh(self):
         """Refresh the home page with latest data from database"""
         try:
-            if hasattr(self, 'data_service'):
-                stats = self.data_service.get_statistics()
+            # Get database manager instance
+            db = DatabaseManager()
+            
+            # Use get_connection() context manager
+            with db.get_connection() as conn:
+                cursor = conn.cursor()
+                
+                # 1. COUNT SOIL SAMPLES (distinct input_id from evaluation_results)
+                cursor.execute("""
+                    SELECT COUNT(DISTINCT input_id) 
+                    FROM evaluation_results 
+                    WHERE input_id IS NOT NULL
+                """)
+                result = cursor.fetchone()
+                soil_samples = result[0] if result else 0
+                
+                # 2. COUNT CROPS EVALUATED (distinct crop_id)
+                cursor.execute("""
+                    SELECT COUNT(DISTINCT crop_id) 
+                    FROM evaluation_results 
+                    WHERE crop_id IS NOT NULL
+                """)
+                result = cursor.fetchone()
+                crops_evaluated = result[0] if result else 0
+                
+                # 3. COUNT TOTAL EVALUATIONS (reports generated)
+                cursor.execute("""
+                    SELECT COUNT(*) 
+                    FROM evaluation_results
+                """)
+                result = cursor.fetchone()
+                total_evaluations = result[0] if result else 0
+                
+                # 4. CALCULATE SUCCESS RATE (S1 and S2 classifications)
+                if total_evaluations > 0:
+                    cursor.execute("""
+                        SELECT COUNT(*) 
+                        FROM evaluation_results 
+                        WHERE lsc IN ('S1', 'S2')
+                    """)
+                    result = cursor.fetchone()
+                    successful = result[0] if result else 0
+                    success_rate = int((successful / total_evaluations) * 100)
+                else:
+                    success_rate = 0
+                
+                # Update the statistics display
+                stats = {
+                    'soil_samples': soil_samples,
+                    'crops_evaluated': crops_evaluated,
+                    'evaluations': total_evaluations,
+                    'success_rate': success_rate
+                }
+                
                 self.update_statistics(stats)
-            else:
-                self.update_statistics()
+                print(f"📊 Home page refreshed: {soil_samples} samples, "
+                    f"{crops_evaluated} crops, {total_evaluations} evaluations, "
+                    f"{success_rate}% success")
+                
         except Exception as e:
-            print(f"Error refreshing home page: {e}")
+            print(f"❌ Error refreshing home page: {e}")
+            import traceback
+            traceback.print_exc()
+            # Show zeros on error
             self.update_statistics()
+
+
 
 
 # Demo application

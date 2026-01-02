@@ -1,9 +1,8 @@
 """
 SoilWise/ui/main_window.py
-
 Main application window - WITH CROP EVALUATION PAGE INTEGRATION
++ AUTO-REFRESH FOR EVALUATION HISTORY
 """
-
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QFrame, QStackedWidget
@@ -28,7 +27,6 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-
         self.setWindowTitle(APP_NAME)
         self.resize(1100, 700)
         self.setMinimumSize(900, 600)
@@ -47,6 +45,7 @@ class MainWindow(QMainWindow):
     # ------------------------------------------------------------------
     # Styling
     # ------------------------------------------------------------------
+
     def apply_theme(self):
         """Apply Fluent Design-like theme"""
         self.setStyleSheet(
@@ -123,6 +122,7 @@ class MainWindow(QMainWindow):
     # ------------------------------------------------------------------
     # UI wiring
     # ------------------------------------------------------------------
+
     def init_ui(self):
         """Initialize user interface"""
         # Central widget
@@ -140,7 +140,6 @@ class MainWindow(QMainWindow):
         if hasattr(self.sidebar, 'is_expanded') and self.sidebar.is_expanded:
             self.sidebar.toggle_sidebar()
         main_layout.addWidget(self.sidebar)
-        
 
         # Content area
         self.content_area = QWidget()
@@ -166,7 +165,6 @@ class MainWindow(QMainWindow):
     def create_sidebar(self):
         """Create sidebar with navigation"""
         sidebar = CollapsibleSidebar()
-
         self.nav_buttons: list[NavButton] = []
 
         # Home
@@ -195,11 +193,10 @@ class MainWindow(QMainWindow):
         self.nav_buttons.append(self.btn_reports)
 
         # Use proper icon instead of emoji
-        self.btnhistory = NavButton("◷", "Evaluation History")  # Clock icon
-        self.btnhistory.clicked.connect(lambda: self.change_page(4))
-        sidebar.add_nav_button(self.btnhistory)
-        self.nav_buttons.append(self.btnhistory)
-
+        self.btn_history = NavButton("◷", "Evaluation History")  # Clock icon
+        self.btn_history.clicked.connect(lambda: self.change_page(4))
+        sidebar.add_nav_button(self.btn_history)
+        self.nav_buttons.append(self.btn_history)
 
         # Footer
         footer = QLabel(f"v{APP_VERSION}\n{LOCATION}")
@@ -228,6 +225,7 @@ class MainWindow(QMainWindow):
         self.page_title = QLabel("Home")
         self.page_title.setFont(QFont("Georgia", 24))
         self.page_title.setStyleSheet("color: #3a4a3a; font-weight: 500;")
+
         layout.addWidget(self.page_title)
         layout.addStretch()
 
@@ -235,7 +233,6 @@ class MainWindow(QMainWindow):
 
     def create_pages(self):
         """Create all pages"""
-
         # Home page
         home_page = HomePage()
         home_page.navigate_to_input.connect(lambda: self.change_page(1))
@@ -254,17 +251,14 @@ class MainWindow(QMainWindow):
 
         # Crop Evaluation page
         crop_evaluation_page = CropEvaluationPage()
-
         # When "Update Soil Data" is confirmed, go back to Soil Data Input (index 1)
         crop_evaluation_page.navigate_to_input.connect(
             lambda: self.change_page(1)
         )
-
         # Multi-crop comparison completion (logged for now)
         crop_evaluation_page.comparison_complete.connect(
             self.on_comparison_complete
         )
-
         self.pages["crop_evaluation"] = crop_evaluation_page
         self.pages_stack.addWidget(crop_evaluation_page)
         logger.info("Crop Evaluation page created")
@@ -281,7 +275,6 @@ class MainWindow(QMainWindow):
         )
         self.pages["reports"] = reports_page
         self.pages_stack.addWidget(reports_page)
-
 
         history_page = EvaluationHistoryPage()
         history_page.view_report_requested.connect(self.on_view_report_from_history)
@@ -300,9 +293,9 @@ class MainWindow(QMainWindow):
         layout.addWidget(desc)
 
         from SoilWise.ui.widgets.fluent_card import FluentCard
-
         card = FluentCard()
         card.setMinimumHeight(200)
+
         card_layout = QVBoxLayout(card)
         card_layout.setAlignment(Qt.AlignCenter)
 
@@ -319,6 +312,7 @@ class MainWindow(QMainWindow):
     # ------------------------------------------------------------------
     # Signal handlers
     # ------------------------------------------------------------------
+
     def on_evaluation_complete(self, results: dict):
         """
         Handle evaluation completion from Input Page.
@@ -328,10 +322,10 @@ class MainWindow(QMainWindow):
         """
         # NOTE: emojis in logger caused UnicodeEncodeError on cp1252.
         # Keep messages ASCII-only.
-        crop_name = results.get("crop_name", "<unknown>")
+        crop_name = results.get("crop_name", "")
         logger.info(f"Evaluation complete for {crop_name}")
         logger.info(
-            " LSI: %.2f, Classification: %s",
+            "  LSI: %.2f, Classification: %s",
             results.get("lsi", 0.0),
             results.get("full_classification", ""),
         )
@@ -347,7 +341,13 @@ class MainWindow(QMainWindow):
                 crop_name,
             )
 
-       # Send results to Reports page: recreate it with fresh data
+        # ✨ NEW: Auto-refresh Evaluation History page
+        if "history" in self.pages:
+            logger.info("Auto-refreshing Evaluation History page...")
+            self.pages["history"].load_history()
+            logger.info("Evaluation History refreshed successfully")
+
+        # Send results to Reports page: recreate it with fresh data
         if "reports" in self.pages:
             old_reports = self.pages["reports"]
             index = self.pages_stack.indexOf(old_reports)
@@ -365,8 +365,6 @@ class MainWindow(QMainWindow):
 
         self.change_page(3)
 
-
-
     def on_comparison_complete(self, results: list):
         """
         Handle comparison completion from Crop Evaluation Page.
@@ -376,12 +374,19 @@ class MainWindow(QMainWindow):
         logger.info("Multi-crop comparison complete for %d crops", len(results))
         for i, result in enumerate(results[:3], 1):
             logger.info(
-                " %d. %s: LSI=%.2f, %s",
+                "  %d. %s: LSI=%.2f, %s",
                 i,
                 result.get("crop_name", ""),
                 result.get("lsi", 0.0),
                 result.get("full_classification", ""),
             )
+
+        # ✨ NEW: Auto-refresh Evaluation History page
+        if "history" in self.pages:
+            logger.info("Auto-refreshing Evaluation History after comparison...")
+            self.pages["history"].load_history()
+            logger.info("Evaluation History refreshed successfully")
+
         logger.info("Comparison completed successfully")
 
     def on_new_evaluation_requested(self):
@@ -415,6 +420,11 @@ class MainWindow(QMainWindow):
         # Refresh home when going back
         if index == 0 and "home" in self.pages:
             self.pages["home"].refresh()
+
+        # ✨ NEW: Refresh history when navigating to it
+        if index == 4 and "history" in self.pages:
+            logger.info("Refreshing Evaluation History on page load...")
+            self.pages["history"].load_history()
 
     def on_data_saved(self, soil_id: str):
         """Handle data saved event from Input Page"""

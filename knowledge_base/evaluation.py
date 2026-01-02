@@ -6,17 +6,10 @@ Orchestrates the complete evaluation workflow using the Square Root Method
 Reference: Khiddir et al. 1986, FAO 1976, Sys et al. 1993
 """
 
-
 import logging
 from typing import Dict, List, Optional, Tuple
 from knowledge_base.crop_rules import CropRules
 from knowledge_base.rules_engine import RulesEngine
-# Add database import
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from database.db_manager import get_database
-
 
 # Configure logging
 logging.basicConfig(
@@ -39,79 +32,12 @@ class SuitabilityEvaluator:
     5. Generates comprehensive evaluation reports
     """
 
-    def __init__(self, use_database=True):
-        """
-        Initialize the SuitabilityEvaluator
-        
-        Args:
-            use_database: If True, load crops from database. If False, use JSON files.
-        """
-        self.use_database = use_database
-        
-        if use_database:
-            # Load from database
-            self.db = get_database()
-            self.crops = self._load_crops_from_db()
-            print(f"✅ Loaded {len(self.crops)} crops from database")
-            
-            # Still need CropRules for the rules engine - it loads JSON directly
-            self.crop_rules = CropRules()
-        else:
-            # Load from JSON files (existing code)
-            self.crops = self._load_all_crops()
-            print(f"✅ Loaded {len(self.crops)} crops from JSON")
-            self.crop_rules = CropRules()
-        
+    def __init__(self) -> None:
+        logger.info("Initializing SuitabilityEvaluator...")
+        self.crop_rules = CropRules()
         self.rules_engine = RulesEngine()
-
-
-    def _load_crops_from_db(self) -> Dict:
-        """Load all crops and requirements from database"""
-        crops_dict = {}
-        
-        # Get all crops
-        all_crops = self.db.get_all_crops()
-        
-        for crop in all_crops:
-            crop_id = crop['crop_id']
-            crop_name = crop['crop_name']
-            
-            # Get requirements for this crop
-            requirements = self.db.get_crop_requirements(crop_id)
-            
-            # Convert to the format expected by the evaluator
-            crop_data = {
-                'crop_name': crop_name,
-                'display_name': crop.get('display_name', crop_name),
-                'category': crop.get('category', 'Unknown'),
-                'is_seasonal': bool(crop.get('is_seasonal', 0)),
-                'requirements': {}
-            }
-            
-            # Group requirements by parameter and season
-            for req in requirements:
-                param = req['parameter']
-                season = req['season']
-                
-                req_data = {
-                    's1': {'min': req['s1_min'], 'max': req['s1_max']},
-                    's2': {'min': req['s2_min'], 'max': req['s2_max']},
-                    's3': {'min': req['s3_min'], 'max': req['s3_max']},
-                    'unit': req.get('unit', '')
-                }
-                
-                if season:
-                    # Seasonal requirement
-                    if param not in crop_data['requirements']:
-                        crop_data['requirements'][param] = {}
-                    crop_data['requirements'][param][season] = req_data
-                else:
-                    # Non-seasonal requirement
-                    crop_data['requirements'][param] = req_data
-            
-            crops_dict[crop_name] = crop_data
-        
-        return crops_dict
+        num_crops = len(self.crop_rules.get_crop_names())
+        logger.info("✓ SuitabilityEvaluator initialized with %d crops", num_crops)
 
     # ------------------------------------------------------------------ #
     # Public API
@@ -153,7 +79,15 @@ class SuitabilityEvaluator:
         # Check if crop is seasonal and season is provided
         is_seasonal = crop_data.get("seasonal", False)
         if is_seasonal and not season:
-            available_seasons = list(crop_data.get("seasons", {}).keys())
+            # Handle both list and dict formats for seasons
+            seasons_data = crop_data.get("seasons", {})
+            if isinstance(seasons_data, dict):
+                available_seasons = list(seasons_data.keys())
+            elif isinstance(seasons_data, list):
+                available_seasons = seasons_data
+            else:
+                available_seasons = []
+
             error_msg = (
                 f"{crop_name} is a seasonal crop. "
                 f"Please specify season: {', '.join(available_seasons)}"
@@ -163,8 +97,16 @@ class SuitabilityEvaluator:
 
         # Validate season exists for seasonal crops
         if is_seasonal and season:
-            if season not in crop_data.get("seasons", {}):
-                available_seasons = list(crop_data.get("seasons", {}).keys())
+            # Handle both list and dict formats for seasons
+            seasons_data = crop_data.get("seasons", {})
+            if isinstance(seasons_data, dict):
+                available_seasons = list(seasons_data.keys())
+            elif isinstance(seasons_data, list):
+                available_seasons = seasons_data
+            else:
+                available_seasons = []
+
+            if season not in available_seasons:
                 error_msg = (
                     f"Invalid season '{season}' for {crop_name}. "
                     f"Available seasons: {', '.join(available_seasons)}"
@@ -539,54 +481,30 @@ class SuitabilityEvaluator:
         
         return recommendations
 
-    def _get_physical_soil_recommendations(self, soil_data):
-        """Generate recommendations for physical soil properties"""
-        recommendations = []
+    def _get_physical_soil_recommendations(self, soil_data: Dict) -> List[str]:
+        """Generate physical soil recommendations."""
+        recommendations: List[str] = []
         
-        # Depth - handle both numeric and categorical
-        depth = soil_data.get('soil_depth')
-        if depth is not None:
-            # Convert categorical to numeric estimate
-            if isinstance(depth, str):
-                depth_map = {
-                    'very shallow': 25,
-                    'shallow': 50,
-                    'moderate': 75,
-                    'moderately deep': 100,
-                    'deep': 150,
-                    'very deep': 200
-                }
-                depth = depth_map.get(depth.lower(), None)
-            
-            if depth is not None and isinstance(depth, (int, float)):
-                if depth < 50:
-                    recommendations.append({
-                        'parameter': 'soil_depth',
-                        'issue': f'Shallow soil depth ({depth}cm)',
-                        'recommendation': 'Consider deep tillage or raised beds to improve root development',
-                        'priority': 'high'
-                    })
+        texture = soil_data.get("texture")
+        if texture in ["S", "LS", "fS"]:
+            recommendations.append(
+                "• Sandy texture limits water retention. Increase irrigation "
+                "frequency and add organic matter to improve water-holding capacity."
+            )
+        elif texture in ["C", "SiC", "Cm"]:
+            recommendations.append(
+                "• Heavy clay texture limits drainage and root penetration. "
+                "Add organic matter and practice deep tillage to improve structure."
+            )
         
-        # Texture - handle string comparisons
-        texture = soil_data.get('texture')
-        if texture and isinstance(texture, str):
-            if 'clay' in texture.lower():
-                recommendations.append({
-                    'parameter': 'texture',
-                    'issue': 'Heavy clay texture',
-                    'recommendation': 'Improve drainage with organic matter or install drainage systems',
-                    'priority': 'medium'
-                })
-            elif 'sand' in texture.lower():
-                recommendations.append({
-                    'parameter': 'texture',
-                    'issue': 'Sandy texture',
-                    'recommendation': 'Add organic matter to improve water and nutrient retention',
-                    'priority': 'medium'
-                })
+        depth = soil_data.get("soil_depth")
+        if depth is not None and depth < 50:
+            recommendations.append(
+                f"• Shallow soil depth ({depth} cm) limits root growth. "
+                "Consider raised beds or select shallow-rooted crops."
+            )
         
         return recommendations
-
 
     def _get_interpretation(self, lsc: str, lsi: float) -> str:
         """Get interpretation text for the suitability classification."""
@@ -630,11 +548,19 @@ class SuitabilityEvaluator:
         if not crop_data:
             return None
         
+        seasons_data = crop_data.get("seasons", {})
+        if isinstance(seasons_data, dict):
+            seasons_list = list(seasons_data.keys())
+        elif isinstance(seasons_data, list):
+            seasons_list = seasons_data
+        else:
+            seasons_list = []
+
         return {
             "name": crop_data.get("crop_name"),
             "scientific_name": crop_data.get("scientific_name"),
             "seasonal": crop_data.get("seasonal", False),
-            "seasons": list(crop_data.get("seasons", {}).keys()) if crop_data.get("seasonal") else [],
+            "seasons": seasons_list if crop_data.get("seasonal") else [],
             "notes": crop_data.get("notes", ""),
         }
 

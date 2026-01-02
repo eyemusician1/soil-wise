@@ -1197,6 +1197,37 @@ class InputPage(QWidget):
                 "poor - Poorly drained",
                 "poor_not_drainable - Poorly drained, not drainable"
             ],
+            "Maize": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor - Poorly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            "Oil Palm": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor - Poorly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            "Pineapple": [
+                "Select drainage class...",
+                "good - Well drained",
+                "goodgwover150 - Well drained (GW >150cm)",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor - Poorly drained",
+                "pooraeric - Poorly drained, aeric conditions",
+                "poordrainable - Poorly drained but drainable",
+                "poornotdrainable - Poorly drained, not drainable"
+            ],
+
+
         }
         
         default_options = [
@@ -1235,9 +1266,9 @@ class InputPage(QWidget):
         # Texture descriptions mapping
         texture_descriptions = {
             'C': 'Clay',
-            'C<60s': 'Clay <60% smectitic',
-            'C>60s': 'Clay >60% smectitic',
-            'C>60v': 'Clay >60% vermiculitic',
+            'C<60s': 'Clay (<60% clay, moderately heavy)',
+            'C>60s': 'Clay (>60% clay, heavy clay)',
+            'C>60v': 'Clay (>60% clay, very heavy clay)',
             'CL': 'Clay Loam',
             'CSGOs': 'Clay Sandy Gravel over sand',
             'Cm': 'Clay montmorillonitic',
@@ -1268,24 +1299,37 @@ class InputPage(QWidget):
                 'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'cS', 'fS'
             ],
             'Banana': [
-                'CL', 'CSGOs', 'Cm', 'Co', 'CxGOs', 'CxGOv', 'CxGv', 'L', 'LS', 
+                'CL', 'C>60s', 'Cm', 'Co', 'C<60s', 'C<60v', 'C>60v', 'L', 'LS', 
                 'LfS', 'S', 'SC', 'SCL', 'SL', 'SiCL', 'SiCm', 'SiCs', 'SiL', 'cS', 'fS'
             ],
             'Cocoa': [
-                'C', 'CL', 'Cm', 'Co', 'CxGOv', 'CxGv', 'L', 'LfS', 
-                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'cS'
+                'C<60s', 'Co', 'SiCL', 'CL', 'SiL', 'C>60s', 'SC', 'C<60v', 'L', 'SCL', 
+                'C>60v', 'SL','LfS', 'Cm', 'SiCm', 'LS', 'cS', 'fS', 'S'
+                
             ],
             'Cabbage': [
-                'C', 'CL', 'Cm', 'L', 'LS', 'LcS', 'LfS', 
-                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
+                'C<60s', 'Co', 'SiCs', 'SiCL', 'CL', 'SiL', 'Si', 
+                'C>60s', 'SC', 'C<60v', 'L', 'SCL', 'C>60v', 'SL', 'LS', 'LfS', 'S',
+                'LcS', 'fS', 'Cm', 'SiCm', 'cS'
             ],
             'Carrots': [
-                'C', 'Cm', 'Co', 'CxGOs', 'CxGOv', 'L', 'LS', 'LcS', 'LfS', 
-                'S', 'SC', 'SCL', 'SL', 'SiC', 'SiCL', 'SiCm', 'SiL', 'cS', 'fS'
+                'L', 'SL', 'LfS', 'SCL', 'LS', 'SiCL', 'SC', 'SiCs', 'S', 'fS', 'LcS',
+                'C<60v', 'Co', 'C>60s', 'C<60s', 'C>60v', 'Cm', 'SiCm'
             ],
             "Robusta Coffee": [
                 "C<60s", "Co", "SiCL", "CL", "SC", "C>60s", "L", "SCL", 
                 "SL", "LS", "LfS", "Cm", "SiCm", "C>60v", "S", "cS"],
+            "Maize": [
+                "C<60s", "Co", "C<60v", "SC", "SiCL", "CL", "C>60v", "SCL", 
+                "C>60", "SL", "LfS", "S", "LcS", "Cm", "SiCm", "cS"],
+            "Oil Palm": [
+                "C<60s", "SiCa", "SiCL", "Co", "CL", "SC", "L", "SCL", "SL", 
+                "LfS", "Cm", "SiCm", "cS", "fS", "S", "LcS"],
+            
+            "Pineapple": [
+                'SCL', 'L', 'SL', 'SiL', 'SiCL', 'SC', 'LfS', 'LS', 'Co',
+                'C<60v', 'C<60s', 'C>60s', 'SiC', 'fS', 'Cm', 'SiCm'
+            ],
         }
         
         # Default textures if crop not in mapping
@@ -1967,7 +2011,7 @@ class InputPage(QWidget):
             
             # LOCATION
             add_section("📍 LOCATION", [
-                ("Site Name", self.site_input.text().strip() if isinstance(self.site_input, QComboBox) else (self.site_input.text() or "N/A"))
+                ("Site Name", self.site_input.currentText().strip() if isinstance(self.site_input, QComboBox) else (self.site_input.text() or "N/A"))
             ])
             
             # CLIMATE
@@ -2126,7 +2170,7 @@ class InputPage(QWidget):
             
             # LOCATION
             add_section("LOCATION", [
-                ("Site Name", "Example: Farm Area A, Plot 123")
+                ("Site Name", "Example: Dimalna")
             ])
             
             # CLIMATE

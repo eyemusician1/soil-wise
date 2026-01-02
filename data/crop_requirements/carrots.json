@@ -919,27 +919,28 @@
       },
       "S1_1": {
         "values": [
-          "SiL",
-          "LS"
+          "SCL",
+          "LS",
+          "SiCL"
         ],
         "rating": 0.95
       },
       "S2": {
         "values": [
-          "SCL",
-          "SiCL"
+          "SC",
+          "SiCs",
+          "S",
+          "fS",
+          "LcS"
         ],
         "rating": 0.85
       },
       "S3": {
         "values": [
-          "SiC",
-          "SC",
-          "C",
-          "fS",
-          "LcS",
-          "CxGOv",
-          "Co"
+          "C<60v",
+          "Co",
+          "C>60s",
+          "C<60s"
         ],
         "rating": 0.6
       },
@@ -947,9 +948,7 @@
         "values": [
           "Cm",
           "SiCm",
-          "cS",
-          "S",
-          "CxGOs"
+          "C>60v"
         ],
         "rating": 0.25
       }

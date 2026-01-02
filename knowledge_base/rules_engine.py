@@ -98,41 +98,78 @@ class RulesEngine:
         return (0.25, "N", subclass)
     
     def _get_slope_rating(self, crop_name: str, slope_value: float) -> Tuple[float, str, str]:
-        """Special handler for slope parameter."""
-        logger.debug(f"Evaluating slope = {slope_value}% for {crop_name}")
-        
-        crop_data = self.crop_rules.get_crop_requirements(crop_name)
-        if not crop_data:
-            return (0.25, "N", "t")
-        
-        topo_reqs = crop_data.get('topography_requirements', {})
-        slope_reqs = topo_reqs.get('slope_pct', {})
-        
-        # Try level1 first
-        level1 = slope_reqs.get('level1', {})
-        if not level1:
-            return (0.25, "N", "t")
-        
-        for classification_key, spec in level1.items():
-            if "range" not in spec:
-                continue
+            """Special handler for slope parameter - supports both level-based and direct structures."""
+            logger.debug(f"Evaluating slope = {slope_value}% for {crop_name}")
             
-            min_val, max_val = spec["range"]
-            if min_val is None:
-                min_val = float('-inf')
-            if max_val is None:
-                max_val = float('inf')
+            crop_data = self.crop_rules.get_crop_requirements(crop_name)
+            if not crop_data:
+                logger.warning(f"No crop data found for {crop_name}")
+                return (0.25, "N", "t")
             
-            if min_val <= slope_value <= max_val:
-                rating = spec["rating"]
-                classification = self._get_classification_from_key(classification_key)
-                logger.debug(
-                    f"  ✓ slope = {slope_value}% → {classification} "
-                    f"(rating: {rating:.4f})"
-                )
-                return (rating, classification, "t")
-        
-        return (0.25, "N", "t")
+            topo_reqs = crop_data.get('topography_requirements', {})
+            slope_reqs = topo_reqs.get('slope_pct', {})
+            
+            if not slope_reqs:
+                logger.warning(f"No slope requirements found for {crop_name}")
+                return (0.25, "N", "t")
+            
+            # FIX: Try direct structure first (for Oil Palm, Banana, etc.)
+            # Check if slope_reqs has direct classification keys (S1_0, S2, etc.)
+            has_direct_structure = any(key.startswith(('S1', 'S2', 'S3', 'N')) for key in slope_reqs.keys())
+            
+            if has_direct_structure:
+                logger.debug(f"Using DIRECT slope structure for {crop_name}")
+                for classification_key, spec in slope_reqs.items():
+                    if "range" not in spec:
+                        continue
+                    
+                    min_val, max_val = spec["range"]
+                    if min_val is None:
+                        min_val = float('-inf')
+                    if max_val is None:
+                        max_val = float('inf')
+                    
+                    if min_val <= slope_value <= max_val:
+                        rating = spec["rating"]
+                        classification = self._get_classification_from_key(classification_key)
+                        logger.debug(
+                            f"  ✓ slope = {slope_value}% → {classification} "
+                            f"(rating: {rating:.4f}, range: [{min_val}, {max_val}])"
+                        )
+                        return (rating, classification, "t")
+            
+            # ✅ FALLBACK: Try level-based structure (for Coffee crops)
+            else:
+                logger.debug(f"Using LEVEL-BASED slope structure for {crop_name}")
+                level1 = slope_reqs.get('level1', {})
+                
+                if not level1:
+                    logger.warning(f"No level1 found in slope requirements for {crop_name}")
+                    return (0.25, "N", "t")
+                
+                for classification_key, spec in level1.items():
+                    if "range" not in spec:
+                        continue
+                    
+                    min_val, max_val = spec["range"]
+                    if min_val is None:
+                        min_val = float('-inf')
+                    if max_val is None:
+                        max_val = float('inf')
+                    
+                    if min_val <= slope_value <= max_val:
+                        rating = spec["rating"]
+                        classification = self._get_classification_from_key(classification_key)
+                        logger.debug(
+                            f"  ✓ slope = {slope_value}% → {classification} "
+                            f"(rating: {rating:.4f})"
+                        )
+                        return (rating, classification, "t")
+            
+            # No match found
+            logger.warning(f"No matching slope range found for {slope_value}%")
+            return (0.25, "N", "t")
+
     
     def _get_classification_from_key(self, key: str) -> str:
         """Extract classification from key."""

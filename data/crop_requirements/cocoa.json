@@ -120,11 +120,11 @@
   
   "physical_soil_requirements": {
     "texture": {
-      "S1_0": {"values": ["CxGOv", "Co", "SiCL", "CL"], "rating": 1.0},
-      "S1_1": {"values": ["C", "SiC"], "rating": 0.95},
-      "S2": {"values": ["L", "SC", "CL"], "rating": 0.85},
-      "S3": {"values": ["SCL", "CxGv", "LfS", "SL"], "rating": 0.6},
-      "N2": {"values": ["Cm", "SiCm", "cS", "S"], "rating": 0.25}
+      "S1_0": {"values": ["C<60s", "Co", "SiCL", "CL", "SiL"], "rating": 1.0},
+      "S1_1": {"values": ["C>60s", "SC", "L"], "rating": 0.95},
+      "S2": {"values": ["SCL", "C<60v"], "rating": 0.85},
+      "S3": {"values": ["C>60v", "LfS", "SL"], "rating": 0.6},
+      "N2": {"values": ["Cm", "SiCm", "LS", "LcS", "fS,", "cS", "S"], "rating": 0.25}
     },
     "coarse_fragments_pct": {
       "S1_0": {"range": [0.0, 3.0], "rating": 1.0},

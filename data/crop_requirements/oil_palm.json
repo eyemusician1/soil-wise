@@ -1,170 +1,508 @@
 {
   "crop_name": "Oil Palm",
   "scientific_name": "Elaeis guineensis Jacq.",
-  "requirements": {
-    "climate": {
-      "temperature": {
-        "mean_annual": {
-          "s1_min": 25,
-          "s2_min": 25,
-          "s2_max": 22,
-          "s3_min": 22,
-          "s3_max": 20,
-          "unit": "°C"
-        },
-        "mean_annual_max": {
-          "s1_min": 29,
-          "s2_min": 29,
-          "s2_max": 27,
-          "s3_min": 27,
-          "s3_max": 24,
-          "unit": "°C"
-        },
-        "average_daily_min_coldest_month": {
-          "s1_min": 20,
-          "s2_min": 20,
-          "s2_max": 18,
-          "s3_min": 18,
-          "s3_max": 16,
-          "unit": "°C"
-        }
+  "seasonal": false,
+  "seasons": null,
+  
+  "climate_requirements": {
+    "annual_precipitation_mm": {
+      "S1_0": {
+        "range": [2000.01, null],
+        "rating": 1.0
       },
-      "rainfall": {
-        "annual": {
-          "s1_min": 2000,
-          "s2_min": 2000,
-          "s2_max": 1700,
-          "s3_min": 1700,
-          "s3_max": 1450,
-          "unit": "mm"
-        },
-        "dry_season_length": {
-          "s1_max": 1,
-          "s2_min": 1,
-          "s2_max": 2,
-          "s3_min": 2,
-          "s3_max": 3,
-          "unit": "months P < 1/2 PET"
-        }
+      "S2": {
+        "range": [1700.0, 2000.0],
+        "rating": 0.85
       },
-      "n_n_ratio": {
-        "annual": {
-          "s1_min": 0.75,
-          "s2_min": 0.75,
-          "s2_max": 0.45,
-          "s3_max": 0.45
-        }
+      "S3": {
+        "range": [1450.0, 1699.9],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [1250.0, 1449.9],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [null, 1249.9],
+        "rating": 0.25
       }
     },
-    "soil": {
-      "texture": {
-        "s1": ["CxGOs", "CxGOs", "SiCà"],
-        "s2": ["SsCL", "Co", "CL", "SC"],
-        "s3": ["SCL", "SL", "LfS"]
+    
+    "dry_season_months": {
+      "S1_0": {
+        "range": [0.0, 1.0],
+        "rating": 1.0
       },
-      "drainage": {
-        "s1": "moderate",
-        "s2": "good/imperfect",
-        "s3": "imperfect",
-        "n1": "poor and aeric",
-        "n2": "F3+ poor/poor not drainable"
+      "S2": {
+        "range": [1.1, 2.0],
+        "rating": 0.85
       },
-      "coarse_fragments": {
-        "s1_max": 3,
-        "s2_min": 3,
-        "s2_max": 15,
-        "s3_min": 15,
-        "s3_max": 35,
-        "unit": "vol%"
+      "S3": {
+        "range": [2.1, 3.0],
+        "rating": 0.6
       },
-      "depth": {
-        "s1_min": 150,
-        "s2_min": 150,
-        "s2_max": 100,
-        "s3_min": 100,
-        "s3_max": 50,
-        "unit": "cm"
+      "N1": {
+        "range": [3.1, 4.0],
+        "rating": 0.4
       },
-      "cec": {
-        "s1_min": 16,
-        "s2_max": 16,
-        "s3_max": 16,
-        "unit": "cmol(+)/kg clay"
-      },
-      "base_saturation": {
-        "s1_min": 35,
-        "s2_min": 35,
-        "s2_max": 20,
-        "s3_max": 20,
-        "unit": "%"
-      },
-      "sum_basic_cations": {
-        "s1_min": 5,
-        "s2_min": 5,
-        "s2_max": 3.5,
-        "s3_min": 3.5,
-        "s3_max": 2,
-        "unit": "cmol(+)/kg soil"
-      },
-      "ph_h2o": {
-        "s1_min": 5.8,
-        "s1_max": 5.5,
-        "s2_min": 5.5,
-        "s2_max": 5.0,
-        "s3_min": 5.0,
-        "s3_max": 4.2,
-        "n1_min": 4.2,
-        "n1_max": 3.5
-      },
-      "organic_carbon": {
-        "s1_min": 1.2,
-        "s2_min": 1.2,
-        "s2_max": 0.8,
-        "s3_max": 0.8,
-        "unit": "%"
-      },
-      "caco3": {
-        "s1_max": 1,
-        "s2_max": 5,
-        "s3_min": 5,
-        "s3_max": 10,
-        "unit": "%"
-      },
-      "gypsum": {
-        "s1_max": 0.5,
-        "s2_max": 2,
-        "s3_min": 2,
-        "s3_max": 3,
-        "unit": "%"
+      "N2": {
+        "range": [4.1, null],
+        "rating": 0.25
       }
     },
-    "topography": {
-      "slope": {
-        "s1_max": 4,
-        "s2_min": 4,
-        "s2_max": 8,
-        "s3_min": 8,
-        "s3_max": 16,
-        "unit": "%"
+    
+    "mean_annual_temp_c": {
+      "S1_0": {
+        "range": [25.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [22.0, 25.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [20.0, 21.9],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [18.0, 19.9],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [null, 17.9],
+        "rating": 0.25
       }
     },
-    "salinity": {
-      "ece": {
-        "s1_max": 1,
-        "s2_min": 1,
-        "s2_max": 2,
-        "s3_min": 2,
-        "s3_max": 3,
-        "unit": "dS/m"
+    
+    "mean_annual_max_temp_c": {
+      "S1_0": {
+        "range": [29.01, null],
+        "rating": 1.0
       },
-      "esp": {
-        "s1_max": 5,
-        "s2_min": 5,
-        "s2_max": 10,
-        "s3_min": 10,
-        "s3_max": 15,
-        "unit": "%"
+      "S2": {
+        "range": [27.0, 29.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [24.0, 26.9],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [22.0, 23.9],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [null, 21.9],
+        "rating": 0.25
+      }
+    },
+    
+    "mean_daily_min_temp_coldest_month_c": {
+      "S1_0": {
+        "range": [20.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [18.0, 20.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [16.0, 17.9],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [14.0, 15.9],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [null, 13.9],
+        "rating": 0.25
+      }
+    },
+    
+    "annual_n_over_N": {
+      "S1_0": {
+        "range": [0.751, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [0.45, 0.75],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [null, 0.449],
+        "rating": 0.6
       }
     }
+  },
+  
+  "topography_requirements": {
+    "slope_pct": {
+      "S1_0": {
+        "range": [0.0, 4.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [4.01, 8.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [8.01, 16.0],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [16.01, 30.0],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [30.01, 50.0],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [50.01, null],
+        "rating": 0.25
+      }
+    }
+  },
+  
+  "wetness_requirements": {
+    "flooding": {
+      "S1_0": {
+        "values": ["Fo"],
+        "rating": 1.0
+      },
+      "S2_level4": {
+        "values": ["moderate"],
+        "rating": 0.85
+      },
+      "S2_level5": {
+        "values": ["good", "imperfect"],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": ["imperfect", "good", "F1"],
+        "rating": 0.6
+      },
+      "N1": {
+        "values": ["F2"],
+        "rating": 0.4
+      },
+      "N2": {
+        "values": ["F3+", "F3"],
+        "rating": 0.25
+      }
+    },
+    
+    "drainage": {
+      "S1_0_level4": {
+        "values": ["good"],
+        "rating": 1.0
+      },
+      "S1_0_level5": {
+        "values": ["imperfect"],
+        "rating": 1.0
+      },
+      "S2": {
+        "values": ["moderate", "good", "imperfect"],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": ["imperfect", "good"],
+        "rating": 0.6
+      },
+      "N1": {
+        "values": ["poor", "poor_aeric"],
+        "rating": 0.4
+      },
+      "N2": {
+        "values": ["poor_not_drainable"],
+        "rating": 0.25
+      }
+    }
+  },
+  
+  "physical_soil_requirements": {
+    "texture": {
+      "S1_0": {
+        "values": ["C<60s", "C<60s", "SiCa"],
+        "rating": 1.0
+      },
+      "S2": {
+        "values": ["SiCL", "Co", "CL", "SC", "L"],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": ["SCL", "SL", "LfS"],
+        "rating": 0.6
+      },
+      "N2": {
+        "values": ["Cm", "SiCm", "cS", "fS", "S", "LcS"],
+        "rating": 0.25
+      }
+    },
+    
+    "coarse_fragments_pct": {
+      "S1_0": {
+        "range": [0.0, 3.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [3.01, 15.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [15.01, 35.0],
+        "rating": 0.6
+      },
+      "N2": {
+        "range": [35.01, 55.0],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [55.01, null],
+        "rating": 0.25
+      }
+    },
+    
+    "soil_depth_cm": {
+      "S1_0": {
+        "range": [150.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [100.0, 150.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [50.0, 99.9],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [25.0, 49.9],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [null, 24.9],
+        "rating": 0.25
+      }
+    },
+    
+    "caco3_pct": {
+      "S1_0": {
+        "range": [0.0, 0.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [0.01, 1.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [1.01, 5.0],
+        "rating": 0.6
+      },
+      "N2": {
+        "range": [5.01, 10.0],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [10.01, null],
+        "rating": 0.25
+      }
+    },
+    
+    "gypsum_pct": {
+      "S1_0": {
+        "range": [0.0, 0.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [0.01, 0.5],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [0.51, 2.0],
+        "rating": 0.6
+      },
+      "N2": {
+        "range": [2.01, 3.0],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [3.01, null],
+        "rating": 0.25
+      }
+    }
+  },
+  
+  "soil_fertility_requirements": {
+    "apparent_cec_cmol_kg_clay": {
+      "S1_0": {
+        "range": [16.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [null, 16.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [null, 16.0],
+        "rating": 0.6
+      }
+    },
+    
+    "base_saturation_pct": {
+      "S1_0": {
+        "range": [35.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [20.0, 35.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [null, 19.9],
+        "rating": 0.6
+      }
+    },
+    
+    "sum_basic_cations_cmol_kg": {
+      "S1_0": {
+        "range": [5.01, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [3.5, 5.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [2.0, 3.49],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [null, 1.99],
+        "rating": 0.4
+      }
+    },
+    
+    "ph_h2o": {
+      "S1_0": {
+        "range": [5.5, 5.8],
+        "rating": 1.0
+      },
+      "S1_1": {
+        "range": [5.81, 6.0],
+        "rating": 0.95
+      },
+      "S2_low": {
+        "range": [5.0, 5.49],
+        "rating": 0.85
+      },
+      "S2_high": {
+        "range": [6.01, 6.5],
+        "rating": 0.85
+      },
+      "S3_low": {
+        "range": [4.2, 4.99],
+        "rating": 0.6
+      },
+      "S3_high": {
+        "range": [6.51, 7.0],
+        "rating": 0.6
+      },
+      "N1_low": {
+        "range": [3.5, 4.19],
+        "rating": 0.4
+      },
+      "N1_high": {
+        "range": [7.01, 7.5],
+        "rating": 0.4
+      },
+      "N2_low": {
+        "range": [null, 3.49],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [7.51, null],
+        "rating": 0.25
+      }
+    },
+    
+    "organic_carbon_pct": {
+      "S1_0": {
+        "range": [1.21, null],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [0.8, 1.2],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [null, 0.79],
+        "rating": 0.6
+      }
+    }
+  },
+  
+  "salinity_alkalinity_requirements": {
+    "ece_ds_m": {
+      "S1_0": {
+        "range": [0.0, 1.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [1.01, 2.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [2.01, 3.0],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [3.01, 4.0],
+        "rating": 0.4
+      },
+      "N2_low": {
+        "range": [4.01, 8.0],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [8.01, null],
+        "rating": 0.25
+      }
+    },
+    
+    "esp_pct": {
+      "S1_0": {
+        "range": [0.0, 0.0],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [0.01, 5.0],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [5.01, 10.0],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [10.01, 15.0],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [15.01, null],
+        "rating": 0.25
+      }
+    }
+  },
+  
+  "notes": "Oil Palm (Elaeis guineensis Jacq.) requirements based on Land Evaluation Book Part 3. Perennial crop with high adaptability to tropical humid climates.",
+  
+  "rating_scale": {
+    "S1_0": 1.0,
+    "S1_1": 0.95,
+    "S2": 0.85,
+    "S3": 0.6,
+    "N1": 0.4,
+    "N2": 0.25
   }
 }
