@@ -1330,6 +1330,10 @@ class InputPage(QWidget):
                 'SCL', 'L', 'SL', 'SiL', 'SiCL', 'SC', 'LfS', 'LS', 'Co',
                 'C<60v', 'C<60s', 'C>60s', 'SiC', 'fS', 'Cm', 'SiCm'
             ],
+            "Sorghum": [
+                'C<60s', 'SiC', 'Co', 'SiCL', 'Si', 'SiL', 'SC', 'C<60v',
+                'C>60s', 'L', 'SCL', 'C>60v', 'SL', 'LfS', 'LS', 'fS', 'LcS'
+            ]
         }
         
         # Default textures if crop not in mapping

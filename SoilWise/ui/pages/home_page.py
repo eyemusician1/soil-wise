@@ -546,7 +546,7 @@ class HomePage(QWidget):
             ("▥", "SOIL SAMPLES", "0", "#6b9d6e"),
             ("⚘", "CROPS EVALUATED", "0", "#5a9d5e"),
             ("◱", "REPORTS GENERATED", "0", "#7c9885"),
-            ("✓", "SUCCESS RATE", "0%", "#4a8c4d")
+            ("✓", "SUITABILITY", "0%", "#4a8c4d")
         ]
         
         for i, (icon, title, value, color) in enumerate(stats):
@@ -603,9 +603,9 @@ class HomePage(QWidget):
             str(stats.get('evaluations', 0))
         )
         
-        # Format success rate with % symbol
-        success_rate = stats.get('success_rate', 0)
-        self.stat_cards['success rate'].update_value(f"{success_rate}%")
+        # Format suitability rate with % symbol
+        suitability_rate = stats.get('suitability_rate', 0)
+        self.stat_cards['suitability'].update_value(f"{suitability_rate}%")
 
 
     def refresh(self):
@@ -662,7 +662,7 @@ class HomePage(QWidget):
                     'soil_samples': soil_samples,
                     'crops_evaluated': crops_evaluated,
                     'evaluations': total_evaluations,
-                    'success_rate': success_rate
+                    'suitability_rate': success_rate
                 }
                 
                 self.update_statistics(stats)
