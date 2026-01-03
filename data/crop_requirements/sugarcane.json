@@ -1,199 +1,1005 @@
 {
   "crop_name": "Sugarcane",
   "scientific_name": "Saccharum officinarum L.",
+  "seasonal": false,
+  "seasons": null,
   "growing_cycle_days": "270-2100",
-  "requirements": {
-    "climate": {
-      "temperature": {
-        "mean_day_at_germination": {
-          "s1_min": 28,
-          "s1_max": 30,
-          "s2_min": 30,
-          "s2_max": 32,
-          "s3_min": 32,
-          "s3_max": 34,
-          "unit": "°C"
-        },
-        "mean_day_tillering": {
-          "s1_min": 27,
-          "s1_max": 28,
-          "s2_min": 28,
-          "s2_max": 32,
-          "s3_min": 32,
-          "s3_max": 35,
-          "unit": "°C"
-        },
-        "mean_day_vegetative": {
-          "s1_min": 26,
-          "s1_max": 25,
-          "s2_min": 25,
-          "s2_max": 22,
-          "s3_min": 22,
-          "s3_max": 20,
-          "unit": "°C"
-        },
-        "tmax_tmin_mean_maturation": {
-          "s1_min": 0.5,
-          "s2_min": 0.5,
-          "s2_max": 0.45,
-          "s3_min": 0.45,
-          "s3_max": 0.4,
-          "unit": "ratio"
-        }
+  "climate_requirements": {
+    "rainfall_10_days_mm": {
+      "S1_0": {
+        "range": [
+          70.0,
+          null
+        ],
+        "rating": 1.0
       },
-      "rainfall": {
-        "10_days": {
-          "s1_min": 70,
-          "s2_min": 70,
-          "s2_max": 60,
-          "s3_min": 60,
-          "s3_max": 50,
-          "unit": "mm"
-        }
+      "S2": {
+        "range": [
+          60.0,
+          69.9
+        ],
+        "rating": 0.85
       },
-      "sunshine": {
-        "hours_per_year": {
-          "s1_min": 2200,
-          "s2_min": 2200,
-          "s2_max": 1800,
-          "s3_min": 1800,
-          "s3_max": 1400,
-          "unit": "hours"
-        }
+      "S3": {
+        "range": [
+          50.0,
+          59.9
+        ],
+        "rating": 0.6
       },
-      "n_n_ratio": {
-        "mean_annual": {
-          "s1_min": 0.5,
-          "s2_min": 0.5,
-          "s2_max": 0.4,
-          "s3_min": 0.4,
-          "s3_max": 0.3,
-          "unit": "ratio"
-        }
+      "N1": {
+        "range": [
+          30.0,
+          49.9
+        ],
+        "rating": 0.4
       },
-      "relative_humidity": {
-        "maturation_stage": {
-          "s1_max": 60,
-          "s2_min": 60,
-          "s2_max": 70,
-          "s3_min": 70,
-          "unit": "%"
-        }
+      "N2": {
+        "range": [
+          null,
+          29.9
+        ],
+        "rating": 0.25
       }
     },
-    "soil": {
-      "texture": {
-        "s1": ["CxGOs", "SiC", "Co", "SiCL", "CL"],
-        "s2": ["CxGOv", "CxGOs", "SC", "L", "SCL"],
-        "s3": ["CxGv", "SL", "LcS", "fS", "S"]
+    "mean_day_temp_germination_c": {
+      "S1_0": {
+        "range": [
+          28.0,
+          30.0
+        ],
+        "rating": 1.0
       },
-      "drainage": {
-        "s1": "good",
-        "s2": "moderate",
-        "s3": "imperfect",
-        "n1": "poor and aeric",
-        "n2": "F2+ poor/poor not drainable"
+      "S1_1_low": {
+        "range": [
+          26.0,
+          27.9
+        ],
+        "rating": 0.95
       },
-      "coarse_fragments": {
-        "s1_max": 3,
-        "s2_min": 3,
-        "s2_max": 15,
-        "s3_min": 15,
-        "s3_max": 35,
-        "unit": "vol%"
+      "S2": {
+        "range": [
+          30.1,
+          32.0
+        ],
+        "rating": 0.85
       },
-      "depth": {
-        "s1_min": 125,
-        "s2_min": 125,
-        "s2_max": 80,
-        "s3_min": 80,
-        "s3_max": 50,
-        "unit": "cm"
+      "S3": {
+        "range": [
+          32.1,
+          34.0
+        ],
+        "rating": 0.6
       },
-      "cec": {
-        "s1_min": 24,
-        "s2_min": 24,
-        "s2_max": 16,
-        "s3_max": 16,
-        "unit": "cmol(+)/kg clay"
+      "N1": {
+        "range": [
+          34.1,
+          35.0
+        ],
+        "rating": 0.4
       },
-      "base_saturation": {
-        "s1_min": 80,
-        "s2_min": 80,
-        "s2_max": 50,
-        "s3_min": 50,
-        "s3_max": 35,
-        "unit": "%"
+      "N2_high": {
+        "range": [
+          35.1,
+          null
+        ],
+        "rating": 0.25
       },
-      "sum_basic_cations": {
-        "s1_min": 8,
-        "s2_min": 8,
-        "s2_max": 5,
-        "s3_min": 5,
-        "s3_max": 3.5,
-        "unit": "cmol(+)/kg soil"
-      },
-      "ph_h2o": {
-        "s1_min": 6.5,
-        "s1_max": 6.0,
-        "s2_min": 6.0,
-        "s2_max": 5.5,
-        "s3_min": 5.5,
-        "s3_max": 5.0,
-        "n1_max": 4.5
-      },
-      "organic_carbon": {
-        "s1_min": 5,
-        "s2_min": 7.0,
-        "s2_max": 7.5,
-        "s3_min": 7.5,
-        "s3_max": 8.0,
-        "unit": "%"
-      },
-      "caco3": {
-        "s1_max": 12,
-        "s2_min": 12,
-        "s2_max": 25,
-        "s3_min": 25,
-        "s3_max": 35,
-        "unit": "%"
-      },
-      "gypsum": {
-        "s1_max": 3,
-        "s2_min": 3,
-        "s2_max": 6,
-        "s3_min": 6,
-        "s3_max": 12,
-        "unit": "%"
+      "N2_low": {
+        "range": [
+          null,
+          25.9
+        ],
+        "rating": 0.25
       }
     },
-    "topography": {
-      "slope": {
-        "s1_max": 2,
-        "s2_min": 2,
-        "s2_max": 4,
-        "s3_min": 4,
-        "s3_max": 8,
-        "unit": "%"
+    "mean_day_temp_tillage_stage_c": {
+      "S1_0": {
+        "range": [
+          27.0,
+          28.0
+        ],
+        "rating": 1.0
+      },
+      "S1_1_low": {
+        "range": [
+          26.0,
+          26.9
+        ],
+        "rating": 0.95
+      },
+      "S2_low": {
+        "range": [
+          20.0,
+          25.9
+        ],
+        "rating": 0.85
+      },
+      "S2_high": {
+        "range": [
+          28.1,
+          32.0
+        ],
+        "rating": 0.85
+      },
+      "S3_low": {
+        "range": [
+          16.0,
+          19.9
+        ],
+        "rating": 0.6
+      },
+      "S3_high": {
+        "range": [
+          32.1,
+          35.0
+        ],
+        "rating": 0.6
+      },
+      "N2_low": {
+        "range": [
+          null,
+          15.9
+        ],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [
+          35.1,
+          null
+        ],
+        "rating": 0.25
       }
     },
-    "salinity": {
-      "ece": {
-        "s1_max": 2,
-        "s2_min": 2,
-        "s2_max": 5,
-        "s3_min": 5,
-        "s3_max": 8,
-        "unit": "dS/m"
+    "mean_day_temp_vegetative_stage_c": {
+      "S1_0": {
+        "range": [
+          26.0,
+          27.0
+        ],
+        "rating": 1.0
       },
-      "esp": {
-        "s1_max": 5,
-        "s2_min": 5,
-        "s2_max": 10,
-        "s3_min": 10,
-        "s3_max": 15,
-        "unit": "%"
+      "S1_1": {
+        "range": [
+          25.0,
+          25.9
+        ],
+        "rating": 0.95
+      },
+      "S2_low": {
+        "range": [
+          22.0,
+          24.9
+        ],
+        "rating": 0.85
+      },
+      "S2_high": {
+        "range": [
+          27.1,
+          32.0
+        ],
+        "rating": 0.85
+      },
+      "S3_low": {
+        "range": [
+          20.0,
+          21.9
+        ],
+        "rating": 0.6
+      },
+      "S3_high": {
+        "range": [
+          32.1,
+          35.0
+        ],
+        "rating": 0.6
+      },
+      "N2_high": {
+        "range": [
+          35.1,
+          null
+        ],
+        "rating": 0.25
+      },
+      "N2_low": {
+        "range": [
+          null,
+          19.9
+        ],
+        "rating": 0.25
+      }
+    },
+    "tmax_tmin_mean_maturation_stage": {
+      "S1_0": {
+        "range": [
+          0.5,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          0.45,
+          0.49
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          0.4,
+          0.44
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          0.3,
+          0.39
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          0.29
+        ],
+        "rating": 0.25
+      }
+    },
+    "sunshine_hours_per_year": {
+      "S1_0": {
+        "range": [
+          2200.0,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          1800.0,
+          2199.9
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          1400.0,
+          1799.9
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          1200.0,
+          1399.9
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          1199.9
+        ],
+        "rating": 0.25
+      }
+    },
+    "mean_annual_n_over_N": {
+      "S1_0": {
+        "range": [
+          0.5,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          0.4,
+          0.49
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          0.3,
+          0.39
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          0.2,
+          0.29
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          0.19
+        ],
+        "rating": 0.25
+      }
+    },
+    "relative_humidity_maturation_stage_pct": {
+      "S1_0": {
+        "range": [
+          0.0,
+          60.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          60.1,
+          70.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          70.1,
+          null
+        ],
+        "rating": 0.6
       }
     }
+  },
+  "topography_requirements": {
+    "slope_pct": {
+      "level1": {
+        "S1_0": {
+          "range": [
+            0.0,
+            1.0
+          ],
+          "rating": 1.0
+        },
+        "S2": {
+          "range": [
+            1.1,
+            2.0
+          ],
+          "rating": 0.85
+        },
+        "S3": {
+          "range": [
+            2.1,
+            4.0
+          ],
+          "rating": 0.6
+        },
+        "N1": {
+          "range": [
+            4.1,
+            6.0
+          ],
+          "rating": 0.4
+        },
+        "N2": {
+          "range": [
+            6.1,
+            null
+          ],
+          "rating": 0.25
+        }
+      },
+      "level2": {
+        "S1_0": {
+          "range": [
+            0.0,
+            2.0
+          ],
+          "rating": 1.0
+        },
+        "S2": {
+          "range": [
+            2.1,
+            4.0
+          ],
+          "rating": 0.85
+        },
+        "S3": {
+          "range": [
+            4.1,
+            8.0
+          ],
+          "rating": 0.6
+        },
+        "N1": {
+          "range": [
+            8.1,
+            16.0
+          ],
+          "rating": 0.4
+        },
+        "N2": {
+          "range": [
+            16.1,
+            null
+          ],
+          "rating": 0.25
+        }
+      },
+      "level3": {
+        "S1_0": {
+          "range": [
+            0.0,
+            4.0
+          ],
+          "rating": 1.0
+        },
+        "S2": {
+          "range": [
+            4.1,
+            8.0
+          ],
+          "rating": 0.85
+        },
+        "S3": {
+          "range": [
+            8.1,
+            16.0
+          ],
+          "rating": 0.6
+        },
+        "N1": {
+          "range": [
+            16.1,
+            30.0
+          ],
+          "rating": 0.4
+        },
+        "N2": {
+          "range": [
+            30.1,
+            null
+          ],
+          "rating": 0.25
+        }
+      }
+    }
+  },
+  "wetness_requirements": {
+    "flooding": {
+      "S1_0": {
+        "values": [
+          "Fo"
+        ],
+        "rating": 1.0
+      },
+      "N2": {
+        "values": [
+          "F1",
+          "F2",
+          "F2+",
+          "F3"
+        ],
+        "rating": 0.25
+      }
+    },
+    "drainage": {
+      "S1_0": {
+        "values": [
+          "good",
+          "goodgwover150"
+        ],
+        "rating": 1.0
+      },
+      "S1_1": {
+        "values": [
+          "good_gw_over_150",
+          "imperf."
+        ],
+        "rating": 0.95
+      },
+      "S2": {
+        "values": [
+          "moderate",
+          "moder.",
+          "imperfect"
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": [
+          "imperf.good"
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "values": [
+          "pooraeric",
+          "poor,butdrainab"
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "values": [
+          "poor",
+          "poornotdrainable",
+          "poor,notdrainable"
+        ],
+        "rating": 0.25
+      }
+    }
+  },
+  "physical_soil_requirements": {
+    "texture": {
+      "S1_0": {
+        "values": [
+          "C<60s",
+          "SiC",
+          "Co",
+          "SiL",
+          "Si",
+          "SiCL",
+          "CL"
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "values": [
+          "C>60v",
+          "C<60s",
+          "SC",
+          "L",
+          "SCL"
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "values": [
+          "C>60v",
+          "SL",
+          "LcS",
+          "fS",
+          "LS"
+        ],
+        "rating": 0.6
+      },
+      "N2": {
+        "values": [
+          "Cm",
+          "SiCm",
+          "S",
+          "cS"
+        ],
+        "rating": 0.25
+      }
+    },
+    "coarse_fragments_pct": {
+      "S1_0": {
+        "range": [
+          0.0,
+          3.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          3.1,
+          15.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          15.1,
+          35.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          35.1,
+          55.0
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          55.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    },
+    "soil_depth_cm": {
+      "S1_0": {
+        "range": [
+          125.0,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          80.0,
+          124.9
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          50.0,
+          79.9
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          25.0,
+          49.9
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          24.9
+        ],
+        "rating": 0.25
+      }
+    },
+    "caco3_pct": {
+      "S1_0": {
+        "range": [
+          0.0,
+          12.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          12.1,
+          25.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          25.1,
+          35.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          35.1,
+          50.0
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          50.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    },
+    "gypsum_pct": {
+      "S1_0": {
+        "range": [
+          0.0,
+          3.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          3.1,
+          6.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          6.1,
+          12.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          12.1,
+          20.0
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          20.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    }
+  },
+  "soil_fertility_requirements": {
+    "apparent_cec_cmol_kg_clay": {
+      "S1_0": {
+        "range": [
+          24.0,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          16.0,
+          23.9
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          null,
+          15.9
+        ],
+        "rating": 0.6
+      }
+    },
+    "base_saturation_pct": {
+      "S1_0": {
+        "range": [
+          80.0,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          50.0,
+          79.9
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          35.0,
+          49.9
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          20.0,
+          34.9
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          19.9
+        ],
+        "rating": 0.25
+      }
+    },
+    "sum_basic_cations_cmol_kg": {
+      "S1_0": {
+        "range": [
+          8.0,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          5.0,
+          7.9
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          3.5,
+          4.9
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          2.0,
+          3.4
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          null,
+          1.9
+        ],
+        "rating": 0.25
+      }
+    },
+    "ph_h2o": {
+      "S1_0": {
+        "range": [
+          6.5,
+          7.0
+        ],
+        "rating": 1.0
+      },
+      "S1_1": {
+        "range": [
+          6.0,
+          6.4
+        ],
+        "rating": 0.95
+      },
+      "S2_low": {
+        "range": [
+          5.5,
+          5.9
+        ],
+        "rating": 0.85
+      },
+      "S2_high": {
+        "range": [
+          7.1,
+          7.5
+        ],
+        "rating": 0.85
+      },
+      "S3_low": {
+        "range": [
+          5.0,
+          5.4
+        ],
+        "rating": 0.6
+      },
+      "S3_high": {
+        "range": [
+          7.6,
+          8.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          4.5,
+          4.9
+        ],
+        "rating": 0.4
+      },
+      "N2_low": {
+        "range": [
+          null,
+          4.4
+        ],
+        "rating": 0.25
+      },
+      "N2_high": {
+        "range": [
+          8.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    },
+    "organic_carbon_pct": {
+      "S1_0": {
+        "range": [
+          2.5,
+          null
+        ],
+        "rating": 1.0
+      },
+      "S1_1": {
+        "range": [
+          1.5,
+          2.4
+        ],
+        "rating": 0.95
+      },
+      "S2": {
+        "range": [
+          1.0,
+          1.4
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          0.6,
+          0.9
+        ],
+        "rating": 0.6
+      },
+      "N2": {
+        "range": [
+          null,
+          0.5
+        ],
+        "rating": 0.25
+      }
+    }
+  },
+  "salinity_alkalinity_requirements": {
+    "ece_ds_m": {
+      "S1_0": {
+        "range": [
+          0.0,
+          2.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          2.1,
+          5.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          5.1,
+          8.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          8.1,
+          10.0
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          10.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    },
+    "esp_pct": {
+      "S1_0": {
+        "range": [
+          0.0,
+          5.0
+        ],
+        "rating": 1.0
+      },
+      "S2": {
+        "range": [
+          5.1,
+          10.0
+        ],
+        "rating": 0.85
+      },
+      "S3": {
+        "range": [
+          10.1,
+          15.0
+        ],
+        "rating": 0.6
+      },
+      "N1": {
+        "range": [
+          15.1,
+          20.0
+        ],
+        "rating": 0.4
+      },
+      "N2": {
+        "range": [
+          20.1,
+          null
+        ],
+        "rating": 0.25
+      }
+    }
+  },
+  "notes": "Sugarcane (Saccharum officinarum L.) requirements based on Land Evaluation Book Part 3: Crop Requirements. Long-duration perennial crop with growing cycle of 270-2100 days.",
+  "rating_scale": {
+    "S1_0": 1.0,
+    "S1_1": 0.95,
+    "S2": 0.85,
+    "S3": 0.6,
+    "N1": 0.4,
+    "N2": 0.25
   }
 }

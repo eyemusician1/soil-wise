@@ -100,7 +100,7 @@ class InputPage(QWidget):
         # Define seasonal crops based on Escomen et al. Table 7
         self.seasonal_crops = {
             "Cabbage", "Carrots", "Maize", 
-            "Sorghum", "Sugarcane", "Sweet Potato", "Tomato"
+            "Sorghum", "Sweet Potato", "Tomato"
         }
         
 
@@ -1187,7 +1187,7 @@ class InputPage(QWidget):
                 "poor_drainable - Poorly drained but drainable",
                 "poor_not_drainable - Poorly drained, not drainable"
             ],
-                "Robusta Coffee": [
+            "Robusta Coffee": [
                 "Select drainage class...",
                 "good - Well drained",
                 "good_gw_over_150 - Good drainage, groundwater > 150 cm",
@@ -1226,7 +1226,24 @@ class InputPage(QWidget):
                 "poordrainable - Poorly drained but drainable",
                 "poornotdrainable - Poorly drained, not drainable"
             ],
-
+            "Sorghum": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+                ],
+            "Sugarcane": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
+            ]
 
         }
         
@@ -1333,6 +1350,11 @@ class InputPage(QWidget):
             "Sorghum": [
                 'C<60s', 'SiC', 'Co', 'SiCL', 'Si', 'SiL', 'SC', 'C<60v',
                 'C>60s', 'L', 'SCL', 'C>60v', 'SL', 'LfS', 'LS', 'fS', 'LcS'
+            ],
+            "Sugarcane": [
+                'C<60s', 'SiC', 'Co', 'SiL', 'Si', 'SiCL', 'CL', 'C>60v'
+                'C<60s', 'SC', 'L', 'SCL', 'C>60v', 'SL', 'LcS', 'fS', 'LS'
+                'Cm', 'SiCm', 'S', 'cS'
             ]
         }
         

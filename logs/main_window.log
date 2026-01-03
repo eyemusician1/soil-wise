@@ -6592,3 +6592,73 @@
 2026-01-02 22:11:31 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
 2026-01-02 22:11:31 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
 2026-01-02 22:11:53 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 14:56:06 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-03 14:56:07 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 14:56:07 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-03 14:56:54 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 14:59:13 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-03 14:59:13 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 14:59:14 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-03 14:59:24 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 85.74, Classification: S1ft
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:00:40 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:04:03 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 81.45, Classification: S1cfst
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:05:28 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:07:20 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:07:38 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:07:38 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 81.45, Classification: S1cfst
+2026-01-03 15:07:38 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:07:38 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:07:39 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:07:39 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:08:26 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 87.96, Classification: S1c
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:09:34 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:10:24 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 87.96, Classification: S1c
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:10:36 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:10:47 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:10:49 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 15:10:49 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 66.61, Classification: S2c
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:17:58 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:27:34 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-03 15:27:35 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 15:27:35 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-03 15:27:37 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-03 15:27:38 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 100.00, Classification: S1cfnstw
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:29:14 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 15:29:16 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-03 15:29:17 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 15:31:44 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 15:31:44 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 79.39, Classification: S1cfst
+2026-01-03 15:31:44 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 15:31:44 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 15:31:45 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 15:31:45 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
