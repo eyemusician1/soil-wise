@@ -1243,6 +1243,15 @@ class InputPage(QWidget):
                 "poor_aeric - Poorly drained, aeric conditions",
                 "poor_drainable - Poorly drained but drainable",
                 "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            "Sweet Potato": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor_and_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
             ]
 
         }
@@ -1352,9 +1361,13 @@ class InputPage(QWidget):
                 'C>60s', 'L', 'SCL', 'C>60v', 'SL', 'LfS', 'LS', 'fS', 'LcS'
             ],
             "Sugarcane": [
-                'C<60s', 'SiC', 'Co', 'SiL', 'Si', 'SiCL', 'CL', 'C>60v'
+                'C<60s', 'SiC', 'Co', 'SiL', 'Si', 'SiCL', 'CL', 'C>60v',
                 'C<60s', 'SC', 'L', 'SCL', 'C>60v', 'SL', 'LcS', 'fS', 'LS'
                 'Cm', 'SiCm', 'S', 'cS'
+            ],
+            "Sweet Potato": [
+                'C<60s', 'SiC', 'Co', 'SiCL', 'Si', 'C<60v', 'SL', 'C>60s', 'L', 'SCL', 'SC',
+                'C>60v', 'LS', 'LfS', 'LcS', 'fS', 'S', 'Cm', 'SiCm'
             ]
         }
         

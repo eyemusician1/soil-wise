@@ -1,0 +1,472 @@
+{
+  "timestamp": "2026-01-04T18:00:07.489518",
+  "soil_data": {
+    "base_saturation": 85.0,
+    "caco3": 3.0,
+    "cec": 26.0,
+    "coarse_fragments": 3.0,
+    "drainage": "good",
+    "ec": 1.5,
+    "esp": 6.0,
+    "flooding": "Fo",
+    "gypsum": 1.0,
+    "humidity": 58.0,
+    "organic_carbon": 2.5,
+    "ph": 6.4,
+    "rainfall": 825.0,
+    "slope": 0.5,
+    "soil_depth": 120.0,
+    "sum_basic_cations": 9.0,
+    "temperature": 23.0,
+    "texture": "C<60s"
+  },
+  "season": "may_august",
+  "selected_crops": [
+    "Cabbage",
+    "Carrots",
+    "Sorghum"
+  ],
+  "results": [
+    {
+      "crop_name": "Sorghum",
+      "lsi": 74.45,
+      "lsc": "S2",
+      "full_classification": "S2c",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 85.0,
+        "caco3": 3.0,
+        "cec": 26.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 1.5,
+        "esp": 6.0,
+        "flooding": "Fo",
+        "gypsum": 1.0,
+        "humidity": 58.0,
+        "organic_carbon": 2.5,
+        "ph": 6.4,
+        "rainfall": 825.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 9.0,
+        "temperature": 23.0,
+        "texture": "C<60s"
+      },
+      "scientific_name": "Sorghum bicolor (L.) Moench",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 825.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is moderately suitable. Some management interventions are needed to address limiting factors.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Moderately Suitable (LSI: 74.45). Land has limitations that reduce productivity or require increased inputs. Expected yields are moderate with proper management.",
+      "notes": "Sorghum requirements based on Land Evaluation Book Part 3: Crop Requirements. Growing cycle: 90-130 days. Seasonal crop with three planting periods (Jan-Apr, May-Aug, Sep-Dec). Sorghum is drought-tolerant and highly tolerant of saline-alkaline soils."
+    },
+    {
+      "crop_name": "Cabbage",
+      "lsi": 64.92,
+      "lsc": "S2",
+      "full_classification": "S2c",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          0.95,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 85.0,
+        "caco3": 3.0,
+        "cec": 26.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 1.5,
+        "esp": 6.0,
+        "flooding": "Fo",
+        "gypsum": 1.0,
+        "humidity": 58.0,
+        "organic_carbon": 2.5,
+        "ph": 6.4,
+        "rainfall": 825.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 9.0,
+        "temperature": 23.0,
+        "texture": "C<60s"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "humidity",
+          "actual_value": 58.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Relative Humidity",
+          "category": "Climate"
+        },
+        {
+          "parameter": "rainfall",
+          "actual_value": 825.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "temperature",
+          "actual_value": 23.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Mean Annual Temperature",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is moderately suitable. Some management interventions are needed to address limiting factors.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Moderately Suitable (LSI: 64.92). Land has limitations that reduce productivity or require increased inputs. Expected yields are moderate with proper management.",
+      "notes": "Cabbage requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Carrots",
+      "lsi": 29.83,
+      "lsc": "S3",
+      "full_classification": "S3cs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          0.95,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.6,
+          "S3",
+          "s"
+        ]
+      },
+      "season": "may_august",
+      "soil_data": {
+        "base_saturation": 85.0,
+        "caco3": 3.0,
+        "cec": 26.0,
+        "coarse_fragments": 3.0,
+        "drainage": "good",
+        "ec": 1.5,
+        "esp": 6.0,
+        "flooding": "Fo",
+        "gypsum": 1.0,
+        "humidity": 58.0,
+        "organic_carbon": 2.5,
+        "ph": 6.4,
+        "rainfall": 825.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 9.0,
+        "temperature": 23.0,
+        "texture": "C<60s"
+      },
+      "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "temperature",
+          "actual_value": 23.0,
+          "rating": 0.6,
+          "classification": "S3",
+          "subclass": "c",
+          "description": "Mean Annual Temperature",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "C<60s",
+          "rating": 0.6,
+          "classification": "S3",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is marginally suitable. Significant management interventions are required. Consider alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Marginally Suitable (LSI: 29.83). Land has severe limitations that reduce productivity or require intensive management. Expected yields are low even with inputs.",
+      "notes": "Carrots (Daucus carota subsp. sativus) requirements based from the Land Evaluation Book Part 3: Crop Requirements."
+    }
+  ]
+}

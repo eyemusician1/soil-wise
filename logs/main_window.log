@@ -6662,3 +6662,144 @@
 2026-01-03 15:31:44 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
 2026-01-03 15:31:45 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
 2026-01-03 15:31:45 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:26:46 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-03 20:26:48 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:26:48 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-03 20:26:54 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 65.21, Classification: S2cf
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 20:27:22 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:27:25 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 65.21, Classification: S2cf
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 20:27:42 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:27:44 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:27:54 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sorghum
+2026-01-03 20:27:54 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 68.93, Classification: S2f
+2026-01-03 20:27:54 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sorghum)
+2026-01-03 20:27:54 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 20:27:55 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 20:27:55 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:27:56 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-03 20:27:56 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-03 20:27:57 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-03 20:27:57 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-03 20:28:01 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:28:02 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:28:04 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:28:05 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:28:16 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-03 20:28:16 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:28:16 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-03 20:28:18 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:29:30 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sugarcane
+2026-01-03 20:29:30 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 50.88, Classification: S2fst
+2026-01-03 20:29:30 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sugarcane)
+2026-01-03 20:29:30 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-03 20:29:30 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-03 20:29:31 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:29:35 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-03 20:29:35 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-03 20:29:36 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:29:37 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-03 20:30:13 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-03 20:30:13 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-03 20:30:15 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:31:16 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-03 20:31:17 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-03 20:31:19 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-03 20:31:32 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-03 20:33:15 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-03 20:33:15 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-04 17:59:28 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-04 17:59:29 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-04 17:59:29 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-04 17:59:31 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Maize
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 100.00, Classification: S1t
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Maize)
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-04 17:59:48 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-04 17:59:50 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-04 17:59:51 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 2
+2026-01-04 18:01:32 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-04 18:01:32 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-04 18:01:32 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-04 18:01:34 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sugarcane
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 25.35, Classification: S3f
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sugarcane)
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-04 18:02:36 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-04 18:03:07 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-04 18:03:07 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-04 18:03:15 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-04 18:03:22 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 09:35:08 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-05 09:35:09 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-05 09:35:09 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-05 09:35:16 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 6.25, Classification: Nct
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 09:37:16 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-05 09:37:18 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 09:37:20 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 4
+2026-01-05 09:37:20 - SoilWise.ui.main_window - INFO - main_window.py:426 - Refreshing Evaluation History on page load...
+2026-01-05 10:44:30 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-05 10:44:30 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-05 10:44:30 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-05 10:44:33 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 2.81, Classification: Nf
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 10:45:49 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-05 11:03:50 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-05 11:03:50 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-05 11:03:50 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-05 11:03:52 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 11:05:31 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 11:05:31 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 9.03, Classification: Nc
+2026-01-05 11:05:32 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 11:05:32 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 11:05:32 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 11:05:32 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-05 11:10:20 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-05 11:10:21 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-05 11:10:21 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-05 11:10:24 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 11:12:12 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 11:12:12 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 61.41, Classification: S2ft
+2026-01-05 11:12:12 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 11:12:12 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 11:12:12 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 11:12:13 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-05 11:13:56 - SoilWise.ui.main_window - INFO - main_window.py:264 - Crop Evaluation page created
+2026-01-05 11:13:57 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 0
+2026-01-05 11:13:57 - SoilWise.ui.main_window - INFO - main_window.py:43 - MainWindow initialized
+2026-01-05 11:14:01 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 22.78, Classification: Ncw
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 11:16:23 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
+2026-01-05 11:16:34 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 1
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:326 - Evaluation complete for Sweet Potato
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:327 -   LSI: 22.78, Classification: Ncw
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:339 - Passed soil data to Crop Evaluation page (Last crop: Sweet Potato)
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:346 - Auto-refreshing Evaluation History page...
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:348 - Evaluation History refreshed successfully
+2026-01-05 11:16:43 - SoilWise.ui.main_window - INFO - main_window.py:402 - Changing to page index: 3
