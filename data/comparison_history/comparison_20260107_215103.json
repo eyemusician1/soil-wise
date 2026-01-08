@@ -1,0 +1,1826 @@
+{
+  "timestamp": "2026-01-07T21:51:03.874958",
+  "soil_data": {
+    "base_saturation": 60.0,
+    "caco3": 0.5,
+    "cec": 85.0,
+    "coarse_fragments": 5.0,
+    "drainage": "good",
+    "ec": 0.5,
+    "esp": 0.1,
+    "flooding": "Fo",
+    "gypsum": 0.1,
+    "humidity": 75.0,
+    "organic_carbon": 3.5,
+    "ph": 6.0,
+    "rainfall": 2400.0,
+    "slope": 0.5,
+    "soil_depth": 120.0,
+    "sum_basic_cations": 14.0,
+    "temperature": 27.0,
+    "texture": "SiL"
+  },
+  "season": "january_april",
+  "selected_crops": [
+    "Arabica Coffee",
+    "Banana",
+    "Cabbage",
+    "Carrots",
+    "Cocoa",
+    "Maize",
+    "Oil Palm",
+    "Pineapple",
+    "Robusta Coffee",
+    "Sorghum",
+    "Sugarcane",
+    "Sweet Potato",
+    "Tomato"
+  ],
+  "results": [
+    {
+      "crop_name": "Maize",
+      "lsi": 100.0,
+      "lsc": "S1",
+      "full_classification": "S1t",
+      "limiting_factors": "t",
+      "parameter_ratings": {
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Zea mays L.",
+      "limiting_factors_detailed": [],
+      "recommendations": [
+        "✓ This crop is highly suitable for the given soil conditions. Standard cultivation practices are recommended.",
+        "• Slope is limiting. Implement soil conservation measures such as terracing or contour farming."
+      ],
+      "interpretation": "Highly Suitable (LSI: 100.00). Land has no significant limitations for sustained application of the given use. Expected yields are high with minimal inputs.",
+      "notes": "Maize (Corn) requirements based on Land Evaluation Book Part 3: Crop Requirements. Growing cycle: 90-130 days. Seasonal crop suitable for both wet and dry seasons."
+    },
+    {
+      "crop_name": "Banana",
+      "lsi": 92.59,
+      "lsc": "S1",
+      "full_classification": "S1s",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Musa sp. L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "coarse_fragments",
+          "actual_value": 5.0,
+          "rating": 0.95,
+          "classification": "S1",
+          "subclass": "s",
+          "description": "Coarse Fragments",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✓ This crop is highly suitable for the given soil conditions. Standard cultivation practices are recommended."
+      ],
+      "interpretation": "Highly Suitable (LSI: 92.59). Land has no significant limitations for sustained application of the given use. Expected yields are high with minimal inputs.",
+      "notes": "Banana requirements calibrated to match study LSI 90.25 (S1) from Brgy. Gacap, Piagapo, Lanao del Sur. Based on FAO Land Evaluation framework adapted for Philippine conditions."
+    },
+    {
+      "crop_name": "Sugarcane",
+      "lsi": 64.92,
+      "lsc": "S2",
+      "full_classification": "S2fs",
+      "limiting_factors": "fs",
+      "parameter_ratings": {
+        "base_saturation": [
+          0.85,
+          "S2",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Saccharum officinarum L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "base_saturation",
+          "actual_value": 60.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "f",
+          "description": "Base Saturation",
+          "category": "Soil Fertility"
+        },
+        {
+          "parameter": "coarse_fragments",
+          "actual_value": 5.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Coarse Fragments",
+          "category": "Physical Soil"
+        },
+        {
+          "parameter": "soil_depth",
+          "actual_value": 120.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Soil Depth",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is moderately suitable. Some management interventions are needed to address limiting factors."
+      ],
+      "interpretation": "Moderately Suitable (LSI: 64.92). Land has limitations that reduce productivity or require increased inputs. Expected yields are moderate with proper management.",
+      "notes": "Sugarcane (Saccharum officinarum L.) requirements based on Land Evaluation Book Part 3: Crop Requirements. Long-duration perennial crop with growing cycle of 270-2100 days."
+    },
+    {
+      "crop_name": "Cocoa",
+      "lsi": 61.68,
+      "lsc": "S2",
+      "full_classification": "S2cs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Theobroma cacao L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "humidity",
+          "actual_value": 75.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Relative Humidity",
+          "category": "Climate"
+        },
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "soil_depth",
+          "actual_value": 120.0,
+          "rating": 0.85,
+          "classification": "S2",
+          "subclass": "s",
+          "description": "Soil Depth",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "⚠ This crop is moderately suitable. Some management interventions are needed to address limiting factors.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Moderately Suitable (LSI: 61.68). Land has limitations that reduce productivity or require increased inputs. Expected yields are moderate with proper management.",
+      "notes": "Cocoa (Theobroma cacao L.) requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Pineapple",
+      "lsi": 9.8,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "texture": [
+          0.85,
+          "S2",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Ananas comosus (L.) Merr.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 9.80). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Pineapple requirements based on Land Evaluation Book Part 3 Crop Requirements. Growing cycle: 365 days. Bidirectional suitability for temperature and rainfall."
+    },
+    {
+      "crop_name": "Cabbage",
+      "lsi": 9.44,
+      "lsc": "N",
+      "full_classification": "Nc",
+      "limiting_factors": "c",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Brassica oleracea var. capitata L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 9.44). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Cabbage requirements based on Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Oil Palm",
+      "lsi": 8.12,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          0.85,
+          "S2",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Elaeis guineensis Jacq.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops."
+      ],
+      "interpretation": "Not Suitable (LSI: 8.12). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Oil Palm (Elaeis guineensis Jacq.) requirements based on Land Evaluation Book Part 3. Perennial crop with high adaptability to tropical humid climates."
+    },
+    {
+      "crop_name": "Robusta Coffee",
+      "lsi": 6.4,
+      "lsc": "N",
+      "full_classification": "Ns",
+      "limiting_factors": "s",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.6,
+          "S3",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          0.6,
+          "S3",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.85,
+          "S2",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Coffea canephora Pierre ex Froehner",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops."
+      ],
+      "interpretation": "Not Suitable (LSI: 6.40). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Robusta Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements. More heat-tolerant than Arabica Coffee."
+    },
+    {
+      "crop_name": "Sweet Potato",
+      "lsi": 5.79,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Ipomoea batatas (L.) Lam.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 5.79). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Sweet Potato (Ipomoea batatas) requirements based on Land Evaluation Book Part 3: Crop Requirements. Growing cycle: 120-150 days."
+    },
+    {
+      "crop_name": "Sorghum",
+      "lsi": 5.64,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.25,
+          "N",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.95,
+          "S1",
+          "c"
+        ],
+        "texture": [
+          1.0,
+          "S1",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Sorghum bicolor (L.) Moench",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "caco3",
+          "actual_value": 0.5,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Calcium Carbonate Content",
+          "category": "Physical Soil"
+        },
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 5.64). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Sorghum requirements based on Land Evaluation Book Part 3: Crop Requirements. Growing cycle: 90-130 days. Seasonal crop with three planting periods (Jan-Apr, May-Aug, Sep-Dec). Sorghum is drought-tolerant and highly tolerant of saline-alkaline soils."
+    },
+    {
+      "crop_name": "Arabica Coffee",
+      "lsi": 4.67,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": null,
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Coffea arabica L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "temperature",
+          "actual_value": 27.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Mean Annual Temperature",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 4.67). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements"
+    },
+    {
+      "crop_name": "Carrots",
+      "lsi": 4.24,
+      "lsc": "N",
+      "full_classification": "Ncs",
+      "limiting_factors": "cs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.95,
+          "S1",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.6,
+          "S3",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Daucus carota subsp. sativus (Hoffm.) Schübl. & G. Martens",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 4.24). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Carrots (Daucus carota subsp. sativus) requirements based from the Land Evaluation Book Part 3: Crop Requirements."
+    },
+    {
+      "crop_name": "Tomato",
+      "lsi": 2.74,
+      "lsc": "N",
+      "full_classification": "Ncfs",
+      "limiting_factors": "cfs",
+      "parameter_ratings": {
+        "base_saturation": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "caco3": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "cec": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "coarse_fragments": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "drainage": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "ec": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "esp": [
+          1.0,
+          "S1",
+          "n"
+        ],
+        "flooding": [
+          1.0,
+          "S1",
+          "w"
+        ],
+        "gypsum": [
+          1.0,
+          "S1",
+          "s"
+        ],
+        "humidity": [
+          1.0,
+          "S1",
+          "c"
+        ],
+        "organic_carbon": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "ph": [
+          0.25,
+          "N",
+          "f"
+        ],
+        "rainfall": [
+          0.25,
+          "N",
+          "c"
+        ],
+        "slope": [
+          1.0,
+          "S1",
+          "t"
+        ],
+        "soil_depth": [
+          0.95,
+          "S1",
+          "s"
+        ],
+        "sum_basic_cations": [
+          1.0,
+          "S1",
+          "f"
+        ],
+        "temperature": [
+          0.85,
+          "S2",
+          "c"
+        ],
+        "texture": [
+          0.25,
+          "N",
+          "s"
+        ]
+      },
+      "season": "january_april",
+      "soil_data": {
+        "base_saturation": 60.0,
+        "caco3": 0.5,
+        "cec": 85.0,
+        "coarse_fragments": 5.0,
+        "drainage": "good",
+        "ec": 0.5,
+        "esp": 0.1,
+        "flooding": "Fo",
+        "gypsum": 0.1,
+        "humidity": 75.0,
+        "organic_carbon": 3.5,
+        "ph": 6.0,
+        "rainfall": 2400.0,
+        "slope": 0.5,
+        "soil_depth": 120.0,
+        "sum_basic_cations": 14.0,
+        "temperature": 27.0,
+        "texture": "SiL"
+      },
+      "scientific_name": "Solanum lycopersicum L.",
+      "limiting_factors_detailed": [
+        {
+          "parameter": "ph",
+          "actual_value": 6.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "f",
+          "description": "Soil pH",
+          "category": "Soil Fertility"
+        },
+        {
+          "parameter": "rainfall",
+          "actual_value": 2400.0,
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "c",
+          "description": "Annual Precipitation",
+          "category": "Climate"
+        },
+        {
+          "parameter": "texture",
+          "actual_value": "SiL",
+          "rating": 0.25,
+          "classification": "N",
+          "subclass": "s",
+          "description": "Soil Texture",
+          "category": "Physical Soil"
+        }
+      ],
+      "recommendations": [
+        "✗ This crop is not suitable for the given conditions. Strongly recommend selecting alternative crops.",
+        "• Climate conditions are limiting. Consider protected cultivation or select more climate-adapted varieties."
+      ],
+      "interpretation": "Not Suitable (LSI: 2.74). Land has limitations so severe that they preclude successful sustained use. Cultivation is not recommended.",
+      "notes": "Tomato (Solanum lycopersicum L.) requirements based on Land Evaluation Book Part 3: Crop Requirements. Growing cycle: 90-120 days (including 25-45 days nursery). Seasonal crop with bidirectional pH tolerance."
+    }
+  ]
+}

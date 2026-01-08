@@ -93,10 +93,10 @@ class RulesEngine:
                     return (rating, classification, subclass)
         
         logger.warning(
-            f"  ✗ No match for {parameter} = {value}. Defaulting to N (0.25)"
+            f"  ✗ No match for {parameter} = {value}. Defaulting to S1 (1.0)"
         )
-        return (0.25, "N", subclass)
-    
+        return (1.0, "S1", subclass)
+
     def _get_slope_rating(self, crop_name: str, slope_value: float) -> Tuple[float, str, str]:
             """Special handler for slope parameter - supports both level-based and direct structures."""
             logger.debug(f"Evaluating slope = {slope_value}% for {crop_name}")
