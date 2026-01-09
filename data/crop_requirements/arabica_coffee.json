@@ -196,13 +196,6 @@
       "S3": {"range": [0.6, 2.0], "rating": 0.60},
       "N1": {"range": [2.1, 6.0], "rating": 0.40},
       "N2": {"range": [6.1, null], "rating": 0.25}
-    },
-    "esp_pct": {
-      "S1_0": {"range": [0.0, 5.0], "rating": 1.0},
-      "S1_1": {"range": [5.1, 10.0], "rating": 0.95},
-      "S2": {"range": [10.1, 15.0], "rating": 0.85},
-      "S3": {"range": [15.1, 20.0], "rating": 0.60},
-      "N2": {"range": [20.1, null], "rating": 0.25}
     }
   },
   "notes": "Arabica Coffee requirements based on Land Evaluation Book Part 3: Crop Requirements",

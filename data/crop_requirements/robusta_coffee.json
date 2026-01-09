@@ -5,14 +5,14 @@
   "seasons": null,
   "climate_requirements": {
     "annual_precipitation_mm": {
-      "S1_0": {"range": [1800.0, 1900.0], "rating": 1.0},
-      "S1_1_low": {"range": [1600.0, 1799.9], "rating": 0.95},
-      "S1_1_high": {"range": [1900.1, 2000.0], "rating": 0.95},
-      "S1_2": {"range": [2000.1, 2400.0], "rating": 0.95},
-      "S2_low": {"range": [1400.0, 1599.9], "rating": 0.85},
-      "S2_high": {"range": [2400.1, null], "rating": 0.85},
-      "S3": {"range": [1200.0, 1399.9], "rating": 0.60},
-      "N2": {"range": [null, 1199.9], "rating": 0.25}
+      "S1_0_high": {"range": [1800.0, 1900.0], "rating": 1.0},
+      "S1_0_low": {"range": [1901, 2000.0], "rating": 1.0},
+      "S1_1_low": {"range": [1600, 1799], "rating": 0.95},
+      "S1_1_high": {"range": [2001, 2400], "rating": 0.95},
+      "S2_high": {"range": [1400, 1599], "rating": 0.85},
+      "S2_low": {"range": [2401, null], "rating": 0.85},
+      "S3": {"range": [1200, 1399], "rating": 0.60},
+      "N2": {"range": [null, 1199], "rating": 0.25}
     },
     "dry_season_months": {
       "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
@@ -22,7 +22,7 @@
       "N2": {"range": [4.1, null], "rating": 0.25}
     },
     "mean_annual_temp_c": {
-      "S1_0": {"range": [25.01, null], "rating": 1.0},
+      "S1_0": {"range": [25.1, null], "rating": 1.0},
       "S1_1": {"range": [22.0, 25.0], "rating": 0.95},
       "S2": {"range": [20.0, 21.9], "rating": 0.85},
       "S3": {"range": [18.0, 19.9], "rating": 0.60},
@@ -43,7 +43,8 @@
       "N2": {"range": [null, 13.9], "rating": 0.25}
     },
     "mean_relative_humidity_driest_month_pct": {
-      "S1_0": {"range": [60.0, 75.0], "rating": 1.0},
+      "S1_0_high": {"range": [65.0, 75.0], "rating": 1.0},
+      "S1_0_low": {"range": [60.0, 64.9], "rating": 1.0},
       "S1_1_low": {"range": [45.0, 59.9], "rating": 0.95},
       "S1_1_high": {"range": [75.1, 80.0], "rating": 0.95},
       "S2_low": {"range": [35.0, 44.9], "rating": 0.85},
@@ -90,14 +91,14 @@
       "S1_1": {"values": ["Fo"], "rating": 0.95},
       "S2": {"values": ["Fo"], "rating": 0.85},
       "S3": {"values": ["F1"], "rating": 0.60},
-      "N2": {"values": ["F2", "F2+", "F3"], "rating": 0.25}
+      "N2": {"values": ["F2+"], "rating": 0.25}
     },
     "drainage": {
       "S1_0": {"values": ["good", "good_gw_over_150"], "rating": 1.0},
       "S1_1": {"values": ["good_gw_100_150"], "rating": 0.95},
       "S2": {"values": ["moderate"], "rating": 0.85},
       "S3": {"values": ["imperfect"], "rating": 0.60},
-      "N1": {"values": ["poor"], "rating": 0.40},
+      "N1": {"values": ["poor_drainable"], "rating": 0.40},
       "N2": {"values": ["poor_not_drainable"], "rating": 0.25}
     }
   },
@@ -131,14 +132,14 @@
     "gypsum_pct": {
       "S1_0": {"range": [0.0, 0.0], "rating": 1.0},
       "S3": {"range": [0.1, 0.5], "rating": 0.60},
-      "N2": {"range": [0.51, null], "rating": 0.25}
+      "N2": {"range": [0.4, null], "rating": 0.25}
     }
   },
   "soil_fertility_requirements": {
     "apparent_cec_cmol_kg_clay": {
       "S1_0": {"range": [16.01, null], "rating": 1.0},
-      "S1_1": {"range": [null, 16.0], "rating": 0.95},
-      "S2": {"range": [null, 16.0], "rating": 0.85}
+      "S1_1": {"range": [null, 15.9], "rating": 0.95},
+      "S2": {"range": [null, 16.1], "rating": 0.85}
     },
     "base_saturation_pct": {
       "S1_0": {"range": [35.01, null], "rating": 1.0},
@@ -153,30 +154,24 @@
     },
     "ph_h2o": {
       "S1_0": {"range": [5.5, 5.6], "rating": 1.0},
-      "S1_1_low": {"range": [5.3, 5.49], "rating": 0.95},
-      "S1_1_high": {"range": [5.61, 6.0], "rating": 0.95},
-      "S2_low": {"range": [5.0, 5.29], "rating": 0.85},
-      "S2_high": {"range": [6.01, 6.5], "rating": 0.85},
-      "S3_low": {"range": [4.5, 4.99], "rating": 0.60},
-      "S3_high": {"range": [6.51, 7.0], "rating": 0.60},
-      "N1": {"range": [null, 4.49], "rating": 0.40},
-      "N2": {"range": [7.01, null], "rating": 0.25}
+      "S1_0_low": {"range": [5.7, 5.8], "rating": 1.0},
+      "S1_1_low": {"range": [5.3, 5.4], "rating": 0.95},
+      "S1_1_high": {"range": [5.9, 6.0], "rating": 0.95},
+      "S2_low": {"range": [5.0, 5.2], "rating": 0.85},
+      "S2_high": {"range": [6.1, 6.5], "rating": 0.85},
+      "S3_low": {"range": [4.5, 4.9], "rating": 0.60},
+      "S3_high": {"range": [6.6, 7.0], "rating": 0.60},
+      "N1": {"range": [null, 4.4], "rating": 0.40},
+      "N2": {"range": [7.1, null], "rating": 0.25}
     },
     "organic_carbon_pct": {
-      "S1_0": {"range": [1.51, null], "rating": 1.0},
-      "S1_1": {"range": [1.3, 1.5], "rating": 0.95},
-      "S2": {"range": [0.8, 1.29], "rating": 0.85},
-      "S3": {"range": [null, 0.79], "rating": 0.60}
+      "S1_0": {"range": [1.6, null], "rating": 1.0},
+      "S1_1": {"range": [0.8, 1.5], "rating": 0.95},
+      "S2": {"range": [null, 0.7], "rating": 0.85}
     }
   },
   "salinity_alkalinity_requirements": {
     "ece_ds_m": {
-      "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
-      "S3": {"range": [1.1, 2.0], "rating": 0.60},
-      "N1": {"range": [2.1, 4.0], "rating": 0.40},
-      "N2": {"range": [4.1, null], "rating": 0.25}
-    },
-    "esp_pct": {
       "S1_0": {"range": [0.0, 1.0], "rating": 1.0},
       "S3": {"range": [1.1, 2.0], "rating": 0.60},
       "N1": {"range": [2.1, 4.0], "rating": 0.40},
