@@ -815,7 +815,7 @@ class InputPage(QWidget):
             "F1 - Occasional flooding",
             "F2 - Frequent flooding", 
             "F3 - Very frequent flooding",
-            "F1+ - Severe flooding"
+            "F3+ - Severe flooding"
         ])
         self.flooding_input.setMinimumHeight(40)
         self.flooding_input.setStyleSheet(combo_style)

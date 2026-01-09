@@ -8,16 +8,20 @@
       "name": "January - April (Dry Season)",
       "climate_requirements": {
         "annual_precipitation_mm": {
-          "S1_0": {
-            "range": [500.0, 700.0],
+          "S1_0_high": {
+            "range": [500.0, 600.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [601, 700.0],
             "rating": 1.0
           },
           "S1_1_low": {
-            "range": [400.0, 499.9],
+            "range": [400, 499],
             "rating": 0.95
           },
           "S1_1_high": {
-            "range": [700.1, 900.0],
+            "range": [701, 900.0],
             "rating": 0.95
           },
           "S2_low": {
@@ -25,7 +29,7 @@
             "rating": 0.85
           },
           "S2_high": {
-            "range": [900.1, 1200.0],
+            "range": [901, 1200.0],
             "rating": 0.85
           },
           "S3_low": {
@@ -33,7 +37,7 @@
             "rating": 0.6
           },
           "S3_high": {
-            "range": [1200.1, 1400.0],
+            "range": [1201, 1400.0],
             "rating": 0.6
           },
           "N2_low": {
@@ -41,13 +45,17 @@
             "rating": 0.25
           },
           "N2_high": {
-            "range": [1400.1, null],
+            "range": [1401, null],
             "rating": 0.25
           }
         },
         "mean_annual_temp_c": {
-          "S1_0": {
-            "range": [24.0, 26.0],
+          "S1_0_high": {
+            "range": [24.0, 25.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [25.1, 26.0],
             "rating": 1.0
           },
           "S1_1_low": {
@@ -99,16 +107,20 @@
       "name": "May - August (Wet Season)",
       "climate_requirements": {
         "annual_precipitation_mm": {
-          "S1_0": {
-            "range": [500.0, 700.0],
+          "S1_0_high": {
+            "range": [500.0, 600.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [601, 700.0],
             "rating": 1.0
           },
           "S1_1_low": {
-            "range": [400.0, 499.9],
+            "range": [400, 499],
             "rating": 0.95
           },
           "S1_1_high": {
-            "range": [700.1, 800.0],
+            "range": [701, 900.0],
             "rating": 0.95
           },
           "S2_low": {
@@ -116,7 +128,7 @@
             "rating": 0.85
           },
           "S2_high": {
-            "range": [800.1, 1000.0],
+            "range": [901, 1200.0],
             "rating": 0.85
           },
           "S3_low": {
@@ -124,7 +136,7 @@
             "rating": 0.6
           },
           "S3_high": {
-            "range": [1000.1, 1200.0],
+            "range": [1201, 1400.0],
             "rating": 0.6
           },
           "N2_low": {
@@ -132,21 +144,25 @@
             "rating": 0.25
           },
           "N2_high": {
-            "range": [1200.1, null],
+            "range": [1401, null],
             "rating": 0.25
           }
         },
         "mean_annual_temp_c": {
-          "S1_0": {
-            "range": [25.0, 27.0],
+          "S1_0_high": {
+            "range": [24.0, 25.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [25.1, 26.0],
             "rating": 1.0
           },
           "S1_1_low": {
-            "range": [21.0, 24.9],
+            "range": [21.0, 23.9],
             "rating": 0.95
           },
           "S1_1_high": {
-            "range": [27.1, 32.0],
+            "range": [26.1, 32.0],
             "rating": 0.95
           },
           "S2_low": {
@@ -168,19 +184,19 @@
         },
         "mean_relative_humidity_driest_month_pct": {
           "S1_0": {
-            "range": [0.0, 65.0],
+            "range": [0.0, 60.0],
             "rating": 1.0
           },
           "S1_1": {
-            "range": [65.1, 80.0],
+            "range": [60.1, 75.0],
             "rating": 0.95
           },
           "S2": {
-            "range": [80.1, 90.0],
+            "range": [75.1, 85.0],
             "rating": 0.85
           },
           "S3": {
-            "range": [90.1, null],
+            "range": [85.1, null],
             "rating": 0.6
           }
         }
@@ -190,16 +206,20 @@
       "name": "September - December (Cool Season)",
       "climate_requirements": {
         "annual_precipitation_mm": {
-          "S1_0": {
-            "range": [500.0, 700.0],
+          "S1_0_high": {
+            "range": [500.0, 600.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [601, 700.0],
             "rating": 1.0
           },
           "S1_1_low": {
-            "range": [400.0, 499.9],
+            "range": [400, 499],
             "rating": 0.95
           },
           "S1_1_high": {
-            "range": [700.1, 850.0],
+            "range": [701, 900.0],
             "rating": 0.95
           },
           "S2_low": {
@@ -207,7 +227,7 @@
             "rating": 0.85
           },
           "S2_high": {
-            "range": [850.1, 1100.0],
+            "range": [901, 1200.0],
             "rating": 0.85
           },
           "S3_low": {
@@ -215,7 +235,7 @@
             "rating": 0.6
           },
           "S3_high": {
-            "range": [1100.1, 1300.0],
+            "range": [1201, 1400.0],
             "rating": 0.6
           },
           "N2_low": {
@@ -223,37 +243,41 @@
             "rating": 0.25
           },
           "N2_high": {
-            "range": [1300.1, null],
+            "range": [1401, null],
             "rating": 0.25
           }
         },
         "mean_annual_temp_c": {
-          "S1_0": {
-            "range": [24.0, 26.0],
+          "S1_0_high": {
+            "range": [24.0, 25.0],
+            "rating": 1.0
+          },
+          "S1_0_low": {
+            "range": [25.1, 26.0],
             "rating": 1.0
           },
           "S1_1_low": {
-            "range": [22.0, 23.9],
+            "range": [21.0, 23.9],
             "rating": 0.95
           },
           "S1_1_high": {
-            "range": [26.1, 30.0],
+            "range": [26.1, 32.0],
             "rating": 0.95
           },
           "S2_low": {
-            "range": [20.0, 21.9],
+            "range": [18.0, 20.9],
             "rating": 0.85
           },
           "S2_high": {
-            "range": [30.1, null],
+            "range": [32.1, null],
             "rating": 0.85
           },
           "S3": {
-            "range": [18.0, 19.9],
+            "range": [15.0, 17.9],
             "rating": 0.6
           },
           "N2": {
-            "range": [null, 17.9],
+            "range": [null, 14.9],
             "rating": 0.25
           }
         },
@@ -367,7 +391,7 @@
         "rating": 0.6
       },
       "N2": {
-        "values": ["F3", "F3+"],
+        "values": ["F3+"],
         "rating": 0.25
       }
     },
@@ -409,11 +433,11 @@
         "rating": 0.95
       },
       "S2": {
-        "values": ["C>60v", "SL"],
+        "values": ["C>60v", "SL", "LfS", "LS"],
         "rating": 0.85
       },
       "S3": {
-        "values": ["LfS", "LS", "fS", "LcS", "S"],
+        "values": ["fS", "LcS", "S"],
         "rating": 0.6
       },
       "N2": {
@@ -482,10 +506,6 @@
         "range": [45.1, 75.0],
         "rating": 0.6
       },
-      "N2_low": {
-        "range": [null, 2.9],
-        "rating": 0.25
-      },
       "N2_high": {
         "range": [75.1, null],
         "rating": 0.25
@@ -527,6 +547,10 @@
       "S2": {
         "range": [null, 15.9],
         "rating": 0.85
+      },
+      "S3": {
+        "range": [null, 16.1],
+        "rating": 0.6
       }
     },
     "base_saturation_pct": {
@@ -566,20 +590,24 @@
       }
     },
     "ph_h2o": {
-      "S1_0": {
-        "range": [6.5, 7.0],
+      "S1_0_high": {
+        "range": [6.0, 6.5],
+        "rating": 1.0
+      },
+      "S1_0_low": {
+        "range": [6.6, 7.0],
         "rating": 1.0
       },
       "S1_1_low": {
-        "range": [6.0, 6.49],
+        "range": [5.5, 5.9],
         "rating": 0.95
       },
       "S1_1_high": {
-        "range": [7.01, 8.2],
+        "range": [7.1, 8.2],
         "rating": 0.95
       },
       "S2_low": {
-        "range": [5.5, 5.99],
+        "range": [5.3, 5.4],
         "rating": 0.85
       },
       "S2_high": {
@@ -587,7 +615,7 @@
         "rating": 0.85
       },
       "S3_low": {
-        "range": [5.3, 5.49],
+        "range": [5.2, 5.29],
         "rating": 0.6
       },
       "S3_high": {
@@ -595,12 +623,8 @@
         "rating": 0.6
       },
       "N1_low": {
-        "range": [5.0, 5.29],
+        "range": [null, 5.0],
         "rating": 0.4
-      },
-      "N2_low": {
-        "range": [null, 4.99],
-        "rating": 0.25
       },
       "N2_high": {
         "range": [8.51, null],
@@ -617,12 +641,8 @@
         "rating": 0.95
       },
       "S2": {
-        "range": [0.4, 0.79],
+        "range": [null, 0.7],
         "rating": 0.85
-      },
-      "S3": {
-        "range": [null, 0.39],
-        "rating": 0.6
       }
     }
   },
