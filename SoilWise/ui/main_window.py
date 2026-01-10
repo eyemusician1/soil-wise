@@ -1,14 +1,14 @@
 """
 SoilWise/ui/main_window.py
-Main application window - WITH CROP EVALUATION PAGE INTEGRATION
-+ AUTO-REFRESH FOR EVALUATION HISTORY
+Main application window - WITH LOGO BESIDE TEXT
 """
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QFrame, QStackedWidget
 )
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QPixmap, QIcon
+import os
 
 from SoilWise.ui.widgets.collapsible_sidebar import CollapsibleSidebar, NavButton
 from SoilWise.ui.pages.home_page import HomePage
@@ -30,6 +30,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(APP_NAME)
         self.resize(1100, 700)
         self.setMinimumSize(900, 600)
+        
+        # Set window icon (desktop/taskbar)
+        self.set_window_icon()
 
         # Apply theme
         self.apply_theme()
@@ -41,6 +44,56 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
         logger.info("MainWindow initialized")
+
+    # ------------------------------------------------------------------
+    # Logo Integration
+    # ------------------------------------------------------------------
+
+    def set_window_icon(self):
+        """Set application window icon for desktop/taskbar"""
+        try:
+            logo_path = os.path.join("SoilWise", "assets", "images", "sample2.png")
+            if os.path.exists(logo_path):
+                icon = QIcon(logo_path)
+                self.setWindowIcon(icon)
+                logger.info("Window icon set successfully")
+            else:
+                logger.warning(f"Logo file not found at: {logo_path}")
+        except Exception as e:
+            logger.error(f"Failed to set window icon: {e}")
+
+    def create_logo_label(self, size: int = 40) -> QLabel:
+        """
+        Create a QLabel with the SoilWise logo
+        
+        Args:
+            size: Size of the logo in pixels (width and height)
+            
+        Returns:
+            QLabel with the logo
+        """
+        logo_label = QLabel()
+        try:
+            logo_path = os.path.join("SoilWise", "assets", "images", "SOILWISE.ico")
+            if os.path.exists(logo_path):
+                pixmap = QPixmap(logo_path)
+                scaled_pixmap = pixmap.scaled(
+                    size, size,
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
+                )
+                logo_label.setPixmap(scaled_pixmap)
+                logo_label.setFixedSize(size, size)
+            else:
+                logo_label.setText("🌱")
+                logo_label.setStyleSheet("font-size: 28px;")
+                logger.warning("Logo file not found, using emoji fallback")
+        except Exception as e:
+            logo_label.setText("🌱")
+            logo_label.setStyleSheet("font-size: 28px;")
+            logger.error(f"Failed to load logo: {e}")
+        
+        return logo_label
 
     # ------------------------------------------------------------------
     # Styling
@@ -134,7 +187,7 @@ class MainWindow(QMainWindow):
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
-        # Sidebar
+        # Sidebar (pass logo to sidebar)
         self.sidebar = self.create_sidebar()
         # Collapse sidebar by default
         if hasattr(self.sidebar, 'is_expanded') and self.sidebar.is_expanded:
@@ -163,8 +216,8 @@ class MainWindow(QMainWindow):
         self.change_page(0)
 
     def create_sidebar(self):
-        """Create sidebar with navigation"""
-        sidebar = CollapsibleSidebar()
+        """Create sidebar with navigation (logo removed)"""
+        sidebar = CollapsibleSidebar(logo_widget=None)
         self.nav_buttons: list[NavButton] = []
 
         # Home
@@ -192,8 +245,8 @@ class MainWindow(QMainWindow):
         sidebar.add_nav_button(self.btn_reports)
         self.nav_buttons.append(self.btn_reports)
 
-        # Use proper icon instead of emoji
-        self.btn_history = NavButton("◷", "Evaluation History")  # Clock icon
+        # Evaluation History
+        self.btn_history = NavButton("◷", "Evaluation History")
         self.btn_history.clicked.connect(lambda: self.change_page(4))
         sidebar.add_nav_button(self.btn_history)
         self.nav_buttons.append(self.btn_history)
@@ -207,7 +260,7 @@ class MainWindow(QMainWindow):
         return sidebar
 
     def create_title_bar(self):
-        """Create title bar"""
+        """Create title bar without logo beside text"""
         title_bar = QFrame()
         title_bar.setFixedHeight(80)
         title_bar.setStyleSheet(
@@ -221,12 +274,14 @@ class MainWindow(QMainWindow):
 
         layout = QHBoxLayout(title_bar)
         layout.setContentsMargins(32, 0, 24, 0)
+        layout.setSpacing(12)
 
+        # Page title (logo removed)
         self.page_title = QLabel("Home")
         self.page_title.setFont(QFont("Georgia", 24))
         self.page_title.setStyleSheet("color: #3a4a3a; font-weight: 500;")
-
         layout.addWidget(self.page_title)
+        
         layout.addStretch()
 
         return title_bar
@@ -251,11 +306,9 @@ class MainWindow(QMainWindow):
 
         # Crop Evaluation page
         crop_evaluation_page = CropEvaluationPage()
-        # When "Update Soil Data" is confirmed, go back to Soil Data Input (index 1)
         crop_evaluation_page.navigate_to_input.connect(
             lambda: self.change_page(1)
         )
-        # Multi-crop comparison completion (logged for now)
         crop_evaluation_page.comparison_complete.connect(
             self.on_comparison_complete
         )
@@ -263,7 +316,7 @@ class MainWindow(QMainWindow):
         self.pages_stack.addWidget(crop_evaluation_page)
         logger.info("Crop Evaluation page created")
 
-        # Reports page – start with an empty placeholder
+        # Reports page
         placeholder_results = {
             "crop_name": "No crop selected",
             "lsc": "N",
@@ -276,52 +329,18 @@ class MainWindow(QMainWindow):
         self.pages["reports"] = reports_page
         self.pages_stack.addWidget(reports_page)
 
+        # Evaluation History page
         history_page = EvaluationHistoryPage()
         history_page.view_report_requested.connect(self.on_view_report_from_history)
         self.pages['history'] = history_page
         self.pages_stack.addWidget(history_page)
-
-    def create_placeholder_page(self, description: str) -> QWidget:
-        """Create placeholder page"""
-        page = QWidget()
-        layout = QVBoxLayout(page)
-        layout.setContentsMargins(32, 32, 32, 32)
-
-        desc = QLabel(description)
-        desc.setStyleSheet("color: #6a7a6a; font-size: 14px;")
-        desc.setWordWrap(True)
-        layout.addWidget(desc)
-
-        from SoilWise.ui.widgets.fluent_card import FluentCard
-        card = FluentCard()
-        card.setMinimumHeight(200)
-
-        card_layout = QVBoxLayout(card)
-        card_layout.setAlignment(Qt.AlignCenter)
-
-        placeholder = QLabel("Coming soon...")
-        placeholder.setStyleSheet("color: #a8b5a8; font-size: 16px;")
-        placeholder.setAlignment(Qt.AlignCenter)
-        card_layout.addWidget(placeholder)
-
-        layout.addWidget(card)
-        layout.addStretch()
-
-        return page
 
     # ------------------------------------------------------------------
     # Signal handlers
     # ------------------------------------------------------------------
 
     def on_evaluation_complete(self, results: dict):
-        """
-        Handle evaluation completion from Input Page.
-
-        results: Evaluation results dict from SuitabilityEvaluator
-                 including 'soil_data', 'crop_name', 'lsi', etc.
-        """
-        # NOTE: emojis in logger caused UnicodeEncodeError on cp1252.
-        # Keep messages ASCII-only.
+        """Handle evaluation completion from Input Page"""
         crop_name = results.get("crop_name", "")
         logger.info(f"Evaluation complete for {crop_name}")
         logger.info(
@@ -330,7 +349,6 @@ class MainWindow(QMainWindow):
             results.get("full_classification", ""),
         )
 
-        # Pass soil data to Crop Evaluation page so Step 1 can use it
         if "soil_data" in results and "crop_evaluation" in self.pages:
             soil_data = results["soil_data"]
             self.pages["crop_evaluation"].set_last_soil_data(
@@ -341,13 +359,11 @@ class MainWindow(QMainWindow):
                 crop_name,
             )
 
-        # ✨ NEW: Auto-refresh Evaluation History page
         if "history" in self.pages:
             logger.info("Auto-refreshing Evaluation History page...")
             self.pages["history"].load_history()
             logger.info("Evaluation History refreshed successfully")
 
-        # Send results to Reports page: recreate it with fresh data
         if "reports" in self.pages:
             old_reports = self.pages["reports"]
             index = self.pages_stack.indexOf(old_reports)
@@ -366,11 +382,7 @@ class MainWindow(QMainWindow):
         self.change_page(3)
 
     def on_comparison_complete(self, results: list):
-        """
-        Handle comparison completion from Crop Evaluation Page.
-
-        results: list of evaluation result dicts for multiple crops.
-        """
+        """Handle comparison completion from Crop Evaluation Page"""
         logger.info("Multi-crop comparison complete for %d crops", len(results))
         for i, result in enumerate(results[:3], 1):
             logger.info(
@@ -381,7 +393,6 @@ class MainWindow(QMainWindow):
                 result.get("full_classification", ""),
             )
 
-        # ✨ NEW: Auto-refresh Evaluation History page
         if "history" in self.pages:
             logger.info("Auto-refreshing Evaluation History after comparison...")
             self.pages["history"].load_history()
@@ -390,23 +401,18 @@ class MainWindow(QMainWindow):
         logger.info("Comparison completed successfully")
 
     def on_new_evaluation_requested(self):
-        """Handle 'New Evaluation' from Reports page."""
+        """Handle 'New Evaluation' from Reports page"""
         logger.info("New evaluation requested, navigating to Input page")
         self.change_page(1)
-        # Optionally clear input form:
-        # if "input" in self.pages:
-        #     self.pages["input"].clear_form()
 
     def change_page(self, index: int):
         """Change current page by index"""
         logger.info("Changing to page index: %d", index)
         self.pages_stack.setCurrentIndex(index)
 
-        # Update nav buttons
         for i, btn in enumerate(self.nav_buttons):
             btn.set_active(i == index)
 
-        # Update title
         titles = [
             "Home",
             "Soil Data Input",
@@ -417,11 +423,9 @@ class MainWindow(QMainWindow):
         if 0 <= index < len(titles):
             self.page_title.setText(titles[index])
 
-        # Refresh home when going back
         if index == 0 and "home" in self.pages:
             self.pages["home"].refresh()
 
-        # ✨ NEW: Refresh history when navigating to it
         if index == 4 and "history" in self.pages:
             logger.info("Refreshing Evaluation History on page load...")
             self.pages["history"].load_history()
@@ -435,5 +439,4 @@ class MainWindow(QMainWindow):
     def on_view_report_from_history(self, eval_data: dict):
         """Handle viewing a report from history"""
         logger.info(f"View report requested for: {eval_data.get('crop_name')}")
-        # Navigate to reports page with this evaluation
         self.change_page(3)

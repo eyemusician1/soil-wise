@@ -1,6 +1,6 @@
 """
 SoilWise/ui/widgets/collapsible_sidebar.py
-Collapsible sidebar with navigation buttons - NO GUIDE LINES
+Collapsible sidebar with logo beside text
 """
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QFrame, QHBoxLayout
@@ -144,10 +144,11 @@ class NavButton(QPushButton):
 
 
 class CollapsibleSidebar(QFrame):
-    """Collapsible sidebar with smooth animation"""
+    """Collapsible sidebar with smooth animation and logo"""
     
-    def __init__(self, parent=None):
+    def __init__(self, logo_widget=None, parent=None):
         super().__init__(parent)
+        self.logo_widget = logo_widget
         self.is_expanded = True
         self.expanded_width = 240
         self.collapsed_width = 64  # Width that fits icon perfectly
@@ -165,7 +166,7 @@ class CollapsibleSidebar(QFrame):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         
-        # Header with toggle button
+        # Header with logo and toggle button
         header = self.create_header()
         layout.addWidget(header)
         
@@ -199,16 +200,21 @@ class CollapsibleSidebar(QFrame):
         self.nav_buttons = []
     
     def create_header(self):
-        """Create header with logo and toggle button"""
+        """Create header with logo, title, and toggle button"""
         header = QFrame()
         header.setFixedHeight(80)
-        header.setStyleSheet("background: transparent; border: none; border-bottom: 1px solid #d4e4d4;")
+        header.setStyleSheet("background: transparent; border: none;")
         
         layout = QHBoxLayout(header)
-        layout.setContentsMargins(16, 0, 12, 0)
-        layout.setSpacing(12)
+        layout.setContentsMargins(12, 0, 12, 0)
+        layout.setSpacing(8)
         
-        # Logo/Title
+        # Logo (if provided)
+        if self.logo_widget:
+            self.logo_widget.setAlignment(Qt.AlignCenter)
+            layout.addWidget(self.logo_widget)
+        
+        # Title
         self.title_label = QLabel("SoilWise")
         self.title_label.setFont(QFont("Georgia", 18, QFont.Bold))
         self.title_label.setStyleSheet("""
@@ -217,6 +223,9 @@ class CollapsibleSidebar(QFrame):
             border: none;
             text-decoration: none;
         """)
+        layout.addWidget(self.title_label)
+        
+        layout.addStretch()
         
         # Toggle button
         self.toggle_btn = QPushButton("☰")
@@ -236,9 +245,6 @@ class CollapsibleSidebar(QFrame):
             }
         """)
         self.toggle_btn.clicked.connect(self.toggle_sidebar)
-        
-        layout.addWidget(self.title_label)
-        layout.addStretch()
         layout.addWidget(self.toggle_btn)
         
         return header
@@ -261,11 +267,13 @@ class CollapsibleSidebar(QFrame):
             self.animation2.setStartValue(self.expanded_width)
             self.animation2.setEndValue(self.collapsed_width)
             
-            # Hide text labels
+            # Hide text labels and logo
             for btn in self.nav_buttons:
                 btn.set_text_visible(False)
             
             self.title_label.setVisible(False)
+            if self.logo_widget:
+                self.logo_widget.setVisible(False)
             
         else:
             # Expand
@@ -274,11 +282,13 @@ class CollapsibleSidebar(QFrame):
             self.animation2.setStartValue(self.collapsed_width)
             self.animation2.setEndValue(self.expanded_width)
             
-            # Show text labels
+            # Show text labels and logo
             for btn in self.nav_buttons:
                 btn.set_text_visible(True)
             
             self.title_label.setVisible(True)
+            if self.logo_widget:
+                self.logo_widget.setVisible(True)
         
         self.animation.start()
         self.animation2.start()

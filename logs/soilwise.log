@@ -2589,3 +2589,378 @@ KeyError: 'success rate'
 2026-01-10 10:13:02 - __main__ - INFO - run.py:167 - [OK] Application started successfully
 2026-01-10 10:13:02 - __main__ - INFO - run.py:168 - ======================================================================
 2026-01-10 10:13:29 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 10:40:34 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 10:40:34 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 10:40:34 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 10:40:34 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 10:40:34 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 10:40:34 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 194 evaluations
+2026-01-10 10:40:34 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 10:40:34 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 10:40:36 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 10:40:36 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 10:46:31 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 10:47:08 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 10:47:08 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 10:47:08 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 10:47:08 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 10:47:08 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 10:47:08 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 201 evaluations
+2026-01-10 10:47:08 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 10:47:08 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 10:47:10 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 10:47:10 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 10:48:19 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:01:35 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:01:35 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:01:35 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:01:35 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:01:35 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:01:35 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 202 evaluations
+2026-01-10 11:01:35 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:01:35 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:01:37 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:01:37 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:05:58 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:14:30 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:14:30 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:14:30 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:14:30 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:14:30 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:14:30 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 203 evaluations
+2026-01-10 11:14:30 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:14:30 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:14:36 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:14:36 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:14:40 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:14:45 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:14:45 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:14:45 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:14:45 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:14:45 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:14:45 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 203 evaluations
+2026-01-10 11:14:45 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:14:45 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:14:47 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:14:47 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:17:23 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:25:28 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:25:28 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:25:28 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:25:28 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:25:28 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:25:28 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 204 evaluations
+2026-01-10 11:25:28 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:25:28 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:25:30 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:25:30 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:26:28 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:33:52 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:33:52 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:33:52 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:33:52 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:33:52 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:33:52 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 205 evaluations
+2026-01-10 11:33:52 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:33:52 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:33:54 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:33:54 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:43:03 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:45:47 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:45:47 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:45:47 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:45:47 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:45:47 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:45:47 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 11:45:47 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:45:47 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:45:49 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:45:49 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 11:50:01 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 11:54:49 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 11:54:50 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 11:54:50 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 11:54:50 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 11:54:50 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 11:54:50 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 11:54:50 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 11:54:50 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 11:54:51 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 11:54:51 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:06:39 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:06:51 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:06:51 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:06:51 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:06:51 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:06:51 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:06:51 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:06:51 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:06:51 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:06:53 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:06:53 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:09:23 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:09:40 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:09:40 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:09:40 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:09:41 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:09:41 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:09:41 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:09:41 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:09:41 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:09:43 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:09:43 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:10:30 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:17:25 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:17:25 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:17:25 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:17:25 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:17:25 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:17:25 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:17:25 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:17:25 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:17:27 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:17:27 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:19:02 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:19:28 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:19:28 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:19:28 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:19:28 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:19:28 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:19:28 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:19:28 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:19:28 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:19:30 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:19:30 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:19:53 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:23:23 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:23:23 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:23:23 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:23:23 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:23:23 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:23:23 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:23:23 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:23:23 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:23:25 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:23:25 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:23:55 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:25:52 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:25:52 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:25:52 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:25:53 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:25:53 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:25:53 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:25:53 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:25:53 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:25:55 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:25:55 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:26:21 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:26:33 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:26:33 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:26:33 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:26:33 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:26:33 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:26:33 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:26:33 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:26:33 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:26:35 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:26:35 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:31:44 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:31:46 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:31:46 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:31:46 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:31:47 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:31:47 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:31:47 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:31:47 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:31:47 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:31:48 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:31:48 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:35:58 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:36:02 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:36:02 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:36:02 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:36:02 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:36:02 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:36:02 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:36:02 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:36:02 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:36:04 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:36:04 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:37:11 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:37:14 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:37:14 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:37:14 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:37:14 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:37:14 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:37:14 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:37:14 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:37:14 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:37:16 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:37:16 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:38:25 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:38:28 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:38:28 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:38:28 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:38:28 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:38:28 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:38:28 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:38:28 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:38:28 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:38:29 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:38:29 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:38:40 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:38:54 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:38:54 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:38:54 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:38:55 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:38:55 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:38:55 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:38:55 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:38:55 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:38:56 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:38:56 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:57:38 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:57:59 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:57:59 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:57:59 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:57:59 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:57:59 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:57:59 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:57:59 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:57:59 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:58:01 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 12:58:01 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 12:58:43 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 12:59:15 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 12:59:15 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 12:59:15 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 12:59:15 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 12:59:15 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 12:59:15 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 12:59:15 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 12:59:15 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 12:59:15 - __main__ - CRITICAL - run.py:174 - Critical error: 'MainWindow' object has no attribute 'create_logo_label'
+Traceback (most recent call last):
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\run.py", line 164, in main
+    window = MainWindow()
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 44, in __init__
+    self.init_ui()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 160, in init_ui
+    self.sidebar = self.create_sidebar()
+                   ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ACER LAPTOP\OneDrive\Documents\Desktop\capstone-pyside\SoilWise\ui\main_window.py", line 190, in create_sidebar
+    logo_widget = self.create_logo_label(size=32)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MainWindow' object has no attribute 'create_logo_label'
+2026-01-10 12:59:17 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:01:24 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:01:24 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:01:24 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:01:24 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:01:24 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:01:24 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:01:24 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:01:24 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:01:27 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:01:27 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:02:02 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:02:24 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:02:24 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:02:24 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:02:24 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:02:24 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:02:24 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:02:24 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:02:24 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:02:26 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:02:26 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:02:55 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:03:11 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:03:11 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:03:11 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:03:11 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:03:11 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:03:11 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:03:11 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:03:11 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:03:13 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:03:13 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:03:43 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:04:36 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:04:36 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:04:36 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:04:36 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:04:36 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:04:36 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:04:36 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:04:36 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:04:38 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:04:38 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:05:29 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:06:40 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:06:40 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:06:40 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:06:40 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:06:40 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:06:40 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:06:40 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:06:40 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:06:42 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:06:42 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:07:38 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:07:49 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:07:49 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:07:49 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:07:49 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:07:49 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:07:49 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:07:49 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:07:49 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:07:51 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:07:51 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:07:57 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:08:02 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:08:02 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:08:02 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:08:02 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:08:02 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:08:02 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:08:02 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:08:02 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:08:05 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:08:05 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:10:56 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:11:21 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:11:21 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:11:21 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:11:21 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:11:21 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:11:21 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:11:21 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:11:21 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:11:23 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:11:23 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:11:31 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:17:45 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:17:45 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:17:45 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:17:45 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:17:45 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:17:45 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:17:45 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:17:45 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:17:48 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:17:48 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:17:51 - __main__ - INFO - run.py:188 - Application shutting down
+2026-01-10 13:28:53 - __main__ - INFO - run.py:146 - ======================================================================
+2026-01-10 13:28:53 - __main__ - INFO - run.py:147 - Starting SoilWise v1.0.0
+2026-01-10 13:28:53 - __main__ - INFO - run.py:148 - ======================================================================
+2026-01-10 13:28:53 - __main__ - INFO - run.py:28 - Initializing database...
+2026-01-10 13:28:53 - __main__ - INFO - run.py:32 - [OK] Database initialized: C:\Users\ACER LAPTOP\Documents\SoilWise\soilwise.db
+2026-01-10 13:28:53 - __main__ - INFO - run.py:36 - Database stats: 13 crops, 211 evaluations
+2026-01-10 13:28:53 - __main__ - INFO - run.py:120 - [OK] Database loaded: 13 crops available
+2026-01-10 13:28:53 - __main__ - INFO - run.py:163 - Creating main window...
+2026-01-10 13:28:55 - __main__ - INFO - run.py:167 - [OK] Application started successfully
+2026-01-10 13:28:55 - __main__ - INFO - run.py:168 - ======================================================================
+2026-01-10 13:28:57 - __main__ - INFO - run.py:188 - Application shutting down

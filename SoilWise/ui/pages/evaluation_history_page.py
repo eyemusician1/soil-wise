@@ -1,13 +1,17 @@
 """
 SoilWise/ui/pages/evaluation_history_page.py
+
 Evaluation History Page - View and manage past crop evaluations
-WITH AUTO-REFRESH SUPPORT
+
+WITH AUTO-REFRESH SUPPORT & LIMITING FACTOR LABELS
 """
+
 from PySide6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QLabel, QTableWidget, 
-    QTableWidgetItem, QLineEdit, QComboBox, QPushButton, QHeaderView, 
+    QWidget, QVBoxLayout, QHBoxLayout, QLabel, QTableWidget,
+    QTableWidgetItem, QLineEdit, QComboBox, QPushButton, QHeaderView,
     QFrame, QMessageBox, QFileDialog, QGraphicsDropShadowEffect
 )
+
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QColor
 from datetime import datetime
@@ -16,6 +20,12 @@ import csv
 import os
 
 from database.db_manager import get_database
+
+# ============================================================================
+# CONFIGURATION CONSTANTS
+# ============================================================================
+
+EVALUATION_HISTORY_LIMIT = 500  # Increased from 100 to show more history
 
 
 class EvaluationHistoryPage(QWidget):
@@ -26,9 +36,10 @@ class EvaluationHistoryPage(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-
         self.evaluation_data = []  # Store all evaluations
-        self.filtered_data = []    # Store filtered results
+        self.filtered_data = []  # Store filtered results
+        self.page_size = 25        # how many rows per page
+        self.current_page = 0      # zero-based page index
 
         self.init_ui()
 
@@ -159,6 +170,7 @@ class EvaluationHistoryPage(QWidget):
                     border: 2.5px solid {color}35;
                 }}
             ''')
+
             icon_layout = QVBoxLayout(icon_container)
             icon_layout.setContentsMargins(0, 0, 0, 0)
             icon_layout.setAlignment(Qt.AlignCenter)
@@ -352,7 +364,7 @@ class EvaluationHistoryPage(QWidget):
         self.table = QTableWidget()
         self.table.setColumnCount(7)
         self.table.setHorizontalHeaderLabels([
-            "Date & Time", "Crop Name", "LSI Score", 
+            "Date & Time", "Crop Name", "LSI Score",
             "Classification", "Limiting Factors", "Actions", "ID"
         ])
         self.table.setColumnHidden(6, True)  # Hide ID column (used internally)
@@ -406,7 +418,6 @@ class EvaluationHistoryPage(QWidget):
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)  # Classification
         header.setSectionResizeMode(4, QHeaderView.Stretch)  # Limiting Factors
         header.setSectionResizeMode(5, QHeaderView.Fixed)  # Actions
-
         self.table.setColumnWidth(2, 110)
         self.table.setColumnWidth(5, 180)
 
@@ -414,17 +425,64 @@ class EvaluationHistoryPage(QWidget):
 
         return card
 
+    def format_limiting_factors(self, factors_str):
+        """Convert limiting factor codes to readable labels
+
+        Args:
+            factors_str: String containing factor codes (e.g., 't', 't,f', 'tf')
+
+        Returns:
+            Formatted string with full factor names
+
+        Examples:
+            't' -> 'Topography'
+            't, f' -> 'Topography, Fertility'
+            'tf' -> 'Topography, Fertility'
+            '' -> 'None'
+        """
+        if not factors_str or factors_str.strip() == "":
+            return "None"
+
+        # Mapping of codes to full names
+        factor_labels = {
+            'c': 'Climate',
+            't': 'Topography',
+            'w': 'Wetness',
+            's': 'Soil Physical',
+            'f': 'Fertility',
+            'n': 'Salinity/Alkalinity'
+        }
+
+        # Parse the factors string
+        # Handle both comma-separated ("t,f") and concatenated ("tf") formats
+        if ',' in factors_str:
+            codes = [code.strip().lower() for code in factors_str.split(',')]
+        else:
+            codes = [char.lower() for char in factors_str if char.isalpha()]
+
+        # Convert codes to labels
+        labels = [factor_labels.get(code, code.upper()) for code in codes if code]
+
+        if not labels:
+            return "None"
+
+        # Return formatted string
+        return ", ".join(labels)
+
     def load_history(self):
-        """Load evaluation history from database"""
+        """Load evaluation history from database using paging."""
         if not self.db:
             print("Database not available - using sample data")
             self.create_sample_data()
             return
 
         try:
-            # Load from database
-            db_evaluations = self.db.get_evaluation_history(limit=100)
-            print(f"Loaded {len(db_evaluations)} evaluations from database")
+            # Load only one page from database (fast)
+            db_evaluations = self.db.get_evaluation_page(
+                page=self.current_page,
+                page_size=self.page_size,
+            )
+            print(f"Loaded {len(db_evaluations)} evaluations from database (page {self.current_page})")
 
             # Convert to internal format
             self.evaluation_data = []
@@ -437,12 +495,14 @@ class EvaluationHistoryPage(QWidget):
                     "lsc": eval_data.get("lsc", "NA"),
                     "classification": eval_data.get("full_classification", "NA"),
                     "limitingfactors": eval_data.get("limiting_factors", ""),
-                    "location": eval_data.get("location", "NA")
+                    "location": eval_data.get("location", "NA"),
                 }
                 self.evaluation_data.append(formatted)
 
             self.filtered_data = self.evaluation_data.copy()
             self.populate_table()
+
+            # Stats from DB aggregates (fast)
             self.update_statistics()
 
         except Exception as e:
@@ -450,6 +510,7 @@ class EvaluationHistoryPage(QWidget):
             import traceback
             traceback.print_exc()
             self.create_sample_data()
+
 
     def refresh(self):
         """Public method to refresh the history - called from main window"""
@@ -536,9 +597,9 @@ class EvaluationHistoryPage(QWidget):
             class_item.setForeground(QColor("#475569"))
             self.table.setItem(row_idx, 3, class_item)
 
-            # Limiting Factors
+            # Limiting Factors - NOW USING format_limiting_factors()
             factors = eval_data.get("limitingfactors", "")
-            factors_text = factors.upper() if factors else "None"
+            factors_text = self.format_limiting_factors(factors)  # ← UPDATED LINE
             factors_item = QTableWidgetItem(factors_text)
             factors_item.setFlags(factors_item.flags() & ~Qt.ItemIsEditable)
             factors_item.setForeground(QColor("#64748b"))
@@ -559,7 +620,6 @@ class EvaluationHistoryPage(QWidget):
         """Create action buttons for each row - IMPROVED STYLING"""
         widget = QWidget()
         widget.setStyleSheet("background: transparent;")  # Ensure transparent background
-
         layout = QHBoxLayout(widget)
         layout.setContentsMargins(12, 8, 12, 8)
         layout.setSpacing(8)
@@ -621,6 +681,7 @@ class EvaluationHistoryPage(QWidget):
         classification = self.classification_filter.currentText()
 
         self.filtered_data = []
+
         for eval_data in self.evaluation_data:
             # Apply search filter
             if search_text and search_text not in eval_data["cropname"].lower():
@@ -654,7 +715,6 @@ class EvaluationHistoryPage(QWidget):
             # Remove from data
             self.evaluation_data = [e for e in self.evaluation_data if e["id"] != eval_data["id"]]
             self.filtered_data = [e for e in self.filtered_data if e["id"] != eval_data["id"]]
-
             self.populate_table()
             self.update_statistics()
 
@@ -680,7 +740,7 @@ class EvaluationHistoryPage(QWidget):
             with open(filename, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerow([
-                    "Date & Time", "Crop Name", "LSI Score", 
+                    "Date & Time", "Crop Name", "LSI Score",
                     "Classification", "Limiting Factors"
                 ])
 
@@ -694,14 +754,15 @@ class EvaluationHistoryPage(QWidget):
                     ])
 
             QMessageBox.information(
-                self, 
-                "Export Successful", 
+                self,
+                "Export Successful",
                 f"Data exported to:\n{filename}"
             )
+
         except Exception as e:
             QMessageBox.critical(
-                self, 
-                "Export Failed", 
+                self,
+                "Export Failed",
                 f"Could not export data:\n{str(e)}"
             )
 
@@ -724,30 +785,47 @@ class EvaluationHistoryPage(QWidget):
         self.classification_filter.setCurrentIndex(0)
 
     def update_statistics(self):
-        """Update statistics display - ALWAYS use ALL data, not filtered"""
-        # STATISTICS ARE BASED ON ALL DATA (not filtered)
-        if not self.evaluation_data:
-            self.stat_total.setText("0")
-            self.stat_avg_lsi.setText("0.0")
-            self.stat_most_crop.setText("None")
+        """Update statistics display using fast DB aggregates when available."""
+        # If labels not created yet, skip
+        if not hasattr(self, "stat_total"):
             return
 
-        # Total evaluations - FROM ALL DATA
-        total = len(self.evaluation_data)
-        self.stat_total.setText(str(total))
+        # Fallback for no DB
+        if not self.db:
+            if not self.evaluation_data:
+                self.stat_total.setText("0")
+                self.stat_avg_lsi.setText("0.0")
+                self.stat_most_crop.setText("None")
+                return
 
-        # Average LSI - FROM ALL DATA
-        avg_lsi = sum([e["lsi"] for e in self.evaluation_data]) / total
-        self.stat_avg_lsi.setText(f"{avg_lsi:.1f}")
+            total = len(self.evaluation_data)
+            self.stat_total.setText(str(total))
 
-        # Most evaluated crop - FROM ALL DATA
-        crop_counts = {}
-        for eval_data in self.evaluation_data:
-            crop = eval_data["cropname"]
-            crop_counts[crop] = crop_counts.get(crop, 0) + 1
+            avg_lsi = sum([e["lsi"] for e in self.evaluation_data]) / total
+            self.stat_avg_lsi.setText(f"{avg_lsi:.1f}")
 
-        if crop_counts:
-            most_crop = max(crop_counts, key=crop_counts.get)
-            self.stat_most_crop.setText(most_crop)
-        else:
-            self.stat_most_crop.setText("None")
+            crop_counts = {}
+            for eval_data in self.evaluation_data:
+                crop = eval_data["cropname"]
+                crop_counts[crop] = crop_counts.get(crop, 0) + 1
+
+            if crop_counts:
+                most_crop = max(crop_counts, key=crop_counts.get)
+                self.stat_most_crop.setText(most_crop)
+            else:
+                self.stat_most_crop.setText("None")
+            return
+
+        # Fast path: use DB aggregate stats
+        try:
+            stats = self.db.get_evaluation_stats_fast()
+            self.stat_total.setText(str(stats["total_evaluations"]))
+            self.stat_avg_lsi.setText(f"{stats['avg_lsi']:.1f}")
+
+            if stats["most_evaluated_crop"]:
+                crop_name = stats["most_evaluated_crop"].replace("_", " ").title()
+                self.stat_most_crop.setText(crop_name)
+            else:
+                self.stat_most_crop.setText("None")
+        except Exception as e:
+            print(f"Error updating statistics from DB: {e}")
