@@ -1252,8 +1252,16 @@ class InputPage(QWidget):
                 "poor_and_aeric - Poorly drained, aeric conditions",
                 "poor_drainable - Poorly drained but drainable",
                 "poor_not_drainable - Poorly drained, not drainable"
+            ],
+            "Tomato": [
+                "Select drainage class...",
+                "good - Well drained",
+                "moderate - Moderately drained",
+                "imperfect - Imperfectly drained",
+                "poor_and_aeric - Poorly drained, aeric conditions",
+                "poor_drainable - Poorly drained but drainable",
+                "poor_not_drainable - Poorly drained, not drainable"
             ]
-
         }
         
         default_options = [
@@ -1368,6 +1376,10 @@ class InputPage(QWidget):
             "Sweet Potato": [
                 'C<60s', 'SiC', 'Co', 'SiCL', 'Si', 'C<60v', 'SL', 'C>60s', 'L', 'SCL', 'SC',
                 'C>60v', 'LS', 'LfS', 'LcS', 'fS', 'S', 'Cm', 'SiCm'
+            ],
+            "Tomato": [
+                'CL', 'L', 'SiCL', 'Si', 'SiC', 'Co', 'C<60s', 'SC', 'SCL',
+                'C>60s', 'C<60v', 'LS', 'LfS', 'C>60v', 'fS', 'LcS', 'Cm', 'SiCm'
             ]
         }
         

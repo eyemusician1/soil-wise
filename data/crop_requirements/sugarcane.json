@@ -4,34 +4,42 @@
   "seasonal": false,
   "growing_cycle_days": "270-2100",
   "climate_requirements": {
+  "climate_requirements": {
   "annual_precipitation_mm": {
-    "S1_0": {"range": [2555, null], "rating": 1.0},
-    "S2": {"range": [2190, 2554], "rating": 0.85},
-    "S3": {"range": [1825, 2189], "rating": 0.6},
-    "N1": {"range": [1095, 1824], "rating": 0.4},
-    "N2": {"range": [null, 1094], "rating": 0.25}
+    "S1_0": {"range": [1500, 2500], "rating": 1.0},
+    "S1_1_high": {"range": [2501, 3000], "rating": 0.95},
+    "S1_1_low": {"range": [1100, 1499], "rating": 0.95},
+    "S2_high": {"range": [3001, 3500], "rating": 0.85},
+    "S2_low": {"range": [800, 1099], "rating": 0.85},
+    "S3_high": {"range": [3501, 4000], "rating": 0.6},
+    "S3_low": {"range": [600, 799], "rating": 0.6},
+    "N1": {"range": [400, 599], "rating": 0.4},
+    "N2": {"range": [null, 399], "rating": 0.25}
   },
   "mean_annual_temp_c": {
-    "S1_0": {"range": [26.5, 27.5], "rating": 1.0},
-    "S1_1_low": {"range": [25.0, 26.4], "rating": 0.95},
-    "S1_1_high": {"range": [27.6, 28.0], "rating": 0.95},
-    "S2_low": {"range": [22.0, 24.9], "rating": 0.85},
-    "S2_high": {"range": [28.1, 30.0], "rating": 0.85},
-    "S3_low": {"range": [20.0, 21.9], "rating": 0.6},
-    "S3_high": {"range": [30.1, 32.0], "rating": 0.6},
-    "N2_low": {"range": [null, 19.9], "rating": 0.25},
-    "N2_high": {"range": [32.1, null], "rating": 0.25}
+    "S1_0": {"range": [24.0, 28.0], "rating": 1.0},
+    "S1_1_low": {"range": [22.0, 23.9], "rating": 0.95},
+    "S1_1_high": {"range": [28.1, 30.0], "rating": 0.95},
+    "S2_low": {"range": [20.0, 21.9], "rating": 0.85},
+    "S2_high": {"range": [30.1, 32.0], "rating": 0.85},
+    "S3_low": {"range": [18.0, 19.9], "rating": 0.6},
+    "S3_high": {"range": [32.1, 35.0], "rating": 0.6},
+    "N1_low": {"range": [16.0, 17.9], "rating": 0.4},
+    "N2_low": {"range": [null, 15.9], "rating": 0.25},
+    "N2_high": {"range": [35.1, null], "rating": 0.25}
   },
   "mean_annual_relative_humidity_pct": {
-    "S1_0": {"range": [65, 75], "rating": 1.0},
-    "S1_1_low": {"range": [60, 64], "rating": 0.95},
-    "S1_1_high": {"range": [76, 80], "rating": 0.95},
-    "S2_low": {"range": [55, 59], "rating": 0.85},
-    "S2_high": {"range": [81, 85], "rating": 0.85},
-    "S3_high": {"range": [86, null], "rating": 0.6},
-    "S3_low": {"range": [50, 54], "rating": 0.6},
-    "N2_low": {"range": [null, 49], "rating": 0.25}
+    "S1_0": {"range": [70, 85], "rating": 1.0},
+    "S1_1_low": {"range": [65, 69], "rating": 0.95},
+    "S1_1_high": {"range": [86, 90], "rating": 0.95},
+    "S2_low": {"range": [60, 64], "rating": 0.85},
+    "S2_high": {"range": [91, 95], "rating": 0.85},
+    "S3_low": {"range": [55, 59], "rating": 0.6},
+    "S3_high": {"range": [96, null], "rating": 0.6},
+    "N1": {"range": [50, 54], "rating": 0.4},
+    "N2": {"range": [null, 49], "rating": 0.25}
   }
+}
 },
   "topography_requirements": {
     "slope_pct": {
